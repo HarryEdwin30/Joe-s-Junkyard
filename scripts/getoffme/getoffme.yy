@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"getoffme",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"getoffme",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

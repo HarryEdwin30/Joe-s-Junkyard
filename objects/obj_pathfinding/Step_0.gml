@@ -1,0 +1,18 @@
+var cs = 16; 
+var mw = room_width / cs;
+var mh = room_height / cs;
+
+global.map_grid = mp_grid_create(0, 0, mw, mh, cs, cs);
+
+var tilemap = layer_tilemap_get_id(layer_get_id("obstacles"));
+
+for (var yy = 0; yy < mh; yy++) {
+    for (var xx = 0; xx < mw; xx++) {
+        
+        var tile_data = tilemap_get(tilemap, xx, yy);
+        
+        if (tile_data != 0) {
+            mp_grid_add_cell(global.map_grid, xx, yy);
+        }
+    }
+}

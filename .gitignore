@@ -1,0 +1,8 @@
+# GameMaker Generated Files
+/assets/tps/
+/cache/
+/datafiles_yy/
+/macros.yy
+.win
+/*.dmp
+resource_ordering.json

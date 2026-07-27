@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"gunshot1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.36,
+  "exportDir":"",
+  "name":"gunshot1",
+  "parent":{
+    "name":"gun sounds",
+    "path":"folders/sounds/gun sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"gunshot1.wav",
+  "volume":0.3,
+}

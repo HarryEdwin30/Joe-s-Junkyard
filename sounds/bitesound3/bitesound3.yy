@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bitesound3",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.0087981,
+  "exportDir":"",
+  "name":"bitesound3",
+  "parent":{
+    "name":"group1",
+    "path":"folders/sounds/group1.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bitesound3.wav",
+  "volume":1.0,
+}
