@@ -1,4 +1,11 @@
 global.player_alive = true;
 global.survivors_left = instance_number(obj_human_parent);
 window_enable_borderless_fullscreen(true);
-window_set_fullscreen(true);
+window_set_fullscreen(false);
+global.being_attacked = false;
+global.zombies_attacking = 0;
+global.push_cooldown_max = 300;
+global.push_cooldown = 0;
+can_set_fullscreen = true;
+max_fullscreen_delay = 15;
+fullscreen_delay = 0;

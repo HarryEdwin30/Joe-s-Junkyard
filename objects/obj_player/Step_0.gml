@@ -1,5 +1,3 @@
-
-
 if hp <= 0{
     global.being_attacked = false;
     global.survivors_left -= 1;
@@ -8,6 +6,18 @@ if hp <= 0{
         instance_create_depth(x, y, 0, obj_walker);
     }
     instance_destroy()
+}
+
+global.push_cooldown -= 1;
+if global.push_cooldown < 0 global.push_cooldown = 0;
+
+if place_meeting(x, y, obj_zombie_parent){
+    def_m_spd = 0.5;
+    can_run = false;
+}
+else{
+    def_m_spd = 1;
+    can_run = true;
 }
 
 
@@ -19,14 +29,14 @@ if global.being_attacked = true{
 var h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var v = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if keyboard_check(vk_shift) is_running = true
+if keyboard_check(vk_shift) and can_run = true is_running = true
     else {
     	is_running = false;
     }
 
-if is_running = true m_spd = 2
+if is_running = true m_spd = def_m_spd * 2;
     else {
-    	m_spd = 1;
+    	m_spd = def_m_spd;
     }
 
 var tilemap = layer_tilemap_get_id("obstacles");

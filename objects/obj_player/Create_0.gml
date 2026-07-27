@@ -1,6 +1,6 @@
 infected = false;
+def_m_spd = 1;
 m_spd = 1;
 is_running = false;
 hp = 100;
-global.being_attacked = false;
-global.zombies_attacking = 0;
+can_run = true;
