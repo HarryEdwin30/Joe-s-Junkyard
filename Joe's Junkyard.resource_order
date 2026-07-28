@@ -1,4 +1,7 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_game_saver","order":1,"path":"objects/obj_game_saver/obj_game_saver.yy",},
+    {"name":"spr_save_point","order":1,"path":"sprites/spr_save_point/spr_save_point.yy",},
+  ],
 }
