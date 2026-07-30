@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_game_saver",
+  "%Name":"obj_load_save_button",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_game_saver",
+  "name":"obj_load_save_button",
   "overriddenProperties":[],
   "parent":{
-    "name":"game",
-    "path":"folders/objects/game.yy",
+    "name":"main menu",
+    "path":"folders/objects/main menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_save_point",
-    "path":"sprites/spr_save_point/spr_save_point.yy",
+    "name":"spr_load_save_button",
+    "path":"sprites/spr_load_save_button/spr_load_save_button.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -12,8 +12,8 @@
   "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"survivors",
-    "path":"folders/objects/survivors.yy",
+    "name":"player",
+    "path":"folders/objects/player.yy",
   },
   "parentObjectId":{
     "name":"obj_human_parent",

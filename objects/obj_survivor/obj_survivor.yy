@@ -10,8 +10,8 @@
   "name":"obj_survivor",
   "overriddenProperties":[],
   "parent":{
-    "name":"survivors",
-    "path":"folders/objects/survivors.yy",
+    "name":"this useless asshole",
+    "path":"folders/objects/this useless asshole.yy",
   },
   "parentObjectId":{
     "name":"obj_human_parent",

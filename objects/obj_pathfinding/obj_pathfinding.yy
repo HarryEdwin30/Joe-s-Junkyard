@@ -9,8 +9,8 @@
   "name":"obj_pathfinding",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"game",
+    "path":"folders/objects/game.yy",
   },
   "parentObjectId":null,
   "persistent":true,

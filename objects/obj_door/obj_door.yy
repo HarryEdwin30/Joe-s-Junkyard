@@ -6,8 +6,8 @@
   "name":"obj_door",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/objects.yy",
+    "name":"game",
+    "path":"folders/objects/game.yy",
   },
   "parentObjectId":null,
   "persistent":false,
