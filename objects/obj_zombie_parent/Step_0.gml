@@ -1,4 +1,4 @@
-if hp <= 0 instance_destroy()
+if hp <= 0 instance_destroy();
     
 if !instance_exists(obj_player){
     path_end();
@@ -7,13 +7,27 @@ if !instance_exists(obj_player){
     exit;
 }
 
+var tilemap = layer_tilemap_get_id("obstacles");
+
 var push_speed = 1;
-with (obj_zombie_parent) {
-    if (id != other.id) {
+with (obj_zombie_parent){
+    if (id != other.id){
         var dist = point_distance(x, y, other.x, other.y);
-        var min_dist = 13;
+        var min_dist = 8;
         
-        if (dist < min_dist && dist > 0) {
+        if (dist < min_dist && dist > 0){
+            var dir = point_direction(x, y, other.x, other.y);
+            other.x += lengthdir_x(push_speed, dir);
+            other.y += lengthdir_y(push_speed, dir);
+        }
+    }
+}
+with (obj_player){
+    if (id != other.id){
+        var dist = point_distance(x, y, other.x, other.y);
+        var min_dist = 8;
+        
+        if (dist < min_dist && dist > 0){
             var dir = point_direction(x, y, other.x, other.y);
             other.x += lengthdir_x(push_speed, dir);
             other.y += lengthdir_y(push_speed, dir);
@@ -42,14 +56,65 @@ if place_meeting(x, y, obj_human_parent) and stunned <= 0{
     }
 }
 
+var detection_range = 320;
 
-if global.survivors_left <= 0{
-    m_spd = 0;
-    move_towards_point(x, y, m_spd);
+if distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tilemap, true, undefined){
+    can_see_player = true;
+    interest = max_interest;
+    target_x = instance_nearest(x, y, obj_human_parent).x;
+    target_y = instance_nearest(x, y, obj_human_parent).y;
+    search_zone_w = [target_x - 60, target_x + 60];
+    search_zone_h = [target_y - 60, target_y + 60];
 }
 else{
-    target_x = instance_nearest(x, y, obj_human_parent).x
-    target_y = instance_nearest(x, y, obj_human_parent).y
+    can_see_player = false;
+}
+
+if can_see_player = true{
+    chase_player = true;
+}
+
+
+if can_see_player = false and chase_player = true and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
+    interest -= 1;
+    show_debug_message("I can't find you!" + string(interest));
+}
+
+if interest <= 0{
+    chase_player = false;
+    interest = 0;
+}
     
+if chase_player = true{
     iwillfindyouandiwillrapeyou(target_x, target_y, m_spd);
+    wandering = false;
+}
+
+//wandering shit starts here
+
+if chase_player = false and wandering = false{
+    var wander_distance = 250;
+    wander_x = irandom_range(x - wander_distance, x + wander_distance);
+    wander_y = irandom_range(y - wander_distance, y + wander_distance);
+    
+    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemap){
+        show_debug_message("the wander target is invalid, trying again...");
+        exit;
+    } 
+    else{
+        wander_delay = irandom_range(180, 600);
+        wandering = true;
+        show_debug_message("wandering...");
+    }
+}
+
+if wander_delay <= 0{
+    wandering = false;
+    show_debug_message("wander delay is up.");
+}
+
+if wandering = true{
+    iwillfindyouandiwillrapeyou(wander_x, wander_y, m_spd);
+    wander_delay -= 1;
+    show_debug_message("wander delay = " + string(wander_delay))
 }

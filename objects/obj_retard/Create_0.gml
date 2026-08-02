@@ -5,10 +5,9 @@ global.zombies_attacking = 0;
 global.push_cooldown_max = 300;
 global.push_cooldown = 0;
 
-
 if file_exists("gamesave.ini"){
     ini_open("gamesave.ini")
-    obj_player.x = ini_read_real("Player", "X", 100);
-    obj_player.y = ini_read_real("Player", "Y", 350);
+    obj_player.x = ini_read_real("Player", "X", 0);
+    obj_player.y = ini_read_real("Player", "Y", 0);
     ini_close();
 }

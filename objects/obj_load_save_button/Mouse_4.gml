@@ -3,8 +3,10 @@ if !file_exists("gamesave.ini"){
     exit;
 }
 
-global.game_started = true;
+if global.game_started = false{
+    global.game_started = true;
 show_debug_message("game started");
+}
 
 ini_open("gamesave.ini");
 room_goto(ini_read_real("Player", "Room", TestRoom));

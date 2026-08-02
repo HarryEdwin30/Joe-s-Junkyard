@@ -1,5 +1,11 @@
 if global.game_started = false exit;
     
+if global.player_alive = true{
+    run_fade = false;
+    death_i_alpha = 0;
+    fade_in = true;
+}
+
 if global.player_alive = false and run_fade = false{
     death_i_alpha = 0;
     run_fade = true;

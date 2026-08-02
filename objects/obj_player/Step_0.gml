@@ -8,6 +8,8 @@ if hp <= 0{
     instance_destroy()
 }
 
+
+
 global.push_cooldown -= 1;
 if global.push_cooldown < 0 global.push_cooldown = 0;
 

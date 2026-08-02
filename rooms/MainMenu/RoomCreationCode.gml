@@ -1,0 +1,1 @@
+obj_fade.death_i_alpha = 0;

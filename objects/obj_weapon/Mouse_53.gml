@@ -14,5 +14,14 @@ if global.can_shoot = true{
     }
     audio_play_sound(gunshot1, 0, false);
     global.bullets_left += 1;
-    show_debug_message(global.bullets_left);
+    
+    if instance_exists(obj_zombie_parent){
+        obj_zombie_parent.target_x = obj_player.x;
+        obj_zombie_parent.target_y = obj_player.y;
+        obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
+        obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
+        obj_zombie_parent.chase_player = true;
+        obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+        show_debug_message("Hey, I heard that!");
+    }
 }
