@@ -5,3 +5,6 @@ max_bullets = 0
 global.bullets_left = max_bullets;
 global.reloading = false;
 bullets = 100;
+
+//1 = revolver, 2 = shotgun, 3 = auto rifle
+gun_type = 1;

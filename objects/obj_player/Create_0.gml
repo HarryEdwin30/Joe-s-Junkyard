@@ -4,3 +4,5 @@ m_spd = 1;
 is_running = false;
 hp = 100;
 can_run = true;
+max_stamina = 600;
+stamina = max_stamina;

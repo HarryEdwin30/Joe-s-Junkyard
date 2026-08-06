@@ -15,8 +15,14 @@ if death_i_alpha = 1{
     fade_in = false;
     instance_destroy(obj_pathfinding);
     instance_destroy(obj_retard);
-    instance_destroy(obj_weapon);
+    instance_destroy(obj_weapon_improved);
     room_goto(DeathRoom);
+    
+    if global.showacutezombiepic = true{
+        var background = layer_background_get_id("Background");
+        layer_background_sprite(background, zombieimg1);
+        show_debug_message("should show image");
+    }
 }
 
 if run_fade = true{

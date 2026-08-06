@@ -3,12 +3,18 @@ if hp <= 0{
     global.survivors_left -= 1;
     audio_play_sound(death, 0, false);
     if infected = true{
+        global.showacutezombiepic = true;
         instance_create_depth(x, y, 0, obj_walker);
     }
-    instance_destroy()
+    instance_destroy();
 }
 
+if stamina > max_stamina stamina = max_stamina;
+    
+if stamina < 0 stamina = 0;
 
+if is_running = true stamina -= 1;
+    else stamina += 1;
 
 global.push_cooldown -= 1;
 if global.push_cooldown < 0 global.push_cooldown = 0;
@@ -36,7 +42,9 @@ if keyboard_check(vk_shift) and can_run = true is_running = true
     	is_running = false;
     }
 
-if is_running = true m_spd = def_m_spd * 2;
+if is_running = true and stamina > 0{
+    m_spd = def_m_spd * 2;
+}
     else {
     	m_spd = def_m_spd;
     }

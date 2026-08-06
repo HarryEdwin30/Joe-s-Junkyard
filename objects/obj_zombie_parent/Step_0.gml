@@ -10,22 +10,25 @@ if !instance_exists(obj_player){
 var tilemap = layer_tilemap_get_id("obstacles");
 
 var push_speed = 1;
-with (obj_zombie_parent){
-    if (id != other.id){
-        var dist = point_distance(x, y, other.x, other.y);
-        var min_dist = 8;
-        
-        if (dist < min_dist && dist > 0){
-            var dir = point_direction(x, y, other.x, other.y);
-            other.x += lengthdir_x(push_speed, dir);
-            other.y += lengthdir_y(push_speed, dir);
+if !place_meeting(x, y, tilemap){
+    with (obj_zombie_parent){
+        if (id != other.id){ 
+            var dist = point_distance(x, y, other.x, other.y);
+            var min_dist = 16;
+            
+            if (dist < min_dist && dist > 0){
+                var dir = point_direction(x, y, other.x, other.y);
+                other.x += lengthdir_x(push_speed, dir);
+                other.y += lengthdir_y(push_speed, dir);
+            }
         }
     }
 }
+
 with (obj_player){
     if (id != other.id){
         var dist = point_distance(x, y, other.x, other.y);
-        var min_dist = 8;
+        var min_dist = 12;
         
         if (dist < min_dist && dist > 0){
             var dir = point_direction(x, y, other.x, other.y);
@@ -56,7 +59,7 @@ if place_meeting(x, y, obj_human_parent) and stunned <= 0{
     }
 }
 
-var detection_range = 320;
+var detection_range = 480;
 
 if distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tilemap, true, undefined){
     can_see_player = true;
@@ -98,23 +101,19 @@ if chase_player = false and wandering = false{
     wander_y = irandom_range(y - wander_distance, y + wander_distance);
     
     if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemap){
-        show_debug_message("the wander target is invalid, trying again...");
         exit;
     } 
     else{
         wander_delay = irandom_range(180, 600);
         wandering = true;
-        show_debug_message("wandering...");
     }
 }
 
 if wander_delay <= 0{
     wandering = false;
-    show_debug_message("wander delay is up.");
 }
 
 if wandering = true{
     iwillfindyouandiwillrapeyou(wander_x, wander_y, m_spd);
     wander_delay -= 1;
-    show_debug_message("wander delay = " + string(wander_delay))
 }

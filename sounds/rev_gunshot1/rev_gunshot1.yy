@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"reloadend",
+  "%Name":"rev_gunshot1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.46072564,
+  "duration":3.36,
   "exportDir":"",
-  "name":"reloadend",
+  "name":"rev_gunshot1",
   "parent":{
-    "name":"sounds",
-    "path":"folders/sounds.yy",
+    "name":"gun sounds",
+    "path":"folders/sounds/gun sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"reloadend.mp3",
-  "volume":1.0,
+  "soundFile":"rev_gunshot1.wav",
+  "volume":0.3,
 }

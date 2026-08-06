@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"reloadstart",
+  "%Name":"rev_reload_end",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.4036508,
+  "duration":0.46072564,
   "exportDir":"",
-  "name":"reloadstart",
+  "name":"rev_reload_end",
   "parent":{
     "name":"gun sounds",
     "path":"folders/sounds/gun sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"reloadstart.wav",
+  "soundFile":"rev_reload_end.mp3",
   "volume":1.0,
 }
