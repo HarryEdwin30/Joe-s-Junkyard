@@ -1,0 +1,1 @@
+rif_shoot_delay = 0;

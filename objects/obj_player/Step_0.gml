@@ -9,12 +9,19 @@ if hp <= 0{
     instance_destroy();
 }
 
+if mouse_x > x{
+    image_xscale = -1;
+}
+else image_xscale = 1;
+
 if stamina > max_stamina stamina = max_stamina;
     
 if stamina < 0 stamina = 0;
 
-if is_running = true stamina -= 1;
-    else stamina += 1;
+if is_running = true and (keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W"))){
+    stamina -= 1;
+}
+if is_running = false and !keyboard_check(vk_shift) stamina += 1;
 
 global.push_cooldown -= 1;
 if global.push_cooldown < 0 global.push_cooldown = 0;

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"rif_gunshot1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":5.067755,
+  "exportDir":"",
+  "name":"rif_gunshot1",
+  "parent":{
+    "name":"gun sounds",
+    "path":"folders/sounds/gun sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"rif_gunshot1.mp3",
+  "volume":1.0,
+}

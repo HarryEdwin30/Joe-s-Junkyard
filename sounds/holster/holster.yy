@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"holster",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.33283445,
+  "exportDir":"",
+  "name":"holster",
+  "parent":{
+    "name":"gun sounds",
+    "path":"folders/sounds/gun sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"holster.wav",
+  "volume":1.0,
+}

@@ -1,30 +1,95 @@
 if global.player_alive = false exit;
     
-if global.bullets_left >= bullets global.can_shoot = false
-    
-if global.being_attacked = true exit;
-    
 
-    
-
-if keyboard_check_pressed(ord("R")) and global.reloading = false and global.bullets_left > max_bullets{
-    global.reloading = true
-    reload_time_left = reload_time * global.bullets_left
-    global.bullets_left = bullets;
-    audio_play_sound(rev_reload_start, 0, false)
-}
-    
-if global.reloading = true{
-    global.can_shoot = false
-    reload_time_left -= 1;
-    
-    if reload_time_left % reload_time == 0 audio_play_sound(bulletinsert, 0, false);
+if keyboard_check_pressed(ord("2")){
+    if weapon_type = 1{
+        weapon_type = 0;
+        audio_play_sound(holster, 0, false);
+    }
+    else{
+        weapon_type = 1;
+        audio_play_sound(revolverdraw, 0, false);
+    }
 }
 
-if reload_time_left <= 0{
-    global.bullets_left = max_bullets;
-    global.can_shoot = true;
-    global.reloading = false;
-    reload_time_left = reload_time;
-    audio_play_sound(rev_reload_end, 0, false)
+if keyboard_check_pressed(ord("4")){
+    if weapon_type = 3{
+        weapon_type = 0;
+        audio_play_sound(holster, 0, false);
+    }
+    else{
+        weapon_type = 3;
+        audio_play_sound(rifledraw, 0, false);
+    }
+}
+
+if keyboard_check_pressed(ord("T")) and weapon_type = 3 and rif_reloading = false{
+    audio_play_sound(modeswitch1, 0, false);
+    if fire_mode = 0 fire_mode = 1;
+        else fire_mode = 0;
+}
+    
+if rev_bullets_left <= 0 or rev_reloading = true rev_can_shoot = false;
+    else rev_can_shoot = true;
+    
+if rif_bullets_left <= 0 or rif_reloading = true rif_can_shoot = false;
+    else rif_can_shoot = true;
+    
+
+
+if keyboard_check_pressed(ord("R")){
+    if weapon_type = 0 or weapon_type = 4 exit;
+        
+    if weapon_type = 1 and rev_bullets_left < rev_max_bullets and rev_reloading = false and rev_total_bullets > 0{
+        audio_play_sound(rev_reload_start, 0, false)
+        rev_reloading = true;
+    }
+    if weapon_type = 3 and rif_bullets_left < rif_max_bullets and rif_reloading = false and rif_total_mags > 0{
+        rif_reloading = true;
+        audio_play_sound(rif_reload1, 0, false);
+    }
+}
+
+if rev_reloading = true{
+    if weapon_type != 1{
+        rev_reloading = false;
+        audio_stop_sound(rif_reload1);
+    }
+    if rev_total_bullets <= 0{
+        rev_reloading = false;
+    }
+    rev_reload_time_left -= 1;
+    if rev_reload_time_left <= 0{
+        if rev_bullets_left = rev_max_bullets{
+            rev_reload_delay_left = 2;
+        }
+        if rev_reload_delay_left = 1{
+            rev_bullets_left += 1;
+            rev_total_bullets -= 1;
+            audio_play_sound(bulletinsert, 0, false);
+        }
+        if rev_reload_delay_left = 0{
+            rev_reload_delay_left = 1;
+        }
+        rev_reload_time_left = rev_max_reload_time;
+    }
+    if rev_reload_delay_left = 2{
+        rev_reload_delay_left = 0;
+        audio_play_sound(rev_reload_end, 0, false);
+        rev_reloading = false;
+    }
+}
+
+if rif_reloading = true{
+    if weapon_type != 3{
+        rif_reloading = false;
+        rif_reload_time_left = rif_max_reload_time;
+    }
+    if rif_reload_time_left <= 0{
+        rif_total_mags -= 1;
+        rif_bullets_left = rif_max_bullets;
+        rif_reloading = false;
+        rif_reload_time_left = rif_max_reload_time;
+    }
+    rif_reload_time_left -= 1;
 }
