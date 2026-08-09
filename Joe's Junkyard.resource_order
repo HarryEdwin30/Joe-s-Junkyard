@@ -1,7 +1,7 @@
 {
   "FolderOrderSettings":[
-    {"name":"game","order":4,"path":"folders/objects/game.yy",},
     {"name":"base","order":10,"path":"folders/objects/base.yy",},
+    {"name":"game","order":4,"path":"folders/objects/game.yy",},
     {"name":"main menu","order":3,"path":"folders/objects/main menu.yy",},
     {"name":"parents","order":1,"path":"folders/objects/parents.yy",},
     {"name":"player","order":5,"path":"folders/objects/player.yy",},

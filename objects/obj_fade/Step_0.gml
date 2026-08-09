@@ -15,7 +15,7 @@ if death_i_alpha = 1{
     fade_in = false;
     instance_destroy(obj_pathfinding);
     instance_destroy(obj_retard);
-    instance_destroy(obj_weapon_improved);
+    instance_destroy(obj_weapon);
     room_goto(DeathRoom);
     
     if global.showacutezombiepic = true{

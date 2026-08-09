@@ -1,6 +1,6 @@
-max_m_spd = 1.75
+max_m_spd = irandom_range(1.6, 2);
 m_spd = max_m_spd;
-hp = 75;
+hp = irandom_range(25, 75);
 bite_delay = 0;
 damage_delay = 60;
 stunned = 0;

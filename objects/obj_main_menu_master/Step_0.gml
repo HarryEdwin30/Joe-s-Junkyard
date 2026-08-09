@@ -8,6 +8,8 @@ if keyboard_check_pressed(vk_delete){
         else show_debug_message("You have no save file to delete nigga.");
 }
 
+
+
 fullscreen_delay -= 1;
     
 if keyboard_check_pressed(vk_f4) and can_set_fullscreen = true and fullscreen_delay <= 0{
@@ -21,3 +23,7 @@ if keyboard_check_pressed(vk_f4) and can_set_fullscreen = false and fullscreen_d
     can_set_fullscreen = true;
     window_set_fullscreen(false);
 }
+
+window_set_cursor(cr_none);
+
+cursor_sprite = spr_crosshair;

@@ -1,4 +1,4 @@
-weapon_type = 1; //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
+weapon_type = 0; //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
 draw_a_bullet = false;
 draw_a_bullet_delay_max = 1;
 draw_a_bullet_delay = draw_a_bullet_delay_max;
@@ -22,7 +22,7 @@ rif_jammed = false;
 fire_mode = 0; //0 = full auto, 1 = semi auto
 rif_max_total_mags = 5;
 rif_total_mags = rif_max_total_mags;
-rif_shoot_delay_max = 4;
+rif_shoot_delay_max = 5;
 rif_shoot_delay = 0;
 rif_damage = 50;
 rif_max_bullets = 30;

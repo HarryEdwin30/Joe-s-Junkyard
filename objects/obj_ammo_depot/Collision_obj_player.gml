@@ -13,5 +13,9 @@ if keyboard_check_pressed(ord("E")){
         
         obj_weapon.rif_total_mags += rif_total_mags_to_add;
         rif_ammo -= rif_total_mags_to_add;
+        if obj_weapon.rif_bullets_left <= 0{
+            obj_weapon.rif_bullets_left = obj_weapon.rif_max_bullets;
+            rif_ammo -= 1;
+        }
     }
 }
