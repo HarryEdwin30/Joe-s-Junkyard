@@ -1,6 +1,9 @@
 if global.player_alive = false exit;
     
 
+gun_start_x = obj_player.x + gun_x_distance_from_player;
+gun_start_y = obj_player.y + gun_y_distance_from_player;
+
 if keyboard_check_pressed(ord("2")){
     if weapon_type = 1{
         weapon_type = 0;

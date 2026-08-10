@@ -9,10 +9,10 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     draw_a_bullet = true;
     var tilemap = layer_tilemap_get_id("obstacles");
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
-    if !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y,  tilemap, true, undefined){
+    if !collision_line(gun_start_x, gun_start_y, mouse_x, mouse_y,  tilemap, true, undefined){
         var zombies_in_sights = ds_list_create();
         var target = obj_zombie_parent;
-        if collision_line_list(obj_player.x, obj_player.y, mouse_x, mouse_y, target, true, true, zombies_in_sights, true){
+        if collision_line_list(gun_start_x, gun_start_y, mouse_x, mouse_y, target, true, true, zombies_in_sights, true){
             var zombie_to_shoot = ds_list_find_value(zombies_in_sights, 0);
             deal_damage(rif_damage, sound_to_play, zombie_to_shoot);
         }

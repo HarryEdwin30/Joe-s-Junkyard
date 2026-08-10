@@ -3,6 +3,12 @@ draw_a_bullet = false;
 draw_a_bullet_delay_max = 1;
 draw_a_bullet_delay = draw_a_bullet_delay_max;
 
+gun_x_distance_from_player = 8;
+gun_y_distance_from_player = 3;
+
+gun_start_x = obj_player.x + gun_x_distance_from_player;
+gun_start_y = obj_player.y + gun_y_distance_from_player;
+
 rev_can_shoot = true;
 rev_max_total_bullets = 60;
 rev_total_bullets = rev_max_total_bullets;
@@ -18,7 +24,6 @@ sho_can_shoot = true;
 sho_max_bullets = 8;
 
 rif_can_shoot = true;
-rif_jammed = false;
 fire_mode = 0; //0 = full auto, 1 = semi auto
 rif_max_total_mags = 5;
 rif_total_mags = rif_max_total_mags;
