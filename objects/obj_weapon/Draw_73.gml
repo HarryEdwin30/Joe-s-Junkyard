@@ -1,4 +1,5 @@
 if global.player_alive = false exit;
+    
 
 var weapon_to_draw = undefined;
 var weapon_rotation = point_direction(obj_player.x + 5, obj_player.y, mouse_x, mouse_y);
@@ -22,9 +23,16 @@ if weapon_type = 1 weapon_to_draw = spr_rev;
 if weapon_type = 2 weapon_to_draw = spr_sho;
     
 if weapon_type = 3 weapon_to_draw = spr_rif;
+    
+if weapon_type = 4 weapon_to_draw = spr_ham;
 
-draw_sprite_ext(weapon_to_draw, -1, gun_start_x, gun_start_y, 1, image_y_scale, weapon_rotation, c_white, 1);
+if weapon_type != 0 and weapon_type != 4{
+    draw_sprite_ext(weapon_to_draw, -1, gun_start_x, gun_start_y, 1, image_y_scale, weapon_rotation, c_white, 1);
+}
 
+if weapon_type = 4{
+    draw_sprite(weapon_to_draw, -1, gun_start_x, gun_start_y);
+}
 if draw_a_bullet = true{
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent];

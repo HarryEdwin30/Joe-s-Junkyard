@@ -12,8 +12,13 @@ gun_y_distance_from_player = 3;
 gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
+ham_charging = false;
+ham_max_charge = 100;
+ham_charge = 0;
+ham_base_damage = 20;
+
 rev_can_shoot = true;
-rev_max_total_bullets = 60;
+rev_max_total_bullets = 30;
 rev_total_bullets = rev_max_total_bullets;
 rev_damage = 100;
 rev_reload_delay_left = 0;
@@ -36,13 +41,13 @@ sho_shoot_delay = 0;
 sho_reloading = false;
 sho_max_reload_time = 15;
 sho_reload_time_left = sho_max_reload_time;
-sho_damage = 100; //(per pellet)
+sho_damage = 25; //(per pellet)
 sho_reload_delay_left = 0;
 
 
 rif_can_shoot = true;
 fire_mode = 0; //0 = full auto, 1 = semi auto
-rif_max_total_mags = 5;
+rif_max_total_mags = 3;
 rif_total_mags = rif_max_total_mags;
 rif_shoot_delay_max = 5;
 rif_shoot_delay = 0;

@@ -12,6 +12,8 @@ if weapon_type = 1 weapon_string = "Weapon: Revolver";
 if weapon_type = 2 weapon_string = "Weapon: Shotgun";
     
 if weapon_type = 3 weapon_string = "Weapon: Rifle";
+    
+if weapon_type = 4 weapon_string = "Weapon: Hammer";
 
 draw_text(5, 385, weapon_string);
 
@@ -33,9 +35,15 @@ if weapon_type = 3{
     }
     else ammo_string = string(rif_bullets_left) + "/" + string(rif_total_mags);
 }
+if weapon_type = 4{
+    ammo_string = string(ham_charge) + "/" + string(ham_max_charge);
+}
 
-if weapon_type != 0 or weapon_type != 4{
+if weapon_type != 0 and weapon_type != 4{
     draw_text(5, 405, "Ammo: " + ammo_string);
+}
+if weapon_type = 4{
+    draw_text(5, 405, "Charge: " + ammo_string);
 }
 
 if weapon_type = 3{

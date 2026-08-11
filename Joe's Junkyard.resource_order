@@ -7,8 +7,8 @@
     {"name":"player","order":5,"path":"folders/objects/player.yy",},
     {"name":"this useless asshole","order":2,"path":"folders/objects/this useless asshole.yy",},
     {"name":"death screen","order":5,"path":"folders/sprites/death screen.yy",},
-    {"name":"gun sprites","order":8,"path":"folders/sprites/gun sprites.yy",},
     {"name":"main menu","order":3,"path":"folders/sprites/main menu.yy",},
+    {"name":"weapon sprites","order":8,"path":"folders/sprites/weapon sprites.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"obj_damage_system","order":2,"path":"objects/obj_damage_system/obj_damage_system.yy",},
@@ -49,6 +49,7 @@
     {"name":"spr_ammo_depot","order":9,"path":"sprites/spr_ammo_depot/spr_ammo_depot.yy",},
     {"name":"spr_background","order":6,"path":"sprites/spr_background/spr_background.yy",},
     {"name":"spr_fade","order":4,"path":"sprites/spr_fade/spr_fade.yy",},
+    {"name":"spr_ham","order":3,"path":"sprites/spr_ham/spr_ham.yy",},
     {"name":"spr_load_save_button","order":1,"path":"sprites/spr_load_save_button/spr_load_save_button.yy",},
     {"name":"spr_rif","order":1,"path":"sprites/spr_rif/spr_rif.yy",},
     {"name":"spr_save_point","order":1,"path":"sprites/spr_save_point/spr_save_point.yy",},

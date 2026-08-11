@@ -6,6 +6,16 @@ gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
 if sho_shoot_delay > 0 sho_shoot_delay -= 1;
+    
+if keyboard_check_pressed(ord("1")){
+    if weapon_type = 4{
+        weapon_type = 0;
+        audio_play_sound(holster, 0, false);
+    }
+    else{
+        weapon_type = 4;
+    }
+}
 
 if keyboard_check_pressed(ord("2")){
     if weapon_type = 1{
