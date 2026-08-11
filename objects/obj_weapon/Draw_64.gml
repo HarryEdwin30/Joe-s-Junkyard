@@ -9,6 +9,8 @@ if weapon_type = 0 weapon_string = "Weapon: None";
 
 if weapon_type = 1 weapon_string = "Weapon: Revolver";
     
+if weapon_type = 2 weapon_string = "Weapon: Shotgun";
+    
 if weapon_type = 3 weapon_string = "Weapon: Rifle";
 
 draw_text(5, 385, weapon_string);
@@ -19,6 +21,10 @@ var ammo_string = undefined;
     
 if weapon_type = 1{
     ammo_string = string(rev_bullets_left) + "/" + string(rev_total_bullets);
+}
+
+if weapon_type = 2{
+    ammo_string = string(sho_bullets_left) + "/" + string(sho_total_bullets_left);
 }
 
 if weapon_type = 3{

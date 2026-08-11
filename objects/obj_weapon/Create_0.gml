@@ -1,5 +1,8 @@
 weapon_type = 0; //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
 draw_a_bullet = false;
+draw_sho_bullets = false;
+draw_sho_bullets_delay_max = 1;
+draw_sho_bullets_delay = draw_sho_bullets_delay_max;
 draw_a_bullet_delay_max = 1;
 draw_a_bullet_delay = draw_a_bullet_delay_max;
 
@@ -21,7 +24,21 @@ rev_max_reload_time = 10;
 rev_reload_time_left = rev_max_reload_time;
 
 sho_can_shoot = true;
+pellet_points = [];
+max_pellets = 8;
+pellets_shot = 0;
+sho_max_total_bullets = 24;
+sho_total_bullets_left = sho_max_total_bullets;
 sho_max_bullets = 8;
+sho_bullets_left = sho_max_bullets;
+sho_shoot_delay_max = 60;
+sho_shoot_delay = 0;
+sho_reloading = false;
+sho_max_reload_time = 15;
+sho_reload_time_left = sho_max_reload_time;
+sho_damage = 100; //(per pellet)
+sho_reload_delay_left = 0;
+
 
 rif_can_shoot = true;
 fire_mode = 0; //0 = full auto, 1 = semi auto
