@@ -13,9 +13,14 @@ gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
 ham_charging = false;
-ham_max_charge = 100;
+ham_draw_target = false;
+ham_charge_speed = 0.1;
+ham_max_charge = 10;
 ham_charge = 0;
+ham_max_damage = 100;
 ham_base_damage = 20;
+ham_max_stamina_usage = 50;
+ham_base_stamina_usage = 5;
 
 rev_can_shoot = true;
 rev_max_total_bullets = 30;

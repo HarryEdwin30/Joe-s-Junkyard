@@ -52,7 +52,6 @@
     {"id":{"name":"obj_load_save_button","path":"objects/obj_load_save_button/obj_load_save_button.yy",},},
     {"id":{"name":"obj_main_menu_master","path":"objects/obj_main_menu_master/obj_main_menu_master.yy",},},
     {"id":{"name":"obj_new_game_button","path":"objects/obj_new_game_button/obj_new_game_button.yy",},},
-    {"id":{"name":"obj_old_weapon","path":"objects/obj_old_weapon/obj_old_weapon.yy",},},
     {"id":{"name":"obj_pathfinding","path":"objects/obj_pathfinding/obj_pathfinding.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_retard","path":"objects/obj_retard/obj_retard.yy",},},

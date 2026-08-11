@@ -80,7 +80,6 @@ if can_see_player = true{
 
 if can_see_player = false and chase_player = true and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
     interest -= 1;
-    show_debug_message("I can't find you!" + string(interest));
 }
 
 if interest <= 0{

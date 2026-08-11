@@ -3,6 +3,12 @@ if global.player_alive = false exit;
 if global.being_attacked = true exit;
     
 rif_shoot_delay -= 1;
+
+if weapon_type = 4 and obj_player.stamina > 0{
+    if ham_charge < ham_max_charge{
+        ham_charge += ham_charge_speed;
+    }
+}
     
 if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mode = 0{
     rif_shoot_delay = rif_shoot_delay_max;

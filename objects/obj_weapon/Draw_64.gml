@@ -36,7 +36,8 @@ if weapon_type = 3{
     else ammo_string = string(rif_bullets_left) + "/" + string(rif_total_mags);
 }
 if weapon_type = 4{
-    ammo_string = string(ham_charge) + "/" + string(ham_max_charge);
+    var rounded_charge = round(ham_charge)
+    ammo_string = string(rounded_charge) + "/" + string(ham_max_charge);
 }
 
 if weapon_type != 0 and weapon_type != 4{

@@ -19,7 +19,6 @@
     {"name":"obj_go_back","order":9,"path":"objects/obj_go_back/obj_go_back.yy",},
     {"name":"obj_load_save_button","order":2,"path":"objects/obj_load_save_button/obj_load_save_button.yy",},
     {"name":"obj_new_game_button","order":1,"path":"objects/obj_new_game_button/obj_new_game_button.yy",},
-    {"name":"obj_old_weapon","order":1,"path":"objects/obj_old_weapon/obj_old_weapon.yy",},
     {"name":"obj_retard","order":1,"path":"objects/obj_retard/obj_retard.yy",},
     {"name":"obj_test_room_controller","order":8,"path":"objects/obj_test_room_controller/obj_test_room_controller.yy",},
     {"name":"obj_weapon","order":2,"path":"objects/obj_weapon/obj_weapon.yy",},
