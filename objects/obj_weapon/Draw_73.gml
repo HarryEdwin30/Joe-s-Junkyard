@@ -106,9 +106,9 @@ if draw_sho_bullets = true{
         draw_a_bullet_delay = draw_a_bullet_delay_max;
     }
 }
-if weapon_type = 2{
+if weapon_type = 2 and obj_player.can_move = true{
     draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);
 }
-if ham_draw_target = true{
+if ham_draw_target = true and obj_player.can_move = true{
     draw_rectangle(ham_target.x - 8, ham_target.y + 8, ham_target.x + 8, ham_target.y - 8, true);
 }

@@ -1,5 +1,7 @@
 if global.player_alive = false exit;
     
+if obj_player.can_move = false exit;
+    
 rif_shoot_delay = 0;
 
 if weapon_type = 4{

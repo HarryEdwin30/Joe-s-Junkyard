@@ -1,5 +1,7 @@
 if global.player_alive = false exit;
     
+if obj_player.can_move = false exit;
+    
 if global.being_attacked = true exit;
     
 rif_shoot_delay -= 1;

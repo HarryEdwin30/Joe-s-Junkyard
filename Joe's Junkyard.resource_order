@@ -11,6 +11,9 @@
     {"name":"weapon sprites","order":8,"path":"folders/sprites/weapon sprites.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"backpackfont","order":1,"path":"fonts/backpackfont/backpackfont.yy",},
+    {"name":"backpackfont2","order":2,"path":"fonts/backpackfont2/backpackfont2.yy",},
+    {"name":"obj_backpack","order":4,"path":"objects/obj_backpack/obj_backpack.yy",},
     {"name":"obj_damage_system","order":2,"path":"objects/obj_damage_system/obj_damage_system.yy",},
     {"name":"obj_death_marker","order":3,"path":"objects/obj_death_marker/obj_death_marker.yy",},
     {"name":"obj_door_back","order":4,"path":"objects/obj_door_back/obj_door_back.yy",},

@@ -4,6 +4,10 @@ if room = TestRoom and in_room = false{
     if !instance_exists(obj_player){
         instance_create_depth(256, 160, 0, obj_player);
     }
+    
+    if !instance_exists(obj_backpack){
+        instance_create_depth(0, 0, 0, obj_backpack);
+    }
 
     if !instance_exists(obj_pathfinding){
         instance_create_depth(0, 0, 0, obj_pathfinding);

@@ -1,4 +1,6 @@
 if global.player_alive = false exit;
+    
+if obj_player.can_move = false exit;
 
 zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
 
@@ -23,7 +25,7 @@ if keyboard_check_pressed(ord("1")){
     }
 }
 
-if keyboard_check_pressed(ord("2")){
+if keyboard_check_pressed(ord("2")) and rev_unlocked = true{
     if weapon_type = 1{
         weapon_type = 0;
         audio_play_sound(holster, 0, false);
@@ -34,7 +36,7 @@ if keyboard_check_pressed(ord("2")){
     }
 }
 
-if keyboard_check_pressed(ord("3")){
+if keyboard_check_pressed(ord("3")) and sho_unlocked = true{
     if weapon_type = 2{
         weapon_type = 0;
         audio_play_sound(holster, 0, false);
@@ -45,7 +47,7 @@ if keyboard_check_pressed(ord("3")){
     }
 }
 
-if keyboard_check_pressed(ord("4")){
+if keyboard_check_pressed(ord("4")) and rif_unlocked = true{
     if weapon_type = 3{
         weapon_type = 0;
         audio_play_sound(holster, 0, false);

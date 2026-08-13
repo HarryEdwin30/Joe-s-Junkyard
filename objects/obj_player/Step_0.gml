@@ -1,4 +1,5 @@
 if hp <= 0{
+    instance_destroy(obj_backpack);
     instance_create_depth(x, y, 0, obj_death_marker);
     global.being_attacked = false;
     global.survivors_left -= 1;
@@ -58,5 +59,6 @@ if is_running = true and stamina > 0{
     }
 
 var tilemap = layer_tilemap_get_id("obstacles");
-
-move_and_collide(h * m_spd, v * m_spd, tilemap, undefined, undefined, undefined, m_spd, m_spd);
+if can_move = true{
+    move_and_collide(h * m_spd, v * m_spd, tilemap, undefined, undefined, undefined, m_spd, m_spd);
+}

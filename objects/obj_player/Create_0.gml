@@ -6,3 +6,4 @@ hp = 100;
 can_run = true;
 max_stamina = 600;
 stamina = max_stamina;
+can_move = true;
