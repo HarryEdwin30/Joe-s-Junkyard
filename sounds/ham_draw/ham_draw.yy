@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"rev_gunshot1",
+  "%Name":"ham_draw",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.8,
+  "duration":0.84478456,
   "exportDir":"",
-  "name":"rev_gunshot1",
+  "name":"ham_draw",
   "parent":{
     "name":"gun sounds",
     "path":"folders/sounds/gun sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"rev_gunshot1.mp3",
-  "volume":0.29,
+  "soundFile":"ham_draw.wav",
+  "volume":1.0,
 }

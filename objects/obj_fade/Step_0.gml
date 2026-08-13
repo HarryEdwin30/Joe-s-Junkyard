@@ -13,6 +13,9 @@ if global.player_alive = false and run_fade = false{
 
 if death_i_alpha = 1{
     fade_in = false;
+    instance_destroy(obj_death_marker);
+    var cam = view_camera[0];
+    camera_set_view_target(cam, obj_player);
     instance_destroy(obj_pathfinding);
     instance_destroy(obj_retard);
     instance_destroy(obj_weapon);

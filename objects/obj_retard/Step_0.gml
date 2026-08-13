@@ -1,3 +1,10 @@
+var cam = view_camera[0];
+if global.player_alive = false{
+    camera_set_view_size(cam, 640, 480);
+    camera_set_view_target(cam, obj_death_marker);
+}
+surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
+
 if keyboard_check_pressed(ord("C")){
     audio_play_sound(resupply, 0, false);
     if obj_weapon.rev_total_bullets < obj_weapon.rev_max_total_bullets or obj_weapon.rev_bullets_left < obj_weapon.rev_max_bullets{
@@ -28,9 +35,6 @@ global.infected = instance_number(obj_zombie_parent);
 if !instance_exists(obj_player) and global.player_alive = true{
     global.player_alive = false;
 }
-
-var cam = view_camera[0];
-surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
 
 if keyboard_check_pressed(ord("F")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_walker);

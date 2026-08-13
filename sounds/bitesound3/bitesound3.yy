@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bitesound3",
   "parent":{
-    "name":"group1",
-    "path":"folders/sounds/group1.yy",
+    "name":"zombiesounds",
+    "path":"folders/sounds/zombiesounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -13,13 +13,16 @@ gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
 ham_charging = false;
+ham_charge_up_sound_delay_max = 5;
+ham_charge_up_sound_delay = 0;
+ham_can_play_max_charge_sound = true;
+ham_target_in_range = false;
 ham_draw_target = false;
-ham_charge_speed = 0.1;
+ham_target = undefined;
+ham_charge_speed = 0.2;
 ham_max_charge = 10;
 ham_charge = 0;
-ham_max_damage = 100;
-ham_base_damage = 20;
-ham_max_stamina_usage = 50;
+ham_base_damage = 10;
 ham_base_stamina_usage = 5;
 
 rev_can_shoot = true;
@@ -46,7 +49,7 @@ sho_shoot_delay = 0;
 sho_reloading = false;
 sho_max_reload_time = 15;
 sho_reload_time_left = sho_max_reload_time;
-sho_damage = 25; //(per pellet)
+sho_damage = 15; //(per pellet)
 sho_reload_delay_left = 0;
 
 

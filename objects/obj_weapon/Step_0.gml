@@ -5,6 +5,11 @@ zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
 gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
+if ham_charge = ham_max_charge and ham_can_play_max_charge_sound = true{
+    audio_play_sound(ham_max, 0, false);
+    ham_can_play_max_charge_sound = false;
+}
+
 if sho_shoot_delay > 0 sho_shoot_delay -= 1;
     
 if keyboard_check_pressed(ord("1")){
@@ -14,6 +19,7 @@ if keyboard_check_pressed(ord("1")){
     }
     else{
         weapon_type = 4;
+        audio_play_sound(ham_draw, 0, false);
     }
 }
 
@@ -85,6 +91,10 @@ if keyboard_check_pressed(ord("R")){
 }
 
 if rev_reloading = true{
+    if mouse_check_button_pressed(mb_left){
+        rev_reloading = false;
+        audio_play_sound(rev_reload_end, 0, false);
+    }
     if weapon_type != 1{
         rev_reloading = false;
     }
@@ -114,6 +124,10 @@ if rev_reloading = true{
 }
 
 if sho_reloading = true{
+    if mouse_check_button_pressed(mb_left){
+        sho_reloading = false;
+        audio_play_sound(sho_reload_end, 0, false);
+    }
     if weapon_type != 2{
         sho_reloading = false;
     }

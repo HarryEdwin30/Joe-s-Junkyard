@@ -3,10 +3,17 @@ if global.player_alive = false exit;
 
 var weapon_to_draw = undefined;
 var weapon_rotation = point_direction(obj_player.x + 5, obj_player.y, mouse_x, mouse_y);
+var image_x_scale = 1;
 var image_y_scale = 1;
 
-if obj_player.image_xscale = -1 gun_x_distance_from_player = 8;
-    else gun_x_distance_from_player = -8;
+if obj_player.image_xscale = -1{
+    gun_x_distance_from_player = 8;
+    image_x_scale = 1;
+}
+else{
+    gun_x_distance_from_player = -8;
+    image_x_scale = -1;
+}
 
 if weapon_rotation < 270{
     image_y_scale = -1;
@@ -31,7 +38,7 @@ if weapon_type != 0 and weapon_type != 4{
 }
 
 if weapon_type = 4{
-    draw_sprite(weapon_to_draw, -1, gun_start_x, gun_start_y);
+    draw_sprite_ext(weapon_to_draw, -1, gun_start_x, gun_start_y, image_x_scale, 1, 0, c_white, 1);
 }
 if draw_a_bullet = true{
     var tilemap = layer_tilemap_get_id("obstacles");
@@ -101,4 +108,7 @@ if draw_sho_bullets = true{
 }
 if weapon_type = 2{
     draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);
+}
+if ham_draw_target = true{
+    draw_rectangle(ham_target.x - 8, ham_target.y + 8, ham_target.x + 8, ham_target.y - 8, true);
 }

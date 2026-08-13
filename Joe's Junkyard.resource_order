@@ -12,6 +12,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_damage_system","order":2,"path":"objects/obj_damage_system/obj_damage_system.yy",},
+    {"name":"obj_death_marker","order":3,"path":"objects/obj_death_marker/obj_death_marker.yy",},
     {"name":"obj_door_back","order":4,"path":"objects/obj_door_back/obj_door_back.yy",},
     {"name":"obj_door","order":3,"path":"objects/obj_door/obj_door.yy",},
     {"name":"obj_fade","order":6,"path":"objects/obj_fade/obj_fade.yy",},
@@ -30,6 +31,10 @@
     {"name":"bulletimpact4","order":3,"path":"sounds/bulletimpact4/bulletimpact4.yy",},
     {"name":"bulletinsert","order":2,"path":"sounds/bulletinsert/bulletinsert.yy",},
     {"name":"emptygun","order":6,"path":"sounds/emptygun/emptygun.yy",},
+    {"name":"ham_charge_up","order":23,"path":"sounds/ham_charge_up/ham_charge_up.yy",},
+    {"name":"ham_draw","order":24,"path":"sounds/ham_draw/ham_draw.yy",},
+    {"name":"ham_hit","order":21,"path":"sounds/ham_hit/ham_hit.yy",},
+    {"name":"ham_max","order":22,"path":"sounds/ham_max/ham_max.yy",},
     {"name":"holster","order":12,"path":"sounds/holster/holster.yy",},
     {"name":"modeswitch1","order":11,"path":"sounds/modeswitch1/modeswitch1.yy",},
     {"name":"resupply","order":15,"path":"sounds/resupply/resupply.yy",},

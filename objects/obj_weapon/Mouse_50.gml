@@ -8,6 +8,32 @@ if weapon_type = 4 and obj_player.stamina > 0{
     if ham_charge < ham_max_charge{
         ham_charge += ham_charge_speed;
     }
+    
+    if ham_charge_up_sound_delay <= 0 and ham_charge < ham_max_charge{
+        audio_play_sound(ham_charge_up, 0, false);
+        ham_charge_up_sound_delay = ham_charge_up_sound_delay_max
+    }
+    ham_charge_up_sound_delay -= 1;
+    
+    var targets_list = ds_list_create();
+    var circle_size = 20;
+    if collision_circle(mouse_x, mouse_y, circle_size, obj_zombie_parent, true, true){
+        collision_circle_list(mouse_x, mouse_y, circle_size, obj_zombie_parent, true, true, targets_list, true);
+        ham_target = ds_list_find_value(targets_list, 0);
+        var ham_target_distance = point_distance(obj_player.x, obj_player.y, ham_target.x, ham_target.y);
+        var ham_target_distance_max = 50
+        if ham_target_distance <= ham_target_distance_max{
+            ham_target_in_range = true;
+            ham_draw_target = true;
+        }
+        else{
+            ham_target_in_range = false;
+            ham_draw_target = false;
+        }
+    }
+    else{
+        ham_draw_target = false;
+    }
 }
     
 if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mode = 0{

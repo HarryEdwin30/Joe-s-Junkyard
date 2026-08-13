@@ -1,4 +1,5 @@
 if hp <= 0{
+    instance_create_depth(x, y, 0, obj_death_marker);
     global.being_attacked = false;
     global.survivors_left -= 1;
     audio_play_sound(death, 0, false);
