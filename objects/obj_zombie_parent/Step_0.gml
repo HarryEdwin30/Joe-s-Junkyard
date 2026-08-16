@@ -9,7 +9,7 @@ if !instance_exists(obj_player){
 
 var tilemap = layer_tilemap_get_id("obstacles");
 
-var push_speed = 1;
+var push_speed = 2;
 if !place_meeting(x, y, tilemap){
     with (obj_zombie_parent){
         if (id != other.id){ 

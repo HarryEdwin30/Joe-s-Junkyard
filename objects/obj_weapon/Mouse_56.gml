@@ -2,10 +2,11 @@ if global.player_alive = false exit;
     
 if obj_player.can_move = false exit;
     
+    
 rif_shoot_delay = 0;
 
 if weapon_type = 4{
-    if ham_target_in_range = true{
+    if ham_target_in_range = true and global.being_attacked = false{
         var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
         var stamina_to_lose = (ham_base_stamina_usage * ham_charge) * 6;
         if stamina_to_lose > obj_player.stamina{

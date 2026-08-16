@@ -1,13 +1,19 @@
 draw_backpack_ui = false;
+has_created_obj = false;
+obj_x = 340;
+obj_y = 160;
+obj_text_color = c_red;
 
-max_bs = 10;
+max_weight = 300;
+weight = 0;
+
+bs_weight = 15;
 bs = 0;
-max_scrap = 10;
+
+scrap_weight = 5;
 scrap = 0;
 
-max_rev_ammo = 120;
+bullet_weight = 1;
 rev_ammo = 0;
-max_sho_ammo = 80;
 sho_ammo = 0;
-max_rif_ammo = 10;
 rif_ammo = 0;
