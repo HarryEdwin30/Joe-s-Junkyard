@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bp_open",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.19188209,
+  "exportDir":"",
+  "name":"bp_open",
+  "parent":{
+    "name":"backpack sounds",
+    "path":"folders/sounds/backpack sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bp_open.wav",
+  "volume":1.0,
+}

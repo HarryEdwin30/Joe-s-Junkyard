@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"transfer_ammo_from_bp",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"transfer_ammo_from_bp",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

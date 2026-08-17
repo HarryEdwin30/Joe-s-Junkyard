@@ -10,10 +10,16 @@ weight = 0;
 bs_weight = 15;
 bs = 0;
 
-scrap_weight = 5;
+scrap_weight = 10;
 scrap = 0;
 
-bullet_weight = 1;
-rev_ammo = 0;
-sho_ammo = 0;
-rif_ammo = 0;
+rev_ammo = 30;
+sho_ammo = 30;
+rif_ammo = 5;
+
+rif_ammo_weight = 30
+
+zev_cake_weight = 5
+zev_cakes = 1
+
+zev_cake_unlocked = false;
