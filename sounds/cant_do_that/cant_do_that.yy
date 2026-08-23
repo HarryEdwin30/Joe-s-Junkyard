@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"cant_do_that",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.13061224,
+  "exportDir":"",
+  "name":"cant_do_that",
+  "parent":{
+    "name":"retro ass sounds",
+    "path":"folders/sounds/backpack sounds/retro ass sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"cant_do_that.mp3",
+  "volume":0.42,
+}
