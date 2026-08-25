@@ -13,7 +13,7 @@ bs = 8;
 scrap_weight = 10;
 scrap = 1;
 
-rev_ammo = 30;
+rev_ammo = 500;
 sho_ammo = 30;
 rif_ammo = 5;
 
@@ -37,3 +37,4 @@ time_between_rapid_drops_max = 3;
 time_between_rapid_drops = time_between_rapid_drops_max;
 
 draw_drop_options = false;
+cant_draw_ui = false;

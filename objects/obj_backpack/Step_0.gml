@@ -1,3 +1,10 @@
+if instance_exists(obj_drop_bag){
+    if draw_backpack_ui = true{
+        obj_drop_bag.cant_draw_ui = true;
+    }
+    else obj_drop_bag.cant_draw_ui = false;
+}
+
 if zev_cakes > 0{
     zev_cake_unlocked = true;
 }

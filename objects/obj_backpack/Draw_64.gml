@@ -131,8 +131,8 @@ if draw_backpack_ui = true{
         }
         draw_sprite(spr_backpack_button, drop_f, obj_x, drop_y1);
         draw_sprite(spr_backpack_button, cancel_f, obj_x, cancel_y1);
-        draw_text_colour(obj_x + 50, drop_y1 + 5, "Drop", drop_c, drop_c, drop_c, drop_c, 1)
-        draw_text_colour(obj_x + 30, cancel_y1 + 5, "Cancel Drop", cancel_c, cancel_c, cancel_c, cancel_c, 1)
+        draw_text_colour(obj_x + 52, drop_y1 + 5, "Drop", drop_c, drop_c, drop_c, drop_c, 1)
+        draw_text_colour(obj_x + 44, cancel_y1 + 5, "Cancel", cancel_c, cancel_c, cancel_c, cancel_c, 1)
         
         var new_weight = weight - ((bs_damount * bs_weight) + (scrap_damount * scrap_weight) + (rev_damount) + (sho_damount) + (rif_damount * rif_ammo_weight) + (zc_damount * zev_cake_weight))
         draw_text(365, 290, "New W: " + string(new_weight) + "/" + string(max_weight));

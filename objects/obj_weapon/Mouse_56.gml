@@ -16,7 +16,6 @@ if weapon_type = 4{
         deal_damage(damage_to_deal, sound_to_play, ham_target);
         obj_player.stamina -= stamina_to_lose;
         audio_play_sound(ham_hit, 0, false);
-        show_debug_message("damage = " + string(damage_to_deal) + "stamina = " + string(stamina_to_lose));
     }
     ham_target_in_range = false;
     ham_draw_target = false;

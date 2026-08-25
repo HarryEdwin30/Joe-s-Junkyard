@@ -1,3 +1,5 @@
+if cant_draw_ui = true exit;
+    
 if draw_backpack_ui = false{
     obj_player.can_move = false;
     draw_backpack_ui = true;
