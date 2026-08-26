@@ -13,9 +13,9 @@ bs = 8;
 scrap_weight = 10;
 scrap = 1;
 
-rev_ammo = 500;
+rev_ammo = 30;
 sho_ammo = 30;
-rif_ammo = 5;
+rif_ammo = 3;
 
 rif_ammo_weight = 30;
 

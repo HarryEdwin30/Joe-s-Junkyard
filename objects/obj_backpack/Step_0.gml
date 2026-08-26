@@ -12,18 +12,19 @@ if zev_cakes > 0{
 var total_bullet_weight = rev_ammo + sho_ammo + (rif_ammo * rif_ammo_weight);
 var total_bs_weight = bs * bs_weight;
 var total_scrap_weight = scrap * scrap_weight;
-var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight;
+var total_zs_weight = zev_cakes * zev_cake_weight;
+var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight + total_zs_weight;
 
 weight = total_weight;
-
-if bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount + zc_damount > 0{ // most epic if statement ever written???!
-    draw_drop_options = true;
-}
-else draw_drop_options = false;
 
 if draw_backpack_ui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
+    
+    if bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount + zc_damount > 0{ // most epic if statement ever written???!
+    draw_drop_options = true;
+    }
+    else draw_drop_options = false;
     
     if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128 and mouse_gui_y >= obj_y && mouse_gui_y <= obj_y + 32{ //transfer ammo shit
     	obj_text_color = c_black;
@@ -76,6 +77,16 @@ if draw_backpack_ui = true{
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if bs_damount != bs{
+                    bs_damount = bs;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    bs_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button(mb_left){
                 if drop_rapid_delay > 0 drop_rapid_delay -= 1;
                 
@@ -117,6 +128,16 @@ if draw_backpack_ui = true{
                 if scrap_damount < scrap{
                     scrap_damount += 1;
                     audio_play_sound(item_subtract, 0, false);
+                }
+            }
+            if mouse_check_button_pressed(mb_middle){
+                if scrap_damount != scrap{
+                    scrap_damount = scrap;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    scrap_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){
@@ -162,6 +183,16 @@ if draw_backpack_ui = true{
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if rev_damount != rev_ammo{
+                    rev_damount = rev_ammo;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    rev_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button(mb_left){
                 if drop_rapid_delay > 0 drop_rapid_delay -= 1;
                 
@@ -203,6 +234,16 @@ if draw_backpack_ui = true{
                 if sho_damount < sho_ammo{
                     sho_damount += 1;
                     audio_play_sound(item_subtract, 0, false);
+                }
+            }
+            if mouse_check_button_pressed(mb_middle){
+                if sho_damount != sho_ammo{
+                    sho_damount = sho_ammo;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    sho_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){
@@ -248,6 +289,16 @@ if draw_backpack_ui = true{
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if rif_damount != rif_ammo{
+                    rif_damount = rif_ammo;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    rif_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button(mb_left){
                 if drop_rapid_delay > 0 drop_rapid_delay -= 1;
                 
@@ -289,6 +340,16 @@ if draw_backpack_ui = true{
                 if zc_damount < zev_cakes{
                     zc_damount += 1;
                     audio_play_sound(item_subtract, 0, false);
+                }
+            }
+            if mouse_check_button_pressed(mb_middle){
+                if zc_damount != zev_cakes{
+                    zc_damount = zev_cakes;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    zc_damount = 0;
+                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){

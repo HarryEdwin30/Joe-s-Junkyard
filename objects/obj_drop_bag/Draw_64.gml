@@ -5,34 +5,36 @@ if draw_gui = true{
     draw_set_font(backpackfont2);
     draw_set_colour(c_red);
     draw_text(110, 150, "Dropped Sack ---");
+    
+    var bp_text_x = 320;
     if bs > 0{
         draw_text(110, 190, "Beef Stew: " + string(bs));
-        draw_text(310, 190, "BP: " + string(obj_backpack.bs));
+        draw_text(bp_text_x, 190, "BP: " + string(obj_backpack.bs));
     }
     
     if scrap > 0{
         draw_text(110, 215, "Scrap: " + string(scrap));
-        draw_text(310, 215, "BP: " + string(obj_backpack.scrap));
+        draw_text(bp_text_x, 215, "BP: " + string(obj_backpack.scrap));
     }
     
     if rev_ammo > 0{
         draw_text(110, 240, "Revolver Ammo: " + string(rev_ammo));
-        draw_text(310, 240, "BP: " + string(obj_backpack.rev_ammo));
+        draw_text(bp_text_x, 240, "BP: " + string(obj_backpack.rev_ammo));
     }
         
     if sho_ammo > 0{
         draw_text(110, 265, "Shotgun Ammo: " + string(sho_ammo));
-        draw_text(310, 265, "BP: " + string(obj_backpack.sho_ammo));
+        draw_text(bp_text_x, 265, "BP: " + string(obj_backpack.sho_ammo));
     }
         
     if rif_ammo > 0{
         draw_text(110, 290, "Rifle Ammo: " + string(rif_ammo));
-        draw_text(310, 290, "BP: " + string(obj_backpack.rif_ammo));
+        draw_text(bp_text_x, 290, "BP: " + string(obj_backpack.rif_ammo));
     }
         
     if zev_cakes > 0{
         draw_text(110, 315, "Zev Cakes: " + string(zev_cakes));
-        draw_text(310, 315, "BP: " + string(obj_backpack.zev_cakes));
+        draw_text(bp_text_x, 315, "BP: " + string(obj_backpack.zev_cakes));
     }
         
     //this code down here is just a copy paste from the backpack
@@ -115,32 +117,39 @@ if draw_gui = true{
     if zev_cakes > 0{
         draw_sprite(spr_drop_button, zev_cake_dbutton_f, dbutton_x1, zev_cake_dbutton_y1); //zev cakes
     }
+    if draw_take_options = true{
+        var take_f = 0;
+        var cancel_f = 0;
+        var take_c = c_red;
+        var cancel_c = c_red;
         
-    var take_f = 0;
-    var cancel_f = 0;
-    var take_c = c_red;
-    var cancel_c = c_red;
+        var take_y1 = obj_y + 50;
+        var take_y2 = take_y1 + 32;
         
-    var take_y1 = obj_y + 50;
-    var take_y2 = take_y1 + 32;
+        var cancel_y1 = obj_y + 100;
+        var cancel_y2 = cancel_y1 + 32;
         
-    var cancel_y1 = obj_y + 100;
-    var cancel_y2 = cancel_y1 + 32;
-        
-    if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
-        if mouse_gui_y >= take_y1 && mouse_gui_y <= take_y2{
-            take_f = 1;
-            take_c = c_black;
+        if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
+            if mouse_gui_y >= take_y1 && mouse_gui_y <= take_y2{
+                take_f = 1;
+                take_c = c_black;
+            }
+            if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
+                cancel_f = 1;
+                cancel_c = c_black;
+            }
         }
-        if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
-            cancel_f = 1;
-            cancel_c = c_black;
+    
+        draw_sprite(spr_backpack_button, take_f, obj_x, take_y1);
+        draw_sprite(spr_backpack_button, cancel_f, obj_x, cancel_y1);
+    
+        draw_text_colour(obj_x + 52, take_y1 + 5, "Take", take_c, take_c, take_c, take_c, 1);
+        draw_text_colour(obj_x + 44, cancel_y1 + 5, "Cancel", cancel_c, cancel_c, cancel_c, cancel_c, 1);
+        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight) + (zc_tamount * obj_backpack.zev_cake_weight))
+        var nw_string = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight)
+        if new_weight > obj_backpack.max_weight{
+            nw_string = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight) + " !!!";
         }
+        draw_text(obj_x, 290, nw_string);
     }
-    
-    draw_sprite(spr_backpack_button, take_f, obj_x, take_y1);
-    draw_sprite(spr_backpack_button, cancel_f, obj_x, cancel_y1)
-    
-    draw_text_colour(obj_x + 52, take_y1 + 5, "Take", take_c, take_c, take_c, take_c, 1)
-    draw_text_colour(obj_x + 44, cancel_y1 + 5, "Cancel", cancel_c, cancel_c, cancel_c, cancel_c, 1)
 }
