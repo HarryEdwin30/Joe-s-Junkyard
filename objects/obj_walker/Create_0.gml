@@ -10,3 +10,5 @@ wander_delay = irandom_range(300, 600);
 can_see_player = false;
 max_interest = 180;
 interest = max_interest;
+pathfinding_delay = 0;
+collision_delay = 0;

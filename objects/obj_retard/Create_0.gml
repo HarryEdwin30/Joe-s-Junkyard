@@ -4,6 +4,7 @@ global.being_attacked = false;
 global.zombies_attacking = 0;
 global.push_cooldown_max = 300;
 global.push_cooldown = 0;
+global.zoomed_in = false;
 
 if file_exists("gamesave.ini"){
     ini_open("gamesave.ini")

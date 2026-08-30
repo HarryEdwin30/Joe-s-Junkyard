@@ -1,3 +1,5 @@
+show_debug_message("FPS: " + string(fps_real) + " / Zombies: " + string(instance_number(obj_zombie_parent)));
+
 var cam = view_camera[0];
 if global.player_alive = false{
     camera_set_view_size(cam, 640, 480);
@@ -36,9 +38,14 @@ if !instance_exists(obj_player) and global.player_alive = true{
     global.player_alive = false;
 }
 
-if keyboard_check_pressed(ord("F")){
+if keyboard_check(ord("F")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
 }
 if keyboard_check_pressed(ord("G")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
 }
+
+if global.zoomed_in = true{
+    camera_set_view_size(cam, 320, 240);
+}
+else camera_set_view_size(cam, 640, 480);
