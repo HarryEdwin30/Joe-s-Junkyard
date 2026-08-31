@@ -1,11 +1,9 @@
-if keyboard_check_pressed(vk_escape) game_end();
+if keyboard_check_pressed(vk_backspace) game_end();
     
 if keyboard_check_pressed(vk_delete){
     if file_exists("gamesave.ini"){
         file_delete("gamesave.ini");
-        show_debug_message("Save file deleted nigga.");
     }
-        else show_debug_message("You have no save file to delete nigga.");
 }
 
 

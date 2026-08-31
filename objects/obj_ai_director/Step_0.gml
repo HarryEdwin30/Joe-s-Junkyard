@@ -1,5 +1,9 @@
 if global.player_alive = false exit;
     
+if global.draw_esc_menu_gui = true{
+    exit;
+}
+    
 if enabled = false exit;
 
 var sz = instance_position(obj_player.x, obj_player.y, obj_sz_parent);

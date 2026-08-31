@@ -47,3 +47,22 @@ if global.zoomed_in = true{
     camera_set_view_size(cam, 320, 240);
 }
 else camera_set_view_size(cam, 640, 480);
+    
+if global.draw_esc_menu_gui = true{
+    var mouse_gui_x = device_mouse_x_to_gui(0);
+    var mouse_gui_y = device_mouse_y_to_gui(0);
+    
+    var b_x1 = 160;
+    var b_x2 = b_x1 + 128;
+    
+    var mmb_y1 = 180;
+    var mmb_y2 = mmb_y1 + 32;
+    
+    if mouse_gui_x >= b_x1 && mouse_gui_x <= b_x2{
+        if mouse_gui_y >= mmb_y1 and mouse_gui_y <= mmb_y2{
+            if mouse_check_button_pressed(mb_left){
+                move_to_menu();
+            }
+        }
+    }
+}

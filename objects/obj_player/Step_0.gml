@@ -11,6 +11,10 @@ if hp <= 0{
     instance_destroy();
 }
 
+if global.draw_esc_menu_gui = true{
+    exit;
+}
+
 if mouse_x > x{
     image_xscale = -1;
 }

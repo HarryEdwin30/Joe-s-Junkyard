@@ -1,10 +1,15 @@
 if draw_backpack_ui = true{
+    var mouse_gui_x = device_mouse_x_to_gui(0);
+    var mouse_gui_y = device_mouse_y_to_gui(0);
+    
     draw_set_font(backpackfont2);
     draw_set_colour(c_red);
-    draw_sprite(spr_backpack_button, 0, obj_x, obj_y); //draw the button to transition ammo
-    if obj_text_color = c_black{
-        draw_rectangle_colour(obj_x, obj_y, obj_x + 128, obj_y + 32, c_red, c_red, c_red, c_red, false);
+    draw_rectangle_colour(obj_x, obj_y, obj_x + 128, obj_y + 32, c_red, c_red, c_red, c_red, false);
+    if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128 and mouse_gui_y >= obj_y && mouse_gui_y <= obj_y + 32{
+        
     }
+    else draw_sprite(spr_backpack_button, 0, obj_x, obj_y);
+    
     draw_text_colour(obj_x + 28, obj_y + 5, "Move Ammo", obj_text_color, obj_text_color, obj_text_color, obj_text_color , 1);
     draw_text(160, 150, "Backpack ---");
     draw_text(160, 190, "Beef Stew: " + string(bs));
@@ -52,8 +57,6 @@ if draw_backpack_ui = true{
     var zev_cake_dbutton_f = 0;
     
     //here we're gonna detect if the mouse is hovering over the buttons
-    var mouse_gui_x = device_mouse_x_to_gui(0);
-    var mouse_gui_y = device_mouse_y_to_gui(0);
     
     if mouse_gui_x >= dbutton_x1 && mouse_gui_x <= dbutton_x2{ //all the drop buttons are at the same x
         if mouse_gui_y >= bs_dbutton_y1 && mouse_gui_y <= bs_dbutton_y2{ // beef stew

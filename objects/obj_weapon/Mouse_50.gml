@@ -2,6 +2,10 @@ if global.player_alive = false exit;
     
 if obj_player.can_move = false exit;
     
+if global.draw_esc_menu_gui = true{
+    exit;
+}
+    
 if global.being_attacked = true exit;
     
 rif_shoot_delay -= 1;

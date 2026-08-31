@@ -1,5 +1,12 @@
 if hp <= 0 instance_destroy();
     
+
+if global.draw_esc_menu_gui = true{
+    path_end();
+    m_spd = 0;
+    exit;
+}
+
 var tilemap = layer_tilemap_get_id("obstacles");
     
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{

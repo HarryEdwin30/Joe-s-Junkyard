@@ -1,5 +1,5 @@
 function move_to_menu (){
-    if global.player_alive= true{
+    if global.player_alive = true{
         instance_destroy(obj_player)
     }
     else exit;

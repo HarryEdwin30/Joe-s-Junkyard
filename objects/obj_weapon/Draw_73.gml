@@ -1,5 +1,8 @@
 if global.player_alive = false exit;
     
+if global.draw_esc_menu_gui = true{
+    exit;
+}
 
 draw_set_colour(c_red);
 var weapon_to_draw = undefined;

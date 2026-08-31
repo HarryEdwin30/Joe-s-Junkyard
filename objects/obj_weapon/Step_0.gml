@@ -1,6 +1,10 @@
 if global.player_alive = false exit;
     
 if obj_player.can_move = false exit;
+    
+if global.draw_esc_menu_gui = true{
+    exit;
+}
 
 zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
 
