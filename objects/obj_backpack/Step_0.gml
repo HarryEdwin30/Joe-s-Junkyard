@@ -388,7 +388,7 @@ if draw_backpack_ui = true{
             }
         }
     } //caveman activity completed
-    
+        
     if draw_drop_options = true{
         var drop_y1 = obj_y + 50;
         var drop_y2 = drop_y1 + 32;

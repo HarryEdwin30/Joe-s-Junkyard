@@ -1,3 +1,5 @@
+hovering_over_ui = false;
+
 draw_backpack_ui = false;
 has_created_obj = false;
 obj_x = 355;

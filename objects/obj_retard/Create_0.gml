@@ -11,3 +11,4 @@ if file_exists("gamesave.ini"){
     obj_player.y = ini_read_real("Player", "Y", 0);
     ini_close();
 }
+show_dev_stats = true;

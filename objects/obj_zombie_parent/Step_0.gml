@@ -18,30 +18,34 @@ if !instance_exists(obj_player){
 }
 
 //wall collisions in case zombie somehow gets stuck in one
-var test_x = x;
-var test_y = y;
-var radius = 2;
-var max_radius = 128;
-var found = false;
+var current_tile = tilemap_get_at_pixel(tilemap, x, y);
 
-while (found = false and radius < max_radius) {
-    for (var angle = 0; angle < 360; angle += 45) {
-        var check_x = x + lengthdir_x(radius, angle);
-        var check_y = y + lengthdir_y(radius, angle);
-        
-        if (tilemap_get_at_pixel(tilemap, check_x, check_y) == 0) {
-            test_x = check_x;
-            test_y = check_y;
-            found = true;
-            break;
+if (current_tile != 0) {
+    var test_x = x;
+    var test_y = y;
+    var radius = 2;
+    var max_radius = 128;
+    var found = false;
+
+    while (!found && radius < max_radius) {
+        for (var angle = 0; angle < 360; angle += 45) {
+            var check_x = x + lengthdir_x(radius, angle);
+            var check_y = y + lengthdir_y(radius, angle);
+            
+            if (tilemap_get_at_pixel(tilemap, check_x, check_y) == 0) {
+                test_x = check_x;
+                test_y = check_y;
+                found = true;
+                break;
+            }
         }
+        radius += 4;
     }
-    radius += 4;
-}
-
-if (found) {
-    x = test_x;
-    y = test_y;
+    
+    if (found) {
+        x = test_x;
+        y = test_y;
+    }
 }
 
 var cam = view_camera[0];
@@ -161,12 +165,7 @@ if chase_player = false and wandering = false{
         exit;
     } 
     else{
-        if point_distance(x, y, obj_player.x, obj_player.y) < 900{
-            wander_delay = irandom_range(180, 600);
-        }
-        else{
-            wander_delay = irandom_range(1200, 1800);
-        }
+        wander_delay = irandom_range(180, 600);
         wandering = true;
     }
 }

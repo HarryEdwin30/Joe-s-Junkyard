@@ -1,4 +1,6 @@
 if global.player_alive = false exit;
+    
+if enabled = false exit;
 
 var sz = instance_position(obj_player.x, obj_player.y, obj_sz_parent);
 
