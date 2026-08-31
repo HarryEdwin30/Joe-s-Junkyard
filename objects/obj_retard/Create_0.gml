@@ -1,7 +1,6 @@
 global.player_alive = true;
 global.survivors_left = instance_number(obj_human_parent);
 global.being_attacked = false;
-global.zombies_attacking = 0;
 global.push_cooldown_max = 300;
 global.push_cooldown = 0;
 global.zoomed_in = false;

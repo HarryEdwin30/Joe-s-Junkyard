@@ -1,5 +1,3 @@
-show_debug_message("FPS: " + string(fps_real) + " / Zombies: " + string(instance_number(obj_zombie_parent)));
-
 var cam = view_camera[0];
 if global.player_alive = false{
     camera_set_view_size(cam, 640, 480);

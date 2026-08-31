@@ -12,6 +12,6 @@ if global.zoomed_in = true{
     cam_high_y /= 2;
 }
 
-if (x > cam_x - cam_low and x <= cam_x + cam_high_x) and (y > cam_y - cam_low and y <= cam_y + cam_high_y){
+if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and y < cam_y + cam_high_y){
     draw_self()
 }

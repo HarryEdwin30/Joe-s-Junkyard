@@ -1,6 +1,7 @@
 if global.player_alive = false exit;
     
 
+draw_set_colour(c_red);
 var weapon_to_draw = undefined;
 var weapon_rotation = point_direction(obj_player.x + 5, obj_player.y, mouse_x, mouse_y);
 var image_x_scale = 1;

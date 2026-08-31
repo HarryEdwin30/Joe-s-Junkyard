@@ -1,0 +1,1 @@
+zsdl = 0;  //zombie spawn delay left

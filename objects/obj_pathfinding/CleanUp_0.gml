@@ -1,3 +1,4 @@
-if (variable_instance_exists(id, "path") && path_exists(path)) {
-    path_delete(path);
+if (variable_global_exists("map_grid") && global.map_grid != noone) {
+    mp_grid_destroy(global.map_grid);
+    global.map_grid = noone;
 }

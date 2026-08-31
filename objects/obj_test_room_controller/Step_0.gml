@@ -12,7 +12,7 @@ if room = TestRoom and in_room = false{
     if !instance_exists(obj_pathfinding){
         instance_create_depth(0, 0, 0, obj_pathfinding);
     }
-
+    
     if !instance_exists(obj_weapon){
         instance_create_depth(0, 0, 0, obj_weapon);
     }
