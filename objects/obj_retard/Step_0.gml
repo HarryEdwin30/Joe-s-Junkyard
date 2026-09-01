@@ -54,6 +54,8 @@ if global.draw_esc_menu_gui = true{
     
     var b_x1 = 160;
     var b_x2 = b_x1 + 128;
+    var sb_x1 = 315;
+    var sb_x2 = sb_x1 + 64;
     
     var mmb_y1 = 180;
     var mmb_y2 = mmb_y1 + 32;
@@ -61,7 +63,25 @@ if global.draw_esc_menu_gui = true{
     if mouse_gui_x >= b_x1 && mouse_gui_x <= b_x2{
         if mouse_gui_y >= mmb_y1 and mouse_gui_y <= mmb_y2{
             if mouse_check_button_pressed(mb_left){
-                move_to_menu();
+                draw_mm_options = true;
+            }
+        }
+    }
+    if draw_mm_options = true{
+        var second_b_dist = 84;
+        
+        if mouse_gui_y >= mmb_y1 and mouse_gui_y <= mmb_y2{       //yes
+            if mouse_gui_x >= sb_x1 and mouse_gui_x <= sb_x2{
+                if mouse_check_button_pressed(mb_left){
+                    audio_play_sound(bp_select, 0, false);
+                    move_to_menu();
+                }
+            }
+            if mouse_gui_x >= sb_x1 + second_b_dist and mouse_gui_x <= sb_x2 + second_b_dist{          //no
+                if mouse_check_button_pressed(mb_left){
+                    audio_play_sound(bp_select, 0, false);
+                    draw_mm_options = false;
+                }
             }
         }
     }

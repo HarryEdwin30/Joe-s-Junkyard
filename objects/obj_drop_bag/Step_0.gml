@@ -397,7 +397,7 @@ if draw_gui = true{
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
                 if mouse_check_button_pressed(mb_left){
-                    audio_play_sound(item_add_back, 0, false);
+                    audio_play_sound(bp_select, 0, false);
                     bs_tamount = 0;
                     scrap_tamount = 0;
                     rev_tamount = 0;

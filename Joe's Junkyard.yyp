@@ -139,6 +139,7 @@
     {"id":{"name":"spr_sho","path":"sprites/spr_sho/spr_sho.yy",},},
     {"id":{"name":"spr_survivor","path":"sprites/spr_survivor/spr_survivor.yy",},},
     {"id":{"name":"spr_sz","path":"sprites/spr_sz/spr_sz.yy",},},
+    {"id":{"name":"spr_ui_box_small","path":"sprites/spr_ui_box_small/spr_ui_box_small.yy",},},
     {"id":{"name":"spr_ui_box","path":"sprites/spr_ui_box/spr_ui_box.yy",},},
     {"id":{"name":"spr_walker","path":"sprites/spr_walker/spr_walker.yy",},},
     {"id":{"name":"zombieimg1","path":"sprites/zombieimg1/zombieimg1.yy",},},

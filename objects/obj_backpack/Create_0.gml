@@ -39,4 +39,3 @@ time_between_rapid_drops_max = 3;
 time_between_rapid_drops = time_between_rapid_drops_max;
 
 draw_drop_options = false;
-cant_draw_ui = false;

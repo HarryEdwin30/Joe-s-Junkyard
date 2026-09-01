@@ -17,6 +17,8 @@ if global.draw_esc_menu_gui = true{
     
     var b_x1 = 160;
     var b_x2 = b_x1 + 128;
+    var sb_x1 = 315;
+    var sb_x2 = sb_x1 + 64;
     
     var mmb_y1 = 180;
     var mmb_y2 = mmb_y1 + 32;
@@ -28,6 +30,32 @@ if global.draw_esc_menu_gui = true{
             mmb_tc = c_black;
             mmb_f = 1;
         }
+    }
+    if draw_mm_options = true{
+        var second_b_dist = 84;
+        var yes_f = 0;
+        var no_f = 0;
+        var yes_c = c_red;
+        var no_c = c_red;
+        
+        if mouse_gui_y >= mmb_y1 and mouse_gui_y <= mmb_y2{
+            if mouse_gui_x >= sb_x1 and mouse_gui_x <= sb_x2{
+                yes_f = 1;
+                yes_c = c_black;
+            }
+            if mouse_gui_x >= sb_x1 + second_b_dist and mouse_gui_x <= sb_x2 + second_b_dist{
+                no_f = 1;
+                no_c = c_black;
+            }
+        }
+        
+        draw_sprite(spr_ui_box_small, yes_f, sb_x1, mmb_y1)
+        draw_sprite(spr_ui_box_small, no_f, sb_x1 + second_b_dist, mmb_y1)
+        
+        draw_text_colour(sb_x1 + 22, mmb_y1 + 6, "Yes", yes_c, yes_c, yes_c, yes_c, 1);
+        draw_text_colour(sb_x1 + second_b_dist + 25, mmb_y1 + 6, "No", no_c, no_c, no_c, no_c, 1);
+        
+        draw_text(sb_x1 + 35, mmb_y1 - 27, "Are you sure?")
     }
     
     draw_text(160, 150, "Menu ---");

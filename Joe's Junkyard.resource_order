@@ -77,6 +77,7 @@
     {"name":"spr_save_point","order":1,"path":"sprites/spr_save_point/spr_save_point.yy",},
     {"name":"spr_sho","order":2,"path":"sprites/spr_sho/spr_sho.yy",},
     {"name":"spr_sz","order":13,"path":"sprites/spr_sz/spr_sz.yy",},
+    {"name":"spr_ui_box_small","order":14,"path":"sprites/spr_ui_box_small/spr_ui_box_small.yy",},
     {"name":"zombieimg1","order":7,"path":"sprites/zombieimg1/zombieimg1.yy",},
     {"name":"ts_background","order":1,"path":"tilesets/ts_background/ts_background.yy",},
   ],

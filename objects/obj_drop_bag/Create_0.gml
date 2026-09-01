@@ -9,7 +9,6 @@ draw_gui = false;
 obj_x = 390;
 obj_y = 148;
 
-cant_draw_ui = false;
 draw_take_options = false
 
 bs_tamount = 0;
