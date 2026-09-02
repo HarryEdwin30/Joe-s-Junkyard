@@ -9,7 +9,8 @@ if global.draw_esc_menu_gui = true{
 rif_shoot_delay = 0;
 
 if weapon_type = 4{
-    if ham_target_in_range = true and global.being_attacked = false{
+    if ham_target_in_range = true and global.being_attacked = false and ham_delay <= 0{
+        ham_delay = ham_delay_max;
         var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
         var stamina_to_lose = (ham_base_stamina_usage * ham_charge) * 6;
         if stamina_to_lose > obj_player.stamina{

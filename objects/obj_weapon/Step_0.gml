@@ -6,6 +6,8 @@ if global.draw_esc_menu_gui = true{
     exit;
 }
 
+if ham_delay > 0 ham_delay -= 1;
+
 zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
 
 gun_start_x = obj_player.x + gun_x_distance_from_player;

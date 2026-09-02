@@ -13,6 +13,8 @@ gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 
 ham_charging = false;
+ham_delay_max = 60;
+ham_delay = 0;
 ham_charge_up_sound_delay_max = 5;
 ham_charge_up_sound_delay = 0;
 ham_can_play_max_charge_sound = true;
