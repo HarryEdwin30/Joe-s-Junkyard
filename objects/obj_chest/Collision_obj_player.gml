@@ -1,17 +1,18 @@
-if obj_backpack.draw_backpack_ui = true or global.draw_esc_menu_gui = true exit;
-    
-if instance_exists(obj_chest){
-    if obj_chest.draw_gui = true exit;
-}
-
 if keyboard_check_pressed(ord("E")){
+    if global.draw_esc_menu_gui = true or obj_backpack.draw_backpack_ui = true{
+        exit;
+    }
+    if instance_exists(obj_drop_bag){
+        if obj_drop_bag.draw_gui = true exit;
+    }
     if draw_gui = false{
-        obj_player.can_move = false;
         draw_gui = true;
+        obj_player.can_move = false;
     }
     else{
-        obj_player.can_move = true;
         draw_gui = false;
+        obj_player.can_move = true;
+        
         bs_damount = 0;
         scrap_damount = 0;
         rev_damount = 0;

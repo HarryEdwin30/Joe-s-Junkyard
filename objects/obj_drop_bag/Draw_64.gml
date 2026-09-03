@@ -4,7 +4,7 @@ if draw_gui = true{
     
     draw_set_font(backpackfont2);
     draw_set_colour(c_red);
-    draw_text(110, 150, "Dropped Sack ---");
+    draw_text(110, 150, "Sack --- All dropped sacks will be stolen when you leave town.");
     
     var bp_text_x = 320;
     if bs > 0{

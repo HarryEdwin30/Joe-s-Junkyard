@@ -21,8 +21,8 @@ rif_ammo = 3;
 
 rif_ammo_weight = 30;
 
-zev_cake_weight = 5;
-zev_cakes = 2;
+zev_cake_weight = 0;
+zev_cakes = 1;
 
 zev_cake_unlocked = false;
 

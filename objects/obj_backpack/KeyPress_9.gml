@@ -3,6 +3,9 @@ if global.draw_esc_menu_gui = true exit;
 if instance_exists(obj_drop_bag){
     if obj_drop_bag.draw_gui = true exit;
 }
+if instance_exists(obj_chest){
+    if obj_chest.draw_gui = true exit;
+}
     
 if draw_backpack_ui = false{
     obj_player.can_move = false;

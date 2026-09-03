@@ -1,51 +1,16 @@
-if instance_exists(obj_drop_bag){
-    if draw_backpack_ui = true{
-        obj_drop_bag.cant_draw_ui = true;
+if draw_gui = true{
+    
+    if bs_tamount + scrap_tamount + rev_tamount + sho_tamount + rif_tamount + zc_tamount > 0{ // most epic if statement ever written???!
+    draw_take_options = true;
     }
-    else obj_drop_bag.cant_draw_ui = false;
-}
+    else draw_take_options = false;
 
-if zev_cakes > 0{
-    zev_cake_unlocked = true;
-}
-
-var total_bullet_weight = rev_ammo + sho_ammo + (rif_ammo * rif_ammo_weight);
-var total_bs_weight = bs * bs_weight;
-var total_scrap_weight = scrap * scrap_weight;
-var total_zs_weight = zev_cakes * zev_cake_weight;
-var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight + total_zs_weight;
-
-weight = total_weight;
-
-if draw_backpack_ui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
     
-    if bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount + zc_damount > 0{ // most epic if statement ever written???!
-    draw_drop_options = true;
-    }
-    else draw_drop_options = false;
-    
-    if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128 and mouse_gui_y >= obj_y && mouse_gui_y <= obj_y + 32{ //transfer ammo shit
-    	obj_text_color = c_black;
-        if mouse_check_button_pressed(mb_left){
-            transfer_ammo_from_bp();
-            audio_play_sound(bp_select, 0, false);
-            bs_damount = 0;
-            scrap_damount = 0;
-            rev_damount = 0;
-            sho_damount = 0;
-            rif_damount = 0;
-            zc_damount = 0;
-        }
-    }
-    else{
-        obj_text_color = c_red;
-    }
-    
     var dbutton_size = 16; //this can be used for both width and height because the drop button is a square
     
-    var dbutton_x1 = 290;
+    var dbutton_x1 = 245;
     var dbutton_x2 = dbutton_x1 + dbutton_size;
     
     var bs_dbutton_y1 = 190;
@@ -69,21 +34,21 @@ if draw_backpack_ui = true{
     //here we're gonna detect if the mouse is hovering over the buttons
     
     if mouse_gui_x >= dbutton_x1 && mouse_gui_x <= dbutton_x2{ //all the drop buttons are at the same x
-        //this is caveman activity
+        //this is caveman activity and copy paste from backpack
         if mouse_gui_y >= bs_dbutton_y1 && mouse_gui_y <= bs_dbutton_y2{ // beef stew
             if mouse_check_button_pressed(mb_left){
-                if bs_damount < bs{
-                    bs_damount += 1;
+                if bs_tamount < bs{
+                    bs_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
             if mouse_check_button_pressed(mb_middle){
-                if bs_damount != bs{
-                    bs_damount = bs;
+                if bs_tamount != bs{
+                    bs_tamount = bs;
                     audio_play_sound(item_subtract, 0, false);
                 }
                 else{
-                    bs_damount = 0;
+                    bs_tamount = 0;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -94,16 +59,16 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if bs_damount < bs{
-                            bs_damount += 1;
+                        if bs_tamount < bs{
+                            bs_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
             if mouse_check_button_pressed(mb_right){
-                if bs_damount > 0{
-                    bs_damount -= 1;
+                if bs_tamount > 0{
+                    bs_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -114,8 +79,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if bs_damount > 0{
-                            bs_damount -= 1;
+                        if bs_tamount > 0{
+                            bs_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -125,19 +90,9 @@ if draw_backpack_ui = true{
         
         if mouse_gui_y >= scrap_dbutton_y1 && mouse_gui_y <= scrap_dbutton_y2{ // scrap
             if mouse_check_button_pressed(mb_left){
-                if scrap_damount < scrap{
-                    scrap_damount += 1;
+                if scrap_tamount < scrap{
+                    scrap_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
-                }
-            }
-            if mouse_check_button_pressed(mb_middle){
-                if scrap_damount != scrap{
-                    scrap_damount = scrap;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-                else{
-                    scrap_damount = 0;
-                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){
@@ -147,16 +102,26 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if scrap_damount < scrap{
-                            scrap_damount += 1;
+                        if scrap_tamount < scrap{
+                            scrap_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if scrap_tamount != scrap{
+                    scrap_tamount = scrap;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    scrap_tamount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button_pressed(mb_right){
-                if scrap_damount > 0{
-                    scrap_damount -= 1;
+                if scrap_tamount > 0{
+                    scrap_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -167,8 +132,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if scrap_damount > 0{
-                            scrap_damount -= 1;
+                        if scrap_tamount > 0{
+                            scrap_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -178,18 +143,18 @@ if draw_backpack_ui = true{
         
         if mouse_gui_y >= rev_ammo_dbutton_y1 && mouse_gui_y <= rev_ammo_dbutton_y2{ // rev_ammo
             if mouse_check_button_pressed(mb_left){
-                if rev_damount < rev_ammo{
-                    rev_damount += 1;
+                if rev_tamount < rev_ammo{
+                    rev_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
             if mouse_check_button_pressed(mb_middle){
-                if rev_damount != rev_ammo{
-                    rev_damount = rev_ammo;
+                if rev_tamount != rev_ammo{
+                    rev_tamount = rev_ammo;
                     audio_play_sound(item_subtract, 0, false);
                 }
                 else{
-                    rev_damount = 0;
+                    rev_tamount = 0;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -200,16 +165,16 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if rev_damount < rev_ammo{
-                            rev_damount += 1;
+                        if rev_tamount < rev_ammo{
+                            rev_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
             if mouse_check_button_pressed(mb_right){
-                if rev_damount > 0{
-                    rev_damount -= 1;
+                if rev_tamount > 0{
+                    rev_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -220,8 +185,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if rev_damount > 0{
-                            rev_damount -= 1;
+                        if rev_tamount > 0{
+                            rev_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -231,18 +196,18 @@ if draw_backpack_ui = true{
         
         if mouse_gui_y >= sho_ammo_dbutton_y1 && mouse_gui_y <= sho_ammo_dbutton_y2{ // sho ammo
             if mouse_check_button_pressed(mb_left){
-                if sho_damount < sho_ammo{
-                    sho_damount += 1;
+                if sho_tamount < sho_ammo{
+                    sho_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
                 }
             }
             if mouse_check_button_pressed(mb_middle){
-                if sho_damount != sho_ammo{
-                    sho_damount = sho_ammo;
+                if sho_tamount != sho_ammo{
+                    sho_tamount = sho_ammo;
                     audio_play_sound(item_subtract, 0, false);
                 }
                 else{
-                    sho_damount = 0;
+                    sho_tamount = 0;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -253,16 +218,16 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if sho_damount < sho_ammo{
-                            sho_damount += 1;
+                        if sho_tamount < sho_ammo{
+                            sho_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
             if mouse_check_button_pressed(mb_right){
-                if sho_damount > 0{
-                    sho_damount -= 1;
+                if sho_tamount > 0{
+                    sho_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -273,8 +238,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if sho_damount > 0{
-                            sho_damount -= 1;
+                        if sho_tamount > 0{
+                            sho_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -284,19 +249,9 @@ if draw_backpack_ui = true{
         
         if mouse_gui_y >= rif_ammo_dbutton_y1 && mouse_gui_y <= rif_ammo_dbutton_y2{ // rif ammo
             if mouse_check_button_pressed(mb_left){
-                if rif_damount < rif_ammo{
-                    rif_damount += 1;
+                if rif_tamount < rif_ammo{
+                    rif_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
-                }
-            }
-            if mouse_check_button_pressed(mb_middle){
-                if rif_damount != rif_ammo{
-                    rif_damount = rif_ammo;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-                else{
-                    rif_damount = 0;
-                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){
@@ -306,16 +261,26 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if rif_damount < rif_ammo{
-                            rif_damount += 1;
+                        if rif_tamount < rif_ammo{
+                            rif_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if rif_tamount != rif_ammo{
+                    rif_tamount = rif_ammo;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    rif_tamount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button_pressed(mb_right){
-                if rif_damount > 0{
-                    rif_damount -= 1;
+                if rif_tamount > 0{
+                    rif_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -326,8 +291,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if rif_damount > 0{
-                            rif_damount -= 1;
+                        if rif_tamount > 0{
+                            rif_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -337,19 +302,9 @@ if draw_backpack_ui = true{
         
         if mouse_gui_y >= zev_cake_dbutton_y1 && mouse_gui_y <= zev_cake_dbutton_y2{ // zev cakes
             if mouse_check_button_pressed(mb_left){
-                if zc_damount < zev_cakes{
-                    zc_damount += 1;
+                if zc_tamount < zev_cakes{
+                    zc_tamount += 1;
                     audio_play_sound(item_subtract, 0, false);
-                }
-            }
-            if mouse_check_button_pressed(mb_middle){
-                if zc_damount != zev_cakes{
-                    zc_damount = zev_cakes;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-                else{
-                    zc_damount = 0;
-                    audio_play_sound(item_add_back, 0, false);
                 }
             }
             if mouse_check_button(mb_left){
@@ -359,16 +314,26 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_damount < zev_cakes{
-                            zc_damount += 1;
+                        if zc_tamount < zev_cakes{
+                            zc_tamount += 1;
                             audio_play_sound(item_subtract, 0, false);
                         }
                     }
                 }
             }
+            if mouse_check_button_pressed(mb_middle){
+                if zc_tamount != zev_cakes{
+                    zc_tamount = zev_cakes;
+                    audio_play_sound(item_subtract, 0, false);
+                }
+                else{
+                    zc_tamount = 0;
+                    audio_play_sound(item_add_back, 0, false);
+                }
+            }
             if mouse_check_button_pressed(mb_right){
-                if zc_damount > 0{
-                    zc_damount -= 1;
+                if zc_tamount > 0{
+                    zc_tamount -= 1;
                     audio_play_sound(item_add_back, 0, false);
                 }
             }
@@ -379,8 +344,8 @@ if draw_backpack_ui = true{
                     time_between_rapid_drops -= 1;
                     if time_between_rapid_drops <= 0{
                         time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_damount > 0{
-                            zc_damount -= 1;
+                        if zc_tamount > 0{
+                            zc_tamount -= 1;
                             audio_play_sound(item_add_back, 0, false);
                         }
                     }
@@ -388,58 +353,57 @@ if draw_backpack_ui = true{
             }
         }
     } //caveman activity completed
-        
-    if draw_drop_options = true{
-        var drop_y1 = obj_y + 50;
-        var drop_y2 = drop_y1 + 32;
+    
+    if draw_take_options = true{
+        var take_y1 = obj_y + 50;
+        var take_y2 = take_y1 + 32;
         
         var cancel_y1 = obj_y + 100;
         var cancel_y2 = cancel_y1 + 32;
         
         if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
-            if mouse_gui_y >= drop_y1 && mouse_gui_y <= drop_y2{
-                if mouse_check_button_pressed(mb_left){
-                    if position_meeting(obj_player.x, obj_player.y, obj_drop_bag) or position_meeting(obj_player.x, obj_player.y, obj_chest){
-                        audio_play_sound(cant_do_that, 0, false);
-                    }
-                    else{
-                        audio_play_sound(bp_select, 0, false);
-                        var bag = instance_create_depth(obj_player.x, obj_player.y, 0, obj_drop_bag);
-                        bag.bs += bs_damount;
-                        bs -= bs_damount
-                        bs_damount -= bs_damount;
-                        
-                        bag.scrap += scrap_damount;
-                        scrap -= scrap_damount
-                        scrap_damount -= scrap_damount;
-                        
-                        bag.rev_ammo += rev_damount;
-                        rev_ammo -= rev_damount
-                        rev_damount -= rev_damount;
-                        
-                        bag.sho_ammo += sho_damount;
-                        sho_ammo -= sho_damount
-                        sho_damount -= sho_damount;
-                        
-                        bag.rif_ammo += rif_damount;
-                        rif_ammo -= rif_damount
-                        rif_damount -= rif_damount;
-                        
-                        bag.zev_cakes += zc_damount;
-                        zev_cakes -= zc_damount
-                        zc_damount -= zc_damount;
+            if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
+                if mouse_gui_y >= take_y1 && mouse_gui_y <= take_y2{
+                    if mouse_check_button_pressed(mb_left){
+                        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight) + (zc_tamount * obj_backpack.zev_cake_weight))
+                        if new_weight > obj_backpack.max_weight{
+                            audio_play_sound(cant_do_that, 0, false);
+                        }
+                        else{
+                            audio_play_sound(bp_select, 0, false);
+                            obj_backpack.bs += bs_tamount;
+                            obj_backpack.scrap += scrap_tamount;
+                            obj_backpack.rev_ammo += rev_tamount;
+                            obj_backpack.sho_ammo += sho_tamount;
+                            obj_backpack.rif_ammo += rif_tamount;
+                            obj_backpack.zev_cakes += zc_tamount;
+                            
+                            bs -= bs_tamount;
+                            scrap -= scrap_tamount;
+                            rev_ammo -= rev_tamount;
+                            sho_ammo -= sho_tamount;
+                            rif_ammo -= rif_tamount;
+                            zev_cakes -= zc_tamount;
+                            
+                            bs_tamount -= bs_tamount;
+                            scrap_tamount -= scrap_tamount;
+                            rev_tamount -= rev_tamount;
+                            sho_tamount -= sho_tamount;
+                            rif_tamount -= rif_tamount;
+                            zc_tamount -= zc_tamount;
+                        }
                     }
                 }
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
                 if mouse_check_button_pressed(mb_left){
                     audio_play_sound(bp_select, 0, false);
-                    bs_damount = 0;
-                    scrap_damount = 0;
-                    rev_damount = 0;
-                    sho_damount = 0;
-                    rif_damount = 0;
-                    zc_damount = 0;
+                    bs_tamount = 0;
+                    scrap_tamount = 0;
+                    rev_tamount = 0;
+                    sho_tamount = 0;
+                    rif_tamount = 0;
+                    zc_tamount = 0;
                 }
             }
         }
