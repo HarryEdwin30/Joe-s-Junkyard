@@ -12,6 +12,8 @@ sho_tamount = 0;
 rif_tamount = 0;
 zc_tamount = 0;
 
+chest_empty = true;
+
 drop_rapid_delay_max = 15;
 drop_rapid_delay = drop_rapid_delay_max;
 time_between_rapid_drops_max = 3;

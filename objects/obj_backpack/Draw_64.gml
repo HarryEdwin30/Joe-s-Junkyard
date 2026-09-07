@@ -105,7 +105,7 @@ if draw_backpack_ui = true{
     if sho_ammo > 0 draw_sprite(spr_drop_button, sho_ammo_dbutton_f, dbutton_x1, sho_ammo_dbutton_y1); //sho ammo
     if rif_ammo > 0 draw_sprite(spr_drop_button, rif_ammo_dbutton_f, dbutton_x1, rif_ammo_dbutton_y1); //rif ammo
     if zev_cake_unlocked = true and zev_cakes > 0{
-        draw_sprite(spr_drop_button, zev_cake_dbutton_f, dbutton_x1, zev_cake_dbutton_y1); //zev cakes
+        draw_sprite(spr_eat_button, zev_cake_dbutton_f, dbutton_x1, zev_cake_dbutton_y1); //zev cakes
     }
     
     //now let's draw drop options
@@ -139,5 +139,33 @@ if draw_backpack_ui = true{
         
         var new_weight = weight - ((bs_damount * bs_weight) + (scrap_damount * scrap_weight) + (rev_damount) + (sho_damount) + (rif_damount * rif_ammo_weight) + (zc_damount * zev_cake_weight))
         draw_text(365, 290, "New W: " + string(new_weight) + "/" + string(max_weight));
+    }
+    if draw_eat_options = true{
+        var drop_f = 0;
+        var cancel_f = 0;
+        
+        var drop_c = c_red;
+        var cancel_c = c_red;
+        
+        var drop_y1 = obj_y + 50;
+        var drop_y2 = drop_y1 + 32;
+        
+        var cancel_y1 = obj_y + 100;
+        var cancel_y2 = cancel_y1 + 32;
+        
+        if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
+            if mouse_gui_y >= drop_y1 && mouse_gui_y <= drop_y2{
+                drop_f = 1;
+                drop_c = c_black;
+            }
+            if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
+                cancel_f = 1;
+                cancel_c = c_black;
+            }
+        }
+        draw_sprite(spr_backpack_button, drop_f, obj_x, drop_y1);
+        draw_sprite(spr_backpack_button, cancel_f, obj_x, cancel_y1);
+        draw_text_colour(obj_x + 52, drop_y1 + 5, "Eat?", drop_c, drop_c, drop_c, drop_c, 1)
+        draw_text_colour(obj_x + 44, cancel_y1 + 5, "Cancel", cancel_c, cancel_c, cancel_c, cancel_c, 1)
     }
 }

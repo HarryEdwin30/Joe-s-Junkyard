@@ -4,7 +4,12 @@ if draw_gui = true{
     
     draw_set_font(backpackfont2);
     draw_set_colour(c_red);
-    draw_text(110, 150, "Chest --- Be careful what you take! You won't be able to return it.");
+    if chest_empty = true{
+        draw_text(110, 150, "Chest --- This chest is empty.");
+    }
+    else{
+        draw_text(110, 150, "Chest --- Be careful what you take! You won't be able to return it.");
+    }
     
     var bp_text_x = 320;
     if bs > 0{

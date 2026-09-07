@@ -1,10 +1,3 @@
-if instance_exists(obj_drop_bag){
-    if draw_backpack_ui = true{
-        obj_drop_bag.cant_draw_ui = true;
-    }
-    else obj_drop_bag.cant_draw_ui = false;
-}
-
 if zev_cakes > 0{
     zev_cake_unlocked = true;
 }
@@ -21,10 +14,26 @@ if draw_backpack_ui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
     
-    if bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount + zc_damount > 0{ // most epic if statement ever written???!
-    draw_drop_options = true;
+    if (bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount) > 0{ // most epic if statement ever written???!
+        if draw_eat_options = true{
+            zc_damount = 0;
+        }
+        draw_drop_options = true;
     }
     else draw_drop_options = false;
+        
+    if zc_damount > 0{
+        draw_drop_options = false;
+        draw_eat_options = true;
+        bs_damount = 0;
+        scrap_damount = 0;
+        rev_damount = 0;
+        sho_damount = 0;
+        rif_damount = 0;
+    }
+    else{
+        draw_eat_options = false;
+    }
     
     if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128 and mouse_gui_y >= obj_y && mouse_gui_y <= obj_y + 32{ //transfer ammo shit
     	obj_text_color = c_black;
@@ -429,6 +438,34 @@ if draw_backpack_ui = true{
                         zev_cakes -= zc_damount
                         zc_damount -= zc_damount;
                     }
+                }
+            }
+            if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
+                if mouse_check_button_pressed(mb_left){
+                    audio_play_sound(bp_select, 0, false);
+                    bs_damount = 0;
+                    scrap_damount = 0;
+                    rev_damount = 0;
+                    sho_damount = 0;
+                    rif_damount = 0;
+                    zc_damount = 0;
+                }
+            }
+        }
+    }
+    if draw_eat_options = true{
+        var drop_y1 = obj_y + 50;
+        var drop_y2 = drop_y1 + 32;
+        
+        var cancel_y1 = obj_y + 100;
+        var cancel_y2 = cancel_y1 + 32;
+        
+        if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
+            if mouse_gui_y >= drop_y1 && mouse_gui_y <= drop_y2{
+                if mouse_check_button_pressed(mb_left){
+                    obj_player.infected = true;
+                    zev_cakes -= zc_damount
+                    zc_damount -= zc_damount;
                 }
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{

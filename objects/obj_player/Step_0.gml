@@ -32,7 +32,7 @@ if is_running = false and !keyboard_check(vk_shift) stamina += 1;
 global.push_cooldown -= 1;
 if global.push_cooldown < 0 global.push_cooldown = 0;
 
-if place_meeting(x, y, obj_zombie_parent){
+if place_meeting(x, y, obj_zombie_parent) and global.godmode = false{
     def_m_spd = 0.5;
     can_run = false;
 }

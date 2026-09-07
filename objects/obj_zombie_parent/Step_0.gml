@@ -113,7 +113,7 @@ if global.being_attacked = true{
 }
 else damage_delay = 30;
 
-if place_meeting(x, y, obj_human_parent) and stunned <= 0{
+if place_meeting(x, y, obj_human_parent) and stunned <= 0 and global.godmode = false{
     m_spd = 0;
     global.being_attacked = true;
     if damage_delay <= 0{
@@ -125,6 +125,10 @@ if place_meeting(x, y, obj_human_parent) and stunned <= 0{
 }
 
 var detection_range = 480;
+
+if global.invisible = true{
+    detection_range = 0;
+}
 
 if distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tilemap, false, undefined){
     can_see_player = true;
@@ -141,7 +145,6 @@ else{
 if can_see_player = true{
     chase_player = true;
 }
-
 
 if can_see_player = false and chase_player = true and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
     interest -= 1;

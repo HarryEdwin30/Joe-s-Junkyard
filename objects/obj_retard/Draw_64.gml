@@ -1,12 +1,23 @@
-if show_dev_stats = false exit;
-    
-draw_set_colour(c_white);
-draw_text(0, 0, "FPS: " + string(fps_real));
-draw_text(0, 20, "Zombies: " + string(instance_number(obj_zombie_parent)));
-if instance_exists(obj_ai_director){
-    if obj_ai_director.enabled = true draw_text(0, 40, "AI Director enabled");
-        else draw_text(0, 40, "AI Director disabled");
+if show_dev_stats = true{
+    draw_set_colour(c_white);
+    draw_text(0, 0, "FPS: " + string(fps_real));
+    draw_text(0, 20, "Zombies: " + string(instance_number(obj_zombie_parent)));
+    if instance_exists(obj_ai_director){
+        if obj_ai_director.enabled = true draw_text(0, 40, "AI Director enabled");
+            else draw_text(0, 40, "AI Director disabled");
+    }
+    else draw_text(0, 40, "AI Director disabled");
+    if global.godmode = true{
+        draw_text(0, 60, "Godmode on");
+    }
+    else draw_text(0, 60, "Godmode off");
+        
+    if global.invisible = true{
+        draw_text(0, 80, "Invisible on");
+    }
+    else draw_text(0, 80, "Invisible off");
 }
+
 
 if global.draw_esc_menu_gui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);

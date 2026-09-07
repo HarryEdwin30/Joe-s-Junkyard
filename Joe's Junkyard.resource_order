@@ -73,6 +73,7 @@
     {"name":"spr_chest","order":15,"path":"sprites/spr_chest/spr_chest.yy",},
     {"name":"spr_drop_bag","order":2,"path":"sprites/spr_drop_bag/spr_drop_bag.yy",},
     {"name":"spr_drop_button","order":1,"path":"sprites/spr_drop_button/spr_drop_button.yy",},
+    {"name":"spr_eat_button","order":3,"path":"sprites/spr_eat_button/spr_eat_button.yy",},
     {"name":"spr_fade","order":4,"path":"sprites/spr_fade/spr_fade.yy",},
     {"name":"spr_ham","order":3,"path":"sprites/spr_ham/spr_ham.yy",},
     {"name":"spr_load_save_button","order":1,"path":"sprites/spr_load_save_button/spr_load_save_button.yy",},

@@ -3,7 +3,7 @@ if keyboard_check_pressed(ord("E")){
         exit;
     }
     if instance_exists(obj_drop_bag){
-        if obj_drop_bag.draw_gui = true exit;
+        if instance_nearest(obj_player.x, obj_player.y, obj_drop_bag).draw_gui = true exit;
     }
     if draw_gui = false{
         draw_gui = true;

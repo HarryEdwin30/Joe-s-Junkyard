@@ -39,3 +39,4 @@ time_between_rapid_drops_max = 3;
 time_between_rapid_drops = time_between_rapid_drops_max;
 
 draw_drop_options = false;
+draw_eat_options = false;

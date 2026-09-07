@@ -5,6 +5,27 @@ if global.player_alive = false{
 }
 surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
 
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("P")){
+    if global.godmode = true{
+        global.godmode = false;
+        show_debug_message("godmode off");
+    }
+    else{
+        global.godmode = true;
+        show_debug_message("godmode on");
+    }
+}
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("I")){
+    if global.invisible = true{
+        global.invisible = false;
+        show_debug_message("invisible off");
+    }
+    else{
+        global.invisible = true;
+        show_debug_message("invisible on");
+    }
+}
+
 if keyboard_check_pressed(ord("C")){
     audio_play_sound(resupply, 0, false);
     if obj_weapon.rev_total_bullets < obj_weapon.rev_max_total_bullets or obj_weapon.rev_bullets_left < obj_weapon.rev_max_bullets{

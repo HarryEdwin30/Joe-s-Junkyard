@@ -1,3 +1,10 @@
+if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0{
+    chest_empty = true;
+}
+else{
+    chest_empty = false;
+}
+
 if draw_gui = true{
     
     if bs_tamount + scrap_tamount + rev_tamount + sho_tamount + rif_tamount + zc_tamount > 0{ // most epic if statement ever written???!

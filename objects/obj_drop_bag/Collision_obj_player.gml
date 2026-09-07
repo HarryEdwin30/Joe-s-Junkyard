@@ -1,7 +1,7 @@
 if obj_backpack.draw_backpack_ui = true or global.draw_esc_menu_gui = true exit;
     
 if instance_exists(obj_chest){
-    if obj_chest.draw_gui = true exit;
+    if instance_nearest(obj_player.x, obj_player.y, obj_chest).draw_gui = true exit;
 }
 
 if keyboard_check_pressed(ord("E")){
