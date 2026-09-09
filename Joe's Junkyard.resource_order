@@ -82,7 +82,9 @@
     {"name":"spr_sho","order":2,"path":"sprites/spr_sho/spr_sho.yy",},
     {"name":"spr_sz","order":13,"path":"sprites/spr_sz/spr_sz.yy",},
     {"name":"spr_ui_box_small","order":14,"path":"sprites/spr_ui_box_small/spr_ui_box_small.yy",},
+    {"name":"spr_windowts","order":16,"path":"sprites/spr_windowts/spr_windowts.yy",},
     {"name":"zombieimg1","order":7,"path":"sprites/zombieimg1/zombieimg1.yy",},
     {"name":"ts_background","order":1,"path":"tilesets/ts_background/ts_background.yy",},
+    {"name":"ts_windows","order":2,"path":"tilesets/ts_windows/ts_windows.yy",},
   ],
 }

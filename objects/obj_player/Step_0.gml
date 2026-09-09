@@ -62,7 +62,14 @@ if is_running = true and stamina > 0{
     	m_spd = def_m_spd;
     }
 
-var tilemap = layer_tilemap_get_id("obstacles");
+var tilemaps = [];
+    
+    if layer_exists("obstacles"){
+        array_push(tilemaps, layer_tilemap_get_id("obstacles"));
+    }
+    if layer_exists("windows"){
+        array_push(tilemaps, layer_tilemap_get_id("windows"));
+    }
 if can_move = true{
-    move_and_collide(h * m_spd, v * m_spd, tilemap, undefined, undefined, undefined, m_spd, m_spd);
+    move_and_collide(h * m_spd, v * m_spd, tilemaps, undefined, undefined, undefined, m_spd, m_spd);
 }

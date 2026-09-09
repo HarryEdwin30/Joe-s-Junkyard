@@ -21,9 +21,9 @@ if global.player_alive = false{
     exit;
 }
 
-var tilemap = layer_tilemap_get_id("obstacles");
+var tm_obstacles = layer_tilemap_get_id("obstacles");
 
-if !collision_line(x, y, obj_player.x, obj_player.y, tilemap, false, undefined){
+if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
     image_alpha = 1;
 }
 else if image_alpha > 0 image_alpha -= 0.01;

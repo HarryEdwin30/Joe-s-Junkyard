@@ -7,7 +7,16 @@ if global.draw_esc_menu_gui = true{
     exit;
 }
 
-var tilemap = layer_tilemap_get_id("obstacles");
+var tilemaps = [];
+    
+    if layer_exists("obstacles"){
+        array_push(tilemaps, layer_tilemap_get_id("obstacles"));
+    }
+    if layer_exists("windows"){
+        array_push(tilemaps, layer_tilemap_get_id("windows"));
+    }
+
+var tm_obstacles = layer_tilemap_get_id("obstacles");
     
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{
     var sz = instance_position(x, y, obj_sz_parent);
@@ -25,7 +34,17 @@ if !instance_exists(obj_player){
 }
 
 //wall collisions in case zombie somehow gets stuck in one
-var current_tile = tilemap_get_at_pixel(tilemap, x, y);
+var current_tile = 0;
+
+for (var i = 0; i < array_length(tilemaps); i++) {
+    var _map_id = tilemaps[i];
+    var _tile = tilemap_get_at_pixel(_map_id, x, y);
+    
+    if (_tile != 0) {
+        current_tile = _tile;
+        break;
+    }
+}
 
 if (current_tile != 0) {
     var test_x = x;
@@ -39,7 +58,15 @@ if (current_tile != 0) {
             var check_x = x + lengthdir_x(radius, angle);
             var check_y = y + lengthdir_y(radius, angle);
             
-            if (tilemap_get_at_pixel(tilemap, check_x, check_y) == 0) {
+            var _is_empty = true;
+            for (var j = 0; j < array_length(tilemaps); j++) {
+                if (tilemap_get_at_pixel(tilemaps[j], check_x, check_y) != 0) {
+                    _is_empty = false;
+                    break;
+                }
+            }
+            
+            if (_is_empty) {
                 test_x = check_x;
                 test_y = check_y;
                 found = true;
@@ -65,7 +92,7 @@ var pathfinding_delay_max = pathfinding_delay_def;
 
 //collisions with other zombies
 var push_speed = 2;
-if !place_meeting(x, y, tilemap){
+if !place_meeting(x, y, tilemaps){
     var cam_low = 20;
     var cam_high_x = 660;
     var cam_high_y = 500;
@@ -124,13 +151,13 @@ if place_meeting(x, y, obj_human_parent) and stunned <= 0 and global.godmode = f
     }
 }
 
-var detection_range = 480;
+var detection_range = 320;
 
 if global.invisible = true{
     detection_range = 0;
 }
 
-if distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tilemap, false, undefined){
+if distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
     can_see_player = true;
     interest = max_interest;
     target_x = instance_nearest(x, y, obj_human_parent).x;
@@ -171,7 +198,7 @@ if chase_player = false and wandering = false{
     wander_x = irandom_range(x - wander_distance, x + wander_distance);
     wander_y = irandom_range(y - wander_distance, y + wander_distance);
     
-    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemap){
+    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps){
         exit;
     } 
     else{
