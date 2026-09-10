@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_door_back",
+  "%Name":"obj_room_door_back",
   "eventList":[],
   "managed":true,
-  "name":"obj_door_back",
+  "name":"obj_room_door_back",
   "overriddenProperties":[],
   "parent":{
     "name":"game",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_door",
-    "path":"sprites/spr_door/spr_door.yy",
+    "name":"spr_room_door",
+    "path":"sprites/spr_room_door/spr_room_door.yy",
   },
   "spriteMaskId":null,
   "visible":true,

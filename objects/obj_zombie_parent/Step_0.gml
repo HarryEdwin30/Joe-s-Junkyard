@@ -8,16 +8,16 @@ if global.draw_esc_menu_gui = true{
 }
 
 var tilemaps = [];
+var tm_obstacles = [];
     
-    if layer_exists("obstacles"){
-        array_push(tilemaps, layer_tilemap_get_id("obstacles"));
-    }
-    if layer_exists("windows"){
-        array_push(tilemaps, layer_tilemap_get_id("windows"));
-    }
+if layer_exists("obstacles"){
+    array_push(tilemaps, layer_tilemap_get_id("obstacles"));
+    array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
+}
+if layer_exists("windows"){
+    array_push(tilemaps, layer_tilemap_get_id("windows"));
+}
 
-var tm_obstacles = layer_tilemap_get_id("obstacles");
-    
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{
     var sz = instance_position(x, y, obj_sz_parent);
     if sz != noone{

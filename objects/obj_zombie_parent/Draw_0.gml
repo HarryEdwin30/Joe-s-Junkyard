@@ -21,7 +21,18 @@ if global.player_alive = false{
     exit;
 }
 
-var tm_obstacles = layer_tilemap_get_id("obstacles");
+var tm_obstacles = [];
+if layer_exists("obstacles"){
+    array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
+}
+if instance_exists(obj_door){
+    var door = instance_nearest(x, y, obj_door);
+    if door.door_open = false{
+        if !place_meeting(x, y, door){
+            array_push(tm_obstacles, door);
+        }
+    }
+}
 
 if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
     image_alpha = 1;
