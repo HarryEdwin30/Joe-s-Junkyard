@@ -6,6 +6,57 @@ if global.draw_esc_menu_gui = true{
     m_spd = 0;
     exit;
 }
+var inst_obs = [];
+
+if instance_exists(obj_door){
+    array_push(inst_obs, obj_door);
+}
+if instance_exists(obj_window){
+    array_push(inst_obs, obj_window);
+}
+
+if place_meeting(x, y, inst_obs){
+    if chase_player = true{
+        var obs = instance_nearest(x, y, inst_obs);
+        deal_damage(1, undefined, obs);
+        
+        var test_x = x;
+        var test_y = y;
+        var radius = 2;
+        var max_radius = 128;
+        var found = false;
+        
+        while (found == false and radius < max_radius) {
+        	for (var angle = 0; angle < 360; angle += 45){
+                var check_x = x + lengthdir_x(radius, angle);
+                var check_y = y + lengthdir_y(radius, angle);
+                
+                var _is_empty = true;
+                for (var j = 0; j < array_length(inst_obs); j++) {
+                    if (place_meeting(inst_obs[j], check_x, check_y) != 0) {
+                        _is_empty = false;
+                        break;
+                    }
+                }
+                
+                if (_is_empty) {
+                    test_x = check_x;
+                    test_y = check_y;
+                    found = true;
+                    break;
+                }
+            }
+            radius += 4;
+        }
+        if (found) {
+        x = test_x;
+        y = test_y;
+        }
+    }
+    else{
+        
+    }
+}
 
 var tilemaps = [];
 var tm_obstacles = [];
@@ -13,9 +64,6 @@ var tm_obstacles = [];
 if layer_exists("obstacles"){
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
     array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
-}
-if layer_exists("windows"){
-    array_push(tilemaps, layer_tilemap_get_id("windows"));
 }
 
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{
@@ -198,13 +246,12 @@ if chase_player = false and wandering = false{
     wander_x = irandom_range(x - wander_distance, x + wander_distance);
     wander_y = irandom_range(y - wander_distance, y + wander_distance);
     
-    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps){
-        exit;
-    } 
-    else{
-        wander_delay = irandom_range(180, 600);
-        wandering = true;
+    while (wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps)) {
+    	wander_x = irandom_range(x - wander_distance, x + wander_distance);
+        wander_y = irandom_range(y - wander_distance, y + wander_distance);
     }
+    wander_delay = irandom_range(180, 600);
+    wandering = true;
 }
 
 if wander_delay <= 0{

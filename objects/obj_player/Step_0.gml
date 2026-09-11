@@ -67,7 +67,8 @@ var tilemaps = [];
 if layer_exists("obstacles"){ 
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
 }
-if layer_exists("windows"){
+if instance_exists(obj_window){
+    var window = instance_nearest(x, y, obj_window);
     array_push(tilemaps, layer_tilemap_get_id("windows"));
 }
 if instance_exists(obj_door){

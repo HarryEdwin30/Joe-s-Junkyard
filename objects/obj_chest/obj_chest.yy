@@ -14,8 +14,8 @@
   "name":"obj_chest",
   "overriddenProperties":[],
   "parent":{
-    "name":"game",
-    "path":"folders/objects/game.yy",
+    "name":"map objects",
+    "path":"folders/objects/map objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

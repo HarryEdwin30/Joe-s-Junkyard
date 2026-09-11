@@ -1,0 +1,1 @@
+hp = irandom_range(50, 100);

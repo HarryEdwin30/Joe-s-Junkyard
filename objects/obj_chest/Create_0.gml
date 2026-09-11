@@ -19,7 +19,6 @@ drop_rapid_delay = drop_rapid_delay_max;
 time_between_rapid_drops_max = 3;
 time_between_rapid_drops = time_between_rapid_drops_max;
 
-randomise();
 var chest_type = 1; //1 = common, 2 = uncommon, 3 = rare
 var uncommon_chance = 40;
 var rare_chance = 10;
