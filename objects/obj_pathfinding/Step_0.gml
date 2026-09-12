@@ -18,9 +18,6 @@ if room != last_room{
     if layer_exists("obstacles"){
         array_push(tilemaps, layer_tilemap_get_id("obstacles"));
     }
-    if layer_exists("windows"){
-        array_push(tilemaps, layer_tilemap_get_id("windows"));
-    }
     
     for (var yy = 0; yy < mh; yy++) {
         for (var xx = 0; xx < mw; xx++) {

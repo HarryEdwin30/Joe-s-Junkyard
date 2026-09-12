@@ -6,56 +6,18 @@ if global.draw_esc_menu_gui = true{
     m_spd = 0;
     exit;
 }
+
+var all_obs = [];
+
 var inst_obs = [];
 
 if instance_exists(obj_door){
     array_push(inst_obs, obj_door);
+    array_push(all_obs, obj_door);
 }
 if instance_exists(obj_window){
     array_push(inst_obs, obj_window);
-}
-
-if place_meeting(x, y, inst_obs){
-    if chase_player = true{
-        var obs = instance_nearest(x, y, inst_obs);
-        deal_damage(1, undefined, obs);
-        
-        var test_x = x;
-        var test_y = y;
-        var radius = 2;
-        var max_radius = 128;
-        var found = false;
-        
-        while (found == false and radius < max_radius) {
-        	for (var angle = 0; angle < 360; angle += 45){
-                var check_x = x + lengthdir_x(radius, angle);
-                var check_y = y + lengthdir_y(radius, angle);
-                
-                var _is_empty = true;
-                for (var j = 0; j < array_length(inst_obs); j++) {
-                    if (place_meeting(inst_obs[j], check_x, check_y) != 0) {
-                        _is_empty = false;
-                        break;
-                    }
-                }
-                
-                if (_is_empty) {
-                    test_x = check_x;
-                    test_y = check_y;
-                    found = true;
-                    break;
-                }
-            }
-            radius += 4;
-        }
-        if (found) {
-        x = test_x;
-        y = test_y;
-        }
-    }
-    else{
-        
-    }
+    array_push(all_obs, obj_window);
 }
 
 var tilemaps = [];
@@ -64,6 +26,7 @@ var tm_obstacles = [];
 if layer_exists("obstacles"){
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
     array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
+    array_push(all_obs, layer_tilemap_get_id("obstacles"));
 }
 
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{
@@ -82,6 +45,7 @@ if !instance_exists(obj_player){
 }
 
 //wall collisions in case zombie somehow gets stuck in one
+
 var current_tile = 0;
 
 for (var i = 0; i < array_length(tilemaps); i++) {
@@ -138,8 +102,21 @@ var cam_y = camera_get_view_y(cam);
 var pathfinding_delay_def = 8;
 var pathfinding_delay_max = pathfinding_delay_def;
 
-//collisions with other zombies
 var push_speed = 2;
+
+with (obj_player){
+    if (id != other.id){
+        var dist = point_distance(x, y, other.x, other.y);
+        var min_dist = 12;
+        
+        if (dist < min_dist && dist > 0){
+            var dir = point_direction(x, y, other.x, other.y);
+            other.x += lengthdir_x(push_speed, dir);
+            other.y += lengthdir_y(push_speed, dir);
+        }
+    }
+}
+
 if !place_meeting(x, y, tilemaps){
     var cam_low = 20;
     var cam_high_x = 660;
@@ -161,19 +138,6 @@ if !place_meeting(x, y, tilemaps){
                     other.y += lengthdir_y(push_speed, dir);
                 }
             }
-        }
-    }
-}
-
-with (obj_player){
-    if (id != other.id){
-        var dist = point_distance(x, y, other.x, other.y);
-        var min_dist = 12;
-        
-        if (dist < min_dist && dist > 0){
-            var dir = point_direction(x, y, other.x, other.y);
-            other.x += lengthdir_x(push_speed, dir);
-            other.y += lengthdir_y(push_speed, dir);
         }
     }
 }
@@ -265,4 +229,27 @@ if wandering = true{
     }
     pathfinding_delay -= 1;
     wander_delay -= 1;
+}
+
+//obstacle stuff down here (:
+if place_meeting(x, y, inst_obs){
+    var obs = noone;
+    var _min_dist = infinity;
+    
+    for (var i = 0; i < array_length(inst_obs); i++) {
+        var _inst = inst_obs[i];
+        
+        if (instance_exists(_inst)) {
+            var _dist = point_distance(x, y, _inst.x, _inst.y);
+            if (_dist < _min_dist) {
+                _min_dist = _dist;
+                obs = _inst;
+            }
+        }
+    }
+    var n_obs = instance_nearest(x, y, obs);
+    if chase_player = true and collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false{
+        m_spd = 0;
+        path_end();
+    }
 }

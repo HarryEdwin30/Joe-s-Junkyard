@@ -2,8 +2,8 @@
   "FolderOrderSettings":[
     {"name":"base","order":10,"path":"folders/objects/base.yy",},
     {"name":"game","order":4,"path":"folders/objects/game.yy",},
-    {"name":"map objects","order":12,"path":"folders/objects/map objects.yy",},
     {"name":"main menu","order":3,"path":"folders/objects/main menu.yy",},
+    {"name":"map objects","order":12,"path":"folders/objects/map objects.yy",},
     {"name":"parents","order":1,"path":"folders/objects/parents.yy",},
     {"name":"player","order":5,"path":"folders/objects/player.yy",},
     {"name":"spawn_zones","order":11,"path":"folders/objects/spawn_zones.yy",},

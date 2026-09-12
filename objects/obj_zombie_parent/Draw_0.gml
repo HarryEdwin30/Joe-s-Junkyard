@@ -11,7 +11,7 @@ if global.zoomed_in = true{
     cam_high_x /= 2;
     cam_high_y /= 2;
 }
-
+draw_self()
 if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and y < cam_y + cam_high_y){
     draw_self()
 }
@@ -26,14 +26,13 @@ if layer_exists("obstacles"){
     array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
 }
 if instance_exists(obj_door){
-    var door = instance_nearest(x, y, obj_door);
-    if door.door_open = false{
-        if !place_meeting(x, y, door){
-            array_push(tm_obstacles, door);
+    with (obj_door) {
+    	if (open == false) {
+            array_push(tm_obstacles, id);
         }
     }
 }
-
+/*
 if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
     image_alpha = 1;
 }

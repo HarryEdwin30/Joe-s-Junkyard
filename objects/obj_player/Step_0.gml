@@ -73,7 +73,7 @@ if instance_exists(obj_window){
 }
 if instance_exists(obj_door){
     var door = instance_nearest(x, y, obj_door);
-    if door.door_open = false{
+    if door.open = false{
         if !place_meeting(x, y, door){
            array_push(tilemaps, door); 
         }
