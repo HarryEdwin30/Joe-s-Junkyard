@@ -47,6 +47,13 @@ if weapon_type = 4{
 if draw_a_bullet = true{
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent];
+    if instance_exists(obj_door){
+        with (obj_door) {
+        	if (open == false) {
+                array_push(targets, id);
+            }
+        }
+    }
     var start_x = obj_player.x;
     var start_y = obj_player.y;
     var checker_x = start_x;
@@ -78,6 +85,13 @@ if draw_sho_bullets = true{
     var pellets_drawn = 0;
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent];
+    if instance_exists(obj_door){
+        with (obj_door) {
+        	if (open == false) {
+                array_push(targets, id);
+            }
+        }
+    }
     var start_x = obj_player.x;
     var start_y = obj_player.y;
     var array_number = 0;

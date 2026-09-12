@@ -13,3 +13,4 @@ interest = max_interest;
 pathfinding_delay = 0;
 collision_delay = 0;
 touching_obs = false;
+break_delay = 0;

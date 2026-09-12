@@ -28,7 +28,16 @@ if weapon_type = 4 and obj_player.stamina > 0{
         ham_target = ds_list_find_value(targets_list, 0);
         var ham_target_distance = point_distance(obj_player.x, obj_player.y, ham_target.x, ham_target.y);
         var ham_target_distance_max = 50
-        if ham_target_distance <= ham_target_distance_max{
+        var tilemap = layer_tilemap_get_id("obstacles");
+        var targets = [tilemap];
+        if instance_exists(obj_door){
+            with (obj_door) {
+                if (open == false) {
+                    array_push(targets, id);
+                }
+            }
+        }
+        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true){
             ham_target_in_range = true;
             ham_draw_target = true;
         }
@@ -48,6 +57,13 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent];
+    if instance_exists(obj_door){
+        with (obj_door) {
+        	if (open == false) {
+                array_push(targets, id);
+            }
+        }
+    }
     var start_x = obj_player.x;
     var start_y = obj_player.y;
     var checker_x = start_x;

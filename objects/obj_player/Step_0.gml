@@ -1,3 +1,5 @@
+audio_listener_position(x, y, 0);
+audio_listener_orientation(0, 0, 1, 0, -1, 0);
 if hp <= 0{
     instance_destroy(obj_backpack);
     instance_create_depth(x, y, 0, obj_death_marker);

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"doorbang4",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.58414966,
+  "exportDir":"",
+  "name":"doorbang4",
+  "parent":{
+    "name":"door sounds",
+    "path":"folders/sounds/door sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"doorbang4.wav",
+  "volume":0.5,
+}

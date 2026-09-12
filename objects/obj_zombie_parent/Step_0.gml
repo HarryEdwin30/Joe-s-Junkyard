@@ -6,22 +6,24 @@ if global.draw_esc_menu_gui = true{
     m_spd = 0;
     exit;
 }
-
+var tilemaps = [];
+var tm_obstacles = [];
 var all_obs = [];
-
 var inst_obs = [];
 
 if instance_exists(obj_door){
     array_push(inst_obs, obj_door);
-    array_push(all_obs, obj_door);
+    with (obj_door) {
+    	if (open == false) {
+            array_push(all_obs, id);
+            array_push(tm_obstacles, id);
+        }
+    }
 }
 if instance_exists(obj_window){
     array_push(inst_obs, obj_window);
     array_push(all_obs, obj_window);
 }
-
-var tilemaps = [];
-var tm_obstacles = [];
     
 if layer_exists("obstacles"){
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
@@ -45,55 +47,55 @@ if !instance_exists(obj_player){
 }
 
 //wall collisions in case zombie somehow gets stuck in one
-
-var current_tile = 0;
-
-for (var i = 0; i < array_length(tilemaps); i++) {
-    var _map_id = tilemaps[i];
-    var _tile = tilemap_get_at_pixel(_map_id, x, y);
+if place_meeting(x, y, tilemaps){
+    var current_tile = 0;
     
-    if (_tile != 0) {
-        current_tile = _tile;
-        break;
+    for (var i = 0; i < array_length(tilemaps); i++) {
+        var _map_id = tilemaps[i];
+        var _tile = tilemap_get_at_pixel(_map_id, x, y);
+        
+        if (_tile != 0) {
+            current_tile = _tile;
+            break;
+        }
     }
-}
-
-if (current_tile != 0) {
-    var test_x = x;
-    var test_y = y;
-    var radius = 2;
-    var max_radius = 32;
-    var found = false;
-
-    while (!found && radius < max_radius) {
-        for (var angle = 0; angle < 360; angle += 45) {
-            var check_x = x + lengthdir_x(radius, angle);
-            var check_y = y + lengthdir_y(radius, angle);
-            
-            var _is_empty = true;
-            for (var j = 0; j < array_length(tilemaps); j++) {
-                if (tilemap_get_at_pixel(tilemaps[j], check_x, check_y) != 0) {
-                    _is_empty = false;
+    
+    if (current_tile != 0) {
+        var test_x = x;
+        var test_y = y;
+        var radius = 2;
+        var max_radius = 32;
+        var found = false;
+    
+        while (!found && radius < max_radius) {
+            for (var angle = 0; angle < 360; angle += 45) {
+                var check_x = x + lengthdir_x(radius, angle);
+                var check_y = y + lengthdir_y(radius, angle);
+                
+                var _is_empty = true;
+                for (var j = 0; j < array_length(tilemaps); j++) {
+                    if (tilemap_get_at_pixel(tilemaps[j], check_x, check_y) != 0) {
+                        _is_empty = false;
+                        break;
+                    }
+                }
+                
+                if (_is_empty) {
+                    test_x = check_x;
+                    test_y = check_y;
+                    found = true;
                     break;
                 }
             }
-            
-            if (_is_empty) {
-                test_x = check_x;
-                test_y = check_y;
-                found = true;
-                break;
-            }
+            radius += 4;
         }
-        radius += 4;
-    }
-    
-    if (found) {
-        x = test_x;
-        y = test_y;
+        
+        if (found) {
+            x = test_x;
+            y = test_y;
+        }
     }
 }
-
 var cam = view_camera[0];
     
 var cam_x = camera_get_view_x(cam);
@@ -103,21 +105,26 @@ var pathfinding_delay_def = 8;
 var pathfinding_delay_max = pathfinding_delay_def;
 
 var push_speed = 1;
-
-with (obj_player){
-    if (id != other.id){
-        var dist = point_distance(x, y, other.x, other.y);
-        var min_dist = 12;
-        
-        if (dist < min_dist && dist > 0){
-            var dir = point_direction(x, y, other.x, other.y);
-            other.x += lengthdir_x(push_speed, dir);
-            other.y += lengthdir_y(push_speed, dir);
+if place_meeting(x, y, obj_player){
+    with (obj_player){
+        if (id != other.id){
+            var dist = point_distance(x, y, other.x, other.y);
+            var min_dist = 12;
+            
+            if (dist < min_dist && dist > 0){
+                var dir = point_direction(x, y, other.x, other.y);
+                var test_x = other.x + lengthdir_x(push_speed, dir);
+                var test_y = other.y + lengthdir_y(push_speed, dir);
+                if !place_meeting(test_x, test_y, all_obs){
+                    other.x += lengthdir_x(push_speed, dir);
+                    other.y += lengthdir_y(push_speed, dir);
+                }
+            }
         }
     }
 }
 
-if !place_meeting(x, y, tilemaps){
+if place_meeting(x, y, obj_zombie_parent){
     var cam_low = 20;
     var cam_high_x = 660;
     var cam_high_y = 500;
@@ -134,8 +141,12 @@ if !place_meeting(x, y, tilemaps){
                 
                 if (dist < min_dist && dist > 0){
                     var dir = point_direction(x, y, other.x, other.y);
-                    other.x += lengthdir_x(push_speed, dir);
-                    other.y += lengthdir_y(push_speed, dir);
+                    var test_x = other.x + lengthdir_x(push_speed, dir);
+                    var test_y = other.y + lengthdir_y(push_speed, dir);
+                    if !place_meeting(test_x, test_y, all_obs){
+                        other.x += lengthdir_x(push_speed, dir);
+                        other.y += lengthdir_y(push_speed, dir);
+                    }
                 }
             }
         }
@@ -236,22 +247,67 @@ if wandering = true{
 
 //obstacle stuff down here (:
 if place_meeting(x, y, inst_obs){
-    var obs = noone;
+    var n_obs = noone;
     var _min_dist = infinity;
     
     for (var i = 0; i < array_length(inst_obs); i++) {
-        var _inst = inst_obs[i];
-        
-        if (instance_exists(_inst)) {
+        var _obj_type = inst_obs[i];
+        if (instance_exists(_obj_type)) {
+            var _inst = instance_nearest(x, y, _obj_type);
             var _dist = point_distance(x, y, _inst.x, _inst.y);
             if (_dist < _min_dist) {
                 _min_dist = _dist;
-                obs = _inst;
+                n_obs = _inst;
             }
         }
     }
-    var n_obs = instance_nearest(x, y, obs);
-    if chase_player = true and collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false{
-        
+    if chase_player != true and n_obs.open = false{
+        m_spd = 0;
+        wander_delay = 0;
+        path_end();
+        if (n_obs != noone) {
+            var test_x = x;
+            var test_y = y;
+            var radius = 2;
+            var max_radius = 32;
+            var found = false;
+            
+            while (!found && radius < max_radius) {
+                for (var angle = 0; angle < 360; angle += 45) {
+                    var check_x = x + lengthdir_x(radius, angle);
+                    var check_y = y + lengthdir_y(radius, angle);
+                    
+                    var _is_empty = true;
+                    if (place_meeting(check_x, check_y, n_obs)) {
+                        _is_empty = false;
+                    }
+                    
+                    if (_is_empty) {
+                        test_x = check_x;
+                        test_y = check_y;
+                        found = true;
+                        break;
+                    }
+                }
+                radius += 4;
+            }
+            
+            if (found) {
+                x = test_x;
+                y = test_y;
+            }
+        }
+    }
+    else if (collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false){
+        if break_delay > 0{
+            break_delay -= 1;
+        }
+        else{
+            var sound_to_play = choose(doorbang1, doorbang2, doorbang3, doorbang4);
+            deal_damage(1, sound_to_play, n_obs, x, y, 0);
+            break_delay = irandom_range(25, 120);
+        }
+        m_spd = 0;
+        path_end();
     }
 }
