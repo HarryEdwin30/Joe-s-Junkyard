@@ -57,7 +57,7 @@ if !instance_exists(obj_player) and global.player_alive = true{
     global.player_alive = false;
 }
 
-if keyboard_check_pressed(ord("F")){
+if keyboard_check(ord("F")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
 }
 if keyboard_check_pressed(ord("G")){

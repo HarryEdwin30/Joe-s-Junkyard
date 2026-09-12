@@ -12,3 +12,4 @@ max_interest = 180;
 interest = max_interest;
 pathfinding_delay = 0;
 collision_delay = 0;
+touching_obs = false;

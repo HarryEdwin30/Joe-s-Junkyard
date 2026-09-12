@@ -62,7 +62,7 @@ if (current_tile != 0) {
     var test_x = x;
     var test_y = y;
     var radius = 2;
-    var max_radius = 128;
+    var max_radius = 32;
     var found = false;
 
     while (!found && radius < max_radius) {
@@ -102,7 +102,7 @@ var cam_y = camera_get_view_y(cam);
 var pathfinding_delay_def = 8;
 var pathfinding_delay_max = pathfinding_delay_def;
 
-var push_speed = 2;
+var push_speed = 1;
 
 with (obj_player){
     if (id != other.id){
@@ -128,7 +128,7 @@ if !place_meeting(x, y, tilemaps){
     if collision_delay <= 0{
         collision_delay = collision_delay_max;
         with (obj_zombie_parent){
-            if (id != other.id){ 
+            if (id != other.id){
                 var dist = point_distance(x, y, other.x, other.y);
                 var min_dist = 16;
                 
@@ -210,9 +210,12 @@ if chase_player = false and wandering = false{
     wander_x = irandom_range(x - wander_distance, x + wander_distance);
     wander_y = irandom_range(y - wander_distance, y + wander_distance);
     
-    while (wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps)) {
-    	wander_x = irandom_range(x - wander_distance, x + wander_distance);
-        wander_y = irandom_range(y - wander_distance, y + wander_distance);
+    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps){
+        exit;
+    } 
+    else{
+        wander_delay = irandom_range(180, 600);
+        wandering = true;
     }
     wander_delay = irandom_range(180, 600);
     wandering = true;
@@ -249,7 +252,6 @@ if place_meeting(x, y, inst_obs){
     }
     var n_obs = instance_nearest(x, y, obs);
     if chase_player = true and collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false{
-        m_spd = 0;
-        path_end();
+        
     }
 }
