@@ -142,5 +142,27 @@ if weapon_type = 2 and obj_player.can_move = true{
     draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);
 }
 if ham_draw_target = true and obj_player.can_move = true{
-    draw_rectangle(ham_target.x - 8, ham_target.y + 8, ham_target.x + 8, ham_target.y - 8, true);
+    if (ham_target.object_index == obj_zombie_parent || object_is_ancestor(ham_target.object_index, obj_zombie_parent)){
+        draw_rectangle(ham_target.x - 8, ham_target.y + 8, ham_target.x + 8, ham_target.y - 8, true);
+    }
+    if (ham_target.object_index == obj_window || object_is_ancestor(ham_target.object_index, obj_window)){
+        var spr = ham_target.sprite_index;
+        var _center_x_offset = (sprite_get_width(spr) / 2 - sprite_get_xoffset(spr)) * ham_target.image_xscale;
+        var _center_y_offset = (sprite_get_height(spr) / 2 - sprite_get_yoffset(spr)) * ham_target.image_yscale;
+        
+        var _dist = point_distance(0, 0, _center_x_offset, _center_y_offset);
+        var _dir = point_direction(0, 0, _center_x_offset, _center_y_offset) + ham_target.image_angle;
+        
+        var cx = ham_target.x + lengthdir_x(_dist, _dir);
+        var cy = ham_target.y + lengthdir_y(_dist, _dir);
+        
+        var ang = round(ham_target.image_angle) % 360;
+        
+        if (ang == 90 || ang == -90) {
+        	draw_rectangle(cx - 8, cy - 16, cx + 9, cy + 16, true);
+        }
+        else{
+            draw_rectangle(cx - 16, cy - 8, cx + 16, cy + 9, true);
+        }
+    }
 }

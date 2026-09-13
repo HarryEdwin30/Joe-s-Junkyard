@@ -38,7 +38,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
         collision_circle_list(mouse_x, mouse_y, circle_size, enemies, true, true, targets_list, true);
         ham_target = ds_list_find_value(targets_list, 0);
         var ham_target_distance = point_distance(obj_player.x, obj_player.y, ham_target.x, ham_target.y);
-        var ham_target_distance_max = 50
+        var ham_target_distance_max = 50;
         var tilemap = layer_tilemap_get_id("obstacles");
         var targets = [tilemap];
         if instance_exists(obj_door){
@@ -55,7 +55,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
                 }
             }
         }
-        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true) or position_meeting(mouse_x, mouse_y, obj_window){
+        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true) or (position_meeting(mouse_x, mouse_y, obj_window) and ham_target_distance <= ham_target_distance_max) {
             ham_target_in_range = true;
             ham_draw_target = true;
         }
@@ -65,6 +65,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
         }
     }
     else{
+        ham_target_in_range = false;
         ham_draw_target = false;
     }
 }
