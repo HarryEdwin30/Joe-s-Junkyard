@@ -13,8 +13,10 @@ if instance_exists(obj_drop_bag){
 if global.draw_esc_menu_gui = false{
     global.draw_esc_menu_gui = true;
     audio_play_sound(cant_do_that, 0, false);
+    obj_player.can_move = false;
 }
 else{
     global.draw_esc_menu_gui = false;
+    obj_player.can_move = true;
     audio_play_sound(bp_select, 0, false);
 }

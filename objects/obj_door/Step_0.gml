@@ -6,7 +6,7 @@ if hp <= 0{
         played_broken_sound = true;
     }
 }
-if global.player_alive = true{
+if global.player_alive = true and obj_player.can_move = true{
     var _center_x_offset = (sprite_get_width(sprite_index) / 2 - sprite_xoffset) * image_xscale;
     var _center_y_offset = (sprite_get_height(sprite_index) / 2 - sprite_yoffset) * image_yscale;
     

@@ -47,6 +47,12 @@ if weapon_type = 1 and rev_can_shoot = true{
     while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	checker_x += step_x;
         checker_y += step_y;
+        if position_meeting(checker_x, checker_y, obj_window){
+            var window_to_shoot = instance_nearest(checker_x, checker_y, obj_window);
+            if (!window_to_shoot.broken) {
+            	window_to_shoot.broken = true;
+            }
+        }
     }
     
     var end_x = checker_x;
@@ -105,6 +111,12 @@ if weapon_type = 2 and sho_can_shoot = true{
         while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	    checker_x += step_x;
             checker_y += step_y;
+            if position_meeting(checker_x, checker_y, obj_window){
+                var window_to_shoot = instance_nearest(checker_x, checker_y, obj_window);
+                if (!window_to_shoot.broken) {
+                	window_to_shoot.broken = true;
+                }
+            }
         }
         var end_x = checker_x;
         var end_y = checker_y;
@@ -164,6 +176,12 @@ if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	checker_x += step_x;
         checker_y += step_y;
+        if position_meeting(checker_x, checker_y, obj_window){
+            var window_to_shoot = instance_nearest(checker_x, checker_y, obj_window);
+            if (!window_to_shoot.broken) {
+                window_to_shoot.broken = true;
+            }
+        }
     }
     
     var end_x = checker_x;

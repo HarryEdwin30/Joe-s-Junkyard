@@ -21,10 +21,21 @@ if weapon_type = 4 and obj_player.stamina > 0{
     }
     ham_charge_up_sound_delay -= 1;
     
+    var enemies = [];
+    if (instance_exists(obj_window)) {
+        with (obj_window) {
+        	if (!broken) {
+            	array_push(enemies, id);
+            }
+        }
+    }
+    if (instance_exists(obj_zombie_parent)) {
+        array_push(enemies, obj_zombie_parent);
+    }
     var targets_list = ds_list_create();
     var circle_size = 20;
-    if collision_circle(mouse_x, mouse_y, circle_size, obj_zombie_parent, true, true){
-        collision_circle_list(mouse_x, mouse_y, circle_size, obj_zombie_parent, true, true, targets_list, true);
+    if collision_circle(mouse_x, mouse_y, circle_size, enemies, true, true){
+        collision_circle_list(mouse_x, mouse_y, circle_size, enemies, true, true, targets_list, true);
         ham_target = ds_list_find_value(targets_list, 0);
         var ham_target_distance = point_distance(obj_player.x, obj_player.y, ham_target.x, ham_target.y);
         var ham_target_distance_max = 50
@@ -37,7 +48,14 @@ if weapon_type = 4 and obj_player.stamina > 0{
                 }
             }
         }
-        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true){
+        if instance_exists(obj_window){
+            with (obj_window) {
+                if (broken == false) {
+                    array_push(targets, id);
+                }
+            }
+        }
+        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true) or position_meeting(mouse_x, mouse_y, obj_window){
             ham_target_in_range = true;
             ham_draw_target = true;
         }
@@ -79,6 +97,12 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	checker_x += step_x;
         checker_y += step_y;
+        if position_meeting(checker_x, checker_y, obj_window){
+            var window_to_shoot = instance_nearest(checker_x, checker_y, obj_window);
+            if (!window_to_shoot.broken) {
+                window_to_shoot.broken = true;
+            }
+        }
     }
     
     var end_x = checker_x;

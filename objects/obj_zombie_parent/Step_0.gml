@@ -7,6 +7,7 @@ if global.draw_esc_menu_gui = true{
     exit;
 }
 var tilemaps = [];
+var open_windows = [];
 var tm_obstacles = [];
 var all_obs = [];
 var inst_obs = [];
@@ -14,17 +15,32 @@ var inst_obs = [];
 if instance_exists(obj_door){
     array_push(inst_obs, obj_door);
     with (obj_door) {
-    	if (open == false) {
+    	if (!open) {
             array_push(all_obs, id);
             array_push(tm_obstacles, id);
         }
     }
 }
 if instance_exists(obj_window){
+    with (obj_window) {
+    	if (!open) {
+            array_push(all_obs, id);
+            array_push(inst_obs, obj_window);
+        }
+        else{
+            array_push(open_windows, id);
+        }
+        if (boards = true) {
+        	array_push(tm_obstacles, id);
+        }
+    }
+}
+/*
+if instance_exists(obj_window){
     array_push(inst_obs, obj_window);
     array_push(all_obs, obj_window);
 }
-    
+*/
 if layer_exists("obstacles"){
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
     array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
@@ -157,6 +173,10 @@ if stunned > 0{
     stunned -= 1;
 }
 else m_spd = max_m_spd;
+    
+if (place_meeting(x, y, open_windows)) {
+	m_spd /= 2;
+}
 
 if global.being_attacked = true{
     damage_delay -= 1;
@@ -196,7 +216,7 @@ if can_see_player = true{
     chase_player = true;
 }
 
-if can_see_player = false and chase_player = true and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
+if can_see_player = false and chase_player = true and !breaking_something and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
     interest -= 1;
 }
 
@@ -299,15 +319,52 @@ if place_meeting(x, y, inst_obs){
         }
     }
     else if (collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false){
+        breaking_something = true;
         if break_delay > 0{
             break_delay -= 1;
         }
         else{
-            var sound_to_play = choose(doorbang1, doorbang2, doorbang3, doorbang4);
-            deal_damage(1, sound_to_play, n_obs, x, y, 0);
-            break_delay = irandom_range(25, 120);
+            if (n_obs.boards = undefined) {
+            	var sound_to_play = choose(doorbang1, doorbang2);
+                deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                switch (object_index) {
+                	case obj_walker:
+                        break_delay = irandom_range(60, 120);
+                        break;
+                    case obj_runner:
+                        break_delay = irandom_range(25, 60);
+                        break;
+                }
+            }
+            else if (n_obs.boards = false) {
+                var sound_to_play = choose(windowbang1, windowbang2);
+                deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                switch (object_index) {
+                	case obj_walker:
+                        break_delay = irandom_range(60, 120);
+                        break;
+                    case obj_runner:
+                        break_delay = irandom_range(25, 60);
+                        break;
+                }
+            }
+            else{
+                var sound_to_play = choose(boardbang1, boardbang2);
+                deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                switch (object_index) {
+                    case obj_walker:
+                        break_delay = irandom_range(60, 120);
+                        break;
+                    case obj_runner:
+                        break_delay = irandom_range(25, 60);
+                        break;
+                }
+            }
         }
         m_spd = 0;
         path_end();
     }
+}
+else if (breaking_something) {
+	breaking_something = false;
 }

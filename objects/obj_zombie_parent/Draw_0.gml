@@ -32,7 +32,15 @@ if instance_exists(obj_door){
         }
     }
 }
-
+/*
+if instance_exists(obj_window){
+    with (obj_window) {
+        if (boards = true) {
+        	array_push(tm_obstacles, id);
+        }
+    }
+}
+*/
 if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
     image_alpha = 1;
 }

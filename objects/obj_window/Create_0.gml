@@ -1,1 +1,10 @@
-hp = irandom_range(50, 100);
+hp = irandom_range(5, 15);
+ahp = hp; //actual hp
+open = false;
+broken = false;
+boards = true;
+played_broken_sound = false;
+given_board_hp = false;
+board_delay_max = 60;
+board_delay = board_delay_max;
+reset = true;

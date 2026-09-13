@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"doorbang1",
+  "%Name":"boardbuilt1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6771882,
+  "duration":0.5280045,
   "exportDir":"",
-  "name":"doorbang1",
+  "name":"boardbuilt1",
   "parent":{
-    "name":"door sounds",
-    "path":"folders/sounds/door sounds.yy",
+    "name":"window sounds",
+    "path":"folders/sounds/window sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"doorbang1.wav",
-  "volume":1.0,
+  "soundFile":"boardbuilt1.mp3",
+  "volume":0.4,
 }

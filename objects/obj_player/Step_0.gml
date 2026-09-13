@@ -43,7 +43,6 @@ else{
     can_run = true;
 }
 
-
 if global.being_attacked = true{
     getoffme(60, ord("E"));
     exit;
@@ -69,16 +68,26 @@ var tilemaps = [];
 if layer_exists("obstacles"){ 
     array_push(tilemaps, layer_tilemap_get_id("obstacles"));
 }
-if instance_exists(obj_window){
-    var window = instance_nearest(x, y, obj_window);
-    array_push(tilemaps, layer_tilemap_get_id("windows"));
-}
 if instance_exists(obj_door){
     var door = instance_nearest(x, y, obj_door);
     if door.open = false{
         if !place_meeting(x, y, door){
            array_push(tilemaps, door); 
         }
+    }
+}
+if (instance_exists(obj_window)) {
+    var open_windows = [];
+    with (obj_window) {
+    	if (open) {
+        	array_push(open_windows, id);
+        }
+        else{
+            array_push(tilemaps, id);
+        }
+    }
+	if (place_meeting(x, y, open_windows)) {
+	   m_spd /= 2;
     }
 }
 

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"doorbang1",
+  "%Name":"windowbang1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6771882,
+  "duration":0.6749206,
   "exportDir":"",
-  "name":"doorbang1",
+  "name":"windowbang1",
   "parent":{
-    "name":"door sounds",
-    "path":"folders/sounds/door sounds.yy",
+    "name":"window sounds",
+    "path":"folders/sounds/window sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"doorbang1.wav",
-  "volume":1.0,
+  "soundFile":"windowbang1.wav",
+  "volume":0.36,
 }

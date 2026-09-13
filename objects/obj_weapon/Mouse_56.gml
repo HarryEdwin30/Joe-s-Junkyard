@@ -11,15 +11,22 @@ rif_shoot_delay = 0;
 if weapon_type = 4{
     if ham_target_in_range = true and global.being_attacked = false and ham_delay <= 0{
         ham_delay = ham_delay_max;
-        var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
+        
         var stamina_to_lose = (ham_base_stamina_usage * ham_charge) * 6;
         if stamina_to_lose > obj_player.stamina{
             stamina_to_lose = obj_player.stamina;
         }
-        var damage_to_deal = (stamina_to_lose / 6) * 2;
-        deal_damage(damage_to_deal, sound_to_play, ham_target);
         obj_player.stamina -= stamina_to_lose;
         audio_play_sound(ham_hit, 0, false);
+        var sound_to_play = undefined;
+        if (ham_target.object_index == obj_zombie_parent || object_is_ancestor(ham_target.object_index, obj_zombie_parent)) {
+        	sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
+            var damage_to_deal = (stamina_to_lose / 6) * 2;
+            deal_damage(damage_to_deal, sound_to_play, ham_target);
+        }
+        if (ham_target.object_index == obj_window || object_is_ancestor(ham_target.object_index, obj_window)) {
+        	ham_target.broken = true;
+        }
     }
     ham_target_in_range = false;
     ham_draw_target = false;

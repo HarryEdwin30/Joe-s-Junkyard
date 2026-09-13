@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.81122446,
+  "duration":0.9158277,
   "exportDir":"",
   "name":"doorbang2",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"doorbang2.wav",
-  "volume":0.5,
+  "volume":0.35,
 }
