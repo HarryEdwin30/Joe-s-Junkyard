@@ -1,5 +1,4 @@
 global.player_alive = true;
-global.survivors_left = instance_number(obj_human_parent);
 global.being_attacked = false;
 global.push_cooldown_max = 300;
 global.push_cooldown = 0;
@@ -7,6 +6,7 @@ global.zoomed_in = false;
 global.draw_esc_menu_gui = false;
 global.godmode = true;
 global.invisible = true;
+global.zombie_omniscience = false;
 
 if file_exists("gamesave.ini"){
     ini_open("gamesave.ini")

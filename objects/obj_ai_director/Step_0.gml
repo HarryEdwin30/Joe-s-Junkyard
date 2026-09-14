@@ -33,7 +33,7 @@ if sz != noone{
         var spawn_x = irandom_range(obj_player.x - z_max_dist, obj_player.x + z_max_dist);
         var spawn_y = irandom_range(obj_player.y - z_max_dist, obj_player.y + z_max_dist);
         
-        while (point_distance(spawn_x, spawn_y, obj_player.x, obj_player.y) < z_min_dist or ((spawn_x < 0 and spawn_x > room_width) or (spawn_y < 0 or spawn_y > room_height)) or (place_meeting(spawn_x, spawn_y, tilemap))){
+        while (point_distance(spawn_x, spawn_y, obj_player.x, obj_player.y) < z_min_dist or ((spawn_x < 0 or spawn_x > room_width) or (spawn_y < 0 or spawn_y > room_height)) or (place_meeting(spawn_x, spawn_y, tilemap))){
         	spawn_x = irandom_range(obj_player.x - z_max_dist, obj_player.x + z_max_dist);
             spawn_y = irandom_range(obj_player.y - z_max_dist, obj_player.y + z_max_dist);
             show_debug_message("looping 1");
@@ -46,4 +46,3 @@ if sz != noone{
     }
     zsdl -= 1;
 }
-show_debug_message("finsihed step")

@@ -85,5 +85,3 @@ if global.player_alive = true and obj_player.can_move = true{
         reset = true;
     }
 }
-show_debug_message(hp);
-show_debug_message(board_delay);

@@ -16,6 +16,13 @@ if show_dev_stats = true{
         draw_text(0, 80, "Invisible on");
     }
     else draw_text(0, 80, "Invisible off");
+        
+    if (global.zombie_omniscience) {
+    	draw_text(0, 100, "Omniscience on");
+    }
+    else {
+    	draw_text(0, 100, "Omniscience off");
+    }
 }
 
 

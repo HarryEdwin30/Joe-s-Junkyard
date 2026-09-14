@@ -5,24 +5,28 @@ if global.player_alive = false{
 }
 surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
 
-if keyboard_check(vk_control) and keyboard_check_pressed(ord("P")){
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("O")){
+    if !global.zombie_omniscience{
+        global.zombie_omniscience = true;
+    }
+    else {
+    	global.zombie_omniscience = false;
+    }
+}
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("G")){
     if global.godmode = true{
         global.godmode = false;
-        show_debug_message("godmode off");
     }
     else{
         global.godmode = true;
-        show_debug_message("godmode on");
     }
 }
 if keyboard_check(vk_control) and keyboard_check_pressed(ord("I")){
     if global.invisible = true{
         global.invisible = false;
-        show_debug_message("invisible off");
     }
     else{
         global.invisible = true;
-        show_debug_message("invisible on");
     }
 }
 
@@ -57,10 +61,10 @@ if !instance_exists(obj_player) and global.player_alive = true{
     global.player_alive = false;
 }
 
-if keyboard_check_pressed(ord("F")){
+if keyboard_check(ord("F")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
 }
-if keyboard_check_pressed(ord("G")){
+if keyboard_check_pressed(ord("V")){
     instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
 }
 
