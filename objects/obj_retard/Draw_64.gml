@@ -23,8 +23,8 @@ if show_dev_stats = true{
     else {
     	draw_text(0, 100, "Omniscience off");
     }
+    draw_text(0, 120, "Spawn mode: " + string(spawn_mode));
 }
-
 
 if global.draw_esc_menu_gui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);

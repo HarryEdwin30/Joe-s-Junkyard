@@ -25,7 +25,7 @@ if stamina > max_stamina stamina = max_stamina;
     
 if stamina < 0 stamina = 0;
 
-if is_running = true and (keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W"))){
+if !global.godmode and is_running = true and (keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W"))){
     stamina -= 1;
 }
 if is_running = false and !keyboard_check(vk_shift) stamina += 1;

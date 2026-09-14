@@ -8,3 +8,4 @@ given_board_hp = false;
 board_delay_max = 60;
 board_delay = board_delay_max;
 reset = true;
+bhptgb = 0; //board hp to give back

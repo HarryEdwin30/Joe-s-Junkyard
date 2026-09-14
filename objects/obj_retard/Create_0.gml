@@ -7,6 +7,7 @@ global.draw_esc_menu_gui = false;
 global.godmode = true;
 global.invisible = true;
 global.zombie_omniscience = false;
+spawn_mode = "hold";
 
 if file_exists("gamesave.ini"){
     ini_open("gamesave.ini")

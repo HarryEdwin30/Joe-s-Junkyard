@@ -10,6 +10,9 @@ if (boards) {
         audio_play_sound_at(sound_to_play, x, y, 0, 160, 320, 1, false, 0);
     	boards = false;
         given_board_hp = false;
+        if (bhptgb > 0) {
+        	bhptgb -= bhptgb;
+        }
     }
 }
 if hp <= 0{
@@ -59,6 +62,7 @@ if global.player_alive = true and obj_player.can_move = true{
         var sd = 10; //sound delay
         if (boards) {
         	hp -= 1;
+            bhptgb += 1;
             if (hp % sd == 0) {
                 audio_play_sound(ham_charge_up, 0, false);
             }
@@ -78,8 +82,16 @@ if global.player_alive = true and obj_player.can_move = true{
             }
         }
     }
-    else if (board_delay < board_delay_max) {
-    	board_delay = board_delay_max;
+    else{
+        if (board_delay < board_delay_max) {
+    	   board_delay = board_delay_max;
+        }
+        if (boards) {
+            if (bhptgb > 0) {
+            	hp += bhptgb;
+                bhptgb -= bhptgb;
+            }
+        }
     }
     if !keyboard_check(ord("E")) and !reset{
         reset = true;

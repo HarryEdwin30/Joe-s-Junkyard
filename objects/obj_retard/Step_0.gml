@@ -19,6 +19,8 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord("G")){
     }
     else{
         global.godmode = true;
+        obj_player.stamina = obj_player.max_stamina;
+        obj_player.hp = obj_player.max_hp;
     }
 }
 if keyboard_check(vk_control) and keyboard_check_pressed(ord("I")){
@@ -27,6 +29,11 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord("I")){
     }
     else{
         global.invisible = true;
+    }
+}
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("K")){
+    if (instance_exists(obj_zombie_parent)) {
+    	instance_destroy(obj_zombie_parent);
     }
 }
 
@@ -60,12 +67,33 @@ global.infected = instance_number(obj_zombie_parent);
 if !instance_exists(obj_player) and global.player_alive = true{
     global.player_alive = false;
 }
-
-if keyboard_check(ord("F")){
-    instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("M")){
+    switch (spawn_mode) {
+    	case "hold":
+            spawn_mode = "press"
+            break;
+        case "press":
+            spawn_mode = "hold"
+            break;
+    }
 }
-if keyboard_check_pressed(ord("V")){
-    instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
+switch (spawn_mode) {
+	case "hold":
+        if keyboard_check(ord("F")){
+            instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
+        }
+        if keyboard_check(ord("V")){
+            instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
+        }
+        break;
+    case "press":
+        if keyboard_check_pressed(ord("F")){
+            instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
+        }
+        if keyboard_check_pressed(ord("V")){
+            instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
+        }
+        break;
 }
 
 if global.zoomed_in = true{
