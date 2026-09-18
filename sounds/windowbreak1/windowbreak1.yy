@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"windowbreak1.wav",
-  "volume":0.39,
+  "volume":0.32,
 }

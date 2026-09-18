@@ -10,19 +10,19 @@ max_weight = 300;
 weight = 0;
 
 bs_weight = 10;
-bs = 8;
+bs = 0;
 
 scrap_weight = 10;
-scrap = 1;
+scrap = 0;
 
-rev_ammo = 30;
-sho_ammo = 30;
-rif_ammo = 3;
+rev_ammo = 0;
+sho_ammo = 0;
+rif_ammo = 0;
 
 rif_ammo_weight = 30;
 
 zev_cake_weight = 0;
-zev_cakes = 1;
+zev_cakes = 0;
 
 zev_cake_unlocked = false;
 

@@ -1,5 +1,7 @@
 draw_gui = false;
 
+exists = choose(true, false);
+
 obj_x = 390;
 obj_y = 148;
 

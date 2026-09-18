@@ -20,9 +20,14 @@ if hp <= 0{
 }
 if (broken) {
 	if played_broken_sound = false{
-        var sound_to_play = choose(windowbreak1, windowbreak2, windowbreak3);
-        audio_play_sound_at(sound_to_play, x, y, 0, 160, 320, 1, false, 0);
-        played_broken_sound = true;
+        if (sound_delay > 0) {
+    	   sound_delay -= 1;
+        }
+        else {
+        	var sound_to_play = windowbreak1 //choose(windowbreak1, windowbreak2, windowbreak3);
+            audio_play_sound_at(sound_to_play, x, y, 0, 160, 480, 1, false, 0);
+            played_broken_sound = true;
+        }
     }
 }
 	
@@ -47,15 +52,6 @@ switch (boards) {
         break;
 }
 if global.player_alive = true and obj_player.can_move = true{
-    var _center_x_offset = (sprite_get_width(sprite_index) / 2 - sprite_xoffset) * image_xscale;
-    var _center_y_offset = (sprite_get_height(sprite_index) / 2 - sprite_yoffset) * image_yscale;
-    
-    var _dist = point_distance(0, 0, _center_x_offset, _center_y_offset);
-    var _dir = point_direction(0, 0, _center_x_offset, _center_y_offset) + image_angle;
-    
-    var cx = x + lengthdir_x(_dist, _dir);
-    var cy = y + lengthdir_y(_dist, _dir);
-    
     var dfw = point_distance(obj_player.x, obj_player.y, cx, cy);
     
     if keyboard_check(ord("E")) and dfw <= 32 and reset{
@@ -89,7 +85,7 @@ if global.player_alive = true and obj_player.can_move = true{
         if (boards) {
             if (bhptgb > 0) {
             	hp += bhptgb;
-                bhptgb -= bhptgb;
+                bhptgb = 0;
             }
         }
     }

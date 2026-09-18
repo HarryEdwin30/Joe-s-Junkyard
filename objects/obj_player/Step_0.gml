@@ -75,14 +75,19 @@ if instance_exists(obj_door){
         }
     }
 }
+if instance_exists(obj_window){
+    var window = instance_nearest(x, y, obj_window);
+    if window.open = false{
+        if !place_meeting(x, y, window){
+           array_push(tilemaps, window); 
+        }
+    }
+}
 if (instance_exists(obj_window)) {
     var open_windows = [];
     with (obj_window) {
     	if (open) {
         	array_push(open_windows, id);
-        }
-        else{
-            array_push(tilemaps, id);
         }
     }
 	if (place_meeting(x, y, open_windows)) {

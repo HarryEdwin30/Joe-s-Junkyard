@@ -69,4 +69,3 @@ rif_bullets_left = rif_max_bullets;
 rif_reloading = false;
 rif_max_reload_time = 90;
 rif_reload_time_left = rif_max_reload_time;
-

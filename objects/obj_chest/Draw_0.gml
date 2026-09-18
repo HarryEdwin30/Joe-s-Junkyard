@@ -1,3 +1,6 @@
+if (!exists) {
+	exit;
+}
 var cam = view_camera[0];
     
 var cam_x = camera_get_view_x(cam);
@@ -40,4 +43,4 @@ if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and
     else {
     	image_alpha = 1;
     }
-};
+}

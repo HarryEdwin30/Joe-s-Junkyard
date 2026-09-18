@@ -29,7 +29,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
             }
         }
     }
-    if (instance_exists(obj_zombie_parent)) {
+    if (instance_exists(obj_zombie_parent) and !position_meeting(mouse_x, mouse_y, obj_window)) {
         array_push(enemies, obj_zombie_parent);
     }
     var targets_list = ds_list_create();
@@ -58,6 +58,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
         if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, targets, false, true) or (position_meeting(mouse_x, mouse_y, obj_window) and ham_target_distance <= ham_target_distance_max) {
             ham_target_in_range = true;
             ham_draw_target = true;
+            
         }
         else{
             ham_target_in_range = false;

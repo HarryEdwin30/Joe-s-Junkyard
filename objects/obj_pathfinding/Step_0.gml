@@ -33,7 +33,7 @@ if room != last_room{
             
             if (_has_tile) {
                 mp_grid_add_cell(global.map_grid, xx, yy);
-             }
-         }
-     }
+            }
+        }
+    }
 }

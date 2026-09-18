@@ -1,3 +1,7 @@
+if (!exists) {
+	exit;
+}
+
 if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0{
     chest_empty = true;
 }
