@@ -9,7 +9,7 @@ if hp <= 0{
 if global.player_alive and obj_player.can_move and !broken{
     var dfd = point_distance(obj_player.x, obj_player.y, cx, cy);
     
-    if keyboard_check_pressed(vk_space) and dfd <= 32{
+    if keyboard_check_pressed(vk_space) and dfd <= 32 and !obj_player.being_attacked{
         if open = false{
             open = true;
             audio_play_sound(dooropen, 0, false);
@@ -25,6 +25,7 @@ if !open{
     if (!added_to_array) {
     	array_push(global.closed_obstacles, id);
         array_push(global.breakable_obstacles, id);
+        array_push(global.opaque_obstacles, id);
         added_to_array = true;
     }
 }
@@ -33,8 +34,10 @@ else{
     if (added_to_array) {
     	var index1 = array_get_index(global.closed_obstacles, id);
         var index2 = array_get_index(global.breakable_obstacles, id);
+        var index3 = array_get_index(global.opaque_obstacles, id);
         array_delete(global.closed_obstacles, index1, 1);
         array_delete(global.breakable_obstacles, index2, 1);
+        array_delete(global.opaque_obstacles, index3, 1);
         added_to_array = false;
     }
 }

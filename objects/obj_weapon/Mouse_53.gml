@@ -85,7 +85,7 @@ if weapon_type = 2 and sho_can_shoot = true{
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var pellets_drawn = 0;
     var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
+    var targets = [tilemap];
     if instance_exists(obj_door){
         with (obj_door) {
         	if (open == false) {
@@ -107,8 +107,10 @@ if weapon_type = 2 and sho_can_shoot = true{
         var checker_x = start_x;
         var checker_y = start_y;
         var max_distance = point_distance(start_x, start_y, point_x, point_y);
+        var pen = 0;
+        var zombies_to_deal_damage_to = [];
         
-        while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
+        while (pen < sho_max_pen and !position_meeting(checker_x, checker_y, targets) and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	    checker_x += step_x;
             checker_y += step_y;
             if position_meeting(checker_x, checker_y, obj_window){
@@ -117,13 +119,19 @@ if weapon_type = 2 and sho_can_shoot = true{
                 	window_to_shoot.broken = true;
                 }
             }
+            if (position_meeting(checker_x, checker_y, obj_zombie_parent)) {
+                var zombie = instance_nearest(checker_x, checker_y, obj_zombie_parent);
+                if !array_contains(zombies_to_deal_damage_to, zombie){
+                    array_push(zombies_to_deal_damage_to, zombie);
+                    pen += 1;
+                }
+            }
         }
         var end_x = checker_x;
         var end_y = checker_y;
         
-        if position_meeting(end_x, end_y, obj_zombie_parent){
-        var zombie_to_shoot = instance_nearest(end_x, end_y, obj_zombie_parent);
-        deal_damage(rev_damage, sound_to_play, zombie_to_shoot);
+        for (var i = 0; i < array_length(zombies_to_deal_damage_to); i++) {
+        	deal_damage(sho_damage, sound_to_play, zombies_to_deal_damage_to[i]);
         }
         if position_meeting(mouse_x, mouse_y, obj_player){
             obj_player.infected = false;

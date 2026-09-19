@@ -159,7 +159,7 @@ if global.invisible = true{
     detection_range = 0;
 }
 
-if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, undefined){
+if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined){
     can_see_player = true;
     interest = max_interest;
     target_x = instance_nearest(x, y, obj_human_parent).x;

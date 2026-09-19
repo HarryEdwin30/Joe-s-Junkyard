@@ -3,7 +3,7 @@ audio_listener_orientation(0, 0, 1, 0, -1, 0);
 if hp <= 0{
     instance_destroy(obj_backpack);
     instance_create_depth(x, y, 0, obj_death_marker);
-    global.being_attacked = false;
+    being_attacked = false;
     audio_play_sound(death, 0, false);
     if infected = true{
         global.showacutezombiepic = true;
@@ -25,7 +25,7 @@ if stamina > max_stamina stamina = max_stamina;
     
 if stamina < 0 stamina = 0;
 
-if !global.godmode and is_running = true and (keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W"))){
+if !global.godmode and stamina > 0 and is_running = true and (keyboard_check(ord("D")) or keyboard_check(ord("A")) or keyboard_check(ord("S")) or keyboard_check(ord("W"))){
     stamina -= 0.2;
 }
 if is_running = false and !keyboard_check(vk_shift) stamina += 0.2;
@@ -44,16 +44,21 @@ if (push_cooldown > 0) {
 }
 
 if being_attacked{
-    if (keyboard_check_pressed(ord("E"))) and stamina >= 25 and push_cooldown <= 0{
+    if (keyboard_check_pressed(vk_space)) and stamina >= 33 and push_cooldown <= 0{
         being_attacked = false;
-        stamina -= 25;
     	audio_play_sound(bp_select, 0, false);
         var zombies = [];
         if (instance_exists(obj_zombie_parent)) {
         	with (obj_zombie_parent) {
             	if (place_meeting(x, y, obj_player)) {
-                	id.stunned = 60;
+                	array_push(zombies, id);
                 }
+            }
+        }
+        for (var i = 0; i < array_length(zombies); i++) {
+        	stamina -= 33;
+            if (stamina > 0) {
+            	zombies[i].stunned = zombies[i].max_stun;
             }
         }
     }

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bp_close",
+  "%Name":"chest_close",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.19188209,
+  "duration":0.20897959,
   "exportDir":"",
-  "name":"bp_close",
+  "name":"chest_close",
   "parent":{
     "name":"backpack sounds",
     "path":"folders/sounds/backpack sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bp_close.wav",
-  "volume":1.0,
+  "soundFile":"chest_close.mp3",
+  "volume":0.11,
 }

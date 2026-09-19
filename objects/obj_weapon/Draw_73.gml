@@ -46,7 +46,7 @@ if weapon_type = 4{
 }
 if draw_a_bullet = true{
     var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
+    var targets = [tilemap];
     if instance_exists(obj_door){
         with (obj_door) {
         	if (open == false) {
@@ -73,7 +73,7 @@ if draw_a_bullet = true{
     var step_x = lengthdir_x(1, dir);
     var step_y = lengthdir_y(1, dir);
     
-    while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
+    while (!position_meeting(checker_x, checker_y, targets) and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
     	checker_x += step_x;
         checker_y += step_y;
     }
@@ -120,10 +120,19 @@ if draw_sho_bullets = true{
         var checker_x = start_x;
         var checker_y = start_y;
         var max_distance = point_distance(start_x, start_y, point_x, point_y);
+        var pen = 0;
+        var zombies_to_deal_damage_to = [];
         
-        while (position_meeting(checker_x, checker_y, targets) == 0 and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
-    	    checker_x += step_x;
+        while (pen < sho_max_pen and !position_meeting(checker_x, checker_y, targets) and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
+            checker_x += step_x;
             checker_y += step_y;
+            if (position_meeting(checker_x, checker_y, obj_zombie_parent)) {
+                var zombie = instance_nearest(checker_x, checker_y, obj_zombie_parent);
+                if !array_contains(zombies_to_deal_damage_to, zombie){
+                    array_push(zombies_to_deal_damage_to, zombie);
+                    pen += 1;
+                }
+            }
         }
         var end_x = checker_x;
         var end_y = checker_y;

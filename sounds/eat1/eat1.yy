@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bp_close",
+  "%Name":"eat1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.19188209,
+  "duration":0.42557824,
   "exportDir":"",
-  "name":"bp_close",
+  "name":"eat1",
   "parent":{
     "name":"backpack sounds",
     "path":"folders/sounds/backpack sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bp_close.wav",
-  "volume":1.0,
+  "soundFile":"eat1.wav",
+  "volume":0.37,
 }

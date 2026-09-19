@@ -3,6 +3,7 @@ m_spd = max_m_spd;
 hp = irandom_range(50, 100);
 bite_delay = 0;
 damage_delay = 60;
+max_stun = 65;
 stunned = 0;
 chase_player = false;
 wandering = false;

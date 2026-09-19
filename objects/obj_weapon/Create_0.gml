@@ -24,7 +24,7 @@ ham_target = undefined;
 ham_charge_speed = 0.2;
 ham_max_charge = 10;
 ham_charge = 0;
-ham_base_stamina_usage = 3;
+ham_base_stamina_usage = 4;
 
 rev_unlocked = true;
 rev_can_shoot = true;
@@ -52,8 +52,9 @@ sho_shoot_delay = 0;
 sho_reloading = false;
 sho_max_reload_time = 15;
 sho_reload_time_left = sho_max_reload_time;
-sho_damage = 15; //(per pellet)
+sho_damage = 75; //(per pellet)
 sho_reload_delay_left = 0;
+sho_max_pen = 3;
 
 rif_unlocked = true;
 rif_can_shoot = true;

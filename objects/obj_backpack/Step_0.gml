@@ -39,7 +39,6 @@ if draw_backpack_ui = true{
     	obj_text_color = c_black;
         if mouse_check_button_pressed(mb_left){
             transfer_ammo_from_bp();
-            audio_play_sound(bp_select, 0, false);
             bs_damount = 0;
             scrap_damount = 0;
             rev_damount = 0;
@@ -463,9 +462,24 @@ if draw_backpack_ui = true{
         if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
             if mouse_gui_y >= drop_y1 && mouse_gui_y <= drop_y2{
                 if mouse_check_button_pressed(mb_left){
-                    obj_player.infected = true;
-                    zev_cakes -= zc_damount
-                    zc_damount -= zc_damount;
+                    if (obj_player.infected) {
+                    	var cure = choose(true, false);
+                        if (cure) {
+                        	obj_player.infected = false;
+                            audio_play_sound(yay, 0, false);
+                        }
+                    }
+                    var hp_to_heal = irandom_range(20, 40);
+                    if (obj_player.hp + hp_to_heal > obj_player.max_hp) {
+                    	obj_player.hp = obj_player.max_hp;
+                    }
+                    else {
+                    	obj_player.hp += hp_to_heal;
+                    }
+                    var sound = choose(eat1, eat2, eat3);
+                    audio_play_sound(sound, 0, false);
+                    zev_cakes -= zc_damount;
+                    zc_damount = 0;
                 }
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{

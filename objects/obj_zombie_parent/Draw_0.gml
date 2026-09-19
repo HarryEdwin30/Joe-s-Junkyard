@@ -25,13 +25,6 @@ if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and
                 }
             }
         }
-        if instance_exists(obj_window){
-            with (obj_window) {
-                if (boards) {
-                	array_push(tm_obstacles, id);
-                }
-            }
-        }
         if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
             image_alpha = 1;
         }

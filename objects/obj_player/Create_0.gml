@@ -8,6 +8,6 @@ can_run = true;
 max_stamina = 100;
 stamina = max_stamina;
 can_move = true;
-push_cooldown_max = 30;
+push_cooldown_max = 60;
 push_cooldown = 0;
 being_attacked = false;
