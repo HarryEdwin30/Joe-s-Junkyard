@@ -1,12 +1,10 @@
 global.player_alive = true;
-global.being_attacked = false;
-global.push_cooldown_max = 300;
-global.push_cooldown = 0;
 global.zoomed_in = false;
 global.draw_esc_menu_gui = false;
 global.godmode = true;
 global.invisible = true;
 global.zombie_omniscience = false;
+global.see_all = false;
 spawn_mode = "hold";
 
 if file_exists("gamesave.ini"){
@@ -18,3 +16,10 @@ if file_exists("gamesave.ini"){
 
 show_dev_stats = true;
 draw_mm_options = false;
+
+global.closed_obstacles = [];
+global.breakable_obstacles = [];
+
+last_room = room;
+tilemap = layer_tilemap_get_id("obstacles");
+array_push(global.closed_obstacles, tilemap);

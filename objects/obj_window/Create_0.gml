@@ -21,3 +21,4 @@ var _dir = point_direction(0, 0, _center_x_offset, _center_y_offset) + image_ang
 
 cx = x + lengthdir_x(_dist, _dir);
 cy = y + lengthdir_y(_dist, _dir);
+added_to_array = false;

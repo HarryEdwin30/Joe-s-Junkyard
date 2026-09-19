@@ -40,4 +40,7 @@ if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and
     else {
     	image_alpha = 1;
     }
+    if (global.see_all) {
+    	image_alpha = 1;
+    }
 };

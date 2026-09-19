@@ -158,7 +158,7 @@ if ham_draw_target = true and obj_player.can_move = true{
         
         var ang = round(ham_target.image_angle) % 360;
         
-        if (ang == 90 || ang == -90) {
+        if (ang == 90 || ang == -90 || ang == 270) {
         	draw_rectangle(cx - 8, cy - 16, cx + 9, cy + 16, true);
         }
         else{

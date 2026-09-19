@@ -1,3 +1,15 @@
+if layer_exists("obstacles"){
+    if (room != last_room) {
+        global.closed_obstacles = [];
+        global.breakable_obstacles = [];
+        var index = array_get_index(global.closed_obstacles, tilemap);
+        array_delete(global.closed_obstacles, index, 1);
+        tilemap = layer_tilemap_get_id("obstacles");
+    	array_push(global.closed_obstacles, tilemap);
+        last_room = room;
+    }
+}
+
 var cam = view_camera[0];
 if global.player_alive = false{
     camera_set_view_size(cam, 640, 480);
@@ -74,6 +86,16 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord("M")){
             break;
         case "press":
             spawn_mode = "hold"
+            break;
+    }
+}
+if keyboard_check(vk_control) and keyboard_check_pressed(ord("L")){
+    switch (global.see_all) {
+    	case true:
+            global.see_all = false;
+            break;
+        case false:
+            global.see_all = true;
             break;
     }
 }

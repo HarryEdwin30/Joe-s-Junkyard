@@ -6,45 +6,10 @@ if global.draw_esc_menu_gui = true{
     m_spd = 0;
     exit;
 }
-var tilemaps = [];
-var open_windows = [];
-var tm_obstacles = [];
-var all_obs = [];
-var inst_obs = [];
 
-if instance_exists(obj_door){
-    array_push(inst_obs, obj_door);
-    with (obj_door) {
-    	if (!open) {
-            array_push(all_obs, id);
-            array_push(tm_obstacles, id);
-        }
-    }
-}
-if instance_exists(obj_window){
-    with (obj_window) {
-    	if (!open) {
-            array_push(all_obs, id);
-            array_push(inst_obs, obj_window);
-        }
-        else{
-            array_push(open_windows, id);
-        }
-        if (boards = true) {
-        	array_push(tm_obstacles, id);
-        }
-    }
-}
-/*
-if instance_exists(obj_window){
-    array_push(inst_obs, obj_window);
-    array_push(all_obs, obj_window);
-}
-*/
+var tilemap = undefined;
 if layer_exists("obstacles"){
-    array_push(tilemaps, layer_tilemap_get_id("obstacles"));
-    array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
-    array_push(all_obs, layer_tilemap_get_id("obstacles"));
+    tilemap = layer_tilemap_get_id("obstacles");
 }
 
 if distance_to_object(obj_player) > 1280 and global.player_alive = true{
@@ -63,17 +28,13 @@ if !instance_exists(obj_player){
 }
 
 //wall collisions in case zombie somehow gets stuck in one
-if place_meeting(x, y, tilemaps){
+if place_meeting(x, y, tilemap){
     var current_tile = 0;
     
-    for (var i = 0; i < array_length(tilemaps); i++) {
-        var _map_id = tilemaps[i];
-        var _tile = tilemap_get_at_pixel(_map_id, x, y);
-        
-        if (_tile != 0) {
-            current_tile = _tile;
-            break;
-        }
+    var _tile = tilemap_get_at_pixel(tilemap, x, y);
+    
+    if (_tile != 0) {
+        current_tile = _tile;
     }
     
     if (current_tile != 0) {
@@ -89,13 +50,10 @@ if place_meeting(x, y, tilemaps){
                 var check_y = y + lengthdir_y(radius, angle);
                 
                 var _is_empty = true;
-                for (var j = 0; j < array_length(tilemaps); j++) {
-                    if (tilemap_get_at_pixel(tilemaps[j], check_x, check_y) != 0) {
-                        _is_empty = false;
-                        break;
-                    }
+                if (tilemap_get_at_pixel(tilemap, check_x, check_y) != 0) {
+                    _is_empty = false;
                 }
-                
+            
                 if (_is_empty) {
                     test_x = check_x;
                     test_y = check_y;
@@ -117,10 +75,9 @@ var cam = view_camera[0];
 var cam_x = camera_get_view_x(cam);
 var cam_y = camera_get_view_y(cam);
 
-var pathfinding_delay_def = 8;
-var pathfinding_delay_max = pathfinding_delay_def;
+var pathfinding_delay_max = 8;
 
-var push_speed = 1;
+var push_speed = 3;
 if place_meeting(x, y, obj_player){
     with (obj_player){
         if (id != other.id){
@@ -131,7 +88,7 @@ if place_meeting(x, y, obj_player){
                 var dir = point_direction(x, y, other.x, other.y);
                 var test_x = other.x + lengthdir_x(push_speed, dir);
                 var test_y = other.y + lengthdir_y(push_speed, dir);
-                if !place_meeting(test_x, test_y, all_obs){
+                if !place_meeting(test_x, test_y, global.closed_obstacles){
                     other.x += lengthdir_x(push_speed, dir);
                     other.y += lengthdir_y(push_speed, dir);
                 }
@@ -144,8 +101,7 @@ if place_meeting(x, y, obj_zombie_parent){
     var cam_low = 20;
     var cam_high_x = 660;
     var cam_high_y = 500;
-    var collision_delay_def = 0;
-    var collision_delay_max = collision_delay_def;
+    var collision_delay_max = 0;
         
     collision_delay -= 1;
     if collision_delay <= 0{
@@ -159,7 +115,7 @@ if place_meeting(x, y, obj_zombie_parent){
                     var dir = point_direction(x, y, other.x, other.y);
                     var test_x = other.x + lengthdir_x(push_speed, dir);
                     var test_y = other.y + lengthdir_y(push_speed, dir);
-                    if !place_meeting(test_x, test_y, all_obs){
+                    if !place_meeting(test_x, test_y, global.closed_obstacles){
                         other.x += lengthdir_x(push_speed, dir);
                         other.y += lengthdir_y(push_speed, dir);
                     }
@@ -174,18 +130,21 @@ if stunned > 0{
 }
 else m_spd = max_m_spd;
     
-if (place_meeting(x, y, open_windows)) {
-	m_spd /= 2;
+if (place_meeting(x, y, obj_window)) {
+    var window = instance_nearest(x, y, obj_window);
+    if (window.open) {
+    	m_spd /= 2;
+    }
 }
 
-if global.being_attacked = true{
+if obj_player.being_attacked = true{
     damage_delay -= 1;
 }
 else damage_delay = 30;
 
-if place_meeting(x, y, obj_human_parent) and stunned <= 0 and global.godmode = false{
+if place_meeting(x, y, obj_player) and stunned <= 0 and global.godmode = false{
     m_spd = 0;
-    global.being_attacked = true;
+    obj_player.being_attacked = true;
     if damage_delay <= 0{
         damage_delay = 50;
         sound = choose(bitesound1, bitesound2, bitesound3, bitesound4);
@@ -200,7 +159,7 @@ if global.invisible = true{
     detection_range = 0;
 }
 
-if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
+if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, undefined){
     can_see_player = true;
     interest = max_interest;
     target_x = instance_nearest(x, y, obj_human_parent).x;
@@ -241,7 +200,7 @@ if chase_player = false and wandering = false{
     wander_x = irandom_range(x - wander_distance, x + wander_distance);
     wander_y = irandom_range(y - wander_distance, y + wander_distance);
     
-    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, tilemaps){
+    if wander_x < 0  or wander_x > room_width or wander_y < 0 or wander_y > room_height or position_meeting(wander_x, wander_y, global.closed_obstacles){
         exit;
     } 
     else{
@@ -266,26 +225,23 @@ if wandering = true{
 }
 
 //obstacle stuff down here (:
-if place_meeting(x, y, inst_obs){
+if place_meeting(x, y, global.breakable_obstacles){
     var n_obs = noone;
     var _min_dist = infinity;
     
-    for (var i = 0; i < array_length(inst_obs); i++) {
-        var _obj_type = inst_obs[i];
-        if (instance_exists(_obj_type)) {
-            var _inst = instance_nearest(x, y, _obj_type);
-            var _dist = point_distance(x, y, _inst.x, _inst.y);
-            if (_dist < _min_dist) {
-                _min_dist = _dist;
-                n_obs = _inst;
-            }
+    for (var i = 0; i < array_length(global.breakable_obstacles); i++) {
+        var _inst = global.breakable_obstacles[i];
+        var _dist = point_distance(x, y, _inst.x, _inst.y);
+        if (_dist < _min_dist) {
+            _min_dist = _dist;
+            n_obs = _inst;
         }
     }
-    if chase_player != true and n_obs.open = false{
-        m_spd = 0;
-        wander_delay = 0;
-        path_end();
-        if (n_obs != noone) {
+    if (n_obs != noone) {
+        if !chase_player{
+            m_spd = 0;
+            wander_delay = 0;
+            path_end();
             var test_x = x;
             var test_y = y;
             var radius = 2;
@@ -317,52 +273,52 @@ if place_meeting(x, y, inst_obs){
                 y = test_y;
             }
         }
-    }
-    else if (collision_line(x, y, obj_player.x, obj_player.y, all_obs, false, true) and n_obs.open = false){
-        breaking_something = true;
-        if break_delay > 0{
-            break_delay -= 1;
-        }
-        else{
-            if (n_obs.boards = undefined) {
-            	var sound_to_play = choose(doorbang1, doorbang2);
-                deal_damage(1, sound_to_play, n_obs, x, y, 0);
-                switch (object_index) {
-                	case obj_walker:
-                        break_delay = irandom_range(60, 120);
-                        break;
-                    case obj_runner:
-                        break_delay = irandom_range(25, 60);
-                        break;
-                }
-            }
-            else if (n_obs.boards = false) {
-                var sound_to_play = choose(windowbang1, windowbang2);
-                deal_damage(1, sound_to_play, n_obs, x, y, 0);
-                switch (object_index) {
-                	case obj_walker:
-                        break_delay = irandom_range(60, 120);
-                        break;
-                    case obj_runner:
-                        break_delay = irandom_range(25, 60);
-                        break;
-                }
+        else if (collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, true)){
+            breaking_something = true;
+            if break_delay > 0{
+                break_delay -= 1;
             }
             else{
-                var sound_to_play = choose(boardbang1, boardbang2);
-                deal_damage(1, sound_to_play, n_obs, x, y, 0);
-                switch (object_index) {
-                    case obj_walker:
-                        break_delay = irandom_range(60, 120);
-                        break;
-                    case obj_runner:
-                        break_delay = irandom_range(25, 60);
-                        break;
+                if (n_obs.boards = undefined) {
+                	var sound_to_play = choose(doorbang1, doorbang2);
+                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    switch (object_index) {
+                    	case obj_walker:
+                            break_delay = irandom_range(60, 120);
+                            break;
+                        case obj_runner:
+                            break_delay = irandom_range(25, 60);
+                            break;
+                    }
+                }
+                else if (n_obs.boards = false) {
+                    var sound_to_play = choose(windowbang1, windowbang2);
+                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    switch (object_index) {
+                    	case obj_walker:
+                            break_delay = irandom_range(60, 120);
+                            break;
+                        case obj_runner:
+                            break_delay = irandom_range(25, 60);
+                            break;
+                    }
+                }
+                else{
+                    var sound_to_play = choose(boardbang1, boardbang2);
+                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    switch (object_index) {
+                        case obj_walker:
+                            break_delay = irandom_range(60, 120);
+                            break;
+                        case obj_runner:
+                            break_delay = irandom_range(25, 60);
+                            break;
+                    }
                 }
             }
+            m_spd = 0;
+            path_end();
         }
-        m_spd = 0;
-        path_end();
     }
 }
 else if (breaking_something) {

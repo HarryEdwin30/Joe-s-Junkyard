@@ -85,7 +85,6 @@
     {"id":{"name":"TestRoom","path":"rooms/TestRoom/TestRoom.yy",},},
     {"id":{"name":"TestRoom2","path":"rooms/TestRoom2/TestRoom2.yy",},},
     {"id":{"name":"deal_damage","path":"scripts/deal_damage/deal_damage.yy",},},
-    {"id":{"name":"getoffme","path":"scripts/getoffme/getoffme.yy",},},
     {"id":{"name":"iwillfindyouandiwillrapeyou","path":"scripts/iwillfindyouandiwillrapeyou/iwillfindyouandiwillrapeyou.yy",},},
     {"id":{"name":"move_to_menu","path":"scripts/move_to_menu/move_to_menu.yy",},},
     {"id":{"name":"transfer_ammo_from_bp","path":"scripts/transfer_ammo_from_bp/transfer_ammo_from_bp.yy",},},

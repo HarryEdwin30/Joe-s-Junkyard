@@ -59,3 +59,4 @@ if chest_type = 3{
     rif_ammo = irandom_range(0, 2);
     zev_cakes = irandom_range(0, 1);
 }
+image_alpha = 0;

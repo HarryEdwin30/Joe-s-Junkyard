@@ -6,7 +6,7 @@ if global.draw_esc_menu_gui = true{
     exit;
 }
 
-if global.being_attacked = true exit;
+if obj_player.being_attacked = true exit;
     
 if weapon_type = 3 and rif_bullets_left <= 0{
     audio_play_sound(emptygun, 0, false);

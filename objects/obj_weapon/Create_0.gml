@@ -24,8 +24,7 @@ ham_target = undefined;
 ham_charge_speed = 0.2;
 ham_max_charge = 10;
 ham_charge = 0;
-ham_base_damage = 10;
-ham_base_stamina_usage = 5;
+ham_base_stamina_usage = 3;
 
 rev_unlocked = true;
 rev_can_shoot = true;

@@ -1,3 +1,19 @@
+if !open{
+    if (!added_to_array) {
+    	array_push(global.closed_obstacles, id);
+        array_push(global.breakable_obstacles, id);
+        added_to_array = true;
+    }
+}
+else{
+    if (added_to_array) {
+    	var index1 = array_get_index(global.closed_obstacles, id);
+        var index2 = array_get_index(global.breakable_obstacles, id);
+        array_delete(global.closed_obstacles, index1, id);
+        array_delete(global.breakable_obstacles, index2, id);
+        added_to_array = false;
+    }
+}
 if (boards) {
     if (!given_board_hp) {
     	ahp = hp
@@ -11,10 +27,11 @@ if (boards) {
     	boards = false;
         given_board_hp = false;
         if (bhptgb > 0) {
-        	bhptgb -= bhptgb;
+        	bhptgb = 0;
         }
     }
 }
+
 if hp <= 0{
     broken = true;
 }
@@ -54,7 +71,7 @@ switch (boards) {
 if global.player_alive = true and obj_player.can_move = true{
     var dfw = point_distance(obj_player.x, obj_player.y, cx, cy);
     
-    if keyboard_check(ord("E")) and dfw <= 32 and reset{
+    if keyboard_check(vk_space) and dfw <= 32 and reset{
         var sd = 10; //sound delay
         if (boards) {
         	hp -= 1;
@@ -89,7 +106,23 @@ if global.player_alive = true and obj_player.can_move = true{
             }
         }
     }
-    if !keyboard_check(ord("E")) and !reset{
+    if !keyboard_check(vk_space) and !reset{
         reset = true;
+    }
+}
+if !open{
+    if (!added_to_array) {
+    	array_push(global.closed_obstacles, id);
+        array_push(global.breakable_obstacles, id);
+        added_to_array = true;
+    }
+}
+else{
+    if (added_to_array) {
+    	var index1 = array_get_index(global.closed_obstacles, id);
+        var index2 = array_get_index(global.breakable_obstacles, id);
+        array_delete(global.closed_obstacles, index1, 1);
+        array_delete(global.breakable_obstacles, index2, 1);
+        added_to_array = false;
     }
 }

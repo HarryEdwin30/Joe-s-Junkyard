@@ -15,3 +15,4 @@ collision_delay = 0;
 touching_obs = false;
 break_delay = 0;
 breaking_something = false;
+image_alpha = 0;

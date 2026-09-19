@@ -9,10 +9,10 @@ if global.draw_esc_menu_gui = true{
 rif_shoot_delay = 0;
 
 if weapon_type = 4{
-    if ham_target_in_range = true and global.being_attacked = false and ham_delay <= 0{
+    if ham_target_in_range = true and obj_player.being_attacked = false and ham_delay <= 0{
         ham_delay = ham_delay_max;
         
-        var stamina_to_lose = (ham_base_stamina_usage * ham_charge) * 6;
+        var stamina_to_lose = (ham_base_stamina_usage * ham_charge) * 1;
         if stamina_to_lose > obj_player.stamina{
             stamina_to_lose = obj_player.stamina;
         }
@@ -21,7 +21,7 @@ if weapon_type = 4{
         var sound_to_play = undefined;
         if (ham_target.object_index == obj_zombie_parent || object_is_ancestor(ham_target.object_index, obj_zombie_parent)) {
         	sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
-            var damage_to_deal = (stamina_to_lose / 6) * 2;
+            var damage_to_deal = (stamina_to_lose) * 3;
             deal_damage(damage_to_deal, sound_to_play, ham_target);
         }
         if (ham_target.object_index == obj_window || object_is_ancestor(ham_target.object_index, obj_window)) {
