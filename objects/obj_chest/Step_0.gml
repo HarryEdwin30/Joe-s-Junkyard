@@ -396,12 +396,12 @@ if draw_gui = true{
                             rif_ammo -= rif_tamount;
                             zev_cakes -= zc_tamount;
                             
-                            bs_tamount -= bs_tamount;
-                            scrap_tamount -= scrap_tamount;
-                            rev_tamount -= rev_tamount;
-                            sho_tamount -= sho_tamount;
-                            rif_tamount -= rif_tamount;
-                            zc_tamount -= zc_tamount;
+                            bs_tamount = 0;
+                            scrap_tamount = 0;
+                            rev_tamount = 0
+                            sho_tamount = 0;
+                            rif_tamount = 0;
+                            zc_tamount = 0;
                         }
                     }
                 }

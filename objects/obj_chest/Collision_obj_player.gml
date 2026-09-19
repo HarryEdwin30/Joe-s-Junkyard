@@ -16,11 +16,11 @@ if keyboard_check_pressed(ord("E")){
         draw_gui = false;
         obj_player.can_move = true;
         
-        bs_damount = 0;
-        scrap_damount = 0;
-        rev_damount = 0;
-        sho_damount = 0;
-        rif_damount = 0;
-        zc_damount = 0;
+        bs_tamount = 0;
+        scrap_tamount = 0;
+        rev_tamount = 0;
+        sho_tamount = 0;
+        rif_tamount = 0;
+        zc_tamount = 0;
     }
 }

@@ -2,10 +2,22 @@ if layer_exists("obstacles"){
     if (room != last_room) {
         global.closed_obstacles = [];
         global.breakable_obstacles = [];
-        var index = array_get_index(global.closed_obstacles, tilemap);
-        array_delete(global.closed_obstacles, index, 1);
         tilemap = layer_tilemap_get_id("obstacles");
     	array_push(global.closed_obstacles, tilemap);
+        if (instance_exists(obj_door)) {
+        	with (obj_door) {
+            	if (added_to_array) {
+                	added_to_array = false;
+                }
+            }
+        }
+        if (instance_exists(obj_window)) {
+        	with (obj_window) {
+            	if (added_to_array) {
+                	added_to_array = false;
+                }
+            }
+        }
         last_room = room;
     }
 }

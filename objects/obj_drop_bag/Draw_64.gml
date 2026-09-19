@@ -139,7 +139,6 @@ if draw_gui = true{
                 cancel_c = c_black;
             }
         }
-    
         draw_sprite(spr_backpack_button, take_f, obj_x, take_y1);
         draw_sprite(spr_backpack_button, cancel_f, obj_x, cancel_y1);
     

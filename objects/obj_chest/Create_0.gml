@@ -33,7 +33,6 @@ if chance < uncommon_chance{
         chest_type = 2
     }
 }
-show_debug_message(chest_type);
 
 if chest_type = 1{
     bs = irandom_range(0, 2);

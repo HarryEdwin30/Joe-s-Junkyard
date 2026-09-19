@@ -1,3 +1,4 @@
+global.last_room = room;
 global.player_alive = true;
 global.zoomed_in = false;
 global.draw_esc_menu_gui = false;
