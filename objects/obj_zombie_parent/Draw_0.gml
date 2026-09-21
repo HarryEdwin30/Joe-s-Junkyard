@@ -14,18 +14,7 @@ if global.zoomed_in = true{
 if (x > cam_x - cam_low and x < cam_x + cam_high_x) and (y > cam_y - cam_low and y < cam_y + cam_high_y){
     draw_self();
     if global.player_alive{
-        var tm_obstacles = [];
-        if layer_exists("obstacles"){
-            array_push(tm_obstacles, layer_tilemap_get_id("obstacles"));
-        }
-        if instance_exists(obj_door){
-            with (obj_door) {
-            	if (open == false) {
-                    array_push(tm_obstacles, id);
-                }
-            }
-        }
-        if !collision_line(x, y, obj_player.x, obj_player.y, tm_obstacles, false, undefined){
+        if !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined){
             image_alpha = 1;
         }
         else if image_alpha > 0 image_alpha -= 0.01;

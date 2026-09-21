@@ -1,5 +1,2 @@
-if (!exists) {
-	exit;
-}
 drop_rapid_delay = drop_rapid_delay_max;
 time_between_rapid_drops = time_between_rapid_drops_max;

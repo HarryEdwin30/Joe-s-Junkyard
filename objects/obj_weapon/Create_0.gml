@@ -26,7 +26,7 @@ ham_max_charge = 10;
 ham_charge = 0;
 ham_base_stamina_usage = 4;
 
-rev_unlocked = true;
+rev_unlocked = false;
 rev_can_shoot = true;
 rev_max_total_bullets = 30;
 rev_total_bullets = rev_max_total_bullets;
@@ -38,7 +38,7 @@ rev_reloading = false;
 rev_max_reload_time = 10;
 rev_reload_time_left = rev_max_reload_time;
 
-sho_unlocked = true;
+sho_unlocked = false;
 sho_can_shoot = true;
 pellet_points = [];
 max_pellets = 8;
@@ -56,7 +56,7 @@ sho_damage = 75; //(per pellet)
 sho_reload_delay_left = 0;
 sho_max_pen = 3;
 
-rif_unlocked = true;
+rif_unlocked = false;
 rif_can_shoot = true;
 fire_mode = 0; //0 = full auto, 1 = semi auto
 rif_max_total_mags = 3;

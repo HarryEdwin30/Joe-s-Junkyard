@@ -97,6 +97,7 @@
     {"name":"spr_drop_button","order":1,"path":"sprites/spr_drop_button/spr_drop_button.yy",},
     {"name":"spr_eat_button","order":3,"path":"sprites/spr_eat_button/spr_eat_button.yy",},
     {"name":"spr_fade","order":4,"path":"sprites/spr_fade/spr_fade.yy",},
+    {"name":"spr_gunchest","order":19,"path":"sprites/spr_gunchest/spr_gunchest.yy",},
     {"name":"spr_ham","order":3,"path":"sprites/spr_ham/spr_ham.yy",},
     {"name":"spr_load_save_button","order":1,"path":"sprites/spr_load_save_button/spr_load_save_button.yy",},
     {"name":"spr_rif","order":1,"path":"sprites/spr_rif/spr_rif.yy",},

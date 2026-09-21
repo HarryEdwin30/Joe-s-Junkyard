@@ -41,7 +41,8 @@ if sz != noone{
         
         var zombie_type_to_spawn = sz.zt[irandom(array_length(sz.zt) - 1)];
         show_debug_message(zombie_type_to_spawn);
-        instance_create_depth(spawn_x, spawn_y, 0, zombie_type_to_spawn);
+        var ml = layer_get_id("mainlayer");
+        instance_create_layer(spawn_x, spawn_y, ml, zombie_type_to_spawn);
         sz.zia -= 1;
     }
     zsdl -= 1;

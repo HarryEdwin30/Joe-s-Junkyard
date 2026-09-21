@@ -6,6 +6,10 @@ global.godmode = true;
 global.invisible = true;
 global.zombie_omniscience = false;
 global.see_all = false;
+global.menu = false; //FIXME rework the menu thing (ykwita) so that it's not so fucking annoying
+
+gc_handled = false;
+
 spawn_mode = "hold";
 
 if file_exists("gamesave.ini"){

@@ -24,6 +24,33 @@ if layer_exists("obstacles"){
     }
 }
 
+if (instance_exists(obj_gun_chest)) {
+	if (!gc_handled) {
+        var gc_spawned = 0;
+        
+    	var chests = [];
+        with (obj_gun_chest) {
+        	array_push(chests, id);
+        }
+        
+        var guns = [1, 2, 3]; //1 is rev, 2 is sho, and 3 is rif
+        
+        while (gc_spawned < 3) {
+        	var i1 = irandom(array_length(chests) - 1);
+            var i2 = irandom(array_length(guns) - 1);
+            
+            chests[i1].iexist = true;
+            chests[i1].gun = guns[i2];
+            
+            array_delete(chests, i1, 1);
+            array_delete(guns, i2, 1);
+            
+            gc_spawned += 1;
+        }
+        gc_handled = true;
+    }
+}
+
 var cam = view_camera[0];
 if global.player_alive = false{
     camera_set_view_size(cam, 640, 480);
@@ -113,21 +140,22 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord("L")){
             break;
     }
 }
+var ml = layer_get_id("mainlayer");
 switch (spawn_mode) {
 	case "hold":
         if keyboard_check(ord("F")){
-            instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
+            instance_create_layer(mouse_x, mouse_y, ml, obj_walker);
         }
         if keyboard_check(ord("V")){
-            instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
+            instance_create_layer(mouse_x, mouse_y, ml, obj_runner);
         }
         break;
     case "press":
         if keyboard_check_pressed(ord("F")){
-            instance_create_depth(mouse_x, mouse_y, 0, obj_walker);
+            instance_create_layer(mouse_x, mouse_y, ml, obj_walker);
         }
         if keyboard_check_pressed(ord("V")){
-            instance_create_depth(mouse_x, mouse_y, 0, obj_runner);
+            instance_create_layer(mouse_x, mouse_y, ml, obj_runner);
         }
         break;
 }

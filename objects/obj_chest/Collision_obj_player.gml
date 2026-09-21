@@ -1,6 +1,3 @@
-if (!exists) {
-	exit;
-}
 if keyboard_check_pressed(ord("E")){
     if global.draw_esc_menu_gui = true or obj_backpack.draw_backpack_ui = true{
         exit;

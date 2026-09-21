@@ -1,6 +1,3 @@
-if (!exists) {
-	exit;
-}
 if draw_gui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
