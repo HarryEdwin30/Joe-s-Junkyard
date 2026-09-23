@@ -26,7 +26,7 @@ ham_max_charge = 10;
 ham_charge = 0;
 ham_base_stamina_usage = 4;
 
-rev_unlocked = false;
+rev_unlocked = true;
 rev_can_shoot = true;
 rev_max_total_bullets = 30;
 rev_total_bullets = rev_max_total_bullets;
