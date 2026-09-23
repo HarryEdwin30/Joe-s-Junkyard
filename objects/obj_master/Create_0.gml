@@ -1,1 +1,0 @@
-global.obj_data = {};
