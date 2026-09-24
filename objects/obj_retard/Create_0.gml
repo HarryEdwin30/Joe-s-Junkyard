@@ -12,13 +12,6 @@ gc_handled = false;
 
 spawn_mode = "hold";
 
-if file_exists("gamesave.ini"){
-    ini_open("gamesave.ini")
-    obj_player.x = ini_read_real("Player", "X", 0);
-    obj_player.y = ini_read_real("Player", "Y", 0);
-    ini_close();
-}
-
 show_dev_stats = true;
 draw_mm_options = false;
 
@@ -30,3 +23,6 @@ last_room = room;
 tilemap = layer_tilemap_get_id("obstacles");
 array_push(global.closed_obstacles, tilemap);
 array_push(global.opaque_obstacles, tilemap);
+
+var cam = view_camera[0];
+surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));

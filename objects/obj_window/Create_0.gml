@@ -1,14 +1,31 @@
-hp = irandom_range(5, 15);
+key = "window_" + string(room) + "_" + string(x) + "_" + string(y);
+
+if (struct_exists(global.data, key)) {
+	data = global.data[$ key];
+}
+else {
+	data = {
+        hp: irandom_range(5, 15),
+        open: false,
+        broken: choose(true, false),
+        played_broken_sound: false,
+        boards: choose(true, false)
+    }
+}
+
+hp = data.hp;
+open = data.open;
+broken = data.broken;
+played_broken_sound = data.played_broken_sound;
+boards = data.boards;
+
+given_board_hp = false;
+
 ahp = hp; //actual hp
-open = false;
-broken = choose(true, false);
-played_broken_sound = false;
 sound_delay = 5;
 if (broken) {
 	played_broken_sound = true;
 }
-boards = choose(true, false);
-given_board_hp = false;
 board_delay_max = 60;
 board_delay = board_delay_max;
 reset = true;

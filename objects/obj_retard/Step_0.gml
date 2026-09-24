@@ -55,8 +55,8 @@ var cam = view_camera[0];
 if global.player_alive = false{
     camera_set_view_size(cam, 640, 480);
     camera_set_view_target(cam, obj_death_marker);
+    surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
 }
-surface_resize(application_surface, camera_get_view_width(cam), camera_get_view_height(cam));
 
 if keyboard_check(vk_control) and keyboard_check_pressed(ord("O")){
     if !global.zombie_omniscience{

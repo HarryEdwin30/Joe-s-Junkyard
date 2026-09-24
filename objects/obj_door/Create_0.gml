@@ -1,10 +1,25 @@
-open = choose(false, true);
-broken = choose(true, false);
-played_broken_sound = false;
+key = "door_" + string(room) + "_" + string(x) + "_" + string(y);
+
+if (struct_exists(global.data, key)) {
+	data = global.data[$ key];
+}
+else {
+	data = {
+        open: choose(false, true),
+        broken: choose(true, false),
+        played_broken_sound: false,
+        hp: irandom_range(50, 100)
+    }
+}
+
+open = data.open;
+broken = data.broken;
+played_broken_sound = data.played_broken_sound;
+hp = data.hp;
+
 if (broken) {
 	played_broken_sound = true;
 }
-hp = irandom_range(50, 100);
 if (broken) {
 	hp = 0;
 }

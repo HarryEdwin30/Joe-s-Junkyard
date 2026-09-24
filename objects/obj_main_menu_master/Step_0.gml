@@ -1,12 +1,4 @@
 if keyboard_check_pressed(vk_backspace) game_end();
-    
-if keyboard_check_pressed(vk_delete){
-    if file_exists("gamesave.ini"){
-        file_delete("gamesave.ini");
-    }
-}
-
-
 
 fullscreen_delay -= 1;
     
