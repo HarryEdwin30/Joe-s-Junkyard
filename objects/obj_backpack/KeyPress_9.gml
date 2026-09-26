@@ -1,5 +1,3 @@
-if global.draw_esc_menu_gui = true exit;
-    
 if instance_exists(obj_drop_bag){
     if instance_nearest(obj_player.x, obj_player.y, obj_drop_bag).draw_gui = true exit;
 }

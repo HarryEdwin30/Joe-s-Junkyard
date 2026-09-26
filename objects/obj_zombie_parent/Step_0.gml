@@ -1,7 +1,6 @@
 if hp <= 0 instance_destroy();
     
-
-if global.draw_esc_menu_gui = true{
+if !instance_exists(obj_player){
     path_end();
     m_spd = 0;
     exit;
@@ -12,19 +11,12 @@ if layer_exists("obstacles"){
     tilemap = layer_tilemap_get_id("obstacles");
 }
 
-if distance_to_object(obj_player) > 1280 and global.player_alive = true{
+if distance_to_object(obj_player) > 1280 and instance_exists(obj_player){
     var sz = instance_position(x, y, obj_sz_parent);
     if sz != noone{
        sz.zia += 1; 
     }
     instance_destroy();
-}
-    
-if !instance_exists(obj_player){
-    path_end();
-    m_spd = 0;
-    move_towards_point(x, y, m_spd);
-    exit;
 }
 
 //wall collisions in case zombie somehow gets stuck in one
@@ -148,8 +140,8 @@ if place_meeting(x, y, obj_player) and stunned <= 0 and global.godmode = false{
     if damage_delay <= 0{
         damage_delay = 50;
         sound = choose(bitesound1, bitesound2, bitesound3, bitesound4);
-        deal_damage(25, sound, obj_human_parent);
-        obj_human_parent.infected = true;
+        deal_damage(25, sound, obj_player);
+        obj_player.infected = true;
     }
 }
 
@@ -162,8 +154,8 @@ if global.invisible = true{
 if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined){
     can_see_player = true;
     interest = max_interest;
-    target_x = instance_nearest(x, y, obj_human_parent).x;
-    target_y = instance_nearest(x, y, obj_human_parent).y;
+    target_x = instance_nearest(x, y, obj_player).x;
+    target_y = instance_nearest(x, y, obj_player).y;
     search_zone_w = [target_x - 60, target_x + 60];
     search_zone_h = [target_y - 60, target_y + 60];
 }

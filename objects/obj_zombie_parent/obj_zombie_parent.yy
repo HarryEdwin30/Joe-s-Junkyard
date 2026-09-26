@@ -11,13 +11,10 @@
   "name":"obj_zombie_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"parents",
-    "path":"folders/objects/parents.yy",
+    "name":"infected",
+    "path":"folders/objects/infected.yy",
   },
-  "parentObjectId":{
-    "name":"obj_damage_system",
-    "path":"objects/obj_damage_system/obj_damage_system.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

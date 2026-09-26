@@ -1,4 +1,4 @@
-if global.player_alive = false exit;
+if !instance_exists(obj_player) exit;
 if keyboard_check_pressed(ord("E")) and obj_player.can_move = true{
     audio_play_sound(resupply, 0, false);
     if rev_ammo > 0 and obj_weapon.rev_total_bullets < obj_weapon.rev_max_total_bullets or obj_weapon.rev_bullets_left < obj_weapon.rev_max_bullets{

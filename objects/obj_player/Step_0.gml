@@ -1,19 +1,14 @@
 audio_listener_position(x, y, 0);
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
-if hp <= 0{
-    instance_destroy(obj_backpack);
-    instance_create_depth(x, y, 0, obj_death_marker);
-    being_attacked = false;
-    audio_play_sound(death, 0, false);
-    if infected = true{
-        global.showacutezombiepic = true;
-        instance_create_depth(x, y, 0, obj_walker);
-    }
-    instance_destroy();
-}
 
-if global.draw_esc_menu_gui = true{
-    exit;
+if hp <= 0{
+    being_attacked = false;
+    instance_destroy(obj_backpack);
+    instance_destroy(obj_weapon);
+    room_goto(DeathRoom);
+    global.game_started = false;
+    audio_stop_all();
+    instance_destroy();
 }
 
 if mouse_x > x{

@@ -63,7 +63,7 @@ switch (boards) {
         }
         break;
 }
-if global.player_alive = true and obj_player.can_move = true{
+if instance_exists(obj_player) and obj_player.can_move = true{
     var dfw = point_distance(obj_player.x, obj_player.y, cx, cy);
     
     if keyboard_check(vk_space) and dfw <= 32 and reset and !obj_player.being_attacked{

@@ -6,7 +6,7 @@ if hp <= 0{
         played_broken_sound = true;
     }
 }
-if global.player_alive and obj_player.can_move and !broken{
+if instance_exists(obj_player) and obj_player.can_move and !broken{
     var dfd = point_distance(obj_player.x, obj_player.y, cx, cy);
     
     if keyboard_check_pressed(vk_space) and dfd <= 32 and !obj_player.being_attacked{

@@ -1,8 +1,4 @@
-if global.player_alive = false exit;
-    
-if global.draw_esc_menu_gui = true{
-    exit;
-}
+if !instance_exists(obj_player) exit;
 
 draw_set_colour(c_red);
 var weapon_to_draw = undefined;
@@ -46,7 +42,7 @@ if weapon_type = 4{
 }
 if draw_a_bullet = true{
     var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap];
+    var targets = [tilemap, obj_zombie_parent];
     if instance_exists(obj_door){
         with (obj_door) {
         	if (open == false) {

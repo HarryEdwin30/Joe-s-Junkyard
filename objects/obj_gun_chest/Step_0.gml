@@ -1,4 +1,4 @@
-if (obj_retard.gc_handled) {
+if (obj_master.gc_handled) {
 	if (!iexist) {
     	instance_destroy();
     }

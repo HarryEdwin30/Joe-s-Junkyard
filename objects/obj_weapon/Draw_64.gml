@@ -1,4 +1,4 @@
-if global.player_alive = false exit;
+if !instance_exists(obj_player) exit;
 
 draw_set_font(fancyfont);
 draw_set_colour(c_red);

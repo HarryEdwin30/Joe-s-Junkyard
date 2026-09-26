@@ -1,12 +1,4 @@
-if global.player_alive = false exit;
-    
-if obj_player.can_move = false exit;
-    
-if global.draw_esc_menu_gui = true{
-    exit;
-}
-    
-if obj_player.being_attacked = true exit;
+if !instance_exists(obj_player) or !obj_player.can_move or obj_player.being_attacked exit;
     
 rif_shoot_delay -= 1;
 
