@@ -26,6 +26,28 @@ if (keyboard_check_pressed(vk_f1)) {
 
 if (global.game_started) {
     
+    //load player coords if save file exists
+    
+    if (struct_exists(global.data, global.save_key) and instance_exists(obj_player) and !set_player_save_spawnpoint) {
+        var data = global.data[$ global.save_key];
+        obj_player.x = data.player_x;
+        obj_player.y = data.player_y;
+        set_player_save_spawnpoint = true;
+    }
+    
+    //if the game is being saved
+    
+    if (global.save_game) {
+        var _string = json_stringify(global.data);
+        var _buffer = buffer_create(string_byte_length(_string) + 1, buffer_fixed, 1);
+        buffer_write(_buffer, buffer_string, _string);
+        buffer_save(_buffer, "data.json");
+        buffer_delete(_buffer);
+        show_debug_message("game saved");
+        audio_play_sound(bp_select, 0, false);
+        global.save_game = false;
+    }
+    
     //dev controls
     
     if (dev_controls_enabled) {

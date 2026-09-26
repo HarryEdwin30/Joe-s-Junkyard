@@ -32,6 +32,7 @@
     {"name":"obj_room_door_back","order":4,"path":"objects/obj_room_door_back/obj_room_door_back.yy",},
     {"name":"obj_room_door","order":3,"path":"objects/obj_room_door/obj_room_door.yy",},
     {"name":"obj_runner","order":1,"path":"objects/obj_runner/obj_runner.yy",},
+    {"name":"obj_save","order":6,"path":"objects/obj_save/obj_save.yy",},
     {"name":"obj_sz_parent","order":3,"path":"objects/obj_sz_parent/obj_sz_parent.yy",},
     {"name":"obj_weapon","order":2,"path":"objects/obj_weapon/obj_weapon.yy",},
     {"name":"obj_window","order":3,"path":"objects/obj_window/obj_window.yy",},

@@ -26,6 +26,8 @@
     {"name":"inst_4E7B30B1","path":"rooms/TestRoom2/TestRoom2.yy",},
     {"name":"inst_3ED336F4","path":"rooms/TestRoom2/TestRoom2.yy",},
     {"name":"inst_2E0BC1D1","path":"rooms/TestRoom2/TestRoom2.yy",},
+    {"name":"inst_4A7B938D","path":"rooms/TestRoom2/TestRoom2.yy",},
+    {"name":"inst_221CB7AE","path":"rooms/TestRoom2/TestRoom2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -36,6 +38,8 @@
     {"$GMRInstanceLayer":"","%Name":"chests","depth":200,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_3ED336F4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3ED336F4","objectId":{"name":"obj_pathfinding","path":"objects/obj_pathfinding/obj_pathfinding.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_2E0BC1D1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2E0BC1D1","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":336.0,"y":192.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4A7B938D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4A7B938D","objectId":{"name":"obj_weapon","path":"objects/obj_weapon/obj_weapon.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":16.0,"y":0.0,},
+        {"$GMRInstance":"v4","%Name":"inst_221CB7AE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_221CB7AE","objectId":{"name":"obj_save","path":"objects/obj_save/obj_save.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":240.0,"y":112.0,},
       ],"layers":[],"name":"chests","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"obstacles","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"obstacles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":160,"SerialiseWidth":160,"TileCompressedData":[
           -161,1,-40,0,-9,-2147483648,1,1,-45,-2147483648,1,1,-62,-2147483648,-2,1,-40,0,-9,-2147483648,1,1,-45,

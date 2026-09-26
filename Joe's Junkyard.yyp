@@ -65,6 +65,7 @@
     {"id":{"name":"obj_room_door_back","path":"objects/obj_room_door_back/obj_room_door_back.yy",},},
     {"id":{"name":"obj_room_door","path":"objects/obj_room_door/obj_room_door.yy",},},
     {"id":{"name":"obj_runner","path":"objects/obj_runner/obj_runner.yy",},},
+    {"id":{"name":"obj_save","path":"objects/obj_save/obj_save.yy",},},
     {"id":{"name":"obj_sz_parent","path":"objects/obj_sz_parent/obj_sz_parent.yy",},},
     {"id":{"name":"obj_sz","path":"objects/obj_sz/obj_sz.yy",},},
     {"id":{"name":"obj_walker","path":"objects/obj_walker/obj_walker.yy",},},

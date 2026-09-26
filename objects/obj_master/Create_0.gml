@@ -6,6 +6,19 @@ randomise();
 
 global.data = {};
 
+if (file_exists("data.json")) {
+    var _buffer = buffer_load("data.json");
+    global.data = json_parse(buffer_read(_buffer, buffer_string));
+    buffer_delete(_buffer);
+} else {
+    global.data = {};
+}
+
+//saving variables
+
+global.save_key = "save";
+global.save_game = false;
+
 //game started
 
 global.game_started = false;
@@ -52,3 +65,5 @@ max_types = array_length(types) - 1;
 type_to_spawn = 0;
 
 gc_handled = false;
+
+set_player_save_spawnpoint = false;

@@ -1,14 +1,16 @@
-if !file_exists("gamesave.ini"){
-    show_debug_message("You have no save file!");
+if (file_exists("data.json")) {
+    var _buffer = buffer_load("data.json");
+    global.data = json_parse(buffer_read(_buffer, buffer_string));
+    buffer_delete(_buffer);
+}
+else {
+	show_debug_message("gng you have no save file");
     exit;
 }
 
-if global.game_started = false{
+if (struct_exists(global.data, global.save_key)) {
+    var data = global.data[$ global.save_key];
+    var room_to_go_to = data.current_room;
+    room_goto(room_to_go_to);
     global.game_started = true;
-show_debug_message("game started");
 }
-
-ini_open("gamesave.ini");
-room_goto(ini_read_real("Player", "Room", TestRoom));
-ini_close();
-show_debug_message("Save file loaded nigga.");
