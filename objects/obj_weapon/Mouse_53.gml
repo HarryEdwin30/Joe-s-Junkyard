@@ -1,4 +1,4 @@
-if !instance_exists(obj_player) or !obj_player.can_move or obj_player.being_attacked exit;
+if !instance_exists(obj_player) or !obj_player.can_move or obj_player.being_attacked or global.pause exit;
     
 if weapon_type = 3 and rif_bullets_left <= 0{
     audio_play_sound(emptygun, 0, false);

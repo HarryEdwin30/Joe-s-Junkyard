@@ -1,11 +1,10 @@
-if hp <= 0 instance_destroy();
-    
-if !instance_exists(obj_player){
+if (global.pause or !instance_exists(obj_player)) {
     path_end();
-    m_spd = 0;
-    exit;
+	exit;
 }
 
+if hp <= 0 instance_destroy();
+    
 var tilemap = undefined;
 if layer_exists("obstacles"){
     tilemap = layer_tilemap_get_id("obstacles");

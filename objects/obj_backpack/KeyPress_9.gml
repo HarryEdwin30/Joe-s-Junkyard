@@ -1,14 +1,10 @@
-if instance_exists(obj_drop_bag){
-    if instance_nearest(obj_player.x, obj_player.y, obj_drop_bag).draw_gui = true exit;
-}
-if instance_exists(obj_chest){
-    if instance_nearest(obj_player.x, obj_player.y, obj_chest).draw_gui = true exit;
-}
-    
 if draw_backpack_ui = false{
-    obj_player.can_move = false;
-    draw_backpack_ui = true;
-    audio_play_sound(bp_open, 0, false);
+    if (!global.menu) {
+        obj_player.can_move = false;
+        draw_backpack_ui = true;
+        audio_play_sound(bp_open, 0, false);
+        global.menu = true;
+    }
 }
 else{
     obj_player.can_move = true;
@@ -21,4 +17,6 @@ else{
     sho_damount = 0;
     rif_damount = 0;
     zc_damount = 0;
+    
+    global.menu = false;
 }

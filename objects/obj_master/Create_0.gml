@@ -67,3 +67,8 @@ type_to_spawn = 0;
 gc_handled = false;
 
 set_player_save_spawnpoint = false;
+
+//pausing
+
+global.pause = false;
+draw_pause_menu = false;

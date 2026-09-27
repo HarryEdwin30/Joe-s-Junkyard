@@ -26,6 +26,24 @@ if (keyboard_check_pressed(vk_f1)) {
 
 if (global.game_started) {
     
+    //pause menu
+    
+    if (keyboard_check_pressed(vk_escape)) {
+    	if (draw_pause_menu = false) {
+        	if (!global.menu) {
+            	global.menu = true;
+                draw_pause_menu = true;
+                global.pause = true;
+            }
+        }
+        else {
+            global.menu = false;
+        	draw_pause_menu = false;
+            global.pause = false;
+        }
+    }
+    
+    
     //load player coords if save file exists
     
     if (struct_exists(global.data, global.save_key) and instance_exists(obj_player) and !set_player_save_spawnpoint) {

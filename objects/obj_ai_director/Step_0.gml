@@ -1,4 +1,4 @@
-if !instance_exists(obj_player) or !enabled exit;
+if !instance_exists(obj_player) or !enabled or global.pause exit;
 
 var sz = instance_position(obj_player.x, obj_player.y, obj_sz_parent);
 

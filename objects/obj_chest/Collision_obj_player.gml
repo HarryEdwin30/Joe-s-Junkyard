@@ -1,14 +1,11 @@
 if keyboard_check_pressed(ord("E")){
-    if global.draw_esc_menu_gui = true or obj_backpack.draw_backpack_ui = true{
-        exit;
-    }
-    if instance_exists(obj_drop_bag){
-        if instance_nearest(obj_player.x, obj_player.y, obj_drop_bag).draw_gui = true exit;
-    }
     if draw_gui = false{
-        draw_gui = true;
-        obj_player.can_move = false;
-        audio_play_sound(chest_open, 0, false);
+        if (!global.menu) {
+            draw_gui = true;
+            obj_player.can_move = false;
+            audio_play_sound(chest_open, 0, false);
+            global.menu = true;
+        }
     }
     else{
         draw_gui = false;
@@ -21,5 +18,7 @@ if keyboard_check_pressed(ord("E")){
         sho_tamount = 0;
         rif_tamount = 0;
         zc_tamount = 0;
+        
+        global.menu = false;
     }
 }

@@ -1,4 +1,4 @@
-if !instance_exists(obj_player) exit;
+if !instance_exists(obj_player) or global.pause exit;
 
 draw_set_colour(c_red);
 var weapon_to_draw = undefined;
