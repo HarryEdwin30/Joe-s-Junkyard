@@ -20,6 +20,22 @@ if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and z
 else{
     chest_empty = false;
 }
+if (point_distance(obj_player.x, obj_player.y, cx, cy) < 64 and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true) and mouse_x >= x and mouse_x <= x + sprite_width and mouse_y >= y and mouse_y <= y + sprite_height) {
+    draw_outline = true;
+    if mouse_check_button_pressed(mb_right){
+        if draw_gui = false{
+            if (!global.menu) {
+                draw_gui = true;
+                obj_player.can_move = false;
+                audio_play_sound(chest_open, 0, false);
+                global.menu = true;
+            }
+        }
+    }
+}
+else if (draw_outline) {
+	draw_outline = false;
+}
 
 if draw_gui = true{
     
@@ -53,6 +69,38 @@ if draw_gui = true{
     
     var zev_cake_dbutton_y1 = 315;
     var zev_cake_dbutton_y2 = zev_cake_dbutton_y1 + dbutton_size;
+    
+    if (keyboard_check_pressed(ord("E")) or keyboard_check_pressed(vk_tab)) {
+        draw_gui = false;
+        obj_player.can_move = true;
+        audio_play_sound(chest_close, 0, false);
+        
+        bs_tamount = 0;
+        scrap_tamount = 0;
+        rev_tamount = 0;
+        sho_tamount = 0;
+        rif_tamount = 0;
+        zc_tamount = 0;
+        
+        global.menu = false;
+    }
+    
+    if (mouse_check_button_pressed(mb_right)) {
+    	if (mouse_gui_x < rx1 or mouse_gui_x > rx2 or mouse_gui_y < ry1 or mouse_gui_y > ry2) {
+        	draw_gui = false;
+            obj_player.can_move = true;
+            audio_play_sound(chest_close, 0, false);
+            
+            bs_tamount = 0;
+            scrap_tamount = 0;
+            rev_tamount = 0;
+            sho_tamount = 0;
+            rif_tamount = 0;
+            zc_tamount = 0;
+            
+            global.menu = false;
+        }
+    }
     
     //here we're gonna detect if the mouse is hovering over the buttons
     
@@ -420,7 +468,7 @@ if draw_gui = true{
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
                 if mouse_check_button_pressed(mb_left){
-                    audio_play_sound(bp_select, 0, false);
+                    audio_play_sound(item_add_back, 0, false);
                     bs_tamount = 0;
                     scrap_tamount = 0;
                     rev_tamount = 0;

@@ -40,3 +40,8 @@ time_between_rapid_drops = time_between_rapid_drops_max;
 
 draw_drop_options = false;
 draw_eat_options = false;
+
+rx1 = 150;
+ry1 = 140;
+rx2 = 490;
+ry2 = 340;

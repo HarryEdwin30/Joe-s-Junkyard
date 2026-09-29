@@ -10,9 +10,66 @@ var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight + 
 
 weight = total_weight;
 
+if (keyboard_check_pressed(vk_tab)) {
+    if (!draw_backpack_ui) {
+        if (!global.menu) {
+            obj_player.can_move = false;
+            draw_backpack_ui = true;
+            audio_play_sound(bp_open, 0, false);
+            global.menu = true;
+        }
+    }
+    else {
+    	obj_player.can_move = true;
+        draw_backpack_ui = false;
+        audio_play_sound(bp_close, 0, false);
+            
+        bs_damount = 0;
+        scrap_damount = 0;
+        rev_damount = 0;
+        sho_damount = 0;
+        rif_damount = 0;
+        zc_damount = 0;
+        
+        global.menu = false;
+    }
+}
+
 if draw_backpack_ui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
+    
+    if (keyboard_check_pressed(ord("E"))) {
+        obj_player.can_move = true;
+        draw_backpack_ui = false;
+        audio_play_sound(bp_close, 0, false);
+            
+        bs_damount = 0;
+        scrap_damount = 0;
+        rev_damount = 0;
+        sho_damount = 0;
+        rif_damount = 0;
+        zc_damount = 0;
+        
+        global.menu = false;
+    }
+    
+    if (mouse_check_button_pressed(mb_right)) {
+    	if (mouse_gui_x < rx1 or mouse_gui_x > rx2 or mouse_gui_y < ry1 or mouse_gui_y > ry2) {
+        	obj_player.can_move = true;
+            draw_backpack_ui = false;
+            audio_play_sound(bp_close, 0, false);
+            
+            bs_damount = 0;
+            scrap_damount = 0;
+            rev_damount = 0;
+            sho_damount = 0;
+            rif_damount = 0;
+            zc_damount = 0;
+            
+            global.menu = false;
+        }
+    }
     
     if (bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount) > 0{ // most epic if statement ever written???!
         if draw_eat_options = true{
@@ -407,12 +464,11 @@ if draw_backpack_ui = true{
         if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
             if mouse_gui_y >= drop_y1 && mouse_gui_y <= drop_y2{
                 if mouse_check_button_pressed(mb_left){
-                    if position_meeting(obj_player.x, obj_player.y, obj_drop_bag) or position_meeting(obj_player.x, obj_player.y, obj_chest){
-                        audio_play_sound(cant_do_that, 0, false);
-                    }
-                    else{
+                    var obs = [obj_drop_bag, obj_chest, obj_gun_chest];
+                    if !position_meeting(obj_player.x, obj_player.y, obs){
                         audio_play_sound(bp_select, 0, false);
-                        var bag = instance_create_depth(obj_player.x, obj_player.y, 0, obj_drop_bag);
+                        var cl = layer_get_id("chests");
+                        var bag = instance_create_layer(obj_player.x - 8, obj_player.y - 8, cl, obj_drop_bag);
                         bag.bs += bs_damount;
                         bs -= bs_damount
                         bs_damount -= bs_damount;
@@ -437,11 +493,14 @@ if draw_backpack_ui = true{
                         zev_cakes -= zc_damount
                         zc_damount -= zc_damount;
                     }
+                    else {
+                    	audio_play_sound(cant_do_that, 0, false);
+                    }
                 }
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
                 if mouse_check_button_pressed(mb_left){
-                    audio_play_sound(bp_select, 0, false);
+                    audio_play_sound(item_add_back, 0, false);
                     bs_damount = 0;
                     scrap_damount = 0;
                     rev_damount = 0;
@@ -484,7 +543,7 @@ if draw_backpack_ui = true{
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
                 if mouse_check_button_pressed(mb_left){
-                    audio_play_sound(bp_select, 0, false);
+                    audio_play_sound(item_add_back, 0, false);
                     bs_damount = 0;
                     scrap_damount = 0;
                     rev_damount = 0;

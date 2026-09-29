@@ -84,3 +84,19 @@ else {
         zev_cakes: zev_cakes
     }
 }
+
+rx1 = 100;
+ry1 = 140;
+rx2 = 530;
+ry2 = 340;
+
+draw_outline = false;
+
+var xo = (sprite_width / 2 + sprite_get_xoffset(image_index)) * image_xscale;
+var yo = (sprite_height / 2 + sprite_get_yoffset(image_index)) * image_yscale;
+
+var dist = point_distance(0, 0, xo, yo);
+var dir = point_direction(0, 0, xo, yo) + image_angle; //we don't need to add the image angle because the sprite is a square, but i'm gonna do it anyway (:
+
+cx = lengthdir_x(dist, dir) + x;
+cy = lengthdir_y(dist, dir) + y;
