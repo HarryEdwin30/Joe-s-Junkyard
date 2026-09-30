@@ -222,3 +222,8 @@ if (global.game_started) {
         }
     }
 }
+else {
+	if (gc_handled) {
+    	gc_handled = false;
+    }
+}
