@@ -54,23 +54,6 @@ if draw_backpack_ui = true{
         global.menu = false;
     }
     
-    if (mouse_check_button_pressed(mb_right)) {
-    	if (mouse_gui_x < rx1 or mouse_gui_x > rx2 or mouse_gui_y < ry1 or mouse_gui_y > ry2) {
-        	obj_player.can_move = true;
-            draw_backpack_ui = false;
-            audio_play_sound(bp_close, 0, false);
-            
-            bs_damount = 0;
-            scrap_damount = 0;
-            rev_damount = 0;
-            sho_damount = 0;
-            rif_damount = 0;
-            zc_damount = 0;
-            
-            global.menu = false;
-        }
-    }
-    
     if (bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount) > 0{ // most epic if statement ever written???!
         if draw_eat_options = true{
             zc_damount = 0;

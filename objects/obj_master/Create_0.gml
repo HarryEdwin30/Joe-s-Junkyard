@@ -72,3 +72,7 @@ set_player_save_spawnpoint = false;
 
 global.pause = false;
 draw_pause_menu = false;
+
+//max distance from containers
+
+global.mdfc = 64;

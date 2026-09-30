@@ -172,3 +172,6 @@ if rif_reloading = true{
     }
     rif_reload_time_left -= 1;
 }
+if (!mouse_check_button(mb_left) and ham_charge > 0) {
+	ham_charge = 0;
+}

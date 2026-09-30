@@ -4,6 +4,31 @@ if (obj_master.gc_handled) {
     }
 }
 
+if (!global.menu and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true) and position_meeting(mouse_x, mouse_y, id) and point_distance(obj_player.x, obj_player.y, cx, cy) < global.mdfc and !opened) {
+	draw_outline = true;
+    if (mouse_check_button_pressed(mb_right)) {
+    	switch (gun) {
+    	   case 1:
+                obj_weapon.rev_unlocked = true;
+                audio_play_sound(revolverdraw, 0, false);
+                break;
+            case 2:
+                obj_weapon.sho_unlocked = true;
+                audio_play_sound(sho_draw, 0, false);
+                break;
+            case 3:
+                obj_weapon.rif_unlocked = true;
+                audio_play_sound(rifledraw, 0, false);
+                break;
+        }
+        audio_play_sound(yay, 0, false);
+        opened = true;
+    }
+}
+else if (draw_outline) {
+	draw_outline = false;
+}
+
 switch (gun) {
 	case 1:
         if (obj_weapon.rev_unlocked) {

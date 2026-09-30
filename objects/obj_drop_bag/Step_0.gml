@@ -2,7 +2,7 @@ var co = 3; //this is to make it so that the hitbox is smaller, so larger number
 //i added this because if you are percise enough, you can just barely get the chests and the bag to overlap which iz not goodz
 
 //lord forgive me this if statement is long, specific, and cursed
-if (point_distance(obj_player.x, obj_player.y, cx, cy) < 64 and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true) and mouse_x >= x + co and mouse_x <= x + sprite_width - co and mouse_y >= y + co and mouse_y <= y + sprite_height - co) {
+if (!global.menu and point_distance(obj_player.x, obj_player.y, cx, cy) < global.mdfc and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true) and mouse_x >= x + co and mouse_x <= x + sprite_width - co and mouse_y >= y + co and mouse_y <= y + sprite_height - co) {
     draw_outline = true;
     if mouse_check_button_pressed(mb_right){
         if draw_gui = false{
@@ -65,24 +65,6 @@ if draw_gui = true{
         audio_play_sound(chest_close, 0, false);
         
         global.menu = false;
-    }
-    
-    if (mouse_check_button_pressed(mb_right)) {
-    	if (mouse_gui_x < rx1 or mouse_gui_x > rx2 or mouse_gui_y < ry1 or mouse_gui_y > ry2) {
-        	draw_gui = false;
-            obj_player.can_move = true;
-            
-            audio_play_sound(chest_close, 0, false);
-            
-            bs_tamount = 0;
-            scrap_tamount = 0;
-            rev_tamount = 0;
-            sho_tamount = 0;
-            rif_tamount = 0;
-            zc_tamount = 0;
-            
-            global.menu = false;
-        }
     }
     
     //here we're gonna detect if the mouse is hovering over the buttons
