@@ -445,6 +445,239 @@ if draw_gui = true{
         }
     }
 }
+/*
+ * i didn't even add anything today but it's late at night and i want to talk to myself again
+ * 
+ * i did music all day
+ * 
+ * and for 16 measures i'm not even sure sound good
+ * 
+ * sometimes i can't tell if my music is bad
+ * 
+ * and  i hate those moments
+ * 
+ * i guess a good rule of thumb is that if i don't like it on the first playback, then it sucks
+ * 
+ * but i don't usually give up on the idea
+ * 
+ * well
+ * 
+ * the newest thing i'm doing is outside my comfort zone
+ * 
+ * but if i never step out of it i won't ever grow
+ * 
+ * i'll just make catchy boss fight themes forever
+ * 
+ * but all boss fight themes to me are just the same
+ * 
+ * you do and intro then go into the them, or just jump straight into the theme
+ * 
+ * then you do a counter theme after it. for me, it has many times been a slow melody with little to no percussion
+ * 
+ * not always like that though
+ * 
+ * and after that you basically just do a few minutes of other stuff that's catchy, but not as catchy as the main theme
+ * 
+ * and then you finish with the main theme
+ * 
+ * that's my person boss fight formula
+ * 
+ * i've been trying out other stuff lately
+ * 
+ * stuff longer than 2 minutes
+ * 
+ * stuff with little percussion, and more feeling
+ * 
+ * boss fight songs make you feel cool, but i want to capture more powerful emotions
+ * 
+ * and i think i did a good job with plague.wav and everything's fine
+ * 
+ * tremendae maiestatis was really good back when i made that
+ * 
+ * i don't know how i managed to cook that up
+ * 
+ * now i'm trying to do something much more complicated and classical
+ * 
+ * it's very hard to do it right
+ * 
+ * if it's not near absolute perfection it just sounds corny
+ * 
+ * and i think it sounds corny to me, at least a good amount of it does
+ * 
+ * but i'll get better
+ * 
+ * i've got like 50 seconds of it, and it's subpar at the least
+ * 
+ * not quite my taste, but it's something i'd listen to if i was desperate
+ * 
+ * i'm less proud of actually making it and more proud of the fact that i didn't throw it all away because one part sounded corny
+ * 
+ * it's hard to tell when a melody is not going to work
+ * 
+ * and it's hard to throw it away anyway because you put time into it
+ * 
+ * but i think i just saw the potential the melody had
+ * 
+ * i'm not very good at music theory
+ * 
+ * but i know enough to where i don't just write random notes until they sound good
+ * 
+ * i have always favored notation
+ * 
+ * i would only use a daw for messing with the audio quality, i would never compose in there
+ * 
+ * and the stuff i make in musescore doesn't even sound bad if i just import custom soundfonts
+ * 
+ * i always compose in a minor c major because there are no black keys, and i am familiar with the notes corresponding to the scale degrees
+ * 
+ * and when i'm done composing i just transpose to whatever key fits best
+ * 
+ * but sometimes i forget
+ * 
+ * plague.wav was not supposed to stay in a minor, but i forget, uploaded it, and decided "oh well"
+ * 
+ * a minor is my favorite key though so whatever
+ * 
+ * it's a pretty dark, epic key, and it's simple
+ * 
+ * my favorite major key is g major
+ * 
+ * it's simple and playful
+ * 
+ * i feel like i can never be taken seriously because of how weird and pathetic i've been before
+ * 
+ * i don't want to be a joke, but my life so far has just been one
+ * 
+ * and i am the reason it is
+ * 
+ * i don't know why i was like that
+ * 
+ * and i don't know how i decided i didn't want to be like that
+ * 
+ * for the most part no one has ever truly held me accountable
+ * 
+ * and out of nowhere several months ago i just kind of "woke up"
+ * 
+ * maybe it's because i started making music and actually doing something with my stupid life
+ * 
+ * and i can not tell if it's too late to be shit
+ * 
+ * am i already too bad of a person to ever be a decent or good person?
+ * 
+ * is it ever too late to start trying?
+ * 
+ * and if not, is it even worth it if you are so far deep that not a single being will care if you were gone anyway?
+ * 
+ * i mean why put in the work to change and possibly fail when you could just give up and never possibly hurt anyone again?
+ * 
+ * when i see stories on some of the most evil people, i find it hard to feel any hatred
+ * 
+ * all i can think about is what they are probably thinking about
+ * 
+ * do they care?
+ * 
+ * do they feel how i feel?
+ * 
+ * i believe in determinism, but i don't at the same time
+ * 
+ * i feel like everything i do is entirely under my control
+ * 
+ * every character i type is my choice
+ * 
+ * but if i had gotten hit by a truck on the way back home and died, then i wouldn't have been able to type these characters
+ * 
+ * and that would be out of my control
+ * 
+ * i think it's possible that evil people could have been good people if some things out of their control either happened or didn't happen
+ * 
+ * but if that is possible, than where does the blame go?
+ * 
+ * if there's another life where i (with nothing changed about my biology) am a murderer or a rapist,
+ * 
+ * then am i technically responsible for that version of me in this life?
+ * 
+ * they would literally be me, only circumstances out of my control would be different
+ * 
+ * with regular punishment logic, that means i should be locked up for the rest of my life
+ * 
+ * how do you punish if you can't give a perfect punishment?
+ * 
+ * should you even punish for the purpose of vengeance?
+ * 
+ * if all you do to a murderer is lock them up in a cell so they can't hurt anyone, but they can still live a decent, meaningful life in there,
+ * 
+ * then who is still getting hurt?
+ * 
+ * if we make that person suffer instead, it's possible we could be doing the wrong thing
+ * 
+ * and what about people who have been falsely imprisoned?
+ * 
+ * now i don't believe in any religion but i'm pretty sure jesus said that we shouldn't punish others in this life because we can't possibly give the right punishment
+ * 
+ * because man is imperfect
+ * 
+ * but god is perfect, and it knows exactly what each of us deserves
+ * 
+ * maybe it's best we try to keep everyone safe and happy
+ * 
+ * even the bad people
+ * 
+ * and i don't think i believe this to make me feel any better about myself
+ * 
+ * it actually just makes me feel worse
+ * 
+ * but logically it makes sense to me
+ * 
+ * and there are one or two people i fucking hate
+ * 
+ * and it's ok to hate people
+ * 
+ * if someone wronged you, it's ok to dislike them
+ * 
+ * but i feel like wanting or needing to see the people you hate suffer is overall illogical to me, and it makes you more like them
+ * 
+ * i've never been wronged so badly before, so maybe i just don't know
+ * 
+ * and i'm not trying to say that everyone deep down is a good person
+ * 
+ * cuz that's just not true
+ * 
+ * i am an asshole
+ * 
+ * there's people that have done things beyond comprehension
+ * 
+ * pure evil
+ * 
+ * what i'm saying is that i think it's possible that you don't get to choose who you are
+ * 
+ * moral luck
+ * 
+ * idk
+ * 
+ * i'm not cutting myself tonight i don't wanna deal with the logistics
+ * 
+ * it's mission impossible trying to get the knife
+ * 
+ * i still don't have a boyfriend to cuddle with
+ * 
+ * if i ever fall in love i'll be surprised
+ * 
+ * i am genuinely just a pure cannibalistic humanoid underground dweller
+ * 
+ * i wonder what it's like
+ * 
+ * would i be too nervous to ever try and date somebody?
+ * 
+ * or when you really fall in love, do you pursue it?
+ * 
+ * well i would assume by then i would already be very comfortable with them
+ * 
+ * i don't know
+ * 
+ * i'll keep whoever the fuck is reading this posted if i ever score
+ * 
+ * (peter griffin ascii art)
+ * */
 if bs = 0 && scrap = 0 && rev_ammo = 0 && sho_ammo = 0 && rif_ammo = 0 && zev_cakes = 0{
     obj_player.can_move = true;
     global.menu = false;
