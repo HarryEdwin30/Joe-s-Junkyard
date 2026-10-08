@@ -122,10 +122,7 @@ if stunned > 0{
 else m_spd = max_m_spd;
     
 if (place_meeting(x, y, obj_window)) {
-    var window = instance_nearest(x, y, obj_window);
-    if (window.open) {
-    	m_spd /= 2;
-    }
+    m_spd /= 2;
 }
 
 if obj_player.being_attacked = true{

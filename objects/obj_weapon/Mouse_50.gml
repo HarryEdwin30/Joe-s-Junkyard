@@ -286,7 +286,19 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
         if position_meeting(checker_x, checker_y, obj_window){
             var window_to_shoot = instance_nearest(checker_x, checker_y, obj_window);
             if (!window_to_shoot.broken) {
-                window_to_shoot.broken = true;
+                var wsound_to_play = choose(windowbreak1, windowbreak2, windowbreak3);
+                audio_play_sound_at(wsound_to_play, window_to_shoot.x, window_to_shoot.y, 0, 160, 480, 1, false, 0);
+            	window_to_shoot.broken = true;
+                if (window_to_shoot.boards) {
+                	window_to_shoot.image_index = 3;
+                }
+                else {
+                	window_to_shoot.image_index = 2;
+                    var index1 = array_get_index(global.closed_obstacles, window_to_shoot);
+                    var index2 = array_get_index(global.breakable_obstacles, window_to_shoot);
+                    array_delete(global.closed_obstacles, index1, 1);
+                    array_delete(global.breakable_obstacles, index2, 1);
+                }
             }
         }
     }

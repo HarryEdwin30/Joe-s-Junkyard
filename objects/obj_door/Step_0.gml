@@ -6,17 +6,19 @@ if hp <= 0{
         played_broken_sound = true;
     }
 }
-if instance_exists(obj_player) and obj_player.can_move and !broken{
-    var dfd = point_distance(obj_player.x, obj_player.y, cx, cy);
-    
-    if keyboard_check_pressed(vk_space) and dfd <= 32 and !obj_player.being_attacked{
-        if open = false{
-            open = true;
-            audio_play_sound(dooropen, 0, false);
-        }
-        else{
-            open = false;
-            audio_play_sound(doorclose, 0, false);
+if keyboard_check_pressed(vk_space){
+    if instance_exists(obj_player) and obj_player.can_move and !broken{
+        var dfd = point_distance(obj_player.x, obj_player.y, cx, cy);
+        
+        if dfd <= 32 and !obj_player.being_attacked{
+            if open = false{
+                open = true;
+                audio_play_sound(dooropen, 0, false);
+            }
+            else{
+                open = false;
+                audio_play_sound(doorclose, 0, false);
+            }
         }
     }
 }

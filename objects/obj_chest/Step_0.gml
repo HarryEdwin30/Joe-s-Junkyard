@@ -20,16 +20,18 @@ if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and z
 else{
     chest_empty = false;
 }
-if (!global.menu and point_distance(obj_player.x, obj_player.y, cx, cy) < global.mdfc and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true) and mouse_x >= x and mouse_x <= x + sprite_width and mouse_y >= y and mouse_y <= y + sprite_height) {
-    draw_outline = true;
-    if mouse_check_button_pressed(mb_right){
-        if draw_gui = false{
-            if (!global.menu) {
-                draw_gui = true;
-                obj_player.can_move = false;
-                audio_play_sound(chest_open, 0, false);
-                global.menu = true;
-                show_debug_message("we in");
+if (position_meeting(mouse_x, mouse_y, id)) {
+    if (!global.menu and point_distance(obj_player.x, obj_player.y, cx, cy) < global.mdfc and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true)) {
+        draw_outline = true;
+        if mouse_check_button_pressed(mb_right){
+            if draw_gui = false{
+                if (!global.menu) {
+                    draw_gui = true;
+                    obj_player.can_move = false;
+                    audio_play_sound(chest_open, 0, false);
+                    global.menu = true;
+                    show_debug_message("we in");
+                }
             }
         }
     }

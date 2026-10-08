@@ -19,7 +19,22 @@ if weapon_type = 4{
             deal_damage(damage_to_deal, sound_to_play, ham_target);
         }
         if (ham_target.object_index == obj_window || object_is_ancestor(ham_target.object_index, obj_window)) {
-        	ham_target.broken = true;
+            if (!ham_target.broken) {
+                ham_target.broken = true;
+                var wsound_to_play = choose(windowbreak1, windowbreak2, windowbreak3);
+                audio_play_sound_at(wsound_to_play, ham_target.x, ham_target.y, 0, 160, 480, 1, false, 0);
+            	ham_target.broken = true;
+                if (ham_target.boards) {
+                	ham_target.image_index = 3;
+                }
+                else {
+                	ham_target.image_index = 2;
+                    var index1 = array_get_index(global.closed_obstacles, ham_target);
+                    var index2 = array_get_index(global.breakable_obstacles, ham_target);
+                    array_delete(global.closed_obstacles, index1, 1);
+                    array_delete(global.breakable_obstacles, index2, 1);
+                }
+            }
         }
     }
     ham_target_in_range = false;

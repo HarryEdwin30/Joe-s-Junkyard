@@ -80,28 +80,11 @@ else {
 }
 
 if (place_meeting(x, y, obj_window)) {
-    var window = instance_nearest(x, y, obj_window);
-    if (window.open) {
-    	m_spd /= 2;
-    }
-}
-var tilemap = layer_tilemap_get_id("obstacles");
-var obstacles = [tilemap];
-if (instance_exists(obj_door)) {
-	var door = instance_nearest(x, y, obj_door);
-    if !door.open and !place_meeting(x, y, door){
-        array_push(obstacles, door);
-    }
-}
-if (instance_exists(obj_window)) {
-	var window = instance_nearest(x, y, obj_window);
-    if !window.open and !place_meeting(x, y, window){
-        array_push(obstacles, window);
-    }
+    m_spd /= 2;
 }
 if (global.godmode) {
 	m_spd *= 2;
 }
 if can_move = true and !being_attacked{
-    move_and_collide(h * m_spd, v * m_spd, obstacles, undefined, undefined, undefined, m_spd, m_spd);
+    move_and_collide(h * m_spd, v * m_spd, global.closed_obstacles, undefined, undefined, undefined, m_spd, m_spd);
 }

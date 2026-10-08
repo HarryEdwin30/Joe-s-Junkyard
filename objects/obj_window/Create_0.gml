@@ -1,3 +1,5 @@
+image_speed = 0;
+
 key = "window_" + string(room) + "_" + string(x) + "_" + string(y);
 
 if (struct_exists(global.data, key)) {
@@ -6,26 +8,16 @@ if (struct_exists(global.data, key)) {
 else {
 	data = {
         hp: irandom_range(5, 15),
-        open: false,
         broken: choose(true, false),
-        played_broken_sound: false,
         boards: choose(true, false)
     }
 }
 
 hp = data.hp;
-open = data.open;
 broken = data.broken;
-played_broken_sound = data.played_broken_sound;
 boards = data.boards;
 
-given_board_hp = false;
-
 ahp = hp; //actual hp
-sound_delay = 5;
-if (broken) {
-	played_broken_sound = true;
-}
 board_delay_max = 60;
 board_delay = board_delay_max;
 reset = true;
@@ -38,4 +30,30 @@ var _dir = point_direction(0, 0, _center_x_offset, _center_y_offset) + image_ang
 
 cx = x + lengthdir_x(_dist, _dir);
 cy = y + lengthdir_y(_dist, _dir);
-added_to_array = false;
+
+
+switch (boards) {
+    case false:
+        if (broken) {
+            image_index = 2;
+        }
+        else{
+            array_push(global.closed_obstacles, id);
+            array_push(global.breakable_obstacles, id);
+            image_index = 0;
+        }
+        break;
+    case true:
+        ahp = hp;
+        hp += 50;
+        array_push(global.opaque_obstacles, id);
+        array_push(global.closed_obstacles, id);
+        array_push(global.breakable_obstacles, id);
+        if (broken) {
+            image_index = 3;
+        }
+        else{
+            image_index = 1;
+        }
+        break;
+}

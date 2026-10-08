@@ -283,6 +283,7 @@
     {"name":"inst_43CE460B","path":"rooms/TestRoom2/TestRoom2.yy",},
     {"name":"inst_781F755E","path":"rooms/TestRoom2/TestRoom2.yy",},
     {"name":"inst_3242CFC","path":"rooms/TestRoom2/TestRoom2.yy",},
+    {"name":"inst_7E09ACFC","path":"rooms/TestRoom2/TestRoom2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -551,6 +552,7 @@
         {"$GMRInstance":"v4","%Name":"inst_158AA030","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_158AA030","objectId":{"name":"obj_gun_chest","path":"objects/obj_gun_chest/obj_gun_chest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":960.0,"y":480.0,},
         {"$GMRInstance":"v4","%Name":"inst_781F755E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_781F755E","objectId":{"name":"obj_chest","path":"objects/obj_chest/obj_chest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":64.0,},
         {"$GMRInstance":"v4","%Name":"inst_3242CFC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3242CFC","objectId":{"name":"obj_chest","path":"objects/obj_chest/obj_chest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":432.0,"y":288.0,},
+        {"$GMRInstance":"v4","%Name":"inst_7E09ACFC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7E09ACFC","objectId":{"name":"obj_glog","path":"objects/obj_glog/obj_glog.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":48.0,"y":0.0,},
       ],"layers":[],"name":"chests","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"obstacles","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"obstacles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":160,"SerialiseWidth":160,"TileCompressedData":[
           -161,1,-40,0,-9,-2147483648,1,1,-45,-2147483648,1,1,-62,-2147483648,-2,1,-40,0,-9,-2147483648,1,1,-45,

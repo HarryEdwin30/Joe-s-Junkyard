@@ -26,6 +26,10 @@ if (keyboard_check_pressed(vk_f1)) {
 
 if (global.game_started) {
     
+    if (keyboard_check_pressed(ord("L"))) {
+    	glog("GRANT LIKES CUTE HOT SOVIET FEMBOYS", 5, undefined);
+    }
+    
     //pause menu
     
     if (keyboard_check_pressed(vk_escape)) {
@@ -42,7 +46,6 @@ if (global.game_started) {
             global.pause = false;
         }
     }
-    
     
     //load player coords if save file exists
     
