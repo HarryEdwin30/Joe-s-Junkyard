@@ -1,3 +1,5 @@
+image_speed = 0;
+
 draw_gui = false;
 
 obj_x = 390;
@@ -11,8 +13,6 @@ rev_tamount = 0;
 sho_tamount = 0;
 rif_tamount = 0;
 zc_tamount = 0;
-
-chest_empty = true;
 
 drop_rapid_delay_max = 15;
 drop_rapid_delay = drop_rapid_delay_max;
@@ -100,3 +100,11 @@ var dir = point_direction(0, 0, xo, yo) + image_angle; //we don't need to add th
 
 cx = lengthdir_x(dist, dir) + x;
 cy = lengthdir_y(dist, dir) + y;
+
+chest_empty = false;
+image_index = 0;
+
+if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0 and !chest_empty{
+    chest_empty = true;
+    image_index = 1;
+}

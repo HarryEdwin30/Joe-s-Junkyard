@@ -12,6 +12,8 @@ push_cooldown_max = 60;
 push_cooldown = 0;
 being_attacked = false;
 
+tilemap = layer_tilemap_get_id("obstacles");
+
 if (struct_exists(global.data, key)) {
 	data = global.data[$ key];
 }

@@ -14,11 +14,9 @@ if (!exists) {
 	instance_destroy();
 }
 
-if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0{
+if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0 and !chest_empty {
     chest_empty = true;
-}
-else{
-    chest_empty = false;
+    image_index = 1;
 }
 if (position_meeting(mouse_x, mouse_y, id)) {
     if (!global.menu and point_distance(obj_player.x, obj_player.y, cx, cy) < global.mdfc and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, true, true)) {
@@ -30,7 +28,6 @@ if (position_meeting(mouse_x, mouse_y, id)) {
                     obj_player.can_move = false;
                     audio_play_sound(chest_open, 0, false);
                     global.menu = true;
-                    show_debug_message("we in");
                 }
             }
         }

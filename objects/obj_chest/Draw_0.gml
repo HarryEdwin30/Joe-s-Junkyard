@@ -1,3 +1,4 @@
+//FIXME SUPER FUCKING LAGGY HELPPPPPPPOJASDY AWDYL
 draw_self();
 if instance_exists(obj_player) and !global.see_all{
     if !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined){
