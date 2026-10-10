@@ -14,6 +14,27 @@ if (!exists) {
 	instance_destroy();
 }
 
+if instance_exists(obj_player){
+    var cam = view_camera[0];
+    
+    var camx1 = camera_get_view_x(cam);
+    var camy1 = camera_get_view_y(cam);
+    var camx2 = camera_get_view_x(cam) + camera_get_view_width(cam);
+    var camy2 = camera_get_view_y(cam) + camera_get_view_height(cam);
+    
+    if (point_in_rectangle(x, y, camx1, camy1, camx2, camy2)) {
+    	if !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined) or global.see_all{
+            image_alpha = 1;
+        }
+        else if image_alpha > 0{ 
+            image_alpha -= 0.01;
+        }
+    }
+    else if (image_alpha != 0){
+    	image_alpha = 0;
+    }
+}
+
 if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0 and !chest_empty {
     chest_empty = true;
     image_index = 1;

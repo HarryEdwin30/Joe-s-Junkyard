@@ -1,6 +1,27 @@
-if (obj_master.gc_handled) {
-	if (!iexist) {
+if (!iexist) {
+    if (obj_master.gc_handled) {
     	instance_destroy();
+    }
+}
+
+if instance_exists(obj_player){
+    var cam = view_camera[0];
+    
+    var camx1 = camera_get_view_x(cam);
+    var camy1 = camera_get_view_y(cam);
+    var camx2 = camera_get_view_x(cam) + camera_get_view_width(cam);
+    var camy2 = camera_get_view_y(cam) + camera_get_view_height(cam);
+    
+    if (point_in_rectangle(x, y, camx1, camy1, camx2, camy2)) {
+    	if !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined) or global.see_all{
+            image_alpha = 1;
+        }
+        else if image_alpha > 0{
+            image_alpha -= 0.01;
+        }
+    }
+    else if (image_alpha != 0){
+    	image_alpha = 0;
     }
 }
 if (position_meeting(mouse_x, mouse_y, id)) {

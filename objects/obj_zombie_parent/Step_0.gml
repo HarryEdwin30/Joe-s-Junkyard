@@ -3,6 +3,27 @@ if (global.pause or !instance_exists(obj_player)) {
 	exit;
 }
 
+if instance_exists(obj_player){
+    var cam = view_camera[0];
+    
+    var camx1 = camera_get_view_x(cam);
+    var camy1 = camera_get_view_y(cam);
+    var camx2 = camera_get_view_x(cam) + camera_get_view_width(cam);
+    var camy2 = camera_get_view_y(cam) + camera_get_view_height(cam);
+    
+    if (point_in_rectangle(x, y, camx1, camy1, camx2, camy2)) {
+    	if !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined) or global.see_all{
+            image_alpha = 1;
+        }
+        else if image_alpha > 0{
+            image_alpha -= 0.01;
+        }
+    }
+    else if (image_alpha != 0){
+    	image_alpha = 0;
+    }
+}
+
 if hp <= 0 instance_destroy();
     
 var tilemap = undefined;
@@ -66,9 +87,11 @@ var cam = view_camera[0];
 var cam_x = camera_get_view_x(cam);
 var cam_y = camera_get_view_y(cam);
 
-var pathfinding_delay_max = 8;
+var pathfinding_delay_max = 30;
 
-var push_speed = 3;
+
+var push_speed = 5;
+/*
 if place_meeting(x, y, obj_player){
     with (obj_player){
         if (id != other.id){
@@ -87,16 +110,9 @@ if place_meeting(x, y, obj_player){
         }
     }
 }
-
+*/
 if place_meeting(x, y, obj_zombie_parent){
-    var cam_low = 20;
-    var cam_high_x = 660;
-    var cam_high_y = 500;
-    var collision_delay_max = 0;
-        
-    collision_delay -= 1;
-    if collision_delay <= 0{
-        collision_delay = collision_delay_max;
+    if pathfinding_delay <= 0{
         with (obj_zombie_parent){
             if (id != other.id){
                 var dist = point_distance(x, y, other.x, other.y);
@@ -311,4 +327,7 @@ if place_meeting(x, y, global.breakable_obstacles){
 }
 else if (breaking_something) {
 	breaking_something = false;
+}
+if (collision_delay > 0) {
+	collision_delay -= 1;
 }

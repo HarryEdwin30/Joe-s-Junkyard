@@ -85,9 +85,7 @@ if (place_meeting(x, y, obj_window)) {
 if (global.godmode) {
 	m_spd *= 2;
 }
-if (place_meeting(x, y, global.closed_obstacles)) {
-	move_and_collide(h * m_spd, v * m_spd, tilemap, undefined, undefined, undefined, m_spd, m_spd);
-}
-else if can_move = true and !being_attacked{
+
+if can_move = true and !being_attacked{
     move_and_collide(h * m_spd, v * m_spd, global.closed_obstacles, undefined, undefined, undefined, m_spd, m_spd);
 }
