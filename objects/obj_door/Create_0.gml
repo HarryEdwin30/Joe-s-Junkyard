@@ -19,25 +19,22 @@ open = data.open;
 broken = data.broken;
 hp = data.hp;
 
-if open{
-    image_index = 1;
-}
-else{
-    image_index = 0;
-    array_push(global.closed_obstacles, id);
-    array_push(global.breakable_obstacles, id);
-    array_push(global.opaque_obstacles, id);
-}
 if (broken) {
 	open = true;
     image_index = 2;
     hp = 0;
-    var index1 = array_get_index(global.closed_obstacles, id);
-    var index2 = array_get_index(global.breakable_obstacles, id);
-    var index3 = array_get_index(global.opaque_obstacles, id);
-    array_delete(global.closed_obstacles, index1, 1);
-    array_delete(global.breakable_obstacles, index2, 1);
-    array_delete(global.opaque_obstacles, index3, 1);
+    show_debug_message("i am broken");
+}
+else if (open) {
+	image_index = 1;
+    show_debug_message("i am open");
+}
+else{
+    show_debug_message("i am closed");
+    image_index = 0;
+    array_push(global.closed_obstacles, id);
+    array_push(global.breakable_obstacles, id);
+    array_push(global.opaque_obstacles, id);
 }
 
 var _center_x_offset = (sprite_get_width(sprite_index) / 2 - sprite_xoffset) * image_xscale;

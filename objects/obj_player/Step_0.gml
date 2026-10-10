@@ -89,3 +89,52 @@ if (global.godmode) {
 if can_move = true and !being_attacked{
     move_and_collide(h * m_spd, v * m_spd, global.closed_obstacles, undefined, undefined, undefined, m_spd, m_spd);
 }
+
+if place_meeting(x, y, global.breakable_obstacles){
+    var n_obs = noone;
+    var _min_dist = infinity;
+    
+    for (var i = 0; i < array_length(global.breakable_obstacles); i++) {
+        var _inst = global.breakable_obstacles[i];
+        var _dist = point_distance(x, y, _inst.x, _inst.y);
+        if (_dist < _min_dist) {
+            _min_dist = _dist;
+            n_obs = _inst;
+        }
+    }
+    if (n_obs != noone) {
+        m_spd = 0;
+        wander_delay = 0;
+        path_end();
+        var test_x = x;
+        var test_y = y;
+        var radius = 2;
+        var max_radius = 32;
+        var found = false;
+        
+        while (!found && radius < max_radius) {
+            for (var angle = 0; angle < 360; angle += 45) {
+                var check_x = x + lengthdir_x(radius, angle);
+                var check_y = y + lengthdir_y(radius, angle);
+                
+                var _is_empty = true;
+                if (place_meeting(check_x, check_y, n_obs)) {
+                    _is_empty = false;
+                }
+                
+                if (_is_empty) {
+                    test_x = check_x;
+                    test_y = check_y;
+                    found = true;
+                    break;
+                }
+            }
+            radius += 4;
+        }
+        
+        if (found) {
+            x = test_x;
+            y = test_y;
+        }
+    }
+}

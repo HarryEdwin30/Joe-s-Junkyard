@@ -90,7 +90,7 @@ var cam_y = camera_get_view_y(cam);
 var pathfinding_delay_max = 30;
 
 
-var push_speed = 5;
+var push_speed = 4;
 /*
 if place_meeting(x, y, obj_player){
     with (obj_player){
@@ -277,7 +277,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                 y = test_y;
             }
         }
-        else if (collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, true)){
+        if (chase_player and collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, true)){
             breaking_something = true;
             if break_delay > 0{
                 break_delay -= 1;
