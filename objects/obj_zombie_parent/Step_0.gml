@@ -158,16 +158,17 @@ if place_meeting(x, y, obj_player) and stunned <= 0 and global.godmode = false{
 }
 
 var detection_range = 320;
-
+var target = instance_nearest(x, y, obj_human_parent);
 if global.invisible = true{
-    detection_range = 0;
+    if (instance_exists(obj_survivor_test)) {
+    	target = instance_nearest(x, y, obj_survivor_test);
+    }
 }
-
-if global.zombie_omniscience or distance_to_object(obj_player) < detection_range and !collision_line(x, y, obj_player.x, obj_player.y, global.opaque_obstacles, false, undefined){
+if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, undefined){
     can_see_player = true;
     interest = max_interest;
-    target_x = instance_nearest(x, y, obj_player).x;
-    target_y = instance_nearest(x, y, obj_player).y;
+    target_x = target.x;
+    target_y = target.y;
     search_zone_w = [target_x - 60, target_x + 60];
     search_zone_h = [target_y - 60, target_y + 60];
 }
