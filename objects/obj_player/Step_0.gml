@@ -105,7 +105,6 @@ if place_meeting(x, y, global.breakable_obstacles){
     if (n_obs != noone) {
         m_spd = 0;
         wander_delay = 0;
-        path_end();
         var test_x = x;
         var test_y = y;
         var radius = 2;
@@ -118,7 +117,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                 var check_y = y + lengthdir_y(radius, angle);
                 
                 var _is_empty = true;
-                if (place_meeting(check_x, check_y, n_obs)) {
+                if (place_meeting(check_x, check_y, global.closed_obstacles)) {
                     _is_empty = false;
                 }
                 

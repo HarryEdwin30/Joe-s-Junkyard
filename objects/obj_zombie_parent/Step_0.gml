@@ -87,7 +87,7 @@ var cam = view_camera[0];
 var cam_x = camera_get_view_x(cam);
 var cam_y = camera_get_view_y(cam);
 
-var pathfinding_delay_max = 30;
+var pathfinding_delay_max = 15;
 
 
 var push_speed = 4;
@@ -157,25 +157,30 @@ if place_meeting(x, y, obj_player) and stunned <= 0 and global.godmode = false{
     }
 }
 
+var target = noone
+
 var detection_range = 320;
-var target = instance_nearest(x, y, obj_human_parent);
 if global.invisible = true{
     if (instance_exists(obj_survivor_test)) {
-    	target = instance_nearest(x, y, obj_survivor_test);
+        target = instance_nearest(x, y, obj_survivor_test);
     }
 }
-if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, undefined){
-    can_see_player = true;
-    interest = max_interest;
-    target_x = target.x;
-    target_y = target.y;
-    search_zone_w = [target_x - 60, target_x + 60];
-    search_zone_h = [target_y - 60, target_y + 60];
+else {
+	target = instance_nearest(x, y, obj_human_parent);
 }
-else{
-    can_see_player = false;
+if (target != noone) {
+    if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, undefined){
+        can_see_player = true;
+        interest = max_interest;
+        target_x = target.x;
+        target_y = target.y;
+        search_zone_w = [target_x - 60, target_x + 60];
+        search_zone_h = [target_y - 60, target_y + 60];
+    }
+    else{
+        can_see_player = false;
+    }
 }
-
 if can_see_player = true{
     chase_player = true;
 }
@@ -278,7 +283,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                 y = test_y;
             }
         }
-        if (chase_player and collision_line(x, y, obj_player.x, obj_player.y, global.closed_obstacles, false, true)){
+        if (chase_player and collision_line(x, y, target.x, target.y, global.closed_obstacles, false, true)){
             breaking_something = true;
             if break_delay > 0{
                 break_delay -= 1;
@@ -286,7 +291,7 @@ if place_meeting(x, y, global.breakable_obstacles){
             else{
                 if (n_obs.boards = undefined) {
                 	var sound_to_play = choose(doorbang1, doorbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    deal_damage(1, sound_to_play, n_obs, x, y);
                     switch (object_index) {
                     	case obj_walker:
                             break_delay = irandom_range(60, 120);
@@ -298,7 +303,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                 }
                 else if (n_obs.boards = false) {
                     var sound_to_play = choose(windowbang1, windowbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    deal_damage(1, sound_to_play, n_obs, x, y);
                     switch (object_index) {
                     	case obj_walker:
                             break_delay = irandom_range(60, 120);
@@ -310,7 +315,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                 }
                 else{
                     var sound_to_play = choose(boardbang1, boardbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y, 0);
+                    deal_damage(1, sound_to_play, n_obs, x, y);
                     switch (object_index) {
                         case obj_walker:
                             break_delay = irandom_range(60, 120);

@@ -59,8 +59,8 @@ global.invisible = true;
 global.zombie_omniscience = false;
 global.see_all = false;
 
-spawn_mode = "hold";
-types = [obj_walker, obj_runner]
+spawn_mode = "press";
+types = [obj_walker, obj_runner, obj_survivor_test];
 max_types = array_length(types) - 1;
 type_to_spawn = 0;
 

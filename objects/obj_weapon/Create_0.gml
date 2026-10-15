@@ -71,15 +71,13 @@ ham_charge = 0;
 ham_base_stamina_usage = 4;
 
 rev_can_shoot = true;
-
 rev_damage = 100;
 rev_reload_delay_left = 0;
-
 rev_reloading = false;
 rev_max_reload_time = 10;
 rev_reload_time_left = rev_max_reload_time;
-sho_can_shoot = true;
 
+sho_can_shoot = true;
 pellet_points = [];
 max_pellets = 8;
 pellets_shot = 0;

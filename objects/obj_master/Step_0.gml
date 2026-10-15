@@ -126,8 +126,10 @@ if (global.game_started) {
                 }
             }
             if keyboard_check_pressed(ord("K")){
-                if (instance_exists(obj_zombie_parent)) {
-                	instance_destroy(obj_zombie_parent);
+                for (var i = 0; i < array_length(types); i++) {
+                	if (instance_exists(types[i])) {
+                    	instance_destroy(types[i]);
+                    }
                 }
             }
             if keyboard_check_pressed(ord("L")){

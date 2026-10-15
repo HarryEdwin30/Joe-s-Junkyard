@@ -79,12 +79,12 @@ if keyboard_check_pressed(ord("R")){
     if weapon_type = 0 or weapon_type = 4 exit;
         
     if weapon_type = 1 and rev_bullets_left < rev_max_bullets and rev_reloading = false and rev_total_bullets > 0{
-        audio_play_sound(rev_reload_start, 0, false)
+        audio_play_sound(rev_reload_start, 0, false);
         rev_reloading = true;
     }
     if weapon_type = 2 and sho_shoot_delay <= 0 and sho_bullets_left < sho_max_bullets and sho_reloading = false and sho_total_bullets_left > 0{
         sho_reloading = true;
-        audio_play_sound(sho_reload_start, 0, false)
+        audio_play_sound(sho_reload_start, 0, false);
     }
     if weapon_type = 3 and rif_bullets_left < rif_max_bullets and rif_reloading = false and rif_total_mags > 0{
         rif_reloading = true;
