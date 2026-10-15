@@ -144,6 +144,7 @@ if draw_sho_bullets = true{
     }
 }
 if weapon_type = 2 and obj_player.can_move = true{
+    var zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
     draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);
 }
 if ham_draw_target = true and obj_player.can_move = true{

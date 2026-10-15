@@ -2,8 +2,6 @@ if !instance_exists(obj_player) or !obj_player.can_move or global.pause exit;
 
 if ham_delay > 0 ham_delay -= 1;
 
-zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
-
 gun_start_x = obj_player.x + gun_x_distance_from_player;
 gun_start_y = obj_player.y + gun_y_distance_from_player;
 

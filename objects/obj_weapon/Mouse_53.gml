@@ -99,6 +99,7 @@ if weapon_type = 2 and sho_can_shoot = true{
     }
     var start_x = obj_player.x;
     var start_y = obj_player.y;
+    var zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
     
     while (pellets_drawn < max_pellets) {
         var point_x = irandom_range(mouse_x - zone_size, mouse_x + zone_size);
@@ -166,7 +167,6 @@ if weapon_type = 2 and sho_can_shoot = true{
         obj_zombie_parent.chase_player = true;
         obj_zombie_parent.interest = obj_zombie_parent.max_interest;
     }
-    pellets_shot = 0;
     draw_sho_bullets = true;
     sho_shoot_delay = sho_shoot_delay_max;
 }

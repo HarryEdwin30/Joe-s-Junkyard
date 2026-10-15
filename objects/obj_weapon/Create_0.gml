@@ -80,7 +80,6 @@ rev_reload_time_left = rev_max_reload_time;
 sho_can_shoot = true;
 pellet_points = [];
 max_pellets = 8;
-pellets_shot = 0;
 sho_shoot_delay_max = 60;
 sho_shoot_delay = 0;
 sho_reloading = false;

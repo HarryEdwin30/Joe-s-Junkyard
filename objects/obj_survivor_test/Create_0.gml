@@ -16,6 +16,9 @@ show_average_zombies = false;
 pointer_x = x;
 pointer_y = y;
 
+b_end_x = x;
+b_end_y = y;
+
 show_pointer_pos = false;
 
 line_x = 0;
@@ -24,10 +27,13 @@ line_y = 0;
 draw_aim_line = false;
 
 draw_bullet = false;
+draw_sho_bullets = false;
 
 def_aim_speed = 1;
 
-weapon = 1; //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
+weapon = 2; //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
+
+accuracy = 2; // the lower this is, the more accurate they are
 
 rev_shoot_delay_max = 30;
 rev_shoot_delay_min = 5;
@@ -45,6 +51,26 @@ rev_reload_delay_left = 0;
 rev_reloading = false;
 rev_max_reload_time = 10;
 rev_reload_time_left = rev_max_reload_time;
+
+sho_max_total_bullets = infinity;
+sho_max_bullets = 8;
+
+sho_total_bullets = sho_max_total_bullets;
+sho_bullets_left = sho_max_bullets;
+
+sho_can_shoot = true;
+pellet_points = [];
+max_pellets = 8;
+pellets_shot = 0;
+sho_shoot_delay_max = 100;
+sho_shoot_delay_min = 60;
+sho_shoot_delay = 0;
+sho_reloading = false;
+sho_max_reload_time = 15;
+sho_reload_time_left = sho_max_reload_time;
+sho_damage = 75; //(per pellet)
+sho_reload_delay_left = 0;
+sho_max_pen = 3;
 
 gun_x_distance_from_player = 8;
 gun_y_distance_from_player = 3;

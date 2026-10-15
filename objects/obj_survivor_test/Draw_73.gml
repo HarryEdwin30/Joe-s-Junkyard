@@ -86,6 +86,18 @@ if (draw_bullet) {
 	draw_line_colour(gun_start_x, gun_start_y, line_x, line_y, c, c);
     draw_bullet = false;
 }
+if draw_sho_bullets = true{
+    var array_number = 0;
+    
+    for (var p = 0; p < max_pellets; p++) {
+        var end_x = pellet_points[array_number][0];
+        var end_y = pellet_points[array_number][1];
+        array_number += 1;
+        draw_line_colour(gun_start_x, gun_start_y, end_x, end_y, c_yellow, c_yellow);
+    }
+    draw_sho_bullets = false;
+    pellet_points = [];
+}
 
 var weapon_to_draw = undefined;
 var weapon_rotation = point_direction(x + 5, y, pointer_x, pointer_y);
