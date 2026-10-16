@@ -226,6 +226,27 @@ if (weapon = 2) {
     }
 }
 
+if (weapon = 3) {
+	if rif_reloading = true{
+        if weapon != 3{
+            rif_reloading = false;
+            rif_reload_time_left = rif_max_reload_time;
+            audio_stop_sound(rif_reload1);
+        }
+        if rif_reload_time_left <= 0{
+            rif_total_mags -= 1;
+            rif_bullets = rif_max_bullets;
+            rif_reloading = false;
+            rif_reload_time_left = rif_max_reload_time;
+        }
+        rif_reload_time_left -= 1;
+    }
+    if (rif_bullets <= 0 and !rif_reloading and rif_total_mags > 0) {
+        rif_reloading = true;
+        audio_play_sound_at(rif_reload1, x, y, 0, 160, 320, 1, false, 0);
+    }
+}
+
 if (instance_exists(obj_zombie_parent)) {
     var target = instance_nearest(x, y, obj_zombie_parent);
     var dist = point_distance(x, y, target.x, target.y);
@@ -258,68 +279,8 @@ if (instance_exists(obj_zombie_parent)) {
             else {
                 rev_shoot_delay = irandom_range(rev_shoot_delay_min, rev_shoot_delay_max);
                 if (rev_bullets_left > 0 and !rev_reloading and collision_line(x, y, pointer_x, pointer_y, target, false, true)) {
-                    draw_bullet = true;
+                    shoot(rev_gunshot1, rev_damage, rev_accuracy);
                     rev_bullets_left -= 1;
-                    audio_play_sound_at(rev_gunshot1, x, y, 0, 160, 1000, 1, false, 0);
-                    if instance_exists(obj_zombie_parent){
-                        obj_zombie_parent.target_x = x;
-                        obj_zombie_parent.target_y = y;
-                        obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-                        obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
-                        obj_zombie_parent.chase_player = true;
-                        obj_zombie_parent.interest = obj_zombie_parent.max_interest;
-                    }
-                    var bcx = x;
-                    var bcy = y;
-                    var d = 20;
-                    var end_x_min = pointer_x - (accuracy * point_distance(x, y, pointer_x, pointer_y) / d);
-                    var end_y_min = pointer_y - (accuracy * point_distance(x, y, pointer_x, pointer_y) / d);
-                    var end_x_max = pointer_x + (accuracy * point_distance(x, y, pointer_x, pointer_y) / d);
-                    var end_y_max = pointer_y + (accuracy * point_distance(x, y, pointer_x, pointer_y) / d);
-                    b_end_x = irandom_range(end_x_min, end_x_max);
-                    b_end_y = irandom_range(end_y_min, end_y_max);
-                    var bdir = point_direction(x, y, b_end_x, b_end_y);
-                    var bsx = lengthdir_x(1, bdir);
-                    var bsy = lengthdir_y(1, bdir);
-                    var bmax_dist = point_distance(x, y, b_end_x, b_end_y);
-                    var btdist = 0;
-                    while (btdist < bmax_dist) {
-                        bcx += bsx;
-                        bcy += bsy;
-                        btdist += 1;
-                        if (position_meeting(bcx, bcy, obj_window)) {
-                            var window_to_shoot = instance_nearest(bcx, bcy, obj_window);
-                            if (!window_to_shoot.broken) {
-                                var wsound_to_play = choose(windowbreak1, windowbreak2, windowbreak3);
-                                audio_play_sound_at(wsound_to_play, window_to_shoot.x, window_to_shoot.y, 0, 160, 480, 1, false, 0);
-                                window_to_shoot.broken = true;
-                                if (window_to_shoot.boards) {
-                                window_to_shoot.image_index = 3;
-                                }
-                                else {
-                                    window_to_shoot.image_index = 2;
-                                    var index1 = array_get_index(global.closed_obstacles, window_to_shoot);
-                                    var index2 = array_get_index(global.breakable_obstacles, window_to_shoot);
-                                    array_delete(global.closed_obstacles, index1, 1);
-                                    array_delete(global.breakable_obstacles, index2, 1);
-                                }
-                            }
-                        }
-                        if (position_meeting(bcx, bcy, global.opaque_obstacles)) {
-                            break;
-                        }
-                        if (position_meeting(bcx, bcy, obj_zombie_parent)) {
-                            var bzombie = noone;
-                            bzombie = instance_nearest(bcx, bcy, obj_zombie_parent);
-                            if (bzombie != noone) {
-                                var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
-                                deal_damage(rev_damage, sound_to_play, bzombie, bzombie.x, bzombie.y);
-                            }
-                            break;
-                        };
-                    }
-                    line_x = bcx;
-                    line_y = bcy;
                 }
             }
         }
@@ -334,14 +295,12 @@ if (instance_exists(obj_zombie_parent)) {
                     draw_sho_bullets = true;
                     sho_bullets_left -= 1;
                     audio_play_sound_at(sho_shot, x, y, 0, 160, 1000, 1, false, 0);
-                    if instance_exists(obj_zombie_parent){
-                        obj_zombie_parent.target_x = x;
-                        obj_zombie_parent.target_y = y;
-                        obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-                        obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
-                        obj_zombie_parent.chase_player = true;
-                        obj_zombie_parent.interest = obj_zombie_parent.max_interest;
-                    }
+                    obj_zombie_parent.target_x = x;
+                    obj_zombie_parent.target_y = y;
+                    obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
+                    obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
+                    obj_zombie_parent.chase_player = true;
+                    obj_zombie_parent.interest = obj_zombie_parent.max_interest;
                     var targets = [tilemap];
                     if instance_exists(obj_door){
                         with (obj_door) {
@@ -414,13 +373,50 @@ if (instance_exists(obj_zombie_parent)) {
                     sho_bullets_left -= 1;
                     audio_play_sound(sho_shot, 0, false);
                     
-                    if instance_exists(obj_zombie_parent){
-                        obj_zombie_parent.target_x = x;
-                        obj_zombie_parent.target_y = y;
-                        obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-                        obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
-                        obj_zombie_parent.chase_player = true;
-                        obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+                    obj_zombie_parent.target_x = x;
+                    obj_zombie_parent.target_y = y;
+                    obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
+                    obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
+                    obj_zombie_parent.chase_player = true;
+                    obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+                }
+            }
+        }
+        if (weapon = 3) {
+            if (point_distance(x, y, target.x, target.y) < 250) {
+            	fire_mode = 0;
+            }
+            else {
+            	fire_mode = 1;
+            }
+            if (rif_shoot_delay > 0) {
+                rif_shoot_delay -= 1;
+            }
+            else {
+                if (fire_mode = 0) {
+                    if (rif_burst_delay > 0) {
+                    	rif_burst_delay -= 1;
+                    }
+                    else {
+                        var rif_burst_delay_max = 5;
+                        rif_burst_delay = rif_burst_delay_max;
+                        if (burst < max_burst and rif_bullets > 0 and !rif_reloading and collision_line(x, y, pointer_x, pointer_y, target, false, true)) {
+                        	shoot(rif_gunshot1, rif_damage, rif_accuracy);
+                            rif_bullets -= 1;
+                        }
+                        else {
+                        	rif_shoot_delay = irandom_range(rif_shoot_delay_min, rif_shoot_delay_max);
+                            burst = 0;
+                            max_burst = irandom_range(2, 6);
+                        }
+                    }
+                }
+                else {
+                    burst = 0;
+                    rif_shoot_delay = irandom_range(rif_shoot_delay_min, rif_shoot_delay_max);
+                    if (rif_bullets > 0 and !rif_reloading and collision_line(x, y, pointer_x, pointer_y, target, false, true)) {
+                        shoot(rif_gunshot1, rif_damage, rif_accuracy);
+                        rif_bullets -= 1;
                     }
                 }
             }

@@ -36,11 +36,9 @@ if (boards) {
     if (broken) {
         image_index = 3;
         hp = 0;
-        show_debug_message("i am broken and have boards");
     }
     else{
         image_index = 1;
-        show_debug_message("i am not broken and have boards");
     }
 	ahp = hp;
     hp += 50;
@@ -52,12 +50,10 @@ else {
 	if (broken) {
         image_index = 2;
         hp = 0
-        show_debug_message("i am broken and have no boards");
     }
     else{
         array_push(global.closed_obstacles, id);
         array_push(global.breakable_obstacles, id);
         image_index = 0;
-        show_debug_message("i am not broken and have no boards");
     }
 }

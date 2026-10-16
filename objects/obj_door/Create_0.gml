@@ -23,14 +23,11 @@ if (broken) {
 	open = true;
     image_index = 2;
     hp = 0;
-    show_debug_message("i am broken");
 }
 else if (open) {
 	image_index = 1;
-    show_debug_message("i am open");
 }
 else{
-    show_debug_message("i am closed");
     image_index = 0;
     array_push(global.closed_obstacles, id);
     array_push(global.breakable_obstacles, id);
