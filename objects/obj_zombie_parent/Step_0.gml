@@ -141,22 +141,6 @@ if (place_meeting(x, y, obj_window)) {
     m_spd /= 2;
 }
 
-if obj_player.being_attacked = true{
-    damage_delay -= 1;
-}
-else damage_delay = 30;
-
-if place_meeting(x, y, obj_player) and stunned <= 0 and global.godmode = false{
-    m_spd = 0;
-    obj_player.being_attacked = true;
-    if damage_delay <= 0{
-        damage_delay = 50;
-        sound = choose(bitesound1, bitesound2, bitesound3, bitesound4);
-        deal_damage(25, sound, obj_player);
-        obj_player.infected = true;
-    }
-}
-
 var target = noone
 
 var detection_range = 320;
@@ -169,29 +153,45 @@ else {
 	target = instance_nearest(x, y, obj_human_parent);
 }
 if (target != noone) {
-    if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, undefined){
+    if distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, true){
         can_see_player = true;
+        var max_interest = irandom_range(1200, 2000);
         interest = max_interest;
         target_x = target.x;
         target_y = target.y;
-        search_zone_w = [target_x - 60, target_x + 60];
-        search_zone_h = [target_y - 60, target_y + 60];
     }
     else{
         can_see_player = false;
+    }
+    if (place_meeting(x, y, target) and stunned <= 0) {
+	    m_spd = 0;
+        if (target.object_index = obj_player) {
+        	obj_player.being_attacked = true;
+        }
+        if (damage_delay > 0) {
+        	damage_delay -= 1;
+        }
+        else {
+            target.infected = true;
+            deal_damage(25, undefined, target);
+            damage_delay = damage_delay_max;
+        }
+    }
+    else {
+    	damage_delay = damage_delay_max;
     }
 }
 if can_see_player = true{
     chase_player = true;
 }
 
-if can_see_player = false and chase_player = true and !breaking_something and x >= search_zone_w[0] and x <= search_zone_w[1] and y >= search_zone_h[0] and y <= search_zone_h[1]{
-    interest -= 1;
-}
-
-if interest <= 0{
-    chase_player = false;
-    interest = 0;
+if chase_player = true{
+    if (interest > 0) {
+    	interest -= 1;
+    }
+    else {
+    	chase_player = false;
+    }
 }
     
 if chase_player = true{

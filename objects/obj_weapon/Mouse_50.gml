@@ -321,9 +321,8 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     if instance_exists(obj_zombie_parent){
         obj_zombie_parent.target_x = obj_player.x;
         obj_zombie_parent.target_y = obj_player.y;
-        obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-        obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
         obj_zombie_parent.chase_player = true;
-        obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+        var max_interest = irandom_range(1200, 2000);
+        obj_zombie_parent.interest = max_interest;
     }
 }

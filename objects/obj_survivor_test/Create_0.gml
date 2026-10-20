@@ -1,5 +1,30 @@
-def_m_spd = 2;
+/*
+ * todo in order:
+ * 
+ * squad joining
+ * 
+ * collision with doors/windows and breaking of them
+ * 
+ * wandering
+ * 
+ * collision with doors/windows and breaking of them
+ * 
+ * traits
+ * 
+ * dialogue
+ * 
+ * encampments
+ * 
+ * more
+ * */
+
+def_m_spd = 1;
 m_spd = def_m_spd;
+
+max_hp = 100;
+hp = max_hp;
+
+infected = false;
 
 pathfind_delay_max_def = 20;
 pathfind_delay_max = pathfind_delay_max_def;
@@ -107,10 +132,9 @@ function shoot(sound, damage, weapon_accuracy){ //wow this is my first time defi
     audio_play_sound_at(sound, x, y, 0, 160, 1000, 1, false, 0);
     obj_zombie_parent.target_x = x;
     obj_zombie_parent.target_y = y;
-    obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-    obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
     obj_zombie_parent.chase_player = true;
-    obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+    var max_interest = irandom_range(1200, 2000);
+    obj_zombie_parent.interest = max_interest;
     var bcx = x;
     var bcy = y;
     var d = weapon_accuracy;
@@ -163,3 +187,51 @@ function shoot(sound, damage, weapon_accuracy){ //wow this is my first time defi
     line_x = bcx;
     line_y = bcy;
 }
+
+function run_away(xx, yy, sd) {
+    var dang = 360 / 8;
+    var rad = 0;
+    var max_rad = 300;
+    var tx = 0;
+    var ty = 0;
+    var cx = 0;
+    var cy = 0;
+    var found = false;
+    while (!found and rad < max_rad) {
+        for (var ang = 0; ang < 360; ang += dang) {
+            cx = x + lengthdir_x(rad, ang);
+            cy = y + lengthdir_y(rad, ang);
+            if (!place_meeting(cx, cy, global.closed_obstacles) and !place_meeting(cx, cy, obj_zombie_parent) and point_in_rectangle(cx, cy, 0, 0, room_width, room_height)) {
+                if (point_distance(cx, cy, xx, yy) > sd) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        rad += 30;
+    }
+    tx = cx;
+    ty = cy;
+    iwillfindyouandiwillrapeyou(tx, ty, m_spd);
+}
+function push_away(target, push_speed) {
+    with (target){
+        if (id != other.id){
+            var dist = point_distance(x, y, other.x, other.y);
+            var min_dist = 16;
+            
+            if (dist < min_dist && dist > 0){
+                var dir = point_direction(x, y, other.x, other.y);
+                var test_x = other.x + lengthdir_x(push_speed, dir);
+                var test_y = other.y + lengthdir_y(push_speed, dir);
+                if !place_meeting(test_x, test_y, global.closed_obstacles){
+                    other.x += lengthdir_x(push_speed, dir);
+                    other.y += lengthdir_y(push_speed, dir);
+                }
+            }
+        }
+    }
+}
+
+push_delay = 0;
+push_delay_max = 5;

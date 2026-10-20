@@ -22,6 +22,7 @@
     {"name":"backpackfont2","order":2,"path":"fonts/backpackfont2/backpackfont2.yy",},
     {"name":"obj_ai_director","order":5,"path":"objects/obj_ai_director/obj_ai_director.yy",},
     {"name":"obj_backpack","order":4,"path":"objects/obj_backpack/obj_backpack.yy",},
+    {"name":"obj_chest_backup","order":4,"path":"objects/obj_chest_backup/obj_chest_backup.yy",},
     {"name":"obj_door","order":1,"path":"objects/obj_door/obj_door.yy",},
     {"name":"obj_drop_bag","order":5,"path":"objects/obj_drop_bag/obj_drop_bag.yy",},
     {"name":"obj_fade","order":6,"path":"objects/obj_fade/obj_fade.yy",},

@@ -27,3 +27,6 @@ else {
 
 infected = data.infected;
 hp = data.hp;
+
+squad = [];
+squad_max_size = 3;

@@ -1,9 +1,55 @@
+if (hp <= 0) {
+    if (infected) {
+        var ml = layer_get_id("mainlayer");
+    	instance_create_layer(x, y, ml, obj_runner);
+    }
+	instance_destroy();
+}
+
 //movement
 
+var scary_zombo = false;
+
+if (place_meeting(x, y, obj_zombie_parent)) {
+	m_spd = def_m_spd / 2;
+}
+else {
+	m_spd = def_m_spd
+}
+/*
+if place_meeting(x, y, obj_human_parent){
+    if (push_delay > 0) {
+    	push_delay -= 1;
+    }
+    else {
+    	push_away(obj_human_parent, 4);
+        push_delay = push_delay_max;
+    }
+}
+*/
 if (pathfind_delay > 0) {
 	pathfind_delay -= 1;
 }
 else {
+    if place_meeting(x, y, obj_human_parent){
+        push_away(obj_human_parent, 4);
+    }
+    if (array_contains(obj_player.squad, id)) {
+    	var max_dist_from_player = 32;
+        if (point_distance(x, y, obj_player.x, obj_player.y) > max_dist_from_player) {
+            var found = false;
+            var dx = x;
+            var dy = y;
+            while (!found) {
+            	dx = irandom_range(obj_player.x - max_dist_from_player, obj_player.x + max_dist_from_player);
+                dy = irandom_range(obj_player.y - max_dist_from_player, obj_player.y + max_dist_from_player);
+                if (!position_meeting(dx, dy, global.closed_obstacles)) {
+                	found = true;
+                }
+            }
+            iwillfindyouandiwillrapeyou(dx, dy, m_spd);
+        }
+    }
     if (instance_exists(obj_zombie_parent)) {
         var zombie = instance_nearest(x, y, obj_zombie_parent);
         
@@ -15,6 +61,7 @@ else {
         var sd = 0; //scary distance
         
         if (point_distance(x, y, zombie.x, zombie.y) < dr) {
+            scary_zombo = true;
             var lax = 0; //large average x
             var lay = 0;
             var lzombies = 0;
@@ -73,36 +120,21 @@ else {
                 yy = lay;
                 pathfind_delay_max = pathfind_delay_max_def;
             }
-            
+            if (array_contains(obj_player.squad, id)) {
+                sd = cdr;
+            }
 	        if (point_distance(x, y, xx, yy) < sd and pathfind_delay <= 0) {
-                var dang = 360 / 8;
-                var rad = 0;
-                var max_rad = 300;
-                var tx = 0;
-                var ty = 0;
-                var cx = 0;
-                var cy = 0;
-                var found = false;
-                while (!found and rad < max_rad) {
-                	for (var ang = 0; ang < 360; ang += dang) {
-                    	cx = x + lengthdir_x(rad, ang);
-                        cy = y + lengthdir_y(rad, ang);
-                        if (!place_meeting(cx, cy, global.closed_obstacles) and !place_meeting(cx, cy, obj_zombie_parent) and point_in_rectangle(cx, cy, 0, 0, room_width, room_height)) {
-                        	if (point_distance(cx, cy, xx, yy) > sd) {
-                            	found = true;
-                                break;
-                            }
-                        }
-                    }
-                    rad += 30;
-                }
-                tx = cx;
-                ty = cy;
-                iwillfindyouandiwillrapeyou(tx, ty, m_spd);
+                run_away(xx, yy, sd);
             }
         }
     }
     pathfind_delay = pathfind_delay_max;
+}
+
+//wandering
+
+if (!scary_zombo) {
+	//we gon put sum shit in here on god
 }
 
 //tilemap collision safety
@@ -297,10 +329,9 @@ if (instance_exists(obj_zombie_parent)) {
                     audio_play_sound_at(sho_shot, x, y, 0, 160, 1000, 1, false, 0);
                     obj_zombie_parent.target_x = x;
                     obj_zombie_parent.target_y = y;
-                    obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-                    obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
                     obj_zombie_parent.chase_player = true;
-                    obj_zombie_parent.interest = obj_zombie_parent.max_interest;
+                    var max_interest = irandom_range(1200, 2000);
+                    obj_zombie_parent.interest = max_interest;
                     var targets = [tilemap];
                     if instance_exists(obj_door){
                         with (obj_door) {
@@ -370,15 +401,6 @@ if (instance_exists(obj_zombie_parent)) {
                         	deal_damage(sho_damage, undefined, zombies_to_deal_damage_to[i]);
                         }
                     }
-                    sho_bullets_left -= 1;
-                    audio_play_sound(sho_shot, 0, false);
-                    
-                    obj_zombie_parent.target_x = x;
-                    obj_zombie_parent.target_y = y;
-                    obj_zombie_parent.search_zone_w = [obj_zombie_parent.target_x - 60, obj_zombie_parent.target_x + 60];
-                    obj_zombie_parent.search_zone_h = [obj_zombie_parent.target_y - 60, obj_zombie_parent.target_y + 60];
-                    obj_zombie_parent.chase_player = true;
-                    obj_zombie_parent.interest = obj_zombie_parent.max_interest;
                 }
             }
         }

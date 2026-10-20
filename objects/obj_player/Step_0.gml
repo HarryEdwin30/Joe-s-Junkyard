@@ -12,8 +12,6 @@ if hp <= 0{
     room_goto(DeathRoom);
     global.game_started = false;
     audio_stop_all();
-    show_debug_message("im dead");
-    obj_master.set_player_save_spawnpoint = false;
     instance_destroy();
 }
 
