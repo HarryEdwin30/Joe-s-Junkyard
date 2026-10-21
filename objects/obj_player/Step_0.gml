@@ -36,6 +36,7 @@ if place_meeting(x, y, obj_zombie_parent) and global.godmode = false{
 else{
     def_m_spd = 1;
     can_run = true;
+    being_attacked = false;
 }
 
 if (push_cooldown > 0) {

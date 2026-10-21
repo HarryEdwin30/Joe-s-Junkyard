@@ -1,13 +1,11 @@
 /*
  * todo in order:
  * 
- * squad joining
+ * squad joining - got it!
  * 
- * collision with doors/windows and breaking of them
+ * collision with doors/windows and breaking of them - got it!
  * 
  * wandering
- * 
- * collision with doors/windows and breaking of them
  * 
  * traits
  * 
@@ -235,3 +233,5 @@ function push_away(target, push_speed) {
 
 push_delay = 0;
 push_delay_max = 5;
+
+target_door = noone;

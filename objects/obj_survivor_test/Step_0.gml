@@ -27,6 +27,44 @@ if place_meeting(x, y, obj_human_parent){
     }
 }
 */
+if (place_meeting(x, y, obj_door) and target_door = noone) {
+    target_door = instance_nearest(x, y, obj_door);
+    if (!target_door.broken) {
+        if (!target_door.open) {
+            push_out_of_closed();
+        	door_open(target_door);
+        }
+    }
+    else {
+    	target_door = noone;
+    }
+}
+if (target_door != noone) {
+	if (point_distance(x, y, target_door.x, target_door.y) > 32) {
+        if (target_door.open) {
+        	door_open(target_door);
+        }
+        target_door = noone;
+    }
+}
+
+if (place_meeting(x, y, obj_window)) { // surprisingly i'm actually really happy with how this looks
+    var window = instance_nearest(x, y, obj_window)
+    if (!window.broken or window.boards) {
+        var sound_to_play = choose(windowbang1, windowbang2);
+        if (window.boards) {
+        	sound_to_play = choose(boardbang1, boardbang2);
+        }
+        deal_damage(25, sound_to_play, window, x, y);
+        
+        push_out_of_closed();
+    }
+}
+
+if (place_meeting(x, y, obj_window)) {
+    m_spd /= 2;
+}
+
 if (pathfind_delay > 0) {
 	pathfind_delay -= 1;
 }

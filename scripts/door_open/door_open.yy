@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"door_open",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"door_open",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
