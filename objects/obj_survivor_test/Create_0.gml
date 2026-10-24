@@ -1,9 +1,15 @@
 /*
  * todo in order:
  * 
- * squad joining - got it!
+ * player squad joining - got it!
  * 
  * collision with doors/windows and breaking of them - got it!
+ * 
+ * PvE and EvE - got it!
+ * 
+ * npc squads
+ * 
+ * smart battle movement
  * 
  * wandering
  * 
@@ -28,7 +34,7 @@ pathfind_delay_max_def = 20;
 pathfind_delay_max = pathfind_delay_max_def;
 pathfind_delay = 0;
 
-dr = 400; //detection range
+dr = 640; //detection range
 mdr = 100; //medium detection range
 cdr = 32; //close detection range
 
@@ -52,11 +58,11 @@ draw_aim_line = false;
 draw_bullet = false;
 draw_sho_bullets = false;
 
-def_aim_speed = 1;
+def_aim_speed = irandom_range(1, 5);
 
 weapon = irandom_range(1, 3); //0 = no weapon, 1 = revolver, 2 = shotgun, 3 = rifle, 4 = melee
 
-accuracy = 1; // the lower this is, the more accurate they are
+accuracy = random_range(1, 3); // the lower this is, the more accurate they are
 
 rev_shoot_delay_max = 30;
 rev_shoot_delay_min = 5;
@@ -128,11 +134,13 @@ gun_start_y = y + gun_y_distance_from_player;
 function shoot(sound, damage, weapon_accuracy){ //wow this is my first time defining a function. I swear to god i've done this before in other languages but i fucking forgot they existed in gml
     draw_bullet = true;
     audio_play_sound_at(sound, x, y, 0, 160, 1000, 1, false, 0);
-    obj_zombie_parent.target_x = x;
-    obj_zombie_parent.target_y = y;
-    obj_zombie_parent.chase_player = true;
-    var max_interest = irandom_range(1200, 2000);
-    obj_zombie_parent.interest = max_interest;
+    if (instance_exists(obj_zombie_parent)) {
+        obj_zombie_parent.target_x = x;
+        obj_zombie_parent.target_y = y;
+        obj_zombie_parent.chase_player = true;
+        var max_interest = irandom_range(1200, 2000);
+        obj_zombie_parent.interest = max_interest;
+    }
     var bcx = x;
     var bcy = y;
     var d = weapon_accuracy;
@@ -172,15 +180,31 @@ function shoot(sound, damage, weapon_accuracy){ //wow this is my first time defi
         if (position_meeting(bcx, bcy, global.opaque_obstacles)) {
             break;
         }
-        if (position_meeting(bcx, bcy, obj_zombie_parent)) {
-            var bzombie = noone;
-            bzombie = instance_nearest(bcx, bcy, obj_zombie_parent);
-            if (bzombie != noone) {
-                var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
-                deal_damage(damage, sound_to_play, bzombie, bzombie.x, bzombie.y);
+        if (instance_exists(obj_zombie_parent)) {
+            if (position_meeting(bcx, bcy, obj_zombie_parent)) {
+                var bzombie = noone;
+                bzombie = instance_nearest(bcx, bcy, obj_zombie_parent);
+                if (bzombie != noone) {
+                    var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
+                    deal_damage(damage, sound_to_play, bzombie, bzombie.x, bzombie.y);
+                }
+                break;
+            };
+        }
+        var found_human = noone;
+        
+        with (obj_human_parent) {
+            if (id != other.id && position_meeting(bcx, bcy, id)) {
+                found_human = id;
+                break;
             }
+        }
+        
+        if (found_human != noone) {
+            var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
+            deal_damage(damage, sound_to_play, found_human, found_human.x, found_human.y);
             break;
-        };
+        }
     }
     line_x = bcx;
     line_y = bcy;
@@ -235,3 +259,5 @@ push_delay = 0;
 push_delay_max = 5;
 
 target_door = noone;
+
+squad = [];

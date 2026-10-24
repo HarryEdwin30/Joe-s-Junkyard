@@ -76,3 +76,5 @@ draw_pause_menu = false;
 //max distance from containers
 
 global.mdfc = 64;
+
+//set game progress

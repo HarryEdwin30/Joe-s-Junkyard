@@ -16,7 +16,7 @@ if weapon_type = 1 and rev_can_shoot = true{
     draw_a_bullet = true;
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
+    var targets = [tilemap, obj_zombie_parent, obj_survivor_test];
     if instance_exists(obj_door){
         with (obj_door) {
         	if (open == false) {
@@ -65,6 +65,19 @@ if weapon_type = 1 and rev_can_shoot = true{
     if position_meeting(end_x, end_y, obj_zombie_parent){
         var zombie_to_shoot = instance_nearest(end_x, end_y, obj_zombie_parent);
         deal_damage(rev_damage, sound_to_play, zombie_to_shoot);
+    }
+    
+    var found_human = noone;
+        
+    with (obj_human_parent) {
+        if (id != other.id && position_meeting(end_x, end_y, id)) {
+            found_human = id;
+            break;
+        }
+    }
+    
+    if (found_human != noone) {
+        deal_damage(rev_damage, sound_to_play, found_human, found_human.x, found_human.y);
     }
     
     if position_meeting(mouse_x, mouse_y, obj_player){
@@ -142,6 +155,21 @@ if weapon_type = 2 and sho_can_shoot = true{
                     pen += 1;
                 }
             }
+            var found_human = noone;
+                
+            with (obj_survivor_test) {
+                if (id != other.id && position_meeting(checker_x, checker_y, id)) {
+                    found_human = id;
+                    break;
+                }
+            }
+            
+            if (found_human != noone) {
+                if !array_contains(zombies_to_deal_damage_to, found_human){
+                    array_push(zombies_to_deal_damage_to, found_human);
+                    pen += 1;
+                }
+            }
         }
         var end_x = checker_x;
         var end_y = checker_y;
@@ -175,7 +203,7 @@ if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     draw_a_bullet = true;
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
+    var targets = [tilemap, obj_zombie_parent, obj_survivor_test];
     if instance_exists(obj_door){
         with (obj_door) {
         	if (open == false) {
@@ -228,6 +256,18 @@ if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     if position_meeting(mouse_x, mouse_y, obj_player){
         obj_player.infected = false;
         deal_damage(1000, sound_to_play, obj_player);
+    }
+    var found_human = noone;
+        
+    with (obj_human_parent) {
+        if (id != other.id && position_meeting(end_x, end_y, id)) {
+            found_human = id;
+            break;
+        }
+    }
+    
+    if (found_human != noone) {
+        deal_damage(rev_damage, sound_to_play, found_human, found_human.x, found_human.y);
     }
     
     rif_bullets_left -= 1;
