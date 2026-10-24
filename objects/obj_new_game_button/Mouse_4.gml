@@ -1,4 +1,4 @@
-room_goto(TestRoom);
+room_goto(Junkyard);
 global.game_started = true;
 global.data = {};
 

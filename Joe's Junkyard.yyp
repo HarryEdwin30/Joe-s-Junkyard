@@ -79,8 +79,8 @@
     {"id":{"name":"obj_zombie_parent","path":"objects/obj_zombie_parent/obj_zombie_parent.yy",},},
     {"id":{"name":"DeathRoom","path":"rooms/DeathRoom/DeathRoom.yy",},},
     {"id":{"name":"init","path":"rooms/init/init.yy",},},
+    {"id":{"name":"Junkyard","path":"rooms/Junkyard/Junkyard.yy",},},
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
-    {"id":{"name":"TestRoom","path":"rooms/TestRoom/TestRoom.yy",},},
     {"id":{"name":"TestRoom2","path":"rooms/TestRoom2/TestRoom2.yy",},},
     {"id":{"name":"deal_damage","path":"scripts/deal_damage/deal_damage.yy",},},
     {"id":{"name":"door_open","path":"scripts/door_open/door_open.yy",},},
@@ -185,7 +185,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"init","path":"rooms/init/init.yy",},},
     {"roomId":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
-    {"roomId":{"name":"TestRoom","path":"rooms/TestRoom/TestRoom.yy",},},
+    {"roomId":{"name":"Junkyard","path":"rooms/Junkyard/Junkyard.yy",},},
     {"roomId":{"name":"TestRoom2","path":"rooms/TestRoom2/TestRoom2.yy",},},
     {"roomId":{"name":"DeathRoom","path":"rooms/DeathRoom/DeathRoom.yy",},},
   ],
