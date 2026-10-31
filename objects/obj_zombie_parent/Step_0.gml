@@ -153,7 +153,7 @@ else {
 	target = instance_nearest(x, y, obj_human_parent);
 }
 if (target != noone) {
-    if distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, true){
+    if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, true){
         can_see_player = true;
         var max_interest = irandom_range(1200, 2000);
         interest = max_interest;

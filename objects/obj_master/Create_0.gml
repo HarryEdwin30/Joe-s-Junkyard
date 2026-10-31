@@ -78,3 +78,5 @@ draw_pause_menu = false;
 global.mdfc = 64;
 
 //set game progress
+
+load_progress();
