@@ -9,11 +9,11 @@ obj_text_color = c_red;
 max_weight = 300;
 weight = 0;
 
-bs_weight = 10;
-bs = 0;
+bs_weight = 5;
+bs = 5;
 
-scrap_weight = 10;
-scrap = 0;
+scrap_weight = 5;
+scrap = 30;
 
 rev_ammo = 0;
 sho_ammo = 0;
@@ -21,17 +21,11 @@ rif_ammo = 0;
 
 rif_ammo_weight = 30;
 
-zev_cake_weight = 0;
-zev_cakes = 0;
-
-zev_cake_unlocked = false;
-
 bs_damount = 0;
 scrap_damount = 0;
 rev_damount = 0;
 sho_damount = 0;
 rif_damount = 0;
-zc_damount = 0;
 
 drop_rapid_delay_max = 15;
 drop_rapid_delay = drop_rapid_delay_max;

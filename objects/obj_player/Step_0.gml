@@ -2,6 +2,21 @@ if (global.pause) {
 	exit;
 }
 
+if (hp < max_hp) {
+	if (heal_delay > 0) {
+    	heal_delay -= 1;
+    }
+    else {
+    	if (hp + heal_amount > max_hp) {
+        	hp = max_hp;
+        }
+        else {
+        	hp += heal_amount
+        }
+        heal_delay = heal_delay_max;
+    }
+}
+
 audio_listener_position(x, y, 0);
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 

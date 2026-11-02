@@ -5,7 +5,6 @@ if (global.save_game) {
     data.rev_ammo = rev_ammo;
     data.sho_ammo = sho_ammo;
     data.rif_ammo = rif_ammo;
-    data.zev_cakes = zev_cakes;
     
     global.data[$ key] = data;
 }
@@ -35,7 +34,7 @@ if instance_exists(obj_player){
     }
 }
 
-if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0 and !chest_empty {
+if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and !chest_empty {
     chest_empty = true;
     image_index = 1;
 }
@@ -60,7 +59,7 @@ else if (draw_outline) {
 
 if draw_gui = true{
     
-    if bs_tamount + scrap_tamount + rev_tamount + sho_tamount + rif_tamount + zc_tamount > 0{ // most epic if statement ever written???!
+    if bs_tamount + scrap_tamount + rev_tamount + sho_tamount + rif_tamount{ // most epic if statement ever written???!
     draw_take_options = true;
     }
     else draw_take_options = false;
@@ -88,9 +87,6 @@ if draw_gui = true{
     var rif_ammo_dbutton_y1 = 290;
     var rif_ammo_dbutton_y2 = rif_ammo_dbutton_y1 + dbutton_size;
     
-    var zev_cake_dbutton_y1 = 315;
-    var zev_cake_dbutton_y2 = zev_cake_dbutton_y1 + dbutton_size;
-    
     if (keyboard_check_pressed(ord("E")) or keyboard_check_pressed(vk_tab)) {
         draw_gui = false;
         obj_player.can_move = true;
@@ -101,7 +97,6 @@ if draw_gui = true{
         rev_tamount = 0;
         sho_tamount = 0;
         rif_tamount = 0;
-        zc_tamount = 0;
         
         global.menu = false;
     }
@@ -374,59 +369,6 @@ if draw_gui = true{
                 }
             }
         }
-        
-        if mouse_gui_y >= zev_cake_dbutton_y1 && mouse_gui_y <= zev_cake_dbutton_y2{ // zev cakes
-            if mouse_check_button_pressed(mb_left){
-                if zc_tamount < zev_cakes{
-                    zc_tamount += 1;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-            }
-            if mouse_check_button(mb_left){
-                if drop_rapid_delay > 0 drop_rapid_delay -= 1;
-                
-                if drop_rapid_delay <= 0{
-                    time_between_rapid_drops -= 1;
-                    if time_between_rapid_drops <= 0{
-                        time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_tamount < zev_cakes{
-                            zc_tamount += 1;
-                            audio_play_sound(item_subtract, 0, false);
-                        }
-                    }
-                }
-            }
-            if mouse_check_button_pressed(mb_middle){
-                if zc_tamount != zev_cakes{
-                    zc_tamount = zev_cakes;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-                else{
-                    zc_tamount = 0;
-                    audio_play_sound(item_add_back, 0, false);
-                }
-            }
-            if mouse_check_button_pressed(mb_right){
-                if zc_tamount > 0{
-                    zc_tamount -= 1;
-                    audio_play_sound(item_add_back, 0, false);
-                }
-            }
-            if mouse_check_button(mb_right){
-                if drop_rapid_delay > 0 drop_rapid_delay -= 1;
-                
-                if drop_rapid_delay <= 0{
-                    time_between_rapid_drops -= 1;
-                    if time_between_rapid_drops <= 0{
-                        time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_tamount > 0{
-                            zc_tamount -= 1;
-                            audio_play_sound(item_add_back, 0, false);
-                        }
-                    }
-                }
-            }
-        }
     } //caveman activity completed
     
     if draw_take_options = true{
@@ -440,7 +382,7 @@ if draw_gui = true{
             if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128{
                 if mouse_gui_y >= take_y1 && mouse_gui_y <= take_y2{
                     if mouse_check_button_pressed(mb_left){
-                        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight) + (zc_tamount * obj_backpack.zev_cake_weight))
+                        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight))
                         if new_weight > obj_backpack.max_weight{
                             audio_play_sound(cant_do_that, 0, false);
                         }
@@ -451,21 +393,18 @@ if draw_gui = true{
                             obj_backpack.rev_ammo += rev_tamount;
                             obj_backpack.sho_ammo += sho_tamount;
                             obj_backpack.rif_ammo += rif_tamount;
-                            obj_backpack.zev_cakes += zc_tamount;
                             
                             bs -= bs_tamount;
                             scrap -= scrap_tamount;
                             rev_ammo -= rev_tamount;
                             sho_ammo -= sho_tamount;
                             rif_ammo -= rif_tamount;
-                            zev_cakes -= zc_tamount;
                             
                             bs_tamount = 0;
                             scrap_tamount = 0;
                             rev_tamount = 0
                             sho_tamount = 0;
                             rif_tamount = 0;
-                            zc_tamount = 0;
                         }
                     }
                 }
@@ -478,7 +417,6 @@ if draw_gui = true{
                     rev_tamount = 0;
                     sho_tamount = 0;
                     rif_tamount = 0;
-                    zc_tamount = 0;
                 }
             }
         }

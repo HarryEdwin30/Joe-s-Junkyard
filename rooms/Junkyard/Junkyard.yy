@@ -24,6 +24,8 @@
     {"name":"inst_518F8841","path":"rooms/Junkyard/Junkyard.yy",},
     {"name":"inst_67FEE6B6","path":"rooms/Junkyard/Junkyard.yy",},
     {"name":"inst_315B1408","path":"rooms/Junkyard/Junkyard.yy",},
+    {"name":"inst_4826CDD1","path":"rooms/Junkyard/Junkyard.yy",},
+    {"name":"inst_4809B582","path":"rooms/Junkyard/Junkyard.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -50,6 +52,8 @@
       ],"layers":[],"name":"mainlayer","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"chests","depth":200,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_67FEE6B6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_67FEE6B6","objectId":{"name":"obj_save","path":"objects/obj_save/obj_save.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1264.0,"y":1136.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4826CDD1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4826CDD1","objectId":{"name":"obj_ammo_depot","path":"objects/obj_ammo_depot/obj_ammo_depot.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":688.0,"y":1232.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4809B582","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4809B582","objectId":{"name":"obj_supplies_depot","path":"objects/obj_supplies_depot/obj_supplies_depot.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":768.0,"y":1232.0,},
       ],"layers":[],"name":"chests","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"walltextures","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"walltextures","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":125,"SerialiseWidth":125,"TileCompressedData":[
           -7916,-2147483648,-2,1,-2,-2147483648,-2,1,-2,-2147483648,-2,1,-2,-2147483648,-2,1,-2,-2147483648,-2,

@@ -32,11 +32,6 @@ if draw_gui = true{
         draw_text(bp_text_x, 290, "BP: " + string(obj_backpack.rif_ammo));
     }
         
-    if zev_cakes > 0{
-        draw_text(110, 315, "Zev Cakes: " + string(zev_cakes));
-        draw_text(bp_text_x, 315, "BP: " + string(obj_backpack.zev_cakes));
-    }
-        
     //this code down here is just a copy paste from the backpack
     var dbutton_size = 16;
     
@@ -58,15 +53,11 @@ if draw_gui = true{
     var rif_ammo_dbutton_y1 = 290;
     var rif_ammo_dbutton_y2 = rif_ammo_dbutton_y1 + dbutton_size;
     
-    var zev_cake_dbutton_y1 = 315;
-    var zev_cake_dbutton_y2 = zev_cake_dbutton_y1 + dbutton_size;
-    
     var bs_dbutton_f = 0;
     var scrap_dbutton_f = 0;
     var rev_ammo_dbutton_f = 0;
     var sho_ammo_dbutton_f = 0;
     var rif_ammo_dbutton_f = 0;
-    var zev_cake_dbutton_f = 0;
     
     if mouse_gui_x >= dbutton_x1 && mouse_gui_x <= dbutton_x2{
         if mouse_gui_y >= bs_dbutton_y1 && mouse_gui_y <= bs_dbutton_y2{ // beef stew
@@ -88,10 +79,6 @@ if draw_gui = true{
         if mouse_gui_y >= rif_ammo_dbutton_y1 && mouse_gui_y <= rif_ammo_dbutton_y2{ // rif ammo
             rif_ammo_dbutton_f = 1;
         }
-        
-        if mouse_gui_y >= zev_cake_dbutton_y1 && mouse_gui_y <= zev_cake_dbutton_y2{ // zev cakes
-            zev_cake_dbutton_f = 1;
-        }
     }
     
     
@@ -105,8 +92,6 @@ if draw_gui = true{
     if sho_tamount > 0 draw_text(dbutton_x2 + 5, sho_ammo_dbutton_y2 - 16, "+ " + string(sho_tamount));
         
     if rif_tamount > 0 draw_text(dbutton_x2 + 5, rif_ammo_dbutton_y2 - 16, "+ " + string(rif_tamount));
-        
-    if zc_tamount > 0 draw_text(dbutton_x2 + 5, zev_cake_dbutton_y2 - 16, "+ " + string(zc_tamount));
     
     //we're gonna draw the drop buttons down here
     if bs > 0 draw_sprite(spr_drop_button, bs_dbutton_f, dbutton_x1, bs_dbutton_y1); //beef
@@ -114,9 +99,7 @@ if draw_gui = true{
     if rev_ammo > 0 draw_sprite(spr_drop_button, rev_ammo_dbutton_f, dbutton_x1, rev_ammo_dbutton_y1); //rev ammo
     if sho_ammo > 0 draw_sprite(spr_drop_button, sho_ammo_dbutton_f, dbutton_x1, sho_ammo_dbutton_y1); //sho ammo
     if rif_ammo > 0 draw_sprite(spr_drop_button, rif_ammo_dbutton_f, dbutton_x1, rif_ammo_dbutton_y1); //rif ammo
-    if zev_cakes > 0{
-        draw_sprite(spr_drop_button, zev_cake_dbutton_f, dbutton_x1, zev_cake_dbutton_y1); //zev cakes
-    }
+
     if draw_take_options = true{
         var take_f = 0;
         var cancel_f = 0;
@@ -144,7 +127,7 @@ if draw_gui = true{
     
         draw_text_colour(obj_x + 52, take_y1 + 5, "Take", take_c, take_c, take_c, take_c, 1);
         draw_text_colour(obj_x + 44, cancel_y1 + 5, "Cancel", cancel_c, cancel_c, cancel_c, cancel_c, 1);
-        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight) + (zc_tamount * obj_backpack.zev_cake_weight))
+        var new_weight = obj_backpack.weight + ((bs_tamount * obj_backpack.bs_weight) + (scrap_tamount * obj_backpack.scrap_weight) + (rev_tamount) + (sho_tamount) + (rif_tamount * obj_backpack.rif_ammo_weight))
         var nw_string = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight)
         if new_weight > obj_backpack.max_weight{
             nw_string = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight) + " !!!";

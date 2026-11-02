@@ -30,3 +30,8 @@ hp = data.hp;
 
 squad = [];
 squad_max_size = 3;
+
+heal_delay_max = 240;
+heal_delay = heal_delay_max;
+
+heal_amount = 2;

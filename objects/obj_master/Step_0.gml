@@ -1,7 +1,3 @@
-if keyboard_check_pressed(ord("U")) global.game_day += 1;
-
-show_debug_message(global.game_day);
-
 if keyboard_check_pressed(vk_backspace) game_end();
     
 //fullscreen control

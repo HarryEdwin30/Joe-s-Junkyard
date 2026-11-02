@@ -1,12 +1,7 @@
-if zev_cakes > 0{
-    zev_cake_unlocked = true;
-}
-
 var total_bullet_weight = rev_ammo + sho_ammo + (rif_ammo * rif_ammo_weight);
 var total_bs_weight = bs * bs_weight;
 var total_scrap_weight = scrap * scrap_weight;
-var total_zs_weight = zev_cakes * zev_cake_weight;
-var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight + total_zs_weight;
+var total_weight = total_bs_weight + total_bullet_weight + total_scrap_weight;
 
 weight = total_weight;
 
@@ -29,7 +24,6 @@ if (keyboard_check_pressed(vk_tab)) {
         rev_damount = 0;
         sho_damount = 0;
         rif_damount = 0;
-        zc_damount = 0;
         
         global.menu = false;
     }
@@ -49,31 +43,14 @@ if draw_backpack_ui = true{
         rev_damount = 0;
         sho_damount = 0;
         rif_damount = 0;
-        zc_damount = 0;
         
         global.menu = false;
     }
     
     if (bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount) > 0{ // most epic if statement ever written???!
-        if draw_eat_options = true{
-            zc_damount = 0;
-        }
         draw_drop_options = true;
     }
     else draw_drop_options = false;
-        
-    if zc_damount > 0{
-        draw_drop_options = false;
-        draw_eat_options = true;
-        bs_damount = 0;
-        scrap_damount = 0;
-        rev_damount = 0;
-        sho_damount = 0;
-        rif_damount = 0;
-    }
-    else{
-        draw_eat_options = false;
-    }
     
     if mouse_gui_x >= obj_x && mouse_gui_x <= obj_x + 128 and mouse_gui_y >= obj_y && mouse_gui_y <= obj_y + 32{ //transfer ammo shit
     	obj_text_color = c_black;
@@ -84,7 +61,6 @@ if draw_backpack_ui = true{
             rev_damount = 0;
             sho_damount = 0;
             rif_damount = 0;
-            zc_damount = 0;
         }
     }
     else{
@@ -110,9 +86,6 @@ if draw_backpack_ui = true{
     
     var rif_ammo_dbutton_y1 = 290;
     var rif_ammo_dbutton_y2 = rif_ammo_dbutton_y1 + dbutton_size;
-    
-    var zev_cake_dbutton_y1 = 315;
-    var zev_cake_dbutton_y2 = zev_cake_dbutton_y1 + dbutton_size;
     
     //here we're gonna detect if the mouse is hovering over the buttons
     
@@ -382,59 +355,6 @@ if draw_backpack_ui = true{
                 }
             }
         }
-        
-        if mouse_gui_y >= zev_cake_dbutton_y1 && mouse_gui_y <= zev_cake_dbutton_y2{ // zev cakes
-            if mouse_check_button_pressed(mb_left){
-                if zc_damount < zev_cakes{
-                    zc_damount += 1;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-            }
-            if mouse_check_button_pressed(mb_middle){
-                if zc_damount != zev_cakes{
-                    zc_damount = zev_cakes;
-                    audio_play_sound(item_subtract, 0, false);
-                }
-                else{
-                    zc_damount = 0;
-                    audio_play_sound(item_add_back, 0, false);
-                }
-            }
-            if mouse_check_button(mb_left){
-                if drop_rapid_delay > 0 drop_rapid_delay -= 1;
-                
-                if drop_rapid_delay <= 0{
-                    time_between_rapid_drops -= 1;
-                    if time_between_rapid_drops <= 0{
-                        time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_damount < zev_cakes{
-                            zc_damount += 1;
-                            audio_play_sound(item_subtract, 0, false);
-                        }
-                    }
-                }
-            }
-            if mouse_check_button_pressed(mb_right){
-                if zc_damount > 0{
-                    zc_damount -= 1;
-                    audio_play_sound(item_add_back, 0, false);
-                }
-            }
-            if mouse_check_button(mb_right){
-                if drop_rapid_delay > 0 drop_rapid_delay -= 1;
-                
-                if drop_rapid_delay <= 0{
-                    time_between_rapid_drops -= 1;
-                    if time_between_rapid_drops <= 0{
-                        time_between_rapid_drops = time_between_rapid_drops_max
-                        if zc_damount > 0{
-                            zc_damount -= 1;
-                            audio_play_sound(item_add_back, 0, false);
-                        }
-                    }
-                }
-            }
-        }
     } //caveman activity completed
         
     if draw_drop_options = true{
@@ -471,10 +391,6 @@ if draw_backpack_ui = true{
                         bag.rif_ammo += rif_damount;
                         rif_ammo -= rif_damount
                         rif_damount -= rif_damount;
-                        
-                        bag.zev_cakes += zc_damount;
-                        zev_cakes -= zc_damount
-                        zc_damount -= zc_damount;
                     }
                     else {
                     	audio_play_sound(cant_do_that, 0, false);
@@ -489,7 +405,6 @@ if draw_backpack_ui = true{
                     rev_damount = 0;
                     sho_damount = 0;
                     rif_damount = 0;
-                    zc_damount = 0;
                 }
             }
         }
@@ -520,8 +435,6 @@ if draw_backpack_ui = true{
                     }
                     var sound = choose(eat1, eat2, eat3);
                     audio_play_sound(sound, 0, false);
-                    zev_cakes -= zc_damount;
-                    zc_damount = 0;
                 }
             }
             if mouse_gui_y >= cancel_y1 && mouse_gui_y <= cancel_y2{
@@ -532,7 +445,6 @@ if draw_backpack_ui = true{
                     rev_damount = 0;
                     sho_damount = 0;
                     rif_damount = 0;
-                    zc_damount = 0;
                 }
             }
         }

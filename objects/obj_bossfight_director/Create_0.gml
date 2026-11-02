@@ -156,14 +156,14 @@ function spawn_zombie(type, location) {
             break;
         case "b":
             sx = irandom_range(0, room_width);
-            sy = room_height;
+            sy = room_height - 1; // subtract by 1 pixel or else they will get stuck
             break;
         case "l":
             sy = irandom_range(0, room_height);
             break;
         case "r":
             sy = irandom_range(0, room_height);
-            sx = room_width;
+            sx = room_width - 1;
             break;
     }
     var ml = layer_get_id("mainlayer");

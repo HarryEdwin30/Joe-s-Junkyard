@@ -12,7 +12,6 @@ scrap_tamount = 0;
 rev_tamount = 0;
 sho_tamount = 0;
 rif_tamount = 0;
-zc_tamount = 0;
 
 drop_rapid_delay_max = 15;
 drop_rapid_delay = drop_rapid_delay_max;
@@ -32,7 +31,6 @@ if (struct_exists(global.data, key)) {
     rev_ammo = data.rev_ammo;
     sho_ammo = data.sho_ammo;
     rif_ammo = data.rif_ammo;
-    zev_cakes = data.zev_cakes;
 }
 else {
     exists = choose(true, false);
@@ -56,7 +54,6 @@ else {
         rev_ammo = irandom_range(0, 6);
         sho_ammo = irandom_range(0, 4);
         rif_ammo = 0;
-        zev_cakes = 0;
     }
     if chest_type = 2{
         bs = irandom_range(0, 4);
@@ -64,7 +61,6 @@ else {
         rev_ammo = irandom_range(0, 12);
         sho_ammo = irandom_range(0, 8);
         rif_ammo = irandom_range(0, 1);
-        zev_cakes = irandom_range(0, 1);
     }
     if chest_type = 3{
         bs = irandom_range(0, 6);
@@ -72,7 +68,6 @@ else {
         rev_ammo = irandom_range(0, 24);
         sho_ammo = irandom_range(0, 16);
         rif_ammo = irandom_range(0, 2);
-        zev_cakes = irandom_range(0, 3);
     }
     data = {
         exists: exists,
@@ -81,7 +76,6 @@ else {
         rev_ammo: rev_ammo,
         sho_ammo: sho_ammo,
         rif_ammo: rif_ammo,
-        zev_cakes: zev_cakes
     }
 }
 
@@ -104,7 +98,7 @@ cy = lengthdir_y(dist, dir) + y;
 chest_empty = false;
 image_index = 0;
 
-if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and zev_cakes = 0 and !chest_empty{
+if bs = 0 and scrap = 0 and rev_ammo = 0 and sho_ammo = 0 and rif_ammo = 0 and !chest_empty{
     chest_empty = true;
     image_index = 1;
 }
