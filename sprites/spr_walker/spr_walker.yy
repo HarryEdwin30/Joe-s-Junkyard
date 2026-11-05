@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"sprites",
-    "path":"folders/sprites.yy",
+    "name":"Zombie Sprites",
+    "path":"folders/sprites/Zombie Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
