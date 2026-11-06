@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bomb2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.7951474,
+  "exportDir":"",
+  "name":"bomb2",
+  "parent":{
+    "name":"bomb sounds",
+    "path":"folders/sounds/bomb sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bomb2.mp3",
+  "volume":0.63,
+}

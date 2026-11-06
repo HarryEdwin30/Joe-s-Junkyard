@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bomb_fall",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.4880046,
+  "exportDir":"",
+  "name":"bomb_fall",
+  "parent":{
+    "name":"bomb sounds",
+    "path":"folders/sounds/bomb sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bomb_fall.mp3",
+  "volume":1.0,
+}
