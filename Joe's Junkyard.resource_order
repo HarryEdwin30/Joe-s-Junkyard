@@ -1,6 +1,7 @@
 {
   "FolderOrderSettings":[
     {"name":"base","order":10,"path":"folders/objects/base.yy",},
+    {"name":"defense","order":4,"path":"folders/objects/base/defense.yy",},
     {"name":"game","order":4,"path":"folders/objects/game.yy",},
     {"name":"main menu","order":3,"path":"folders/objects/main menu.yy",},
     {"name":"map objects","order":12,"path":"folders/objects/map objects.yy",},
@@ -30,7 +31,10 @@
     {"name":"obj_bombarder","order":3,"path":"objects/obj_bombarder/obj_bombarder.yy",},
     {"name":"obj_bossfight_director","order":1,"path":"objects/obj_bossfight_director/obj_bossfight_director.yy",},
     {"name":"obj_chest_backup","order":4,"path":"objects/obj_chest_backup/obj_chest_backup.yy",},
-    {"name":"obj_defense","order":3,"path":"objects/obj_defense/obj_defense.yy",},
+    {"name":"obj_defense_e","order":2,"path":"objects/obj_defense_e/obj_defense_e.yy",},
+    {"name":"obj_defense_n","order":1,"path":"objects/obj_defense_n/obj_defense_n.yy",},
+    {"name":"obj_defense_s","order":3,"path":"objects/obj_defense_s/obj_defense_s.yy",},
+    {"name":"obj_defense_w","order":4,"path":"objects/obj_defense_w/obj_defense_w.yy",},
     {"name":"obj_door","order":1,"path":"objects/obj_door/obj_door.yy",},
     {"name":"obj_drop_bag","order":5,"path":"objects/obj_drop_bag/obj_drop_bag.yy",},
     {"name":"obj_fade","order":6,"path":"objects/obj_fade/obj_fade.yy",},
@@ -54,6 +58,7 @@
     {"name":"init","order":3,"path":"rooms/init/init.yy",},
     {"name":"MainMenu","order":1,"path":"rooms/MainMenu/MainMenu.yy",},
     {"name":"door_open","order":4,"path":"scripts/door_open/door_open.yy",},
+    {"name":"get_percent","order":7,"path":"scripts/get_percent/get_percent.yy",},
     {"name":"glog","order":3,"path":"scripts/glog/glog.yy",},
     {"name":"load_progress","order":6,"path":"scripts/load_progress/load_progress.yy",},
     {"name":"move_to_menu","order":2,"path":"scripts/move_to_menu/move_to_menu.yy",},

@@ -55,9 +55,9 @@ dev_controls_enabled = true;
 show_stats = true;
 
 global.godmode = true;
-global.invisible = true;
+global.invisible = false;
 global.zombie_omniscience = false;
-global.see_all = false;
+global.see_all = true;
 
 spawn_mode = "press";
 types = [obj_walker, obj_runner, obj_survivor_test];

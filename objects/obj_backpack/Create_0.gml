@@ -10,10 +10,10 @@ max_weight = 300;
 weight = 0;
 
 bs_weight = 5;
-bs = 5;
+bs = 0;
 
 scrap_weight = 5;
-scrap = 30;
+scrap = 0;
 
 rev_ammo = 0;
 sho_ammo = 0;

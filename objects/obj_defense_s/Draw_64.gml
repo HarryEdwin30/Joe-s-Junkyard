@@ -1,0 +1,1 @@
+draw_my_health(10, "South");

@@ -1,2 +1,2 @@
 bs = 0;
-scrap = 0;
+scrap = 100;
