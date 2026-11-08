@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"car_close",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.4702041,
+  "exportDir":"",
+  "name":"car_close",
+  "parent":{
+    "name":"car sounds",
+    "path":"folders/sounds/car sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"car_close.mp3",
+  "volume":0.27,
+}
