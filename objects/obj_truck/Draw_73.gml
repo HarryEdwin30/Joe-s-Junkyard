@@ -16,3 +16,14 @@ draw_rectangle(x1, y1, x2, y2, true);
 
 draw_set_font(fancyfont);
 draw_text(xx, yy, str);
+
+if (position_meeting(mouse_x, mouse_y, id)) {
+	if (point_distance(x, y, obj_player.x, obj_player.y) < 128) {
+        draw_set_colour(c_red);
+        var x12 = x - sprite_width / 2;
+        var y12 = y - sprite_height / 2;
+        var x22 = x12 + sprite_width;
+        var y22 = y12 + sprite_height;
+        draw_rectangle(x12, y12, x22, y22, true);
+    }
+}

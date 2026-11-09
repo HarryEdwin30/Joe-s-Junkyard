@@ -33,6 +33,8 @@ if (draw_gui) {
     if (point_in_rectangle(mx, my, bx1, by1, bx2, by2)) { //so i know how this looks, right
     	img = 1;
         
+        var stf = max_scrap - scrap; //scrap till full
+        
         var rscrap = obj_supplies_depot.scrap;
         
         if (!mouse_check_button(mb_left) and !mouse_check_button(mb_right)) {
@@ -40,14 +42,19 @@ if (draw_gui) {
         }
         
         if mouse_check_button_pressed(mb_left){
-            if (add_scrap < rscrap) {
+            if (add_scrap < rscrap and add_scrap < stf) {
             	add_scrap += 1;
                 audio_play_sound(item_subtract, 0, false);
             }
         }
+        
         if mouse_check_button_pressed(mb_middle){
-            if (add_scrap < rscrap) {
-            	add_scrap = rscrap;
+            if (add_scrap < rscrap and add_scrap < stf) {
+                if (rscrap > stf) {
+                	add_scrap = stf;
+                } else {
+                    add_scrap = rscrap;
+                }
                 audio_play_sound(item_subtract, 0, false);
             } else {
                 add_scrap = 0;
@@ -61,7 +68,7 @@ if (draw_gui) {
                 time_between_rapid_drops -= 1;
                 if time_between_rapid_drops <= 0{
                     time_between_rapid_drops = time_between_rapid_drops_max;
-                    if (add_scrap < rscrap) {
+                    if (add_scrap < rscrap and add_scrap < stf) {
                     	add_scrap += 1;
                         audio_play_sound(item_subtract, 0, false);
                     }
