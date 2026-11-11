@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"fs_stone3",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.41795918,
+  "exportDir":"",
+  "name":"fs_stone3",
+  "parent":{
+    "name":"stone",
+    "path":"folders/sounds/footsteps/stone.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"fs_stone3.mp3",
+  "volume":0.1,
+}

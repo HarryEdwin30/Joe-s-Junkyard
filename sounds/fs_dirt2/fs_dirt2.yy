@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"fs_dirt2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.5197506,
+  "exportDir":"",
+  "name":"fs_dirt2",
+  "parent":{
+    "name":"dirt",
+    "path":"folders/sounds/footsteps/dirt.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"fs_dirt2.mp3",
+  "volume":0.5,
+}

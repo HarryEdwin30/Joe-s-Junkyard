@@ -35,3 +35,7 @@ heal_delay_max = 240;
 heal_delay = heal_delay_max;
 
 heal_amount = 2;
+
+step_delay_def = 30;
+step_delay_max = step_delay_def;
+step_delay = step_delay_max;

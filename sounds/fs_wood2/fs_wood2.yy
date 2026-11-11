@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"fs_wood2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.5006349,
+  "exportDir":"",
+  "name":"fs_wood2",
+  "parent":{
+    "name":"wood",
+    "path":"folders/sounds/footsteps/wood.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"fs_wood2.mp3",
+  "volume":1.0,
+}

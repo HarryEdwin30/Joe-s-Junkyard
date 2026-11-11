@@ -54,6 +54,7 @@ if (global.game_started) {
     }
     
     //if the game is being saved
+    // future me, i'm gonna leave the comment above this out of shame for how useless it is
     
     if (global.save_game) {
         var _string = json_stringify(global.data);

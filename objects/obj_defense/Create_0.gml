@@ -26,7 +26,7 @@ if (struct_exists(global.data, key)) { //epic copy and paste
 else {
 	data = {
         broken: false,
-        hp: max_hp
+        hp: 10
     }
 }
 

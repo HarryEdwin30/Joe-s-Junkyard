@@ -73,20 +73,12 @@ if keyboard_check(vk_space){
                 }
             }
         }
-        else{
-            if (board_delay < board_delay_max) {
-        	   board_delay = board_delay_max;
-            }
-            if (boards) {
-                if (bhptgb > 0) {
-                	hp += bhptgb;
-                    bhptgb = 0;
-                }
-            }
-        }
     }
 }
-else if (!reset) {
+else {
+    board_delay = board_delay_max;
+    hp += bhptgb;
+    bhptgb = 0;
 	reset = true;
 }
 
