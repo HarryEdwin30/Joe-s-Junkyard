@@ -32,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_walker",
-    "path":"sprites/spr_walker/spr_walker.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

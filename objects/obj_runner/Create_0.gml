@@ -1,3 +1,5 @@
+sprite_index = spr_runner1;
+
 max_m_spd = 2;
 m_spd = max_m_spd;
 hp = irandom_range(25, 75);

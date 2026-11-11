@@ -1,3 +1,5 @@
+sprite_index = choose(spr_walker1, spr_walker2);
+
 max_m_spd = 0.75;
 m_spd = max_m_spd;
 hp = irandom_range(50, 100);

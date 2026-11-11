@@ -112,7 +112,7 @@ if place_meeting(x, y, obj_player){
     }
 }
 */
-if place_meeting(x, y, obj_zombie_parent){
+if place_meeting(x, y, obj_zombie_parent) and !place_meeting(x, y, obj_player){
     if pathfinding_delay <= 0{
         with (obj_zombie_parent){
             if (id != other.id){

@@ -32,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_runner",
-    "path":"sprites/spr_runner/spr_runner.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
