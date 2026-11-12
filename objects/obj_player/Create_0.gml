@@ -20,8 +20,7 @@ if (struct_exists(global.data, key)) {
 else {
 	data = {
         infected: false,
-        hp: max_hp
-        
+        hp: max_hp,
     }
 }
 

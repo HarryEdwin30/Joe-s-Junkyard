@@ -1,26 +1,28 @@
 php = get_percent(hp, max_hp, 100);
 
 if (keyboard_check(vk_space)) { //this some nasty shit right here
-    if (gain_delay > 0) {
-        gain_delay -= 1;
-    } else {
-        gain_delay = gain_delay_max;
-        if (hp < max_hp) {
-            if (obj_supplies_depot.scrap > 0) {
-            	if (point_distance(cx, cy, obj_player.x, obj_player.y) < global.mdfc) {
-                	if (hp < max_hp) {
-                        if (hp + hp_gain > max_hp) {
-                            obj_supplies_depot.scrap -= max_hp - hp;
-                            hp = max_hp;
-                        } else {
-                            hp += hp_gain;
-                            obj_supplies_depot.scrap -= scrap_cost;
+    if (point_distance(cx, cy, obj_player.x, obj_player.y) < 64) {
+        if (gain_delay > 0) {
+            gain_delay -= 1;
+        } else {
+            gain_delay = gain_delay_max;
+            if (hp < max_hp) {
+                if (obj_supplies_depot.scrap > 0) {
+                	if (point_distance(cx, cy, obj_player.x, obj_player.y) < global.mdfc) {
+                    	if (hp < max_hp) {
+                            if (hp + hp_gain > max_hp) {
+                                obj_supplies_depot.scrap -= max_hp - hp;
+                                hp = max_hp;
+                            } else {
+                                hp += hp_gain;
+                                obj_supplies_depot.scrap -= scrap_cost;
+                            }
+                            audio_play_sound(boardbuilt1, 0, false);
                         }
-                        audio_play_sound(boardbuilt1, 0, false);
                     }
+                } else {
+                    audio_play_sound(item_add_back, 0, false);
                 }
-            } else {
-                audio_play_sound(item_add_back, 0, false);
             }
         }
     }

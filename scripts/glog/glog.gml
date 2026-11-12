@@ -10,7 +10,7 @@ function glog(message, duration, sound){
             audio_play_sound(sound, 0, false);
         }
         else {
-            audio_play_sound(notification1, 0, false);
+            audio_play_sound(yay, 0, false);
         }
     }
 }
