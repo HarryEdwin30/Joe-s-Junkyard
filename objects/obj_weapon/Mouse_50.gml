@@ -257,7 +257,6 @@ if weapon_type = 4 and obj_player.stamina > 0{
     
 if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mode = 0{
     rif_shoot_delay = rif_shoot_delay_max;
-    draw_a_bullet = true;
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent, obj_survivor_test];
@@ -268,12 +267,14 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
             }
         }
     }
+    
     var start_x = obj_player.x;
     var start_y = obj_player.y;
     var checker_x = start_x;
     var checker_y = start_y;
-    var point_x = mouse_x;
-    var point_y = mouse_y;
+    var offset = ((point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * rif_accuracy) / 75;
+    var point_x = irandom_range(mouse_x - offset, mouse_x + offset);
+    var point_y = irandom_range(mouse_y - offset, mouse_y + offset);
     var dir = point_direction(start_x, start_y, point_x, point_y);
     var max_distance = point_distance(start_x, start_y, point_x, point_y);
     
@@ -305,6 +306,8 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     
     var end_x = checker_x;
     var end_y = checker_y;
+    
+    array_push(bullet_points, {px: end_x, py: end_y});
     
     if position_meeting(end_x, end_y, obj_zombie_parent){
         var zombie_to_shoot = instance_nearest(end_x, end_y, obj_zombie_parent);

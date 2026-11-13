@@ -40,109 +40,17 @@ if weapon_type != 0 and weapon_type != 4{
 if weapon_type = 4{
     draw_sprite_ext(weapon_to_draw, -1, gun_start_x, gun_start_y, image_x_scale, 1, 0, c_white, 1);
 }
-if draw_a_bullet = true{
-    var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
-    if instance_exists(obj_door){
-        with (obj_door) {
-        	if (open == false) {
-                array_push(targets, id);
-            }
-        }
-    }
-    if instance_exists(obj_window){
-        with (obj_window) {
-            if (broken == false) {
-                array_push(targets, id);
-            }
-        }
-    }
-    var start_x = obj_player.x;
-    var start_y = obj_player.y;
-    var checker_x = start_x;
-    var checker_y = start_y;
-    var point_x = mouse_x;
-    var point_y = mouse_y;
-    var dir = point_direction(start_x, start_y, point_x, point_y);
-    var max_distance = point_distance(start_x, start_y, point_x, point_y);
-    
-    var step_x = lengthdir_x(1, dir);
-    var step_y = lengthdir_y(1, dir);
-    
-    while (!position_meeting(checker_x, checker_y, targets) and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
-    	checker_x += step_x;
-        checker_y += step_y;
-    }
-    
-    var end_x = checker_x;
-    var end_y = checker_y;
-    
-    draw_line_colour(gun_start_x, gun_start_y, end_x, end_y, c_yellow, c_yellow);
-    draw_a_bullet_delay -= 1;
-    if draw_a_bullet_delay <= 0{
-        draw_a_bullet = false;
-        draw_a_bullet_delay = draw_a_bullet_delay_max;
-    }
-}
-if draw_sho_bullets = true{
-    var pellets_drawn = 0;
-    var tilemap = layer_tilemap_get_id("obstacles");
-    var targets = [tilemap, obj_zombie_parent];
-    if instance_exists(obj_door){
-        with (obj_door) {
-        	if (open == false) {
-                array_push(targets, id);
-            }
-        }
-    }
-    if instance_exists(obj_window){
-        with (obj_window) {
-            if (broken == false) {
-                array_push(targets, id);
-            }
-        }
-    }
-    var start_x = obj_player.x;
-    var start_y = obj_player.y;
-    var array_number = 0;
-    
-    while (pellets_drawn < max_pellets) {
-        var point_x = pellet_points[array_number][0];
-        var point_y = pellet_points[array_number][1];
-        array_number += 1;
-        var dir = point_direction(start_x, start_y, point_x, point_y);
-    	var step_x = lengthdir_x(1, dir);
-        var step_y = lengthdir_y(1, dir);
-        var checker_x = start_x;
-        var checker_y = start_y;
-        var max_distance = point_distance(start_x, start_y, point_x, point_y);
-        var pen = 0;
-        var zombies_to_deal_damage_to = [];
+
+if (array_length(bullet_points) > 0) {
+    for (var i = 0; i < array_length(bullet_points); i++) {
+    	var end_x = bullet_points[i].px; //yes this is relatively new so that's why this is the only thing in here i did relatively well
+        var end_y = bullet_points[i].py;
         
-        while (pen < sho_max_pen and !position_meeting(checker_x, checker_y, targets) and point_distance(start_x, start_y, checker_x, checker_y) < max_distance) {
-            checker_x += step_x;
-            checker_y += step_y;
-            if (position_meeting(checker_x, checker_y, obj_zombie_parent)) {
-                var zombie = instance_nearest(checker_x, checker_y, obj_zombie_parent);
-                if !array_contains(zombies_to_deal_damage_to, zombie){
-                    array_push(zombies_to_deal_damage_to, zombie);
-                    pen += 1;
-                }
-            }
-        }
-        var end_x = checker_x;
-        var end_y = checker_y;
-            
         draw_line_colour(gun_start_x, gun_start_y, end_x, end_y, c_yellow, c_yellow);
-        pellets_drawn += 1;
     }
-    draw_a_bullet_delay -= 1;
-    if draw_a_bullet_delay <= 0{
-        draw_sho_bullets = false;
-        pellet_points = [];
-        draw_a_bullet_delay = draw_a_bullet_delay_max;
-    }
+    bullet_points = [];
 }
+
 if weapon_type = 2 and obj_player.can_move = true{
     var zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
     draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);

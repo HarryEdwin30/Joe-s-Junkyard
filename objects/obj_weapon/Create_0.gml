@@ -1,10 +1,10 @@
 rev_max_total_bullets = 30;
 rev_max_bullets = 6;
 
-sho_max_total_bullets = 24;
+sho_max_total_bullets = 16;
 sho_max_bullets = 8;
 
-rif_max_total_mags = 3;
+rif_max_total_mags = 2;
 rif_max_bullets = 30;
 
 key = "weapon"
@@ -43,7 +43,6 @@ fire_mode = data.fire_mode; //0 = full auto, 1 = semi auto this is for rif only
 rif_total_mags = data.rif_total_mags;
 rif_bullets_left = data.rif_bullets_left;
 
-draw_a_bullet = false;
 draw_sho_bullets = false;
 draw_sho_bullets_delay_max = 1;
 draw_sho_bullets_delay = draw_sho_bullets_delay_max;
@@ -96,3 +95,6 @@ rif_damage = 50;
 rif_reloading = false;
 rif_max_reload_time = 90;
 rif_reload_time_left = rif_max_reload_time;
+rif_accuracy = 10;
+
+bullet_points = [];

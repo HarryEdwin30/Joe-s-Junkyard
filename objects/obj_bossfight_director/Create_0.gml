@@ -2,6 +2,10 @@ draw_outline = false;
 
 fought_horde = false;
 
+if (global.game_day == 1) {
+	fought_horde = true;
+}
+
 horde_triggered = false;
 
 boss1 = false;

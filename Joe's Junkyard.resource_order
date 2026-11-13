@@ -89,6 +89,7 @@
     {"name":"load_progress","order":6,"path":"scripts/load_progress/load_progress.yy",},
     {"name":"move_to_menu","order":2,"path":"scripts/move_to_menu/move_to_menu.yy",},
     {"name":"push_out_of_closed","order":5,"path":"scripts/push_out_of_closed/push_out_of_closed.yy",},
+    {"name":"save_progress","order":8,"path":"scripts/save_progress/save_progress.yy",},
     {"name":"transfer_ammo_from_bp","order":1,"path":"scripts/transfer_ammo_from_bp/transfer_ammo_from_bp.yy",},
     {"name":"ambience_junkyard","order":9,"path":"sounds/ambience_junkyard/ambience_junkyard.yy",},
     {"name":"boardbang1","order":4,"path":"sounds/boardbang1/boardbang1.yy",},

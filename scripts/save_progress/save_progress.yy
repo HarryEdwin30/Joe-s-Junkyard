@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"save_progress",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"save_progress",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

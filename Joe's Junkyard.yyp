@@ -134,6 +134,7 @@
     {"id":{"name":"load_progress","path":"scripts/load_progress/load_progress.yy",},},
     {"id":{"name":"move_to_menu","path":"scripts/move_to_menu/move_to_menu.yy",},},
     {"id":{"name":"push_out_of_closed","path":"scripts/push_out_of_closed/push_out_of_closed.yy",},},
+    {"id":{"name":"save_progress","path":"scripts/save_progress/save_progress.yy",},},
     {"id":{"name":"transfer_ammo_from_bp","path":"scripts/transfer_ammo_from_bp/transfer_ammo_from_bp.yy",},},
     {"id":{"name":"ambience_junkyard","path":"sounds/ambience_junkyard/ambience_junkyard.yy",},},
     {"id":{"name":"bitesound1","path":"sounds/bitesound1/bitesound1.yy",},},

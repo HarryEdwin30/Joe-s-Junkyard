@@ -13,7 +13,6 @@ if weapon_type = 1 and rev_bullets_left <= 0{
 }
 
 if weapon_type = 1 and rev_can_shoot = true{
-    draw_a_bullet = true;
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent, obj_survivor_test];
@@ -61,6 +60,8 @@ if weapon_type = 1 and rev_can_shoot = true{
     
     var end_x = checker_x;
     var end_y = checker_y;
+    
+    array_push(bullet_points, {px: end_x, py: end_y});
     
     if position_meeting(end_x, end_y, obj_zombie_parent){
         var zombie_to_shoot = instance_nearest(end_x, end_y, obj_zombie_parent);
@@ -116,8 +117,6 @@ if weapon_type = 2 and sho_can_shoot = true{
     while (pellets_drawn < max_pellets) {
         var point_x = irandom_range(mouse_x - zone_size, mouse_x + zone_size);
         var point_y = irandom_range(mouse_y - zone_size, mouse_y + zone_size);
-        var pellet_xy = [point_x, point_y];
-        array_push(pellet_points, pellet_xy);
         var dir = point_direction(start_x, start_y, point_x, point_y);
     	var step_x = lengthdir_x(1, dir);
         var step_y = lengthdir_y(1, dir);
@@ -174,6 +173,8 @@ if weapon_type = 2 and sho_can_shoot = true{
         var end_x = checker_x;
         var end_y = checker_y;
         
+        array_push(bullet_points, {px: end_x, py: end_y});
+        
         for (var i = 0; i < array_length(zombies_to_deal_damage_to); i++) {
         	deal_damage(sho_damage, sound_to_play, zombies_to_deal_damage_to[i]);
         }
@@ -193,14 +194,12 @@ if weapon_type = 2 and sho_can_shoot = true{
         var max_interest = irandom_range(1200, 2000);
         obj_zombie_parent.interest = max_interest;
     }
-    draw_sho_bullets = true;
     sho_shoot_delay = sho_shoot_delay_max;
 }
 
 
 if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     rif_shoot_delay = rif_shoot_delay_max;
-    draw_a_bullet = true;
     var sound_to_play = choose(bulletimpact1, bulletimpact2, bulletimpact3, bulletimpact4);
     var tilemap = layer_tilemap_get_id("obstacles");
     var targets = [tilemap, obj_zombie_parent, obj_survivor_test];
@@ -248,6 +247,8 @@ if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     
     var end_x = checker_x;
     var end_y = checker_y;
+    
+    array_push(bullet_points, {px: end_x, py: end_y});
     
     if position_meeting(end_x, end_y, obj_zombie_parent){
         var zombie_to_shoot = instance_nearest(end_x, end_y, obj_zombie_parent);
