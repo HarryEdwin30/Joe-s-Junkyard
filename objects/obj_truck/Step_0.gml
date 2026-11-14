@@ -1,4 +1,4 @@
-if (keyboard_check_pressed(vk_tab) or keyboard_check_pressed(ord("E"))) {
+if (keyboard_check_pressed(vk_tab)) {
 	if (draw_gui) {
         obj_player.can_move = true;
     	draw_gui = false;

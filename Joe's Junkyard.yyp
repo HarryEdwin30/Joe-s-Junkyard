@@ -85,7 +85,6 @@
     {"id":{"name":"obj_car3","path":"objects/obj_car3/obj_car3.yy",},},
     {"id":{"name":"obj_car4","path":"objects/obj_car4/obj_car4.yy",},},
     {"id":{"name":"obj_car5","path":"objects/obj_car5/obj_car5.yy",},},
-    {"id":{"name":"obj_chest_backup","path":"objects/obj_chest_backup/obj_chest_backup.yy",},},
     {"id":{"name":"obj_chest","path":"objects/obj_chest/obj_chest.yy",},},
     {"id":{"name":"obj_day_message","path":"objects/obj_day_message/obj_day_message.yy",},},
     {"id":{"name":"obj_day","path":"objects/obj_day/obj_day.yy",},},

@@ -8,6 +8,7 @@ rif_max_total_mags = 2;
 rif_max_bullets = 30;
 
 key = "weapon"
+
 if (struct_exists(global.data, key)) {
 	data = global.data[$ key];
 }
@@ -87,6 +88,7 @@ sho_reload_time_left = sho_max_reload_time;
 sho_damage = 75; //(per pellet)
 sho_reload_delay_left = 0;
 sho_max_pen = 3;
+sho_accuracy = 0.2;
 
 rif_can_shoot = true;
 rif_shoot_delay_max = 5;
@@ -95,6 +97,6 @@ rif_damage = 50;
 rif_reloading = false;
 rif_max_reload_time = 90;
 rif_reload_time_left = rif_max_reload_time;
-rif_accuracy = 10;
+rif_accuracy = 0.1;
 
 bullet_points = [];

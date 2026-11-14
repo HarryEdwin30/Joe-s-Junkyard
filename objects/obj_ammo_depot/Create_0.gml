@@ -2,4 +2,36 @@ rev_ammo = 9999;
 sho_ammo = 9999;
 rif_ammo = 9999;
 
+gui_x = 0;
+gui_y = 0;
+
 draw_gui = false;
+draw_outline = false;
+
+transfer_to_pocket = function() {
+    audio_play_sound(resupply, 0, false);
+    if rev_ammo > 0 and obj_weapon.rev_total_bullets < obj_weapon.rev_max_total_bullets or obj_weapon.rev_bullets_left < obj_weapon.rev_max_bullets{
+        var rev_total_bullets_to_add = obj_weapon.rev_max_total_bullets - obj_weapon.rev_total_bullets;
+        var rev_bullets_to_add = obj_weapon.rev_max_bullets - obj_weapon.rev_bullets_left;
+        
+        obj_weapon.rev_total_bullets += rev_total_bullets_to_add + rev_bullets_to_add;
+        rev_ammo -= rev_total_bullets_to_add + rev_bullets_to_add;
+    }
+    if sho_ammo > 0 and obj_weapon.sho_total_bullets_left < obj_weapon.sho_max_total_bullets or obj_weapon.sho_bullets_left < obj_weapon.sho_max_bullets{
+        var sho_total_bullets_to_add = obj_weapon.sho_max_total_bullets - obj_weapon.sho_total_bullets_left;
+        var sho_bullets_to_add = obj_weapon.sho_max_bullets - obj_weapon.sho_bullets_left;
+        
+        obj_weapon.sho_total_bullets_left += sho_total_bullets_to_add + sho_bullets_to_add;
+        sho_ammo -= sho_total_bullets_to_add + sho_bullets_to_add;
+    }
+    if rif_ammo > 0 and obj_weapon.rif_total_mags < obj_weapon.rif_max_total_mags or obj_weapon.rif_bullets_left < obj_weapon.rif_max_bullets{
+        var rif_total_mags_to_add = obj_weapon.rif_max_total_mags - obj_weapon.rif_total_mags;
+        
+        obj_weapon.rif_total_mags += rif_total_mags_to_add;
+        rif_ammo -= rif_total_mags_to_add;
+        if obj_weapon.rif_bullets_left <= 0{
+            obj_weapon.rif_bullets_left = obj_weapon.rif_max_bullets;
+            rif_ammo -= 1;
+        }
+    }
+}

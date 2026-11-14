@@ -49,7 +49,7 @@ if draw_gui = true{
     var rif_ammo_dbutton_y1 = 290;
     var rif_ammo_dbutton_y2 = rif_ammo_dbutton_y1 + dbutton_size;
     
-    if (keyboard_check_pressed(ord("E")) or keyboard_check_pressed(vk_tab)) {
+    if (keyboard_check_pressed(vk_tab)) {
         draw_gui = false;
         obj_player.can_move = true;
         bs_tamount = 0;

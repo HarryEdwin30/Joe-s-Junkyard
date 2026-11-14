@@ -51,10 +51,6 @@ if (array_length(bullet_points) > 0) {
     bullet_points = [];
 }
 
-if weapon_type = 2 and obj_player.can_move = true{
-    var zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
-    draw_rectangle(mouse_x - zone_size, mouse_y + zone_size, mouse_x + zone_size, mouse_y - zone_size, true);
-}
 if ham_draw_target = true and obj_player.can_move = true{
     if (ham_target.object_index == obj_zombie_parent || object_is_ancestor(ham_target.object_index, obj_zombie_parent)){
         draw_rectangle(ham_target.x - 8, ham_target.y + 8, ham_target.x + 8, ham_target.y - 8, true);
@@ -78,5 +74,27 @@ if ham_draw_target = true and obj_player.can_move = true{
         else{
             draw_rectangle(cx - 16, cy - 8, cx + 16, cy + 9, true);
         }
+    }
+}
+
+if (weapon_type == 2) {
+    var offset = ((point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * sho_accuracy);
+    var x1 = mouse_x - offset;
+    var y1 = mouse_y - offset;
+    var x2 = mouse_x + offset;
+    var y2 = mouse_y + offset;
+    draw_set_colour(c_red);
+	draw_rectangle(x1, y1, x2, y2, true);
+}
+
+if (weapon_type == 3) {
+    if (fire_mode == 0) {
+        var offset = ((point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * rif_accuracy);
+        var x1 = mouse_x - offset;
+        var y1 = mouse_y - offset;
+        var x2 = mouse_x + offset;
+        var y2 = mouse_y + offset;
+        draw_set_colour(c_red);
+    	draw_rectangle(x1, y1, x2, y2, true);
     }
 }

@@ -272,7 +272,7 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     var start_y = obj_player.y;
     var checker_x = start_x;
     var checker_y = start_y;
-    var offset = ((point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * rif_accuracy) / 75;
+    var offset = (point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * rif_accuracy;
     var point_x = irandom_range(mouse_x - offset, mouse_x + offset);
     var point_y = irandom_range(mouse_y - offset, mouse_y + offset);
     var dir = point_direction(start_x, start_y, point_x, point_y);

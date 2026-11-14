@@ -33,20 +33,6 @@ if draw_backpack_ui = true{
     var mouse_gui_x = device_mouse_x_to_gui(0);
     var mouse_gui_y = device_mouse_y_to_gui(0);
     
-    if (keyboard_check_pressed(ord("E"))) {
-        obj_player.can_move = true;
-        draw_backpack_ui = false;
-        audio_play_sound(bp_close, 0, false);
-            
-        bs_damount = 0;
-        scrap_damount = 0;
-        rev_damount = 0;
-        sho_damount = 0;
-        rif_damount = 0;
-        
-        global.menu = false;
-    }
-    
     if (bs_damount + scrap_damount + rev_damount + sho_damount + rif_damount) > 0{ // most epic if statement ever written???!
         draw_drop_options = true;
     }

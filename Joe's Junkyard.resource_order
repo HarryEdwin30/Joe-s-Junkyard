@@ -52,7 +52,6 @@
     {"name":"obj_car3","order":2,"path":"objects/obj_car3/obj_car3.yy",},
     {"name":"obj_car4","order":3,"path":"objects/obj_car4/obj_car4.yy",},
     {"name":"obj_car5","order":4,"path":"objects/obj_car5/obj_car5.yy",},
-    {"name":"obj_chest_backup","order":4,"path":"objects/obj_chest_backup/obj_chest_backup.yy",},
     {"name":"obj_day_message","order":8,"path":"objects/obj_day_message/obj_day_message.yy",},
     {"name":"obj_day","order":6,"path":"objects/obj_day/obj_day.yy",},
     {"name":"obj_defense_e","order":2,"path":"objects/obj_defense_e/obj_defense_e.yy",},

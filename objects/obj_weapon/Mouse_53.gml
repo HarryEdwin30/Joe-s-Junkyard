@@ -112,11 +112,11 @@ if weapon_type = 2 and sho_can_shoot = true{
     }
     var start_x = obj_player.x;
     var start_y = obj_player.y;
-    var zone_size = point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y) * 0.1;
+    var offset = ((point_distance(obj_player.x, obj_player.y, mouse_x, mouse_y)) * sho_accuracy);
     
     while (pellets_drawn < max_pellets) {
-        var point_x = irandom_range(mouse_x - zone_size, mouse_x + zone_size);
-        var point_y = irandom_range(mouse_y - zone_size, mouse_y + zone_size);
+        var point_x = irandom_range(mouse_x - offset, mouse_x + offset);
+        var point_y = irandom_range(mouse_y - offset, mouse_y + offset);
         var dir = point_direction(start_x, start_y, point_x, point_y);
     	var step_x = lengthdir_x(1, dir);
         var step_y = lengthdir_y(1, dir);
