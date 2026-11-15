@@ -76,15 +76,15 @@ if draw_backpack_ui = true{
     
     
     
-    if bs_damount > 0 draw_text(dbutton_x2 + 5, bs_dbutton_y2 - 16, "- " + string(bs_damount));
+    if bs_damount > 0 draw_text(dbutton_x2 + 5, bs_dbutton_y2 - 16, "-" + string(bs_damount));
         
-    if scrap_damount > 0 draw_text(dbutton_x2 + 5, scrap_dbutton_y2 - 16, "- " + string(scrap_damount));
+    if scrap_damount > 0 draw_text(dbutton_x2 + 5, scrap_dbutton_y2 - 16, "-" + string(scrap_damount));
         
-    if rev_damount > 0 draw_text(dbutton_x2 + 5, rev_ammo_dbutton_y2 - 16, "- " + string(rev_damount));
+    if rev_damount > 0 draw_text(dbutton_x2 + 5, rev_ammo_dbutton_y2 - 16, "-" + string(rev_damount));
         
-    if sho_damount > 0 draw_text(dbutton_x2 + 5, sho_ammo_dbutton_y2 - 16, "- " + string(sho_damount));
+    if sho_damount > 0 draw_text(dbutton_x2 + 5, sho_ammo_dbutton_y2 - 16, "-" + string(sho_damount));
         
-    if rif_damount > 0 draw_text(dbutton_x2 + 5, rif_ammo_dbutton_y2 - 16, "- " + string(rif_damount));
+    if rif_damount > 0 draw_text(dbutton_x2 + 5, rif_ammo_dbutton_y2 - 16, "-" + string(rif_damount));
     
     //we're gonna draw the drop buttons down here
     if bs > 0 draw_sprite(spr_drop_button, bs_dbutton_f, dbutton_x1, bs_dbutton_y1); //beef

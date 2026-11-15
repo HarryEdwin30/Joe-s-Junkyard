@@ -330,15 +330,15 @@ if draw_gui = true{
      * (peter griffin ascii art)
      * */
     
-    if bs_tamount > 0 draw_text(dbutton_x2 + 5, bs_dbutton_y2 - 16, "+ " + string(bs_tamount));
+    if bs_tamount > 0 draw_text(dbutton_x2 + 5, bs_dbutton_y2 - 16, "-" + string(bs_tamount));
         
-    if scrap_tamount > 0 draw_text(dbutton_x2 + 5, scrap_dbutton_y2 - 16, "+ " + string(scrap_tamount));
+    if scrap_tamount > 0 draw_text(dbutton_x2 + 5, scrap_dbutton_y2 - 16, "-" + string(scrap_tamount));
         
-    if rev_tamount > 0 draw_text(dbutton_x2 + 5, rev_ammo_dbutton_y2 - 16, "+ " + string(rev_tamount));
+    if rev_tamount > 0 draw_text(dbutton_x2 + 5, rev_ammo_dbutton_y2 - 16, "-" + string(rev_tamount));
         
-    if sho_tamount > 0 draw_text(dbutton_x2 + 5, sho_ammo_dbutton_y2 - 16, "+ " + string(sho_tamount));
+    if sho_tamount > 0 draw_text(dbutton_x2 + 5, sho_ammo_dbutton_y2 - 16, "-" + string(sho_tamount));
         
-    if rif_tamount > 0 draw_text(dbutton_x2 + 5, rif_ammo_dbutton_y2 - 16, "+ " + string(rif_tamount));
+    if rif_tamount > 0 draw_text(dbutton_x2 + 5, rif_ammo_dbutton_y2 - 16, "-" + string(rif_tamount));
     
     //we're gonna draw the drop buttons down here
     if bs > 0 draw_sprite(spr_drop_button, bs_dbutton_f, dbutton_x1, bs_dbutton_y1); //beef
