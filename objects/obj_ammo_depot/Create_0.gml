@@ -1,20 +1,23 @@
-rev_ammo = 99999;
-sho_ammo = 99999;
-rif_ammo = 99999;
+rev_ammo = 999;
+sho_ammo = 999;
+rif_ammo = 999;
 
 add_rev = 0;
 add_sho = 0;
 add_rif = 0;
 
-mode = "give"; //take or give
+mode = "take"; //take or give
 
-gui_x = 200;
-gui_y = 200;
+gui_x = 170;
+gui_y = 190;
 
 draw_gui = false;
 draw_outline = false;
 
 transfer_to_pocket = function() {
+    add_rev = 0;
+    add_sho = 0;
+    add_rif = 0;
     audio_play_sound(resupply, 0, false);
     if rev_ammo > 0 and obj_weapon.rev_total_bullets < obj_weapon.rev_max_total_bullets or obj_weapon.rev_bullets_left < obj_weapon.rev_max_bullets{
         var rev_total_bullets_to_add = obj_weapon.rev_max_total_bullets - obj_weapon.rev_total_bullets;
@@ -38,6 +41,44 @@ transfer_to_pocket = function() {
         if obj_weapon.rif_bullets_left <= 0{
             obj_weapon.rif_bullets_left = obj_weapon.rif_max_bullets;
             rif_ammo -= 1;
+        }
+    }
+}
+
+i_found_diamonds = function() {
+    if (mode == "give") {
+    	obj_backpack.rev_ammo -= add_rev;
+        obj_backpack.sho_ammo -= add_sho;
+        obj_backpack.rif_ammo -= add_rif;
+        
+        rev_ammo += add_rev;
+        sho_ammo += add_sho;
+        rif_ammo += add_rif;
+        
+        add_rev = 0;
+        add_sho = 0;
+        add_rif = 0;
+        
+        audio_play_sound(bp_select, 0, false);
+    } else {
+        var new_weight = obj_backpack.weight + (add_rev + add_sho + (add_rif * obj_backpack.rif_ammo_weight));
+        
+        if (!(new_weight > obj_backpack.max_weight)) {
+        	obj_backpack.rev_ammo += add_rev;
+            obj_backpack.sho_ammo += add_sho;
+            obj_backpack.rif_ammo += add_rif;
+            
+            rev_ammo -= add_rev;
+            sho_ammo -= add_sho;
+            rif_ammo -= add_rif;
+            
+            add_rev = 0;
+            add_sho = 0;
+            add_rif = 0;
+            
+            audio_play_sound(bp_select, 0, false);
+        } else {
+            audio_play_sound(cant_do_that, 0, false);
         }
     }
 }

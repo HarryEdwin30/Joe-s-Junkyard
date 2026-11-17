@@ -21,17 +21,17 @@ if (draw_gui) {
     draw_set_colour(c_red);
     draw_rectangle(x1, y1, x2, y2, true);
     
-    var textx = gui_x;
+    var textx = gui_x + 5;
     
     var spc = 20; //spacing
     
     var revstr = "Revolver Ammo: " + string(rev_ammo);
-    var revy = gui_y;
+    var revy = gui_y + 5;
     
-    var shostr = "Rifle Ammo: " + string(sho_ammo);
+    var shostr = "Shotgun Ammo:  " + string(sho_ammo);
     var shoy = revy + spc;
     
-    var rifstr = "Shotgun Ammo: " + string(rif_ammo);
+    var rifstr = "Rifle Ammo:     " + string(rif_ammo); //this is coderot
     var rify = shoy + spc;
     
     draw_set_font(fancyfont);
@@ -103,7 +103,147 @@ if (draw_gui) {
     	var add_str = string(operation) + string(add_rif);
         draw_text(addx, rify, add_str);
     }
+    
+    var bpstr_x = addx + 50;
+    
+    var revbpstr = "BP: " + string(obj_backpack.rev_ammo);
+    var shobpstr = "BP: " + string(obj_backpack.sho_ammo);
+    var rifbpstr = "BP: " + string(obj_backpack.rif_ammo);
+    
+    draw_text(bpstr_x, revy, revbpstr);
+    draw_text(bpstr_x, shoy, shobpstr);
+    draw_text(bpstr_x, rify, rifbpstr);
+    
+    /* don't flame me codingjesus i know how bad this is and
+     * i know that it would be better to use objects for all these buttons n shit but
+     * i'd rather just brute force it
+     * */
+    
+    //mode button
+    
+    var mbx1 = gui_x + 260;
+    var mby1 = gui_y + 5;
+    var mbx2 = mbx1 + 35;
+    var mby2 = mby1 + 22;
+    
+    var mbstr = "Mode";
+    
+    var mbstr_x = mbx1 + 3;
+    var mbstr_y = mby1;
+    
+    if (point_in_rectangle(mguix, mguiy, mbx1, mby1, mbx2, mby2)) {
+    	draw_rectangle(mbx1, mby1, mbx2, mby2, false);
+        draw_set_colour(c_black);
+        draw_text(mbstr_x, mbstr_y, mbstr);
+        if (mouse_check_button_pressed(mb_left)) {
+        	audio_play_sound(bp_select, 0, false);
+            add_rev = 0;
+            add_sho = 0;
+            add_rif = 0;
+            if (mode == "take") {
+            	mode = "give";
+            } else {
+                mode = "take";
+            }
+        }
+    } else {
+        draw_set_colour(c_red);
+        draw_rectangle(mbx1, mby1, mbx2, mby2, true);
+        draw_text(mbstr_x, mbstr_y, mbstr);
+    }
+    
+    //act button
+    
+    var abx1 = gui_x + 260;
+    var aby1 = mby1 + 35;
+    var abx2 = abx1 + 35;
+    var aby2 = aby1 + 22;
+    
+    var abstr = "Take";
+    
+    if (mode == "give") {
+    	abstr = "Add";
+        if (add_rev > 0 || add_sho > 0 || add_rif > 0) {
+            var new_weight = obj_backpack.weight - (add_rev + add_sho + (add_rif * obj_backpack.rif_ammo_weight));
+            
+            var str = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight);
+            
+            draw_set_colour(c_red);
+            draw_text(abx1 - 90, aby2 + 10, str);
+        }
+    } else {
+        if (add_rev > 0 || add_sho > 0 || add_rif > 0) {
+            var new_weight = obj_backpack.weight + (add_rev + add_sho + (add_rif * obj_backpack.rif_ammo_weight));
+            
+            var str = "New W: " + string(new_weight) + "/" + string(obj_backpack.max_weight);
+            
+            draw_set_colour(c_red);
+            draw_text(abx1 - 90, aby2 + 10, str);
+        }
+    }
+    
+    var abstr_x = abx1 + 3;
+    var abstr_y = aby1;
+    
+    if (point_in_rectangle(mguix, mguiy, abx1, aby1, abx2, aby2)) {
+    	draw_rectangle(abx1, aby1, abx2, aby2, false);
+        draw_set_colour(c_black);
+        draw_text(abstr_x, abstr_y, abstr);
+        if (mouse_check_button_pressed(mb_left)) {
+        	i_found_diamonds();
+        }
+    } else {
+        draw_set_colour(c_red);
+        draw_rectangle(abx1, aby1, abx2, aby2, true);
+        draw_text(abstr_x, abstr_y, abstr);
+    }
+    
+    //transfer button
+    
+    var tbx1 = gui_x + 5;
+    var tby1 = rify + spc + 5;
+    var tbx2 = tbx1 + 90;
+    var tby2 = tby1 + 22;
+    
+    var tbstr = "Pocket Ammo";
+    
+    var tbstr_x = tbx1 + 3;
+    var tbstr_y = tby1;
+    
+    if (point_in_rectangle(mguix, mguiy, tbx1, tby1, tbx2, tby2)) {
+    	draw_rectangle(tbx1, tby1, tbx2, tby2, false);
+        draw_set_colour(c_black);
+        draw_text(tbstr_x, tbstr_y, tbstr);
+        if (mouse_check_button_pressed(mb_left)) {
+        	transfer_to_pocket();
+        }
+    } else {
+        draw_set_colour(c_red);
+        draw_rectangle(tbx1, tby1, tbx2, tby2, true);
+        draw_text(tbstr_x, tbstr_y, tbstr);
+    }
 }
+    
+    /*
+     *  ⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠉⠉⠉⠉⠋⠉⠉⠙⠛⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⠿⠋⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠉⠻⣿⣿⣿⣿⣿
+        ⣿⣿⡟⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⢻⣿⣿⣿
+        ⣿⠏⠄⠄⠄⠄⠄⠄⠄⠄⢀⣔⢤⣄⡀⠄⡄⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⢻⣿⣿
+        ⠏⠄⠄⠄⠄⠄⠄⠄⢀⣀⣨⣵⣿⣿⣿⣿⣧⣦⣤⣀⣿⣷⡐⠄⠄⠄⠄⠄⢿⣿
+        ⠄⠄⠄⠄⠄⠄⠐⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠄⠄⠄⢚⣿
+        ⣆⠄⠄⠄⠄⠄⠄⢻⣿⣿⣿⣿⡿⠛⠛⠛⠛⣿⢿⣿⣿⣿⡿⢟⣻⣄⣤⣮⡝⣿
+        ⣿⠆⠄⠄⠄⠄⠄⠄⠄⠄⠉⠘⣿⡗⡕⣋⢉⣩⣽⣬⣭⣶⣿⣿⣿⣿⣝⣻⣷⣿
+        ⣿⣦⡀⠄⠄⠠⢀⠄⠄⠁⠄⠄⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣿
+        ⣿⣿⣿⡆⠄⠄⠰⣶⡗⠄⠄⠄⣿⣿⣿⣿⣦⣌⠙⠿⣿⣿⣿⣿⣿⣿⣿⡛⠱⢿
+        ⣿⣿⣿⣿⡀⠄⠄⠿⣿⠄⠄⠄⠨⡿⠿⠿⣿⣟⣿⣯⣹⣿⣿⣿⣿⣿⣿⣿⣦⡀
+        ⣿⣿⣿⣿⣷⠄⠄⠄⢷⣦⠄⠄⠐⢶⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+        ⣿⣿⣿⣿⣿⣧⡄⠄⠄⠉⠄⠄⠄⢉⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠄
+        ⣿⣿⣿⣿⣿⠟⠋⠄⠄⠄⠄⠄⠄⠈⠛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠄⠄
+        ⣿⠿⠛⠉⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠿⢿⣿⣿⣿⣿⣿⠿⠋⠄⠄⠄⠄
+    }
+     * */
+    
+    
 
 /*
  * do you ever wonder what the fuck is going through the minds of terrible people?

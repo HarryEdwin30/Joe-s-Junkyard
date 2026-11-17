@@ -10,7 +10,7 @@ if draw_backpack_ui = true{
     }
     else draw_sprite(spr_backpack_button, 0, obj_x, obj_y);
     
-    draw_text_colour(obj_x + 28, obj_y + 5, "Move Ammo", obj_text_color, obj_text_color, obj_text_color, obj_text_color , 1);
+    draw_text_colour(obj_x + 28, obj_y + 5, "Pocket Ammo", obj_text_color, obj_text_color, obj_text_color, obj_text_color , 1);
     draw_text(160, 150, "Backpack --- Don't get greedy!");
     draw_text(160, 190, "Beef Stew: " + string(bs));
     draw_text(160, 215, "Scrap: " + string(scrap));
