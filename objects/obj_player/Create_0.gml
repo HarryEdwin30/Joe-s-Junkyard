@@ -51,22 +51,25 @@ footstep = function() {
     var type = tile_get_index(mapdata);
     var sound = undefined;
     switch (type) {
-        case 1: //grass
+        case floors.grass:
             sound = choose(fs_grass1, fs_grass2, fs_grass3);
             break;
-        case 2: //purple placeholder?
-            break;
-        case 3: //dirt
+        case floors.dirt:
             sound = choose(fs_dirt1, fs_dirt2, fs_dirt3);
             break;
-        case 4: //wood
+        case floors.wood:
             sound = choose(fs_wood1, fs_wood2, fs_wood3);
             break;
-        case 5: //carpet
+        case floors.carpet:
             break;
-        case 6: //stone
+        case floors.stone:
+            sound = choose(fs_stone1, fs_stone2, fs_stone3);
+            break;
+        case floors.road:
             sound = choose(fs_stone1, fs_stone2, fs_stone3);
             break;
     }
-    audio_play_sound(sound, 0, false);
+    if (sound != undefined) {
+    	audio_play_sound(sound, 0, false);
+    }
 }

@@ -80,3 +80,13 @@ global.mdfc = 64;
 //set game progress
 
 load_progress();
+
+enum floors {
+    grass = 1,
+    purple_placeholder = 2,
+    dirt = 3,
+    wood = 4,
+    carpet = 5,
+    stone = 6,
+    road = 8,
+}
