@@ -88,6 +88,7 @@ enum floors {
     wood = 4,
     carpet = 5,
     stone = 6,
+    purpcarpet = 7,
     road = 8,
     darkwood = 9,
     bluecarpet = 10,

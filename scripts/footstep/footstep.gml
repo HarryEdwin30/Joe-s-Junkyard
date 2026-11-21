@@ -24,6 +24,9 @@ function footstep(){
         case floors.bluecarpet:
             sound = choose(fs_carpet1, fs_carpet2, fs_carpet3);
             break;
+        case floors.purpcarpet:
+            sound = choose(fs_carpet1, fs_carpet2, fs_carpet3);
+            break;
         
         case floors.stone:
             sound = choose(fs_stone1, fs_stone2, fs_stone3);

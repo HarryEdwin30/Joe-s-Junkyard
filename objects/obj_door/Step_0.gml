@@ -10,7 +10,6 @@ if hp <= 0 and !broken{
     array_delete(global.closed_obstacles, index1, 1);
     array_delete(global.breakable_obstacles, index2, 1);
     array_delete(global.opaque_obstacles, index3, 1);
-    audio_play_sound(dooropen, 0, false);
 }
 if keyboard_check_pressed(vk_space){
     if instance_exists(obj_player) and obj_player.can_move and !broken{
