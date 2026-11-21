@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"fs_carpet3",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.5735601,
+  "exportDir":"",
+  "name":"fs_carpet3",
+  "parent":{
+    "name":"carpet",
+    "path":"folders/sounds/footsteps/carpet.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"fs_carpet3.mp3",
+  "volume":1.0,
+}
