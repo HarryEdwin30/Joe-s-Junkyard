@@ -34,6 +34,13 @@ function footstep(){
         case floors.road:
             sound = choose(fs_stone1, fs_stone2, fs_stone3);
             break;
+        case floors.roadwhite:
+            sound = choose(fs_stone1, fs_stone2, fs_stone3);
+            break;
+        
+        case floors.tile:
+            sound = choose(fs_tile1, fs_tile2, fs_tile3);
+            break;
     }
     if (sound != undefined) {
     	audio_play_sound(sound, 0, false);

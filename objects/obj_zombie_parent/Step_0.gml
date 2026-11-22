@@ -30,15 +30,6 @@ var tilemap = undefined;
 if layer_exists("obstacles"){
     tilemap = layer_tilemap_get_id("obstacles");
 }
-if (instance_exists(obj_ai_director)) {
-    if distance_to_object(obj_player) > 1280 and instance_exists(obj_player){
-        var sz = instance_position(x, y, obj_sz_parent);
-        if sz != noone{
-           sz.zia += 1; 
-        }
-        instance_destroy();
-    }
-}
 
 //wall collisions in case zombie somehow gets stuck in one
 if place_meeting(x, y, tilemap){

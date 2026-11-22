@@ -114,10 +114,8 @@ if (global.godmode) {
 	m_spd *= 2;
 }
 
-var ponly_obs = layer_tilemap_get_id("player_only_obstacles");
 var walls = [];
 array_copy(walls, 0, global.closed_obstacles, 0, array_length(global.closed_obstacles));
-array_push(walls, ponly_obs);
 
 if can_move = true and !being_attacked{
     move_and_collide(h * m_spd, v * m_spd, walls, undefined, undefined, undefined, m_spd, m_spd);
