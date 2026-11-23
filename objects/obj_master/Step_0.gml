@@ -25,6 +25,8 @@ if (keyboard_check_pressed(vk_f1)) {
 }
 
 if (global.game_started) {
+    global.zombies = instance_number(obj_zombie_parent);
+    
     //pause menu
     if (keyboard_check_pressed(vk_alt)) {
         room_goto(MainMenu);

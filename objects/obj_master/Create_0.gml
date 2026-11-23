@@ -95,3 +95,5 @@ enum floors {
     tile = 11,
     roadwhite = 12
 }
+
+global.zombies = 0;

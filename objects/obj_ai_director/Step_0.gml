@@ -1,43 +1,10 @@
-if !instance_exists(obj_player) or !enabled or global.pause exit;
-
-var sz = instance_position(obj_player.x, obj_player.y, obj_sz_parent);
-
-var max_zombies = 125;
-
-var zombies = instance_number(obj_zombie_parent);
-
-
-if instance_number(obj_walker) > 0{
-    var walker_percent = (instance_number(obj_walker) / zombies) * 100;
-}
-
-if instance_number(obj_runner) > 0{
-    var runner_percent = (instance_number(obj_runner) / zombies) * 100;
-}
-
-var z_min_dist = 700;
-var z_max_dist = 800;
-
-var tilemap = layer_tilemap_get_id("obstacles");
-
-if sz != noone{
-    if zsdl <= 0 and zombies < max_zombies and sz.zia > 0{
-        zsdl = sz.zsd;
-        
-        var spawn_x = irandom_range(obj_player.x - z_max_dist, obj_player.x + z_max_dist);
-        var spawn_y = irandom_range(obj_player.y - z_max_dist, obj_player.y + z_max_dist);
-        
-        while (point_distance(spawn_x, spawn_y, obj_player.x, obj_player.y) < z_min_dist or ((spawn_x < 0 or spawn_x > room_width) or (spawn_y < 0 or spawn_y > room_height)) or (place_meeting(spawn_x, spawn_y, tilemap))){
-        	spawn_x = irandom_range(obj_player.x - z_max_dist, obj_player.x + z_max_dist);
-            spawn_y = irandom_range(obj_player.y - z_max_dist, obj_player.y + z_max_dist);
-            show_debug_message("looping 1");
+if (enabled) {
+    if (global.zombies < max_zombies) {
+    	if (spawn_delay > 0) {
+        	spawn_delay -= 1;
+        } else {
+            spawn_zombie(choose(obj_walker, obj_runner));
+            spawn_delay = max_spawn_delay;
         }
-        
-        var zombie_type_to_spawn = sz.zt[irandom(array_length(sz.zt) - 1)];
-        show_debug_message(zombie_type_to_spawn);
-        var ml = layer_get_id("mainlayer");
-        instance_create_layer(spawn_x, spawn_y, ml, zombie_type_to_spawn);
-        sz.zia -= 1;
     }
-    zsdl -= 1;
 }

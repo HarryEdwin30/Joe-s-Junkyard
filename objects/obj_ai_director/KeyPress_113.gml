@@ -1,2 +1,5 @@
-if enabled = false enabled = true;
-    else enabled = false;
+if (enabled) {
+	enabled = false;
+} else {
+    enabled = true;
+}

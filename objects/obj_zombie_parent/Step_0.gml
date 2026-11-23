@@ -22,6 +22,11 @@ if instance_exists(obj_player){
     else if (image_alpha != 0){
     	image_alpha = 0;
     }
+    
+    var dist = 600;
+    if (point_distance(x, y, obj_player.x, obj_player.y) > dist) {
+    	instance_destroy();
+    }
 }
 
 if hp <= 0 instance_destroy();

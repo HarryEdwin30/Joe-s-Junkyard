@@ -4,7 +4,7 @@ if show_stats{
     draw_text(0, 0, "press f1 to hide/open dev stats");
     draw_text(0, 20, "FPS: " + string(fps_real));
     if (global.game_started) {
-        draw_text(0, 40, "Zombies: " + string(instance_number(obj_zombie_parent)));
+        draw_text(0, 40, "Zombies: " + string(global.zombies));
         if instance_exists(obj_ai_director){
             if obj_ai_director.enabled = true draw_text(0, 60, "AI Director enabled   (f2)");
                 else draw_text(0, 60, "AI Director disabled   (f2)");

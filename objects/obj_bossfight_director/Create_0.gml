@@ -10,7 +10,7 @@ horde_triggered = false;
 
 boss1 = false;
 
-function spawn_zombie(type) {
+spawn_zombie = function(type) {
     var sx = 0;
     var sy = 0;
     var location = choose("t", "b", "l", "r");
