@@ -22,10 +22,20 @@ if instance_exists(obj_player){
     else if (image_alpha != 0){
     	image_alpha = 0;
     }
-    
-    var dist = 600;
-    if (point_distance(x, y, obj_player.x, obj_player.y) > dist) {
-    	instance_destroy();
+    if (instance_exists(obj_ai_director)) {
+        var dist = 600;
+        if (point_distance(x, y, obj_player.x, obj_player.y) > dist) {
+            var zone = instance_nearest(x, y, obj_spawn_area);
+            switch (object_index) {
+            	case obj_walker:
+                    zone.walkers += 1;
+                    break;
+                case obj_runner:
+                    zone.runners += 1;
+                    break;
+            }
+        	instance_destroy();
+        }
     }
 }
 
@@ -62,7 +72,7 @@ if place_meeting(x, y, tilemap){
                 if (tilemap_get_at_pixel(tilemap, check_x, check_y) != 0) {
                     _is_empty = false;
                 }
-            
+                
                 if (_is_empty) {
                     test_x = check_x;
                     test_y = check_y;
@@ -85,7 +95,6 @@ var cam_x = camera_get_view_x(cam);
 var cam_y = camera_get_view_y(cam);
 
 var pathfinding_delay_max = 15;
-
 
 var push_speed = 4;
 /*
@@ -137,6 +146,9 @@ else m_spd = max_m_spd;
 if (place_meeting(x, y, obj_window)) {
     m_spd /= 2;
 }
+if (place_meeting(x, y, obj_prop_parent)) {
+	m_spd /= 2;
+}
 
 var target = noone
 
@@ -170,7 +182,7 @@ if (target != noone) {
         }
         else {
             target.infected = true;
-            deal_damage(25, undefined, target);
+            deal_damage(10, undefined, target);
             damage_delay = damage_delay_max;
         }
     }

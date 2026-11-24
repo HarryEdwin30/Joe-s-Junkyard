@@ -316,8 +316,8 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
     
     var found_human = noone;
         
-    with (obj_human_parent) {
-        if (id != other.id && position_meeting(end_x, end_y, id)) {
+    with (obj_survivor_test) {
+        if (position_meeting(end_x, end_y, id)) {
             found_human = id;
             break;
         }

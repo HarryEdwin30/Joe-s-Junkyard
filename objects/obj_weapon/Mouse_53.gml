@@ -70,8 +70,8 @@ if weapon_type = 1 and rev_can_shoot = true{
     
     var found_human = noone;
         
-    with (obj_human_parent) {
-        if (id != other.id && position_meeting(end_x, end_y, id)) {
+    with (obj_survivor_test) {
+        if (position_meeting(end_x, end_y, id)) {
             found_human = id;
             break;
         }
@@ -260,8 +260,8 @@ if weapon_type = 3 and rif_can_shoot = true and fire_mode = 1{
     }
     var found_human = noone;
         
-    with (obj_human_parent) {
-        if (id != other.id && position_meeting(end_x, end_y, id)) {
+    with (obj_survivor_test) {
+        if (position_meeting(end_x, end_y, id)) {
             found_human = id;
             break;
         }

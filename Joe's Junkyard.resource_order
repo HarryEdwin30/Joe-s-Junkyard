@@ -76,6 +76,7 @@
     {"name":"obj_load_save_button","order":2,"path":"objects/obj_load_save_button/obj_load_save_button.yy",},
     {"name":"obj_master","order":13,"path":"objects/obj_master/obj_master.yy",},
     {"name":"obj_new_game_button","order":1,"path":"objects/obj_new_game_button/obj_new_game_button.yy",},
+    {"name":"obj_prop_parent","order":4,"path":"objects/obj_prop_parent/obj_prop_parent.yy",},
     {"name":"obj_room_door_back","order":4,"path":"objects/obj_room_door_back/obj_room_door_back.yy",},
     {"name":"obj_room_door","order":3,"path":"objects/obj_room_door/obj_room_door.yy",},
     {"name":"obj_runner","order":1,"path":"objects/obj_runner/obj_runner.yy",},

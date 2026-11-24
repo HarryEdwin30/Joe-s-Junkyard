@@ -1,4 +1,3 @@
-max_spawn_delay = 10;
 spawn_delay = 0;
 max_zombies = 125;
 enabled = false;

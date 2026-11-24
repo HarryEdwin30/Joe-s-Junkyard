@@ -114,6 +114,7 @@
     {"id":{"name":"obj_officedesk","path":"objects/obj_officedesk/obj_officedesk.yy",},},
     {"id":{"name":"obj_pathfinding","path":"objects/obj_pathfinding/obj_pathfinding.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_prop_parent","path":"objects/obj_prop_parent/obj_prop_parent.yy",},},
     {"id":{"name":"obj_room_door_back","path":"objects/obj_room_door_back/obj_room_door_back.yy",},},
     {"id":{"name":"obj_room_door","path":"objects/obj_room_door/obj_room_door.yy",},},
     {"id":{"name":"obj_runner","path":"objects/obj_runner/obj_runner.yy",},},
