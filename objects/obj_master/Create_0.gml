@@ -97,3 +97,15 @@ enum floors {
 }
 
 global.zombies = 0;
+
+enum genders {
+    male = 0,
+    female = 1,
+    neuter = 2
+}
+
+global.name_pool = [
+    ["Abe"],
+    ["Alice"],
+    ["Alex"]
+]

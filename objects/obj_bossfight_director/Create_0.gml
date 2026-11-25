@@ -10,6 +10,9 @@ horde_triggered = false;
 
 boss1 = false;
 
+max_delay = 0;
+delay = 0; //event timer
+
 spawn_zombie = function(type) {
     var sx = 0;
     var sy = 0;

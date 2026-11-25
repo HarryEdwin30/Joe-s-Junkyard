@@ -334,7 +334,7 @@ with (obj_zombie_parent) {
 
 var htarget = noone;
 var hdist = infinity;
-
+/*
 with (obj_human_parent) {
     if (id != other.id) {
         var d = point_distance(other.x, other.y, x, y);
@@ -346,7 +346,7 @@ with (obj_human_parent) {
         }
     }
 }
-
+*/
 if (ztarget != noone && htarget != noone) {
     target = (zdist < hdist) ? ztarget : htarget;
 } 

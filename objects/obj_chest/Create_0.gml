@@ -33,14 +33,14 @@ if (struct_exists(global.data, key)) {
     rif_ammo = data.rif_ammo;
 }
 else {
-    exists = choose(true, false);
+    exists = chance(33);
     
     var chest_type = 1; //1 = common, 2 = uncommon, 3 = rare
     var uncommon_chance = 25;
     var rare_chance = 5;
-    var chance = random(100);
-    if chance < uncommon_chance{
-        if chance < rare_chance{
+    var chance1 = random(100);
+    if chance1 < uncommon_chance{
+        if chance1 < rare_chance{
             chest_type = 3;
         }
         else{

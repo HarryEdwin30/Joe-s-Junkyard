@@ -1,3 +1,5 @@
+//WARNING!!! THIS CODE IS ASS AND NEEDS TO BE REWRITTEN, IT DOESN'T WORK!!!!
+
 /*
  * todo in order:
  * 

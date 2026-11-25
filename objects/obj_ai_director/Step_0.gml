@@ -27,7 +27,6 @@ if (enabled) {
                             break;
                     }
                 }
-                show_debug_message(zone.walkers);
                 spawn_delay = zone.spawn_delay;
             }
         }

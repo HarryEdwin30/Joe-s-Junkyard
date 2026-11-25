@@ -1,20 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_sz",
+  "%Name":"obj_next_day",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":73,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_sz",
+  "name":"obj_next_day",
   "overriddenProperties":[],
   "parent":{
-    "name":"spawn_zones",
-    "path":"folders/objects/spawn_zones.yy",
+    "name":"base",
+    "path":"folders/objects/base.yy",
   },
-  "parentObjectId":{
-    "name":"obj_sz_parent",
-    "path":"objects/obj_sz_parent/obj_sz_parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,9 +32,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_sz",
-    "path":"sprites/spr_sz/spr_sz.yy",
+    "name":"spr_save_point",
+    "path":"sprites/spr_save_point/spr_save_point.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

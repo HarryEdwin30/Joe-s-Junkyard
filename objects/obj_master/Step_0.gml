@@ -64,8 +64,6 @@ if (global.game_started) {
         buffer_write(_buffer, buffer_string, _string);
         buffer_save(_buffer, "data.json");
         buffer_delete(_buffer);
-        show_debug_message("game saved");
-        audio_play_sound(bp_select, 0, false);
         global.save_game = false;
     }
     
