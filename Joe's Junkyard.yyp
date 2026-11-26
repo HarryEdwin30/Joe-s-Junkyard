@@ -210,6 +210,8 @@
     {"id":{"name":"ham_max","path":"sounds/ham_max/ham_max.yy",},},
     {"id":{"name":"holster","path":"sounds/holster/holster.yy",},},
     {"id":{"name":"hordealert","path":"sounds/hordealert/hordealert.yy",},},
+    {"id":{"name":"hungrysound","path":"sounds/hungrysound/hungrysound.yy",},},
+    {"id":{"name":"hurtsound1","path":"sounds/hurtsound1/hurtsound1.yy",},},
     {"id":{"name":"item_add_back","path":"sounds/item_add_back/item_add_back.yy",},},
     {"id":{"name":"item_subtract","path":"sounds/item_subtract/item_subtract.yy",},},
     {"id":{"name":"modeswitch1","path":"sounds/modeswitch1/modeswitch1.yy",},},

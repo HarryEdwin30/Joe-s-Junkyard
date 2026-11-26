@@ -1,4 +1,4 @@
-if (instance_exists(obj_backpack)) { //indeed we will check this every fucking frame ; )
+if (instance_exists(obj_backpack)) { //indeed we will check this every fucking frame ;)
 	if (obj_backpack.bs > 0) {
     	bs = obj_backpack.bs;
         obj_backpack.bs = 0;

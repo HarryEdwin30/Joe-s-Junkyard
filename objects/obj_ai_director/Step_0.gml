@@ -1,3 +1,6 @@
+if (global.pause) {
+	exit;
+}
 if (enabled) {
     var zone = instance_position(obj_player.x, obj_player.y, obj_spawn_area);
     if (zone != noone) {

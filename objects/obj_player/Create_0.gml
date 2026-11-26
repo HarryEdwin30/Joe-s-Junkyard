@@ -3,9 +3,11 @@ key = "player";
 def_m_spd = 1;
 m_spd = 1;
 is_running = false;
-max_hp = 100;
+def_max_hp = 100;
+max_hp = def_max_hp;
 can_run = true;
-max_stamina = 100;
+def_max_stamina = 100;
+max_stamina = def_max_stamina;
 stamina = max_stamina;
 can_move = true;
 push_cooldown_max = 60;
@@ -21,11 +23,14 @@ else {
 	data = {
         infected: false,
         hp: max_hp,
+        hungry: false
     }
 }
 
 infected = data.infected;
 hp = data.hp;
+hungry = data.hungry;
+last_hp = hp;
 
 squad = [];
 squad_max_size = 3;

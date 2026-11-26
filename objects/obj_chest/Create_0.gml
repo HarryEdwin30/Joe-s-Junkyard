@@ -49,24 +49,24 @@ else {
     }
     
     if chest_type = 1{
-        bs = irandom_range(0, 2);
-        scrap = 0;
-        rev_ammo = irandom_range(0, 6);
-        sho_ammo = irandom_range(0, 4);
+        bs = irandom_range(0, 1);
+        scrap = irandom_range(0, 5);
+        rev_ammo = irandom_range(0, 4);
+        sho_ammo = irandom_range(0, 2);
         rif_ammo = 0;
     }
     if chest_type = 2{
-        bs = irandom_range(0, 4);
-        scrap = irandom_range(0, 2);
-        rev_ammo = irandom_range(0, 12);
-        sho_ammo = irandom_range(0, 8);
+        bs = irandom_range(0, 2);
+        scrap = irandom_range(0, 10);
+        rev_ammo = irandom_range(0, 8);
+        sho_ammo = irandom_range(0, 6);
         rif_ammo = irandom_range(0, 1);
     }
     if chest_type = 3{
-        bs = irandom_range(0, 6);
-        scrap = irandom_range(0, 5);
-        rev_ammo = irandom_range(0, 24);
-        sho_ammo = irandom_range(0, 16);
+        bs = irandom_range(0, 4);
+        scrap = irandom_range(0, 20);
+        rev_ammo = irandom_range(0, 16);
+        sho_ammo = irandom_range(0, 12);
         rif_ammo = irandom_range(0, 2);
     }
     data = {

@@ -12,7 +12,7 @@ weight = 0;
 bs_weight = 5;
 bs = 0;
 
-scrap_weight = 5;
+scrap_weight = 2;
 scrap = 0;
 
 rev_ammo = 0;

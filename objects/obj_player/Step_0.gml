@@ -2,6 +2,26 @@ if (global.pause) {
 	exit;
 }
 
+if (hp < last_hp) {
+	audio_play_sound(hurtsound1, 0, false);
+    last_hp = hp;
+}
+
+max_hp = def_max_hp;
+max_stamina = def_max_stamina;
+
+if (hungry) {
+	max_hp /= 2;
+    max_stamina /= 2;
+}
+
+if (hp > max_hp) {
+	hp = max_hp
+}
+if (stamina > max_stamina) {
+	stamina = max_stamina
+}
+
 if (hp < max_hp) {
 	if (heal_delay > 0) {
     	heal_delay -= 1;
