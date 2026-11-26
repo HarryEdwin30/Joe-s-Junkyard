@@ -1,7 +1,7 @@
-var str = "good morning.";
-
+draw_sprite_ext(spr_daybox, 0, gui_x, gui_y, 1, 1, 0, c_white, alpha);
+var str = "DAY " + string(global.game_day);
 draw_set_font(day_message_font);
-var c = c_black;
+var c = c_red;
 draw_text_ext_colour(gui_x, gui_y, str, 0, 1000, c, c, c, c, alpha);
 
 /* 

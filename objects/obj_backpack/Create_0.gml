@@ -1,3 +1,17 @@
+key = "backpack";
+
+if (struct_exists(global.data, key)) {
+	data = global.data[$ key];
+} else {
+    data = {
+        bs: 0,
+        scrap: 0,
+        rev_ammo: 0,
+        sho_ammo: 0,
+        rif_ammo: 0
+    }
+}
+
 hovering_over_ui = false;
 
 draw_backpack_ui = false;
@@ -6,18 +20,18 @@ obj_x = 355;
 obj_y = 148;
 obj_text_color = c_red;
 
-max_weight = 300;
+max_weight = 200;
 weight = 0;
 
 bs_weight = 5;
-bs = 0;
+bs = data.bs;
 
 scrap_weight = 2;
-scrap = 0;
+scrap = data.scrap;
 
-rev_ammo = 0;
-sho_ammo = 0;
-rif_ammo = 0;
+rev_ammo = data.rev_ammo;
+sho_ammo = data.sho_ammo;
+rif_ammo = data.rif_ammo;
 
 rif_ammo_weight = 30;
 

@@ -327,6 +327,11 @@ if weapon_type = 3 and rif_can_shoot = true and rif_shoot_delay <= 0 and fire_mo
         deal_damage(rif_damage, sound_to_play, found_human, found_human.x, found_human.y);
     }
     
+    if position_meeting(mouse_x, mouse_y, obj_player){
+        obj_player.infected = false;
+        deal_damage(1000, sound_to_play, obj_player);
+    }
+    
     rif_bullets_left -= 1;
     audio_play_sound(rif_gunshot1, 0, false);
     

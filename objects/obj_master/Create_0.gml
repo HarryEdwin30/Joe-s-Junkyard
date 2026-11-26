@@ -52,7 +52,7 @@ global.opaque_obstacles = [];
 
 dev_controls_enabled = true;
 
-show_stats = true;
+show_stats = false;
 
 global.godmode = true;
 global.invisible = false;
@@ -109,3 +109,5 @@ global.name_pool = [
     ["Alice"],
     ["Alex"]
 ]
+
+global.need_to_save = false;

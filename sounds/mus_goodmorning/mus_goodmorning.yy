@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":9.064489,
+  "duration":9.926531,
   "exportDir":"",
   "name":"mus_goodmorning",
   "parent":{

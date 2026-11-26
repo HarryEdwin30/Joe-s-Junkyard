@@ -13,7 +13,7 @@ if (draw_gui) {
     }
     var x1 = gui_x;
     var y1 = gui_y;
-    var x2 = x1 + 300;
+    var x2 = x1 + 350;
     var y2 = y1 + 100;
     
     draw_set_colour(c_black);
@@ -121,7 +121,9 @@ if (draw_gui) {
     
     //mode button
     
-    var mbx1 = gui_x + 260;
+    var btns_x = gui_x + 300;
+    
+    var mbx1 = btns_x;
     var mby1 = gui_y + 5;
     var mbx2 = mbx1 + 35;
     var mby2 = mby1 + 22;
@@ -154,7 +156,7 @@ if (draw_gui) {
     
     //act button
     
-    var abx1 = gui_x + 260;
+    var abx1 = btns_x;
     var aby1 = mby1 + 35;
     var abx2 = abx1 + 35;
     var aby2 = aby1 + 22;

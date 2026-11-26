@@ -1,6 +1,6 @@
-rev_ammo = 999;
-sho_ammo = 999;
-rif_ammo = 999;
+rev_ammo = 0;
+sho_ammo = 0;
+rif_ammo = 0;
 
 add_rev = 0;
 add_sho = 0;
@@ -8,7 +8,7 @@ add_rif = 0;
 
 mode = "take"; //take or give
 
-gui_x = 170;
+gui_x = 150;
 gui_y = 190;
 
 draw_gui = false;

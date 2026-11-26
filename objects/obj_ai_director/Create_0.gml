@@ -1,6 +1,6 @@
 spawn_delay = 0;
 max_zombies = 125;
-enabled = false;
+enabled = true;
 
 spawn_zombie = function(type) {
     var spawn = {x: 0, y: 0};

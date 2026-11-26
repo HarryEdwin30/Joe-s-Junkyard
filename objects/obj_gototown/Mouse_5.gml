@@ -1,4 +1,5 @@
 if (point_distance(obj_player.x, obj_player.y, x, y) < 64) {
+    global.need_to_save = true;
 	if (room == Junkyard) {
         if (!obj_bossfight_director.been_to_town) {
             obj_bossfight_director.been_to_town = true;
