@@ -3,6 +3,34 @@ if (global.pause or !instance_exists(obj_player)) {
 	exit;
 }
 
+var audio_falloff_ref = 150;
+var audio_max_dist = 300;
+
+if (!audio_is_playing(current_sound)) {
+    if (sound_delay > 0) {
+    	sound_delay -= 1;
+    } else {
+        sound_delay = irandom_range(30, 60);
+        var sound_pack = noone;
+        var sound_bank = [];
+        if (chase_player) {
+            sound_pack = anger_sounds;
+        } else {
+            
+        }
+        if (sound_pack != noone) {
+            array_copy(sound_bank, 0, sound_pack, 0, array_length(sound_pack));
+            if (array_contains(sound_bank, last_sound)) {
+                var index = array_get_index(sound_bank, last_sound);
+            	array_delete(sound_bank, index, 1);
+            }
+            var sound = arv(sound_bank);
+            last_sound = sound;
+            current_sound = audio_play_sound_at(sound, x, y, 0, audio_falloff_ref, audio_max_dist, 1, false, 0);
+        }
+    }
+}
+
 if instance_exists(obj_player){
     var cam = view_camera[0];
     
@@ -39,7 +67,10 @@ if instance_exists(obj_player){
     }
 }
 
-if hp <= 0 instance_destroy();
+if hp <= 0 {
+    audio_stop_sound(current_sound);
+    instance_destroy();
+}
     
 var tilemap = undefined;
 if layer_exists("obstacles"){
@@ -152,7 +183,7 @@ if (place_meeting(x, y, obj_prop_parent)) {
 
 var target = noone
 
-var detection_range = 320;
+var detection_range = 200;
 if global.invisible = true{
     if (instance_exists(obj_survivor_test)) {
         target = instance_nearest(x, y, obj_survivor_test);
@@ -174,6 +205,7 @@ if (target != noone) {
     }
     if (place_meeting(x, y, target) and stunned <= 0) {
 	    m_spd = 0;
+        path_end()
         if (target.object_index = obj_player) {
         	obj_player.being_attacked = true;
         }
@@ -250,10 +282,12 @@ if place_meeting(x, y, global.breakable_obstacles){
     
     for (var i = 0; i < array_length(global.breakable_obstacles); i++) {
         var _inst = global.breakable_obstacles[i];
-        var _dist = point_distance(x, y, _inst.x, _inst.y);
-        if (_dist < _min_dist) {
-            _min_dist = _dist;
-            n_obs = _inst;
+        if (instance_exists(_inst)) {
+            var _dist = point_distance(x, y, _inst.x, _inst.y);
+            if (_dist < _min_dist) {
+                _min_dist = _dist;
+                n_obs = _inst;
+            }
         }
     }
     if (n_obs != noone) {

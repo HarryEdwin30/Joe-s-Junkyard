@@ -18,3 +18,17 @@ touching_obs = false;
 break_delay = 0;
 breaking_something = false;
 image_alpha = 0;
+
+sound_delay = 0;
+
+last_sound = noone;
+
+current_sound = noone;
+
+anger_sounds = [
+    ranger1,
+    ranger2,
+    ranger3,
+    ranger4,
+    ranger5
+];

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"ranger1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":6.4086623,
+  "exportDir":"",
+  "name":"ranger1",
+  "parent":{
+    "name":"runner",
+    "path":"folders/sounds/zombiesounds/runner.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"ranger1.mp3",
+  "volume":0.5,
+}

@@ -18,3 +18,17 @@ touching_obs = false;
 break_delay = 0;
 breaking_something = false;
 image_alpha = 0;
+
+sound_delay = 0;
+
+last_sound = noone;
+
+current_sound = noone;
+
+anger_sounds = [
+    wanger1,
+    wanger2,
+    wanger3,
+    wanger4,
+    wanger5
+];

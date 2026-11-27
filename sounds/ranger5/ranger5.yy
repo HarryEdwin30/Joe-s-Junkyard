@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bitesound1",
+  "%Name":"ranger5",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.0031066,
+  "duration":12.527165,
   "exportDir":"",
-  "name":"bitesound1",
+  "name":"ranger5",
   "parent":{
-    "name":"zombiesounds",
-    "path":"folders/sounds/zombiesounds.yy",
+    "name":"runner",
+    "path":"folders/sounds/zombiesounds/runner.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bitesound1.wav",
-  "volume":1.0,
+  "soundFile":"ranger5.mp3",
+  "volume":0.5,
 }

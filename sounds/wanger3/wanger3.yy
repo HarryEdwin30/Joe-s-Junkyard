@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"wanger3",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.993832,
+  "exportDir":"",
+  "name":"wanger3",
+  "parent":{
+    "name":"walker",
+    "path":"folders/sounds/zombiesounds/walker.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"wanger3.mp3",
+  "volume":0.5,
+}

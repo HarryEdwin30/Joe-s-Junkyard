@@ -1,3 +1,3 @@
-walkers = 400;
-runners = 80;
+walkers = 203;
+runners = 50;
 spawn_delay = 10;

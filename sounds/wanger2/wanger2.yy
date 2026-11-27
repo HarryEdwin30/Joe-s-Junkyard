@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bitesound2",
+  "%Name":"wanger2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.0687983,
+  "duration":4.4350114,
   "exportDir":"",
-  "name":"bitesound2",
+  "name":"wanger2",
   "parent":{
-    "name":"zombiesounds",
-    "path":"folders/sounds/zombiesounds.yy",
+    "name":"walker",
+    "path":"folders/sounds/zombiesounds/walker.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bitesound2.wav",
-  "volume":1.0,
+  "soundFile":"wanger2.mp3",
+  "volume":0.5,
 }

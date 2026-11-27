@@ -17,6 +17,7 @@ if (file_exists("data.json")) {
 //saving variables
 
 global.save_key = "save";
+
 global.save_game = false;
 
 //game started
