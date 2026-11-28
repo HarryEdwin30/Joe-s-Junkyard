@@ -32,7 +32,7 @@ if weapon_type = 4 and obj_player.stamina > 0{
         var ham_target_distance = point_distance(obj_player.x, obj_player.y, ham_target.x, ham_target.y);
         var ham_target_distance_max = 50;
         var tilemap = layer_tilemap_get_id("obstacles");
-        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, mouse_x, mouse_y, global.closed_obstacles, false, true) or (position_meeting(mouse_x, mouse_y, obj_window) and ham_target_distance <= ham_target_distance_max) {
+        if ham_target_distance <= ham_target_distance_max and !collision_line(obj_player.x, obj_player.y, ham_target.x, ham_target.y, global.closed_obstacles, false, true) or (position_meeting(mouse_x, mouse_y, obj_window) and ham_target_distance <= ham_target_distance_max) {
             ham_target_in_range = true;
             ham_draw_target = true;
             

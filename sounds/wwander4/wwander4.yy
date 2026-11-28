@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"wwander4",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.73839,
+  "exportDir":"",
+  "name":"wwander4",
+  "parent":{
+    "name":"walker",
+    "path":"folders/sounds/zombiesounds/walker.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"wwander4.mp3",
+  "volume":0.5,
+}

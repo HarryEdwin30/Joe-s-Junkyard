@@ -3,20 +3,37 @@ if (global.pause or !instance_exists(obj_player)) {
 	exit;
 }
 
-var audio_falloff_ref = 150;
-var audio_max_dist = 300;
+var dist = point_distance(x, y, last_x, last_y);
+
+pixels_traveled -= dist;
+
+last_x = x;
+last_y = y;
+
+if (pixels_traveled <= 0) {
+	pixels_traveled = max_pixels_to_travel;
+    max_pixels_to_travel = irandom_range(pixels_min, pixels_max);
+    footstep_at();
+}
+
+audio_emitter_position(emitter, x, y, 0);
+
+var play_sound = function(sound) {
+    last_sound = sound;
+    current_sound = audio_play_sound_on(emitter, sound, false, 0);
+}
 
 if (!audio_is_playing(current_sound)) {
     if (sound_delay > 0) {
     	sound_delay -= 1;
     } else {
-        sound_delay = irandom_range(30, 60);
+        sound_delay = irandom_range(30, 80);
         var sound_pack = noone;
         var sound_bank = [];
         if (chase_player) {
             sound_pack = anger_sounds;
         } else {
-            
+            sound_pack = wander_sounds;
         }
         if (sound_pack != noone) {
             array_copy(sound_bank, 0, sound_pack, 0, array_length(sound_pack));
@@ -25,10 +42,25 @@ if (!audio_is_playing(current_sound)) {
             	array_delete(sound_bank, index, 1);
             }
             var sound = arv(sound_bank);
-            last_sound = sound;
-            current_sound = audio_play_sound_at(sound, x, y, 0, audio_falloff_ref, audio_max_dist, 1, false, 0);
+            play_sound(sound);
         }
     }
+}
+
+if (hp < last_hp) {
+    last_hp = hp;
+	audio_stop_sound(current_sound);
+    var sound_pack = hurt_sounds;
+    var sound_bank = [];
+    if (sound_pack != noone) {
+        array_copy(sound_bank, 0, sound_pack, 0, array_length(sound_pack));
+        if (array_contains(sound_bank, last_sound)) {
+            var index = array_get_index(sound_bank, last_sound);
+            array_delete(sound_bank, index, 1);
+        }
+    }
+    var sound = arv(sound_bank);
+    play_sound(sound);
 }
 
 if instance_exists(obj_player){
@@ -128,7 +160,8 @@ var cam_y = camera_get_view_y(cam);
 var pathfinding_delay_max = 15;
 
 var push_speed = 4;
-/*
+
+/* will i ever use this code?????????
 if place_meeting(x, y, obj_player){
     with (obj_player){
         if (id != other.id){
@@ -150,7 +183,7 @@ if place_meeting(x, y, obj_player){
 */
 if place_meeting(x, y, obj_zombie_parent) and !place_meeting(x, y, obj_player){
     if pathfinding_delay <= 0{
-        with (obj_zombie_parent){
+        with (obj_zombie_parent){ //maybe it would be better to compile all the zombies you are colliding with instead of running through all of them, but you know what whatever
             if (id != other.id){
                 var dist = point_distance(x, y, other.x, other.y);
                 var min_dist = 16;
@@ -195,7 +228,7 @@ else {
 if (target != noone) {
     if global.zombie_omniscience or distance_to_object(target) < detection_range and !collision_line(x, y, target.x, target.y, global.opaque_obstacles, false, true){
         can_see_player = true;
-        var max_interest = irandom_range(1200, 2000);
+        var max_interest = irandom_range(600, 1000);
         interest = max_interest;
         target_x = target.x;
         target_y = target.y;
@@ -214,6 +247,18 @@ if (target != noone) {
         }
         else {
             target.infected = true;
+            audio_stop_sound(current_sound);
+            var sound_pack = attack_sounds;
+            var sound_bank = [];
+            if (sound_pack != noone) {
+                array_copy(sound_bank, 0, sound_pack, 0, array_length(sound_pack));
+                if (array_contains(sound_bank, last_sound)) {
+                    var index = array_get_index(sound_bank, last_sound);
+                	array_delete(sound_bank, index, 1);
+                }
+            }
+            var sound = arv(sound_bank);
+            play_sound(sound);
             deal_damage(10, undefined, target);
             damage_delay = damage_delay_max;
         }
@@ -227,12 +272,29 @@ if can_see_player = true{
 }
 
 if chase_player = true{
+    if (notice_sound = false) {
+        notice_sound = true;
+        audio_stop_sound(current_sound);
+        var sound_pack = anger_sounds;
+        var sound_bank = [];
+        if (sound_pack != noone) {
+            array_copy(sound_bank, 0, sound_pack, 0, array_length(sound_pack));
+            if (array_contains(sound_bank, last_sound)) {
+                var index = array_get_index(sound_bank, last_sound);
+                array_delete(sound_bank, index, 1);
+            }
+        }
+        var sound = arv(sound_bank);
+        play_sound(sound);
+    }
     if (interest > 0) {
     	interest -= 1;
     }
     else {
     	chase_player = false;
     }
+} else {
+	notice_sound = false;
 }
     
 if chase_player = true{
@@ -291,7 +353,8 @@ if place_meeting(x, y, global.breakable_obstacles){
         }
     }
     if (n_obs != noone) {
-        if !chase_player{
+        if (!push_out_of_obstacle) {
+            push_out_of_obstacle = true;
             m_spd = 0;
             wander_delay = 0;
             path_end();
@@ -307,7 +370,7 @@ if place_meeting(x, y, global.breakable_obstacles){
                     var check_y = y + lengthdir_y(radius, angle);
                     
                     var _is_empty = true;
-                    if (place_meeting(check_x, check_y, n_obs)) {
+                    if (position_meeting(check_x, check_y, n_obs)) {
                         _is_empty = false;
                     }
                     
@@ -326,55 +389,58 @@ if place_meeting(x, y, global.breakable_obstacles){
                 y = test_y;
             }
         }
-        if (chase_player and collision_line(x, y, target.x, target.y, global.closed_obstacles, false, true)){
-            breaking_something = true;
-            if break_delay > 0{
-                break_delay -= 1;
-            }
-            else{
-                if (n_obs.boards = undefined) {
-                	var sound_to_play = choose(doorbang1, doorbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y);
-                    switch (object_index) {
-                    	case obj_walker:
-                            break_delay = irandom_range(60, 120);
-                            break;
-                        case obj_runner:
-                            break_delay = irandom_range(25, 60);
-                            break;
-                    }
-                }
-                else if (n_obs.boards = false) {
-                    var sound_to_play = choose(windowbang1, windowbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y);
-                    switch (object_index) {
-                    	case obj_walker:
-                            break_delay = irandom_range(60, 120);
-                            break;
-                        case obj_runner:
-                            break_delay = irandom_range(25, 60);
-                            break;
-                    }
+        if (target != noone) {
+            if (chase_player and collision_line(x, y, target.x, target.y, global.closed_obstacles, false, true)){
+                breaking_something = true;
+                if break_delay > 0{
+                    break_delay -= 1;
                 }
                 else{
-                    var sound_to_play = choose(boardbang1, boardbang2);
-                    deal_damage(1, sound_to_play, n_obs, x, y);
-                    switch (object_index) {
-                        case obj_walker:
-                            break_delay = irandom_range(60, 120);
-                            break;
-                        case obj_runner:
-                            break_delay = irandom_range(25, 60);
-                            break;
+                    if (n_obs.boards = undefined) {
+                    	var sound_to_play = choose(doorbang1, doorbang2);
+                        deal_damage(1, sound_to_play, n_obs, x, y);
+                        switch (object_index) {
+                        	case obj_walker:
+                                break_delay = irandom_range(60, 120);
+                                break;
+                            case obj_runner:
+                                break_delay = irandom_range(25, 60);
+                                break;
+                        }
+                    }
+                    else if (n_obs.boards = false) {
+                        var sound_to_play = choose(windowbang1, windowbang2);
+                        deal_damage(1, sound_to_play, n_obs, x, y);
+                        switch (object_index) {
+                        	case obj_walker:
+                                break_delay = irandom_range(60, 120);
+                                break;
+                            case obj_runner:
+                                break_delay = irandom_range(25, 60);
+                                break;
+                        }
+                    }
+                    else{
+                        var sound_to_play = choose(boardbang1, boardbang2);
+                        deal_damage(1, sound_to_play, n_obs, x, y);
+                        switch (object_index) {
+                            case obj_walker:
+                                break_delay = irandom_range(60, 120);
+                                break;
+                            case obj_runner:
+                                break_delay = irandom_range(25, 60);
+                                break;
+                        }
                     }
                 }
+                m_spd = 0;
+                path_end();
             }
-            m_spd = 0;
-            path_end();
         }
     }
 }
-else if (breaking_something) {
+else {
+    push_out_of_obstacle = false;
 	breaking_something = false;
 }
 if (collision_delay > 0) {

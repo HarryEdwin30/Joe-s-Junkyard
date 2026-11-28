@@ -4,3 +4,5 @@
  * it should just add as much items as it can until it hits max weight rather than trying to add all the reserve
  * 
  * you know what only do that if you REALLY want to
+ * 
+ * THERE IS A REALLY BAD BUG WHERE THEY PHASE THROUGH THE DOORS AND WINDOWS

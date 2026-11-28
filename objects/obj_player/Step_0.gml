@@ -152,10 +152,12 @@ if place_meeting(x, y, global.breakable_obstacles){
     
     for (var i = 0; i < array_length(global.breakable_obstacles); i++) {
         var _inst = global.breakable_obstacles[i];
-        var _dist = point_distance(x, y, _inst.x, _inst.y);
-        if (_dist < _min_dist) {
-            _min_dist = _dist;
-            n_obs = _inst;
+        if (instance_exists(_inst)) {
+            var _dist = point_distance(x, y, _inst.x, _inst.y);
+            if (_dist < _min_dist) {
+                _min_dist = _dist;
+                n_obs = _inst;
+            }
         }
     }
     if (n_obs != noone) {

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"rwander4",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":9.287982,
+  "exportDir":"",
+  "name":"rwander4",
+  "parent":{
+    "name":"runner",
+    "path":"folders/sounds/zombiesounds/runner.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"rwander4.mp3",
+  "volume":0.5,
+}

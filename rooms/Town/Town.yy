@@ -3359,7 +3359,7 @@
           -2147483648,-386,1,-173,-2147483648,-3,1,-188,-2147483648,-386,1,-173,-2147483648,-3,1,-188,-2147483648,
           -386,1,-173,-2147483648,-3,1,-188,-2147483648,-386,1,-173,-2147483648,-3,1,-188,-2147483648,-386,1,-173,
           -2147483648,-3,1,-188,-2147483648,-386,1,-173,-2147483648,-3,1,-188,-2147483648,-562,1,-188,-2147483648,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"ts_obstacle","path":"tilesets/ts_obstacle/ts_obstacle.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"ts_obstacle","path":"tilesets/ts_obstacle/ts_obstacle.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"walltexture","depth":700,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"walltexture","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":563,"SerialiseWidth":750,"TileCompressedData":[
           -16886,-2147483648,-136,3,-614,-2147483648,1,3,-134,2,1,3,-614,-2147483648,2,3,2,-132,-2147483648,2,
           2,3,-614,-2147483648,2,3,2,-132,-2147483648,2,2,3,-614,-2147483648,2,3,2,-132,-2147483648,2,2,3,-614,
