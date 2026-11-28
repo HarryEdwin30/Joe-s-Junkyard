@@ -3,9 +3,9 @@ if (global.pause or !instance_exists(obj_player)) {
 	exit;
 }
 
-var dist = point_distance(x, y, last_x, last_y);
+var last_dist = point_distance(x, y, last_x, last_y);
 
-pixels_traveled -= dist;
+pixels_traveled -= last_dist;
 
 last_x = x;
 last_y = y;
